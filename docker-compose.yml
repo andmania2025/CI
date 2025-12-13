@@ -1,0 +1,45 @@
+services:
+  # Web (Front) - ポート 3001
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3009:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./apps/web:/app/apps/web
+      - ./packages:/app/packages
+      - /app/node_modules
+      - /app/apps/web/node_modules
+      - /app/apps/web/.next
+    profiles:
+      - web
+    restart: unless-stopped
+
+  # Admin (Back) - ポート 3006
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    ports:
+      - "3006:3000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://dummy:dummy@localhost:5432/dummy
+    volumes:
+      - ./apps/admin:/app/apps/admin
+      - ./packages:/app/packages
+      - ./prisma:/app/prisma
+      - /app/node_modules
+      - /app/apps/admin/node_modules
+      - /app/apps/admin/.next
+    profiles:
+      - admin
+    restart: unless-stopped
+
+# 起動コマンド:
+# web のみ: docker compose --profile web up
+# admin のみ: docker compose --profile admin up
+# 両方: docker compose --profile web --profile admin up

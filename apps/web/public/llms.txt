@@ -1,0 +1,38 @@
+# ウチカツ (UCIKATU)
+
+不動産の専門家が創った不動産SNS。不動産業者と利用者を繋ぐコミュニティサイト。
+[公式サイト](https://ucikatu.com)
+
+## 概要
+ウチカツ(UCIKATU)は、不動産業者が無料で物件掲載や一括査定・相談を受けられる画期的なサービスです。利用者(一般ユーザー)は、どんな不動産でも検索、査定、相談が可能です。横浜の株式会社ドリームプランニングが運営しています。
+
+## 主な機能とリンク
+
+### 1. 物件検索
+マンション、一戸建て、土地、収益物件など、様々な不動産を検索できます。
+- [物件検索トップ](https://ucikatu.com/search)
+- [マンション検索](https://ucikatu.com/mansion-search)
+- [一戸建て検索](https://ucikatu.com/house-search)
+- [アパート賃貸検索](https://ucikatu.com/apartment-rental-search)
+
+### 2. 不動産一括査定
+所有している不動産の売却査定を、複数の不動産会社へ無料で一括依頼できます。
+- [一括査定](https://ucikatu.com/real-estate-appraisal)
+
+### 3. 不動産相談 (Q&A)
+不動産に関する疑問や悩みを、専門家に無料で相談できます。
+- [不動産相談](https://ucikatu.com/real-estate-consultation)
+
+### 4. 不動産業者検索
+エリアや得意分野から、信頼できる不動産業者を探すことができます。
+- [業者検索](https://ucikatu.com/real-estate-agent-search)
+
+### 5. 不動産業者向け
+不動産業者様は、無料で物件掲載などが可能です。
+- [業者登録](https://ucikatu.com/real-estate-agent-registration)
+
+## 運営会社
+株式会社ドリームプランニング
+
+## その他リンク
+- [トップページ](https://ucikatu.com/)

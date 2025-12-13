@@ -1,0 +1,272 @@
+[
+  {
+    "id": "1",
+    "title": "渋谷駅徒歩5分 デザイナーズマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-10",
+    "nextUpdateDate": "2025-01-15",
+    "inquiryCount": 12,
+    "actions": ""
+  },
+  {
+    "id": "2",
+    "title": "新宿三丁目 高層ビル最上階",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-12",
+    "nextUpdateDate": "2025-01-20",
+    "inquiryCount": 8,
+    "actions": ""
+  },
+  {
+    "id": "3",
+    "title": "横浜みなとみらい オーシャンビュー",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-08",
+    "nextUpdateDate": "2025-01-18",
+    "inquiryCount": 5,
+    "actions": ""
+  },
+  {
+    "id": "4",
+    "title": "表参道 高級マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-14",
+    "nextUpdateDate": "2025-01-22",
+    "inquiryCount": 15,
+    "actions": ""
+  },
+  {
+    "id": "5",
+    "title": "六本木 タワーマンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-09",
+    "nextUpdateDate": "2025-01-25",
+    "inquiryCount": 3,
+    "actions": ""
+  },
+  {
+    "id": "6",
+    "title": "恵比寿 タワーマンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-09",
+    "nextUpdateDate": "2025-01-25",
+    "inquiryCount": 3,
+    "actions": ""
+  },
+  {
+    "id": "7",
+    "title": "品川 高級オフィスビル",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-16",
+    "nextUpdateDate": "2025-01-30",
+    "inquiryCount": 22,
+    "actions": ""
+  },
+  {
+    "id": "8",
+    "title": "銀座 商業ビル",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-18",
+    "nextUpdateDate": "2025-02-01",
+    "inquiryCount": 18,
+    "actions": ""
+  },
+  {
+    "id": "9",
+    "title": "池袋 マンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-20",
+    "nextUpdateDate": "2025-02-05",
+    "inquiryCount": 7,
+    "actions": ""
+  },
+  {
+    "id": "10",
+    "title": "上野 アパート",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-22",
+    "nextUpdateDate": "2025-02-08",
+    "inquiryCount": 14,
+    "actions": ""
+  },
+  {
+    "id": "11",
+    "title": "浅草 古民家",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-24",
+    "nextUpdateDate": "2025-02-10",
+    "inquiryCount": 9,
+    "actions": ""
+  },
+  {
+    "id": "12",
+    "title": "赤坂 高級マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-26",
+    "nextUpdateDate": "2025-02-12",
+    "inquiryCount": 25,
+    "actions": ""
+  },
+  {
+    "id": "13",
+    "title": "代々木 オフィスビル",
+    "publicationStatus": "公開",
+    "updateDate": "2025-01-28",
+    "nextUpdateDate": "2025-02-14",
+    "inquiryCount": 16,
+    "actions": ""
+  },
+  {
+    "id": "14",
+    "title": "新橋 商業施設",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-01-30",
+    "nextUpdateDate": "2025-02-16",
+    "inquiryCount": 11,
+    "actions": ""
+  },
+  {
+    "id": "15",
+    "title": "有楽町 タワーマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-01",
+    "nextUpdateDate": "2025-02-18",
+    "inquiryCount": 20,
+    "actions": ""
+  },
+  {
+    "id": "16",
+    "title": "青山 デザイナーズマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-03",
+    "nextUpdateDate": "2025-02-20",
+    "inquiryCount": 13,
+    "actions": ""
+  },
+  {
+    "id": "17",
+    "title": "麻布十番 高級マンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-02-05",
+    "nextUpdateDate": "2025-02-22",
+    "inquiryCount": 6,
+    "actions": ""
+  },
+  {
+    "id": "18",
+    "title": "目黒 タワーマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-07",
+    "nextUpdateDate": "2025-02-24",
+    "inquiryCount": 17,
+    "actions": ""
+  },
+  {
+    "id": "19",
+    "title": "中目黒 デザイナーズマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-09",
+    "nextUpdateDate": "2025-02-26",
+    "inquiryCount": 21,
+    "actions": ""
+  },
+  {
+    "id": "20",
+    "title": "自由が丘 高級マンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-02-11",
+    "nextUpdateDate": "2025-02-28",
+    "inquiryCount": 8,
+    "actions": ""
+  },
+  {
+    "id": "21",
+    "title": "二子玉川 タワーマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-13",
+    "nextUpdateDate": "2025-03-02",
+    "inquiryCount": 19,
+    "actions": ""
+  },
+  {
+    "id": "22",
+    "title": "三軒茶屋 マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-15",
+    "nextUpdateDate": "2025-03-04",
+    "inquiryCount": 12,
+    "actions": ""
+  },
+  {
+    "id": "23",
+    "title": "下北沢 古民家",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-02-17",
+    "nextUpdateDate": "2025-03-06",
+    "inquiryCount": 4,
+    "actions": ""
+  },
+  {
+    "id": "24",
+    "title": "吉祥寺 高級マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-19",
+    "nextUpdateDate": "2025-03-08",
+    "inquiryCount": 23,
+    "actions": ""
+  },
+  {
+    "id": "25",
+    "title": "三鷹 タワーマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-21",
+    "nextUpdateDate": "2025-03-10",
+    "inquiryCount": 15,
+    "actions": ""
+  },
+  {
+    "id": "26",
+    "title": "武蔵野 マンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-02-23",
+    "nextUpdateDate": "2025-03-12",
+    "inquiryCount": 7,
+    "actions": ""
+  },
+  {
+    "id": "27",
+    "title": "調布 高級マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-25",
+    "nextUpdateDate": "2025-03-14",
+    "inquiryCount": 18,
+    "actions": ""
+  },
+  {
+    "id": "28",
+    "title": "府中 タワーマンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-02-27",
+    "nextUpdateDate": "2025-03-16",
+    "inquiryCount": 14,
+    "actions": ""
+  },
+  {
+    "id": "29",
+    "title": "国分寺 マンション",
+    "publicationStatus": "非公開",
+    "updateDate": "2025-03-01",
+    "nextUpdateDate": "2025-03-18",
+    "inquiryCount": 9,
+    "actions": ""
+  },
+  {
+    "id": "30",
+    "title": "立川 高級マンション",
+    "publicationStatus": "公開",
+    "updateDate": "2025-03-03",
+    "nextUpdateDate": "2025-03-20",
+    "inquiryCount": 22,
+    "actions": ""
+  }
+]

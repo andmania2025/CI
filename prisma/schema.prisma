@@ -1,0 +1,421 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================
+// ユーザー管理
+// ============================================
+
+model User {
+  id    String  @id @default(cuid())
+  email String  @unique @db.VarChar(255)
+  name  String? @db.VarChar(100)
+
+  // 権限管理
+  role   UserRole   @default(USER)
+  status UserStatus @default(ACTIVE)
+
+  // 業者情報（業者の場合）
+  companyName   String? @db.VarChar(200)
+  licenseNumber String? @db.VarChar(50) // 不動産業者免許番号
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  lastLoginAt DateTime?
+
+  // Relations
+  properties Property[]
+  inquiries  Inquiry[]
+
+  @@index([email])
+  @@index([role, status]) // 複合インデックス：権限+ステータス検索用
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN // システム管理者
+  REALTOR // 不動産業者
+  USER // 一般ユーザー
+}
+
+enum UserStatus {
+  ACTIVE // アクティブ
+  INACTIVE // 非アクティブ
+}
+
+// ============================================
+// 物件管理（フラット構造維持 + 最適化適用）
+// ============================================
+
+model Property {
+  id String @id @default(cuid())
+
+  // ============================================
+  // 基本情報（必須）
+  // ============================================
+  propertyName      String            @db.VarChar(200)
+  propertyType      PropertyType
+  publicationStatus PublicationStatus @default(UNPUBLISHED)
+
+  // ============================================
+  // 取引情報
+  // ============================================
+  saleOrRent        SaleOrRent?
+  transactionType   TransactionType?
+  propertyCondition PropertyCondition?
+
+  // ============================================
+  // 所在地
+  // ============================================
+  postalCode          String?  @db.VarChar(8) // 郵便番号
+  prefecture          String?  @db.VarChar(10) // 都道府県
+  city                String?  @db.VarChar(50) // 市区町村
+  town                String?  @db.VarChar(100) // 町名
+  block               String?  @db.VarChar(50) // 番地
+  building            String?  @db.VarChar(100) // 建物名・部屋番号
+  lotNumber           String?  @db.VarChar(50) // 地番
+  nearestStation      String?  @db.VarChar(100) // 最寄り駅
+  walkMinutes         Int? // 徒歩分数
+  otherTransportation String?  @db.Text // その他交通
+  latitude            Decimal? @db.Decimal(10, 7) // 緯度
+  longitude           Decimal? @db.Decimal(10, 7) // 経度
+
+  // ============================================
+  // 物件詳細
+  // ============================================
+  layoutNumber String?     @db.VarChar(10) // 間取り数（例: "3"）
+  layoutType   LayoutType? // 間取りタイプ（Enum: R, K, DK, LDK, SK, SDK, SLDK）
+  buildingArea Decimal?    @db.Decimal(10, 2) // 建物面積（㎡）
+  landArea     Decimal?    @db.Decimal(10, 2) // 土地面積（㎡）
+  balconyArea  Decimal?    @db.Decimal(10, 2) // バルコニー面積
+  layoutDetail String?     @db.Text // 間取り詳細
+
+  // 建物属性
+  buildingStructure String?    @db.VarChar(50) // 建物構造
+  floor             String?    @db.VarChar(20) // 階数
+  totalUnits        Int? // 総戸数
+  direction         Direction? // 方角（Enum: 8方位）
+  directionDetail   String?    @db.VarChar(100) // 方角詳細
+  mainLighting      String?    @db.VarChar(50) // 主要採光面
+
+  // 建築情報
+  constructionDate           DateTime? // 建築年月
+  buildingConfirmationNumber String?    @db.VarChar(50) // 建築確認番号
+  constructionCompany        String?    @db.VarChar(100) // 建設会社
+  utilities                  Utilities? // 上下水道・ガス（Enum: COMPLETE, PARTIAL, INCOMPLETE）
+  reform                     String?    @db.Text // リフォーム
+
+  // ============================================
+  // 価格・費用情報
+  // ============================================
+  salePrice            Decimal? @db.Decimal(15, 0) // 販売価格（円）
+  unitPrice            Decimal? @db.Decimal(12, 0) // 坪単価（円）
+  expectedRent         Decimal? @db.Decimal(12, 0) // 想定賃料（円）
+  managementFee        Decimal? @db.Decimal(10, 0) // 管理費・共益費（円）
+  repairReserve        Decimal? @db.Decimal(10, 0) // 修繕積立金（円）
+  usageFee             Decimal? @db.Decimal(10, 0) // 使用料（円）
+  stampTax             Decimal? @db.Decimal(10, 0) // 印紙税（円）
+  expenses             String?  @db.Text // 諸経費
+  otherExpenses        String?  @db.Text // その他諸経費
+  expectedAnnualIncome Decimal? @db.Decimal(12, 0) // 想定年間収入（円）
+  surfaceYield         Decimal? @db.Decimal(5, 2) // 表面利回り（%）
+
+  // ============================================
+  // 土地情報
+  // ============================================
+  landType                String?  @db.VarChar(100) // 土地種類（自由入力：宅地、商業地等）
+  privateRoadArea         Decimal? @db.Decimal(10, 2) // 私道面積
+  setback                 String?  @db.VarChar(200) // セットバック
+  cityPlanning            String?  @db.VarChar(100) // 都市計画（自由入力：法的表現多様）
+  roadContact             String?  @db.VarChar(200) // 接道状況
+  landCategory            String?  @db.VarChar(100) // 地目（自由入力：登記上の表現多様）
+  useDistrict             String?  @db.VarChar(100) // 用途地域（自由入力：法的表現多様）
+  buildingCoverageRatio   Decimal? @db.Decimal(5, 2) // 建ぺい率（%）
+  floorAreaRatio          Decimal? @db.Decimal(5, 2) // 容積率（%）
+  totalProperties         Int? // 総区画数
+  developmentPermitNumber String?  @db.VarChar(50) // 開発許可番号
+  developmentArea         Decimal? @db.Decimal(10, 2) // 開発面積
+  residentialPermitNumber String?  @db.VarChar(50) // 宅地造成許可番号
+  easement                String?  @db.Text // 地役権
+  nationalLandAct         String?  @db.Text // 国土法
+  siteRights              String?  @db.VarChar(100) // 敷地権
+
+  // ============================================
+  // 駐車場
+  // ============================================
+  parkingAvailable String?  @db.VarChar(100) // 駐車場（自由入力：有・無・空き有等）
+  parkingFee       Decimal? @db.Decimal(10, 0) // 駐車料金（円）
+  parkingSpaces    Int? // 駐車可能台数
+  parkingDetail    String?  @db.Text // 駐車場詳細
+
+  // ============================================
+  // 公開設定
+  // ============================================
+  publicScope            PublicScope @default(PRIVATE)
+  featured               Featured    @default(NORMAL)
+  featurePeriodStart     DateTime?
+  featurePeriodEnd       DateTime?
+  reservedReleaseDate    DateTime?
+  publicScopeReservation String?     @db.VarChar(20)
+  validUntilDate         DateTime?
+  nextUpdateDate         DateTime?
+  publicationMedium      String?     @db.VarChar(200)
+  salesUnits             Int? // 販売戸数
+
+  // ============================================
+  // メタ情報（管理用）
+  // ============================================
+  currentStatus         String?   @db.Text // 現況
+  propertyStatus        String?   @db.VarChar(100) // 物件状況
+  deliveryDate          DateTime? // 引渡年月
+  sellerName            String?   @db.VarChar(200) // 売主名
+  realEstateAgent       String?   @db.VarChar(200) // 不動産業者名
+  managementType        String?   @db.VarChar(100) // 管理形態
+  environment           String?   @db.Text // 環境
+  legalRestrictions     String?   @db.Text // 法的制限
+  otherConstructionInfo String?   @db.Text // その他建築情報
+  remarks               String?   @db.Text // 備考（公開用）
+  adminMemo             String?   @db.Text // 管理者メモ（非公開）
+  propertyCategory      String?   @db.VarChar(100) // 物件カテゴリ
+
+  // ============================================
+  // カウンター
+  // ============================================
+  inquiryCount Int @default(0)
+
+  // ============================================
+  // Relations
+  // ============================================
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  images    PropertyImage[]
+  features  PropertyFeature[]
+  inquiries Inquiry[]
+
+  // ============================================
+  // Timestamps
+  // ============================================
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  // 検索用複合インデックス
+  @@index([userId])
+  @@index([publicationStatus, propertyType]) // 公開物件一覧
+  @@index([publicationStatus, createdAt(sort: Desc)]) // 新着順
+  @@index([propertyType, saleOrRent]) // 種別×売買/賃貸
+  @@index([prefecture, city]) // エリア検索
+  @@index([nearestStation]) // 駅検索
+  @@index([salePrice]) // 価格帯検索
+  @@index([featured, featurePeriodStart, featurePeriodEnd]) // おすすめ物件
+  @@map("properties")
+}
+
+// ============================================
+// 物件画像（ImageType追加）
+// ============================================
+
+model PropertyImage {
+  id String @id @default(cuid())
+
+  url       String    @db.VarChar(500)
+  caption   String?   @db.VarChar(200)
+  imageType ImageType @default(EXTERIOR) // 画像種別を追加
+  order     Int       @default(0)
+
+  // Relation
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([propertyId, order]) // 複合インデックス
+  @@map("property_images")
+}
+
+enum ImageType {
+  EXTERIOR // 外観
+  INTERIOR // 内観
+  FLOOR_PLAN // 間取り図
+  MAP // 地図
+  OTHER // その他
+}
+
+// ============================================
+// 物件特徴・設備（マスタテーブル化）
+// ============================================
+
+model PropertyFeature {
+  id String @id @default(cuid())
+
+  featureId String
+  feature   FeatureMaster @relation(fields: [featureId], references: [id], onDelete: Restrict)
+
+  // Relation
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, featureId]) // 重複防止
+  @@index([propertyId])
+  @@map("property_features")
+}
+
+// 特徴マスタ（正規化）
+model FeatureMaster {
+  id           String          @id @default(cuid())
+  name         String          @unique @db.VarChar(100) // 特徴名
+  category     FeatureCategory // カテゴリ
+  displayOrder Int             @default(0) // 表示順
+  isActive     Boolean         @default(true) // 有効フラグ
+
+  properties PropertyFeature[]
+
+  @@index([category, displayOrder])
+  @@map("feature_masters")
+}
+
+enum FeatureCategory {
+  SECURITY // セキュリティ（オートロック、防犯カメラ等）
+  FACILITY // 設備（エアコン、床暖房等）
+  LOCATION // 立地（駅近、角地等）
+  STRUCTURE // 構造（耐震、免震等）
+  OTHER // その他
+}
+
+// ============================================
+// 問い合わせ管理（InquiryType追加）
+// ============================================
+
+model Inquiry {
+  id String @id @default(cuid())
+
+  // 問い合わせ者情報
+  name  String  @db.VarChar(100)
+  email String  @db.VarChar(255)
+  phone String? @db.VarChar(20)
+
+  // 内容
+  inquiryType InquiryType @default(GENERAL) // 問い合わせ種別を追加
+  message     String      @db.Text
+
+  // ステータス
+  status InquiryStatus @default(NEW)
+
+  // Relations
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  respondedAt DateTime?
+
+  @@index([status, createdAt(sort: Desc)]) // 複合インデックス
+  @@index([propertyId])
+  @@map("inquiries")
+}
+
+enum InquiryType {
+  GENERAL // 一般問い合わせ
+  VIEWING // 内見希望
+  DOCUMENT // 資料請求
+  NEGOTIATION // 価格交渉
+}
+
+// ============================================
+// Enums
+// ============================================
+
+enum SaleOrRent {
+  SALE // 売買
+  RENT // 賃貸
+}
+
+enum TransactionType {
+  OWNER // 売主
+  AGENT // 代理
+  BROKER // 仲介
+}
+
+enum PropertyType {
+  MANSION // マンション
+  HOUSE // 一戸建て
+  LAND // 土地
+  BUILDING // ビル・事務所
+}
+
+enum PropertyCondition {
+  NEW // 新築
+  USED // 中古
+  LAND // 土地
+}
+
+enum LayoutType {
+  R // R（ルーム）
+  K // K（キッチン）
+  DK // DK（ダイニングキッチン）
+  LDK // LDK（リビングダイニングキッチン）
+  SK // SK（サービスルーム+キッチン）
+  SDK // SDK
+  SLDK // SLDK
+}
+
+enum Utilities {
+  COMPLETE // 完備
+  PARTIAL // 一部
+  INCOMPLETE // 未整備
+}
+
+enum Direction {
+  EAST // 東
+  WEST // 西
+  SOUTH // 南
+  NORTH // 北
+  SOUTHEAST // 南東
+  SOUTHWEST // 南西
+  NORTHEAST // 北東
+  NORTHWEST // 北西
+}
+
+// 以下のEnumはString型に変更（法的表現の多様性に対応）:
+// - LandType → String（土地種類）
+// - CityPlanning → String（都市計画）
+// - LandCategory → String（地目）
+// - UseDistrict → String（用途地域）
+// - ParkingAvailable → String（駐車場）
+
+enum Featured {
+  FEATURED // おすすめ
+  NORMAL // 通常
+}
+
+enum PublicScope {
+  PUBLIC // 公開
+  PRIVATE // 非公開
+  MEMBERS // 会員限定
+}
+
+enum PublicationStatus {
+  PUBLISHED // 公開
+  UNPUBLISHED // 非公開
+  DRAFT // 下書き
+}
+
+enum InquiryStatus {
+  NEW // 新規
+  IN_PROGRESS // 対応中
+  RESOLVED // 解決済み
+  CLOSED // クローズ
+}

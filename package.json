@@ -1,0 +1,22 @@
+{
+  "name": "ucikatu-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:admin": "pnpm --filter admin dev",
+    "build:web": "pnpm --filter web build",
+    "build:admin": "pnpm --filter admin build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^7.0.0",
+    "@types/node": "^25.0.1",
+    "dotenv": "^16.4.5",
+    "prisma": "^7.0.0"
+  }
+}

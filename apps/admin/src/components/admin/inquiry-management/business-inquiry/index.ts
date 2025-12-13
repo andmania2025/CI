@@ -1,0 +1,1 @@
+export { BusinessInquiryManagement } from "./BusinessInquiryManagement";

@@ -1,0 +1,55 @@
+[
+  {
+    "title": "物件掲載数",
+    "value": "195",
+    "unit": "件",
+    "iconType": "Building2",
+    "trend": "up",
+    "trendLabel": "掲載物件数",
+    "description": "現在掲載されている物件数"
+  },
+  {
+    "title": "有効不動産業者様",
+    "value": "449",
+    "unit": "社",
+    "iconType": "Building2",
+    "trend": "up",
+    "trendLabel": "有効業者数",
+    "description": "有効な不動産業者登録数"
+  },
+  {
+    "title": "有効会員",
+    "value": "0",
+    "unit": "人",
+    "iconType": "Users",
+    "trend": "down",
+    "trendLabel": "有効会員数",
+    "description": "現在の有効会員登録数"
+  },
+  {
+    "title": "物件問い合わせ",
+    "value": "4",
+    "unit": "件",
+    "iconType": "Building2",
+    "trend": "up",
+    "trendLabel": "物件問い合わせ",
+    "description": "物件に関する問い合わせ件数",
+    "gradientStyle": {
+      "background": "linear-gradient(to top, #F0524F, #ffffff)"
+    },
+    "hoverClass": "hover:shadow-lg hover:border-pink-500"
+  },
+  {
+    "title": "サイト問い合わせ",
+    "value": "93",
+    "unit": "件",
+    "iconType": "Building2",
+    "trend": "up",
+    "trendLabel": "サイト問い合わせ",
+    "description": "サイトに関する問い合わせ件数",
+    "gradientStyle": {
+      "background": "linear-gradient(to top, #FAC02D, #ffffff)"
+    },
+    "hoverClass": "hover:shadow-lg hover:border-yellow-500"
+  }
+]
