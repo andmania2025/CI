@@ -26,3 +26,27 @@ export interface RealtorFormData {
   };
   displayCount: string;
 }
+
+// RealtorAnswerManagement 用の型定義
+export interface RealtorAnswer {
+  id: string;
+  answerDate: string;
+  company: string;
+  representative: string;
+  questionTitle: string;
+}
+
+export interface RealtorAnswerFormData {
+  freeword: string;
+  realEstateCompany: string;
+  questionType: string;
+  questionCategory: string;
+  questionCategoryGeneral: string;
+  publicStatus: {
+    public: boolean;
+    nonPublic: boolean;
+  };
+  answerDateFrom: string;
+  answerDateTo: string;
+  displayCount: string;
+}

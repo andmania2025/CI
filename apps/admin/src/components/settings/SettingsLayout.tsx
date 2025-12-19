@@ -32,7 +32,7 @@ export const SettingsLayout: React.FC<SettingsLayoutProps> = ({ children }) => {
 
   useEffect(() => {
     setPageTitle("システム設定");
-  }, []);
+  }, [setPageTitle]);
 
   return (
     <div>

@@ -219,7 +219,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
             <div className="grid grid-cols-2 gap-6">
               {/* 左カラム: 掲載設定 */}
               <Card className="flex flex-col gap-0">
-                <CardHeader className="flex-shrink-0 pb-2">
+                <CardHeader className="shrink-0 pb-2">
                   <CardTitle className="text-lg">掲載設定</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 overflow-hidden px-6 py-0">
@@ -249,7 +249,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載開始日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="publicationStartDate" className="text-sm font-medium">掲載開始日</label>
+                      <label htmlFor="publicationStartDate" className="text-sm font-medium">
+                        掲載開始日
+                      </label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
@@ -316,7 +318,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載終了日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="publicationEndDate" className="text-sm font-medium">掲載終了日</label>
+                      <label htmlFor="publicationEndDate" className="text-sm font-medium">
+                        掲載終了日
+                      </label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
@@ -336,7 +340,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 取引条件有効期限 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="contractValidityPeriod" className="text-sm font-medium">取引条件有効期限</label>
+                      <label htmlFor="contractValidityPeriod" className="text-sm font-medium">
+                        取引条件有効期限
+                      </label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
@@ -469,7 +475,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                             height="100%"
                             style={{ border: 0 }}
                             loading="lazy"
-                            allowFullScreen
+                            allowFullScreen={true}
                             referrerPolicy="no-referrer-when-downgrade"
                             src={getGoogleMapUrl()}
                           />

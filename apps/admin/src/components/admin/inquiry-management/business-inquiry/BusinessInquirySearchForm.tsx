@@ -106,9 +106,9 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
       {/* 検索モーダル */}
       <Dialog open={isDetailSearchOpen} onOpenChange={onDetailSearchOpenChange}>
         <DialogContent className="w-[95vw] max-w-[1000px] max-h-[80vh] rounded-3xl shadow-2xl border-neutral-200 bg-white p-0 flex flex-col">
-          <DialogHeader className="p-6 pb-4 flex-shrink-0">
+          <DialogHeader className="p-6 pb-4 shrink-0">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center shrink-0">
                 <Filter className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -135,8 +135,14 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-200">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">会社名</h3>
+                  <label
+                    htmlFor="companyName"
+                    className="text-lg font-semibold text-neutral-900 mb-4 block"
+                  >
+                    会社名
+                  </label>
                   <Input
+                    id="companyName"
                     placeholder="会社名を入力"
                     value={detailSearchData.companyName}
                     onChange={(e) =>
@@ -148,8 +154,14 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
                   />
                 </div>
                 <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-200">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">問い合わせ種別</h3>
+                  <label
+                    htmlFor="inquiryType"
+                    className="text-lg font-semibold text-neutral-900 mb-4 block"
+                  >
+                    問い合わせ種別
+                  </label>
                   <Input
+                    id="inquiryType"
                     placeholder="問い合わせ種別を入力"
                     value={detailSearchData.inquiryType}
                     onChange={(e) =>
@@ -163,8 +175,14 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
               </div>
 
               <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-200">
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">ステータス</h3>
+                <label
+                  htmlFor="status"
+                  className="text-lg font-semibold text-neutral-900 mb-4 block"
+                >
+                  ステータス
+                </label>
                 <select
+                  id="status"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={detailSearchData.status}
                   onChange={(e) =>
@@ -185,10 +203,14 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-4">期間指定</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-neutral-700 mb-2 block">
+                    <label
+                      htmlFor="dateFrom"
+                      className="text-sm font-medium text-neutral-700 mb-2 block"
+                    >
                       開始日
                     </label>
                     <Input
+                      id="dateFrom"
                       type="date"
                       value={detailSearchData.dateFrom}
                       onChange={(e) =>
@@ -200,10 +222,14 @@ export const BusinessInquirySearchForm: React.FC<BusinessInquirySearchFormProps>
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-neutral-700 mb-2 block">
+                    <label
+                      htmlFor="dateTo"
+                      className="text-sm font-medium text-neutral-700 mb-2 block"
+                    >
                       終了日
                     </label>
                     <Input
+                      id="dateTo"
                       type="date"
                       value={detailSearchData.dateTo}
                       onChange={(e) =>

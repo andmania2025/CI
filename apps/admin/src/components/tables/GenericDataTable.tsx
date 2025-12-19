@@ -1,6 +1,5 @@
 "use client";
 
-import { IconDotsVertical } from "@tabler/icons-react";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -18,13 +17,6 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Pagination,
   PaginationContent,
@@ -63,7 +55,7 @@ export function GenericDataTable<T>({
     columns,
     state: { sorting, columnVisibility, columnFilters, pagination },
     getRowId: (row: T) =>
-      (row as { id?: string | number }).id?.toString() || Math.random().toString(),
+      (row as unknown as { id?: string | number }).id?.toString() || Math.random().toString(),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
@@ -127,7 +119,7 @@ export function GenericDataTable<T>({
         </div>
       </div>
       {table.getPageCount() > 1 && (
-        <div className="flex items-center justify-end pt-4 px-4 flex-shrink-0">
+        <div className="flex items-center justify-end pt-4 px-4 fshrink-0">
           <Pagination className="m-0 !mx-0 !w-auto !justify-end">
             <PaginationContent className="flex items-center gap-2 m-0">
               <PaginationItem>
@@ -159,7 +151,7 @@ export function GenericDataTable<T>({
                   }
 
                   return pages.map((page, i) => (
-                    <PaginationItem key={`${page}-${i}`}>
+                    <PaginationItem key={`page-${String(page)}-${i}`}>
                       {page === "..." ? (
                         <PaginationEllipsis />
                       ) : (

@@ -59,7 +59,7 @@ export const BasicInfoTab = ({ property, isEditMode = false }: PropertyDetailTab
   return (
     <div className="h-full">
       <Card className="h-full flex flex-col gap-0">
-        <CardHeader className="flex-shrink-0 pb-2">
+        <CardHeader className="shrink-0 pb-2">
           <CardTitle className="text-lg">基本情報</CardTitle>
         </CardHeader>
         <CardContent className="flex-1 min-h-0 px-6 py-0">
