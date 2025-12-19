@@ -95,12 +95,14 @@ export const MailVariableSettingsDialog: React.FC<MailVariableSettingsDialogProp
   };
 
   const handleUpdate = () => {
-    if (!formData.variableName || !formData.displayName) {
+    const { variableName, displayName } = formData;
+
+    if (!variableName || !displayName) {
       alert("変数名と表示名を入力してください");
       return;
     }
 
-    if (!formData.variableName.startsWith("[") || !formData.variableName.endsWith("]")) {
+    if (!variableName.startsWith("[") || !variableName.endsWith("]")) {
       alert("変数名は [変数名] の形式で入力してください（例: [name]）");
       return;
     }
@@ -110,8 +112,8 @@ export const MailVariableSettingsDialog: React.FC<MailVariableSettingsDialogProp
         v.id === editingId
           ? {
               ...v,
-              variableName: formData.variableName!,
-              displayName: formData.displayName!,
+              variableName,
+              displayName,
             }
           : v
       );

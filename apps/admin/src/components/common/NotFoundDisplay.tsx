@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface NotFoundDisplayProps {
@@ -23,12 +24,9 @@ export const NotFoundDisplay = ({
         <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
         <h2 className="text-xl font-semibold text-gray-700 mb-2">{message}</h2>
         <p className="text-gray-600 mb-6">{description}</p>
-        <Link
-          href={homeUrl}
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          {homeText}
-        </Link>
+        <Button asChild className="px-6">
+          <Link href={homeUrl}>{homeText}</Link>
+        </Button>
       </div>
     </div>
   );

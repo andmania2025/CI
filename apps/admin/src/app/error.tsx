@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
 export default function ErrorPage({
@@ -25,22 +26,17 @@ export default function ErrorPage({
         <p className="text-gray-600 mb-8">{error.message || "不明なエラーが発生しました"}</p>
         {error.digest && <p className="text-sm text-gray-500 mb-8">エラーID: {error.digest}</p>}
         <div className="flex gap-4 justify-center">
-          <button
-            onClick={reset}
-            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-          >
-            再試行
-          </button>
-          <button
+          <Button onClick={reset}>再試行</Button>
+          <Button
+            variant="outline"
             onClick={() => {
               if (typeof window !== "undefined") {
                 window.location.href = "/dashboard";
               }
             }}
-            className="px-6 py-3 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors"
           >
             ダッシュボードへ
-          </button>
+          </Button>
         </div>
       </div>
     </div>

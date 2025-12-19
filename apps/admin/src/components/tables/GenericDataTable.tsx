@@ -62,7 +62,8 @@ export function GenericDataTable<T>({
     data,
     columns,
     state: { sorting, columnVisibility, columnFilters, pagination },
-    getRowId: (row: any) => row.id?.toString() || Math.random().toString(),
+    getRowId: (row: T) =>
+      (row as { id?: string | number }).id?.toString() || Math.random().toString(),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,

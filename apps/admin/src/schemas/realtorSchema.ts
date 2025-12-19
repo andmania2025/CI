@@ -182,7 +182,7 @@ export const realtorSchema = z.object({
   // ============================================
   // メディア・公開（MediaTab）
   // ============================================
-  images: z.array(z.any()).optional().default([]),
+  images: z.array(z.unknown()).optional().default([]),
   propertyCategory: z.string().optional().default("mansion"),
   inquiryCount: z.number().default(0),
   featured: z.string().optional().default("normal"),

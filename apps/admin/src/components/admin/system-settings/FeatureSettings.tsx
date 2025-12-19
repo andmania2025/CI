@@ -24,7 +24,12 @@ const FeatureSettings: React.FC = () => {
     { id: "feat010", name: "ベランダ", status: "使用中", order: 45 },
     { id: "feat011", name: "ホームボックス", status: "使用中", order: 50 },
     { id: "feat012", name: "角部屋", status: "使用中", order: 55 },
-    { id: "feat013", name: "最上階（3階建て以上）", status: "使用中", order: 60 },
+    {
+      id: "feat013",
+      name: "最上階（3階建て以上）",
+      status: "使用中",
+      order: 60,
+    },
     { id: "feat014", name: "分譲タイプ", status: "使用中", order: 65 },
     { id: "feat015", name: "外壁タイル張り", status: "使用中", order: 70 },
     { id: "feat016", name: "デザイナーズ", status: "使用中", order: 75 },
@@ -91,8 +96,11 @@ const FeatureSettings: React.FC = () => {
             <div className="col-span-6 space-y-6">
               {/* フリーワード */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">フリーワード</label>
+                <label htmlFor="freeword" className="block text-sm font-medium text-gray-700 mb-2">
+                  フリーワード
+                </label>
                 <input
+                  id="freeword"
                   type="text"
                   value={formData.freeword}
                   onChange={(e) => handleInputChange("freeword", e.target.value)}
@@ -107,12 +115,14 @@ const FeatureSettings: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex gap-4 mt-8">
             <button
+              type="button"
               onClick={handleReset}
               className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
             >
               条件をリセット
             </button>
             <button
+              type="button"
               onClick={handleSearch}
               className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
             >
@@ -124,7 +134,10 @@ const FeatureSettings: React.FC = () => {
 
         {/* アクションボタン */}
         <div className="p-4 border-b border-gray-200">
-          <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2">
+          <button
+            type="button"
+            className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2"
+          >
             <Plus className="w-4 h-4" />
             特徴追加
           </button>
@@ -136,7 +149,7 @@ const FeatureSettings: React.FC = () => {
 
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
-            <button className="text-blue-600 hover:text-blue-800 text-sm underline">
+            <button type="button" className="text-blue-600 hover:text-blue-800 text-sm underline">
               選択リストを削除
             </button>
           </div>
@@ -145,15 +158,26 @@ const FeatureSettings: React.FC = () => {
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-600">54件中 1-20件表示</span>
             <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button type="button" className="px-3 py-1 bg-blue-600 text-white rounded">
+                1
+              </button>
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 2
               </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 3
               </button>
               <span className="px-3 py-1">...</span>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 »
               </button>
             </div>
@@ -195,7 +219,10 @@ const FeatureSettings: React.FC = () => {
                       {feature.order}
                     </td>
                     <td className="border border-gray-300 p-3">
-                      <button className="px-3 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                      <button
+                        type="button"
+                        className="px-3 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600"
+                      >
                         編集
                       </button>
                     </td>

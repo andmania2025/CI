@@ -14,6 +14,7 @@ export interface Realtor {
   inquiryCount: number;
   actions: string;
   accountType?: "paid" | "free"; // 有料または無料
+  images?: PropertyImage[];
 }
 
 // 検索フォームの型定義

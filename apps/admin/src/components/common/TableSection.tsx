@@ -2,7 +2,6 @@ import { GenericDataTable } from "@/components/tables/GenericDataTable";
 import { Button } from "@/components/ui/button";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronRight } from "lucide-react";
-import React from "react";
 
 interface TableSectionProps<T> {
   title: string;
@@ -23,15 +22,17 @@ export const TableSection = <T,>({
 }: TableSectionProps<T>) => {
   return (
     <div className="col-span-1 flex flex-col h-full min-h-0">
-      <div className="mb-2 px-2 sm:px-3 lg:px-4 flex-shrink-0">
+      <div className="mb-2 px-2 sm:px-3 lg:px-4 shrink-0">
         <div className="flex items-center justify-between gap-2">
           <h2 className="text-base sm:text-lg font-semibold text-gray-900 truncate">{title}</h2>
           {detailLink && (
             <Button
               variant="outline"
               size="sm"
-              className="flex items-center gap-1 text-xs h-6 sm:h-7 px-2 flex-shrink-0"
-              onClick={() => (window.location.href = detailLink)}
+              className="flex items-center gap-1 text-xs h-6 sm:h-7 px-2 shrink-0"
+              onClick={() => {
+                window.location.href = detailLink;
+              }}
             >
               詳細
               <ChevronRight className="w-3 h-3" />

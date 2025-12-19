@@ -74,9 +74,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
   const [images, setImages] = useState<PropertyImage[]>(() => {
     // TODO: Realtor型にimagesプロパティを追加する
-    return (realtor as any).images && (realtor as any).images.length > 0
-      ? (realtor as any).images
-      : sampleImages;
+    return realtor.images && realtor.images.length > 0 ? realtor.images : sampleImages;
   });
 
   // 都道府県と市区町村のデータを読み込み
@@ -228,11 +226,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                   <div className="space-y-4 pt-2">
                     {/* 掲載カテゴリー */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">掲載カテゴリー</label>
+                      <label htmlFor="category" className="text-sm font-medium">
+                        掲載カテゴリー
+                      </label>
                       <div>
                         {isEditMode ? (
                           <Select value={category} onValueChange={setCategory}>
-                            <SelectTrigger className="w-full">
+                            <SelectTrigger id="category" className="w-full">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -249,10 +249,11 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載開始日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">掲載開始日</label>
+                      <label htmlFor="publicationStartDate" className="text-sm font-medium">掲載開始日</label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
+                            id="publicationStartDate"
                             value={publicationStartDate}
                             onChange={setPublicationStartDate}
                             placeholder="掲載開始日を選択"
@@ -268,11 +269,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 優先表示 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">優先表示</label>
+                      <label htmlFor="priorityDisplay" className="text-sm font-medium">
+                        優先表示
+                      </label>
                       <div>
                         {isEditMode ? (
                           <Select value={priorityDisplay} onValueChange={setPriorityDisplay}>
-                            <SelectTrigger className="w-full">
+                            <SelectTrigger id="priorityDisplay" className="w-full">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -290,11 +293,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 公開設定 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">公開設定</label>
+                      <label htmlFor="publicScope" className="text-sm font-medium">
+                        公開設定
+                      </label>
                       <div>
                         {isEditMode ? (
                           <Select value={publicScope} onValueChange={setPublicScope}>
-                            <SelectTrigger className="w-full">
+                            <SelectTrigger id="publicScope" className="w-full">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -311,10 +316,11 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載終了日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">掲載終了日</label>
+                      <label htmlFor="publicationEndDate" className="text-sm font-medium">掲載終了日</label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
+                            id="publicationEndDate"
                             value={publicationEndDate}
                             onChange={setPublicationEndDate}
                             placeholder="掲載終了日を選択"
@@ -330,10 +336,11 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 取引条件有効期限 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label className="text-sm font-medium">取引条件有効期限</label>
+                      <label htmlFor="contractValidityPeriod" className="text-sm font-medium">取引条件有効期限</label>
                       <div>
                         {isEditMode ? (
                           <DatePicker
+                            id="contractValidityPeriod"
                             value={contractValidityPeriod}
                             onChange={setContractValidityPeriod}
                             placeholder="取引条件有効期限を選択"
@@ -378,11 +385,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                     <div className="space-y-4 mb-6">
                       {/* 都道府県 */}
                       <div className="grid grid-cols-2 gap-4 items-center">
-                        <label className="text-sm font-medium">都道府県</label>
+                        <label htmlFor="prefecture" className="text-sm font-medium">
+                          都道府県
+                        </label>
                         <div>
                           {isEditMode ? (
                             <Select value={prefecture} onValueChange={setPrefecture}>
-                              <SelectTrigger className="w-full">
+                              <SelectTrigger id="prefecture" className="w-full">
                                 <SelectValue placeholder="選択してください" />
                               </SelectTrigger>
                               <SelectContent>
@@ -403,11 +412,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                       {/* 市区町村 */}
                       <div className="grid grid-cols-2 gap-4 items-center">
-                        <label className="text-sm font-medium">市区町村</label>
+                        <label htmlFor="city" className="text-sm font-medium">
+                          市区町村
+                        </label>
                         <div>
                           {isEditMode ? (
                             <Select value={city} onValueChange={setCity} disabled={!prefecture}>
-                              <SelectTrigger className="w-full">
+                              <SelectTrigger id="city" className="w-full">
                                 <SelectValue placeholder="都道府県を選択してください" />
                               </SelectTrigger>
                               <SelectContent>
@@ -428,10 +439,13 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                       {/* 町・番地 */}
                       <div className="grid grid-cols-2 gap-4 items-center">
-                        <label className="text-sm font-medium">町・番地</label>
+                        <label htmlFor="streetAddress" className="text-sm font-medium">
+                          町・番地
+                        </label>
                         <div>
                           {isEditMode ? (
                             <Input
+                              id="streetAddress"
                               value={streetAddress}
                               onChange={(e) => setStreetAddress(e.target.value)}
                               placeholder="上渡合町浜井場388番地2"
@@ -450,6 +464,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                       <div className="w-full h-[400px] border rounded-lg overflow-hidden">
                         {getGoogleMapUrl() ? (
                           <iframe
+                            title="物件の地図"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}

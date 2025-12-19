@@ -13,6 +13,14 @@ import { Download, Filter, Search, X } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
+interface DetailSearchData {
+  companyName: string;
+  inquiryType: string;
+  status: string;
+  dateFrom: string;
+  dateTo: string;
+}
+
 interface BusinessInquirySearchFormProps {
   formData: {
     search: string;
@@ -23,7 +31,7 @@ interface BusinessInquirySearchFormProps {
   isDetailSearchOpen: boolean;
   onInputChange: (field: string, value: string) => void;
   onDetailSearchOpenChange: (open: boolean) => void;
-  onDetailSearch: (searchData: any) => void;
+  onDetailSearch: (searchData: DetailSearchData) => void;
   onReset: () => void;
 }
 

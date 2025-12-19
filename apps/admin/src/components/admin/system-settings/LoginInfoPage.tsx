@@ -43,10 +43,11 @@ const LoginInfoPage: React.FC = () => {
           <div className="space-y-6">
             {/* ログインID */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="loginId" className="block text-sm font-medium text-gray-700 mb-2">
                 ログインID <span className="text-red-500">*必須</span>
               </label>
               <input
+                id="loginId"
                 type="text"
                 value={formData.loginId}
                 onChange={(e) => handleInputChange("loginId", e.target.value)}
@@ -57,10 +58,14 @@ const LoginInfoPage: React.FC = () => {
 
             {/* ログインパスワード */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="loginPassword"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 ログインパスワード <span className="text-red-500">*必須</span>
               </label>
               <input
+                id="loginPassword"
                 type="password"
                 value={formData.loginPassword}
                 onChange={(e) => handleInputChange("loginPassword", e.target.value)}
@@ -71,8 +76,14 @@ const LoginInfoPage: React.FC = () => {
 
             {/* IPアドレス制限 */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">IPアドレス制限</label>
+              <label
+                htmlFor="ipAddressRestriction"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                IPアドレス制限
+              </label>
               <textarea
+                id="ipAddressRestriction"
                 value={formData.ipAddressRestriction}
                 onChange={(e) => handleInputChange("ipAddressRestriction", e.target.value)}
                 rows={6}
@@ -92,6 +103,7 @@ const LoginInfoPage: React.FC = () => {
           {/* 保存ボタン */}
           <div className="mt-8 flex justify-center">
             <button
+              type="button"
               onClick={handleSave}
               className="px-8 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
             >

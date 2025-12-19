@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Download, Filter, Search } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 import { BusinessInquiryPagination } from "./BusinessInquiryPagination";
@@ -64,9 +61,8 @@ export const BusinessInquiryManagement: React.FC = () => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleDetailSearch = (searchData: any) => {
-    console.log("検索:", searchData);
-    // 実際の検索ロジックを実装
+  const handleDetailSearch = (_searchData: unknown) => {
+    // TODO: 実際の検索ロジックを実装
   };
 
   const handleReset = () => {

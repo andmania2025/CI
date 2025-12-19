@@ -38,14 +38,12 @@ export interface UIEventHandlers {
 
 // プロパティクリックハンドラーのカスタムフック
 export const usePropertyHandlers = (): PropertyClickHandlers => {
-  const onPropertyClick = useCallback((propertyId: string) => {
+  const onPropertyClick = useCallback((_propertyId: string) => {
     // TODO: プロパティ詳細ページへのナビゲーション
-    console.log("Navigate to property:", propertyId);
   }, []);
 
-  const onFavoriteClick = useCallback((propertyId: string, type: "sale" | "rental") => {
+  const onFavoriteClick = useCallback((_propertyId: string, _type: "sale" | "rental") => {
     // TODO: お気に入りの追加/削除ロジック
-    console.log("Toggle favorite:", propertyId, type);
   }, []);
 
   const onShareClick = useCallback((propertyId: string) => {
@@ -61,9 +59,8 @@ export const usePropertyHandlers = (): PropertyClickHandlers => {
     }
   }, []);
 
-  const onContactClick = useCallback((propertyId: string) => {
+  const onContactClick = useCallback((_propertyId: string) => {
     // TODO: お問い合わせフォームの表示
-    console.log("Open contact form for property:", propertyId);
   }, []);
 
   return useMemo(
@@ -79,24 +76,20 @@ export const usePropertyHandlers = (): PropertyClickHandlers => {
 
 // 検索ハンドラーのカスタムフック
 export const useSearchHandlers = (): SearchEventHandlers => {
-  const onSearchSubmit = useCallback((searchData: Record<string, unknown>) => {
+  const onSearchSubmit = useCallback((_searchData: Record<string, unknown>) => {
     // TODO: 検索処理の実行
-    console.log("Execute search:", searchData);
   }, []);
 
-  const onFilterChange = useCallback((filters: Record<string, unknown>) => {
+  const onFilterChange = useCallback((_filters: Record<string, unknown>) => {
     // TODO: フィルター変更の処理
-    console.log("Update filters:", filters);
   }, []);
 
-  const onSortChange = useCallback((sortBy: string) => {
+  const onSortChange = useCallback((_sortBy: string) => {
     // TODO: ソート変更の処理
-    console.log("Update sort:", sortBy);
   }, []);
 
-  const onPageChange = useCallback((page: number) => {
+  const onPageChange = useCallback((_page: number) => {
     // TODO: ページ変更の処理
-    console.log("Change page:", page);
   }, []);
 
   return useMemo(
@@ -112,38 +105,22 @@ export const useSearchHandlers = (): SearchEventHandlers => {
 
 // お気に入りハンドラーのカスタムフック
 export const useFavoriteHandlers = (): FavoriteEventHandlers => {
-  const onAddFavorite = useCallback(async (item: Record<string, unknown>) => {
-    try {
-      // TODO: お気に入り追加のAPI呼び出し
-      console.log("Add to favorites:", item);
-    } catch (error) {
-      console.error("Failed to add favorite:", error);
-    }
+  const onAddFavorite = useCallback(async (_item: Record<string, unknown>) => {
+    // TODO: お気に入り追加のAPI呼び出し
   }, []);
 
-  const onRemoveFavorite = useCallback(async (id: string, type: "sale" | "rental") => {
-    try {
-      // TODO: お気に入り削除のAPI呼び出し
-      console.log("Remove from favorites:", id, type);
-    } catch (error) {
-      console.error("Failed to remove favorite:", error);
-    }
+  const onRemoveFavorite = useCallback(async (_id: string, _type: "sale" | "rental") => {
+    // TODO: お気に入り削除のAPI呼び出し
   }, []);
 
   const onClearAllFavorites = useCallback(async () => {
-    try {
-      if (window.confirm("すべてのお気に入りを削除しますか？")) {
-        // TODO: 全お気に入り削除のAPI呼び出し
-        console.log("Clear all favorites");
-      }
-    } catch (error) {
-      console.error("Failed to clear favorites:", error);
+    if (window.confirm("すべてのお気に入りを削除しますか？")) {
+      // TODO: 全お気に入り削除のAPI呼び出し
     }
   }, []);
 
-  const onFilterFavorites = useCallback((filter: string) => {
+  const onFilterFavorites = useCallback((_filter: string) => {
     // TODO: お気に入りフィルターの変更
-    console.log("Filter favorites:", filter);
   }, []);
 
   return useMemo(
@@ -159,20 +136,17 @@ export const useFavoriteHandlers = (): FavoriteEventHandlers => {
 
 // UIハンドラーのカスタムフック
 export const useUIHandlers = (): UIEventHandlers => {
-  const onModalOpen = useCallback((_content: React.ReactNode, title?: string) => {
+  const onModalOpen = useCallback((_content: React.ReactNode, _title?: string) => {
     // TODO: モーダル表示の処理（Zustand UIストア使用）
-    console.log("Open modal:", title);
   }, []);
 
   const onModalClose = useCallback(() => {
     // TODO: モーダル閉じる処理
-    console.log("Close modal");
   }, []);
 
   const onToastAdd = useCallback(
-    (message: string, type: "success" | "error" | "warning" | "info" = "info") => {
+    (_message: string, _type: "success" | "error" | "warning" | "info" = "info") => {
       // TODO: トースト表示の処理（Zustand UIストア使用）
-      console.log("Show toast:", message, type);
     },
     []
   );

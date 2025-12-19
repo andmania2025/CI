@@ -1,21 +1,29 @@
 import { ConfirmDialog } from "@/components/common/ConfirmDialog";
-import {
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  Edit,
-  Eye,
-  Search,
-  Trash2,
-  Upload,
-  Users,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp, Search, Upload, Users } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
+interface MemberFormState {
+  freeword: string;
+  residence: string;
+  gender: {
+    male: boolean;
+    female: boolean;
+  };
+  lastLoginDateFrom: string;
+  lastLoginDateTo: string;
+  registrationDateFrom: string;
+  registrationDateTo: string;
+  accountStatus: {
+    valid: boolean;
+    invalid: boolean;
+  };
+  displayCount: string;
+}
+
 const MemberManagement: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<MemberFormState>({
     freeword: "",
     residence: "",
     gender: {
@@ -103,11 +111,15 @@ const MemberManagement: React.FC = () => {
     }));
   };
 
-  const handleCheckboxChange = (category: string, field: string, checked: boolean) => {
+  const handleCheckboxChange = <K extends "gender" | "accountStatus">(
+    category: K,
+    field: keyof MemberFormState[K],
+    checked: boolean
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [category]: {
-        ...(prev[category as keyof typeof prev] as any),
+        ...prev[category],
         [field]: checked,
       },
     }));
@@ -174,8 +186,9 @@ const MemberManagement: React.FC = () => {
       {/* 会員一覧セクション */}
       <div className="bg-white rounded-lg shadow-sm">
         {/* 検索アコーディオンヘッダー */}
-        <div
-          className="bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors"
+        <button
+          type="button"
+          className="w-full bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors"
           onClick={() => setIsSearchExpanded(!isSearchExpanded)}
         >
           <div className="flex items-center gap-2">
@@ -187,7 +200,7 @@ const MemberManagement: React.FC = () => {
           ) : (
             <ChevronDown className="w-5 h-5" />
           )}
-        </div>
+        </button>
 
         {/* 検索フォーム（アコーディオン） */}
         {isSearchExpanded && (
@@ -197,10 +210,14 @@ const MemberManagement: React.FC = () => {
               <div className="col-span-6 space-y-6">
                 {/* フリーワード */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="freeword"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     フリーワード
                   </label>
                   <input
+                    id="freeword"
                     type="text"
                     value={formData.freeword}
                     onChange={(e) => handleInputChange("freeword", e.target.value)}
@@ -211,10 +228,14 @@ const MemberManagement: React.FC = () => {
 
                 {/* 住所（都道府県） */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="residence"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     住所（都道府県）
                   </label>
                   <select
+                    id="residence"
                     value={formData.residence}
                     onChange={(e) => handleInputChange("residence", e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -272,7 +293,7 @@ const MemberManagement: React.FC = () => {
 
                 {/* 性別 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">性別</label>
+                  <div className="block text-sm font-medium text-gray-700 mb-3">性別</div>
                   <div className="flex gap-6">
                     <label className="flex items-center">
                       <input
@@ -297,9 +318,7 @@ const MemberManagement: React.FC = () => {
 
                 {/* 最終ログイン日 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    最終ログイン日
-                  </label>
+                  <div className="block text-sm font-medium text-gray-700 mb-2">最終ログイン日</div>
                   <div className="flex items-center gap-2">
                     <div className="relative">
                       <input
@@ -323,7 +342,7 @@ const MemberManagement: React.FC = () => {
 
                 {/* 登録日 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">登録日</label>
+                  <div className="block text-sm font-medium text-gray-700 mb-2">登録日</div>
                   <div className="flex items-center gap-2">
                     <div className="relative">
                       <input
@@ -347,9 +366,7 @@ const MemberManagement: React.FC = () => {
 
                 {/* アカウント状態 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    アカウント状態
-                  </label>
+                  <div className="block text-sm font-medium text-gray-700 mb-3">アカウント状態</div>
                   <div className="flex gap-6">
                     <label className="flex items-center">
                       <input
@@ -378,8 +395,14 @@ const MemberManagement: React.FC = () => {
 
                 {/* 表示件数 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">表示件数</label>
+                  <label
+                    htmlFor="displayCount"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    表示件数
+                  </label>
                   <select
+                    id="displayCount"
                     value={formData.displayCount}
                     onChange={(e) => handleInputChange("displayCount", e.target.value)}
                     className="w-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -397,32 +420,32 @@ const MemberManagement: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-4 mt-8">
-              <button
+              <Button
                 onClick={handleReset}
                 className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 条件をリセット
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleSearch}
                 className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
               >
                 <Search className="w-4 h-4" />
                 検索する
-              </button>
+              </Button>
             </div>
           </div>
         )}
 
         {/* アクションボタン */}
         <div className="p-4 border-b border-gray-200 flex gap-3">
-          <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors">
+          <Button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors">
             会員登録
-          </button>
-          <button className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors flex items-center gap-2">
+          </Button>
+          <Button className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors flex items-center gap-2">
             <Upload className="w-4 h-4" />
             CSVインポート
-          </button>
+          </Button>
         </div>
 
         {/* 会員一覧 */}
@@ -434,102 +457,6 @@ const MemberManagement: React.FC = () => {
             <p className="text-gray-500 mb-2">検索データがありません。</p>
             <p className="text-gray-500">条件を変更して検索してください。</p>
           </div>
-
-          {/* 実際のデータがある場合のテーブル（コメントアウト） */}
-          {/*
-          <div className="mb-4">
-            <button 
-              onClick={handleDeleteSelected}
-              className="text-blue-600 hover:text-blue-800 text-sm underline"
-            >
-              選択リストを削除
-            </button>
-          </div>
-
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-sm text-gray-600">85件中 1-20件表示</span>
-            <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">2</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">3</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">4</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">5</button>
-              <span className="px-3 py-1">...</span>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">»</button>
-            </div>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-300">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="border border-gray-300 p-3 text-left">
-                    <input
-                      type="checkbox"
-                      checked={selectAll}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
-                    />
-                  </th>
-                  <th className="border border-gray-300 p-3 text-left">会員ID</th>
-                  <th className="border border-gray-300 p-3 text-left">氏名</th>
-                  <th className="border border-gray-300 p-3 text-left">メールアドレス</th>
-                  <th className="border border-gray-300 p-3 text-left">住所</th>
-                  <th className="border border-gray-300 p-3 text-left">性別</th>
-                  <th className="border border-gray-300 p-3 text-left">登録日</th>
-                  <th className="border border-gray-300 p-3 text-left">最終ログイン</th>
-                  <th className="border border-gray-300 p-3 text-left">状態</th>
-                  <th className="border border-gray-300 p-3 text-left">問い合わせ回数</th>
-                  <th className="border border-gray-300 p-3 text-left">操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                {members.map((member) => (
-                  <tr key={member.id} className="hover:bg-gray-50">
-                    <td className="border border-gray-300 p-3">
-                      <input
-                        type="checkbox"
-                        checked={selectedMembers.includes(member.id)}
-                        onChange={(e) => handleSelectMember(member.id, e.target.checked)}
-                      />
-                    </td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.id}</td>
-                    <td className="border border-gray-300 p-3 text-sm text-blue-600 hover:text-blue-800 cursor-pointer">
-                      {member.name}
-                    </td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.email}</td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.residence}</td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.gender}</td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.registrationDate}</td>
-                    <td className="border border-gray-300 p-3 text-sm">{member.lastLogin}</td>
-                    <td className="border border-gray-300 p-3 text-sm">
-                      <span className={`px-2 py-1 rounded text-xs ${
-                        member.status === '有効' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-red-100 text-red-800'
-                      }`}>
-                        {member.status}
-                      </span>
-                    </td>
-                    <td className="border border-gray-300 p-3 text-sm text-center">{member.inquiryCount}回</td>
-                    <td className="border border-gray-300 p-3">
-                      <div className="flex gap-1">
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
-                          詳細
-                        </button>
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
-                          編集
-                        </button>
-                        <button className="px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">
-                          削除
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          */}
         </div>
       </div>
       <ConfirmDialog

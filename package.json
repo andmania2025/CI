@@ -1,6 +1,7 @@
 {
   "name": "ucikatu-monorepo",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev:web": "pnpm --filter web dev",
@@ -8,15 +9,18 @@
     "build:web": "pnpm --filter web build",
     "build:admin": "pnpm --filter admin build",
     "lint": "pnpm -r lint",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "prepare": "lefthook install || true"
   },
   "engines": {
     "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@prisma/client": "^7.0.0",
+    "@biomejs/biome": "^1.9.4",
+    "@prisma/client": "^7.2.0",
     "@types/node": "^25.0.1",
     "dotenv": "^16.4.5",
-    "prisma": "^7.0.0"
+    "lefthook": "^2.0.12",
+    "prisma": "^7.2.0"
   }
 }

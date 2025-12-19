@@ -1,4 +1,14 @@
 import { ConfirmDialog } from "@/components/common/ConfirmDialog";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { FileText, Plus } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
@@ -46,11 +56,11 @@ const ContentManagement: React.FC = () => {
     setConfirmOpen(true);
   };
   const executeDelete = () => {
-    console.log("選択されたコンテンツカテゴリを削除:", selectedCategories);
+    // TODO: 削除処理を実装
   };
 
   return (
-    <div>
+    <div className="space-y-6">
       <div className="flex items-center gap-2 mb-6">
         <FileText className="w-5 h-5" />
         <h2 className="text-xl font-semibold">コンテンツ管理</h2>
@@ -58,13 +68,13 @@ const ContentManagement: React.FC = () => {
       </div>
 
       {/* コンテンツカテゴリセクション */}
-      <div className="bg-white rounded-lg shadow-sm">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         {/* アクションボタン */}
         <div className="p-4 border-b border-gray-200">
-          <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2">
-            <Plus className="w-4 h-4" />
+          <Button className="bg-orange-500 hover:bg-orange-600">
+            <Plus className="w-4 h-4 mr-2" />
             コンテンツを作成する
-          </button>
+          </Button>
         </div>
 
         {/* コンテンツカテゴリ一覧 */}
@@ -73,57 +83,59 @@ const ContentManagement: React.FC = () => {
 
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
-            <button
+            <Button
+              variant="link"
               onClick={handleDeleteSelected}
-              className="text-blue-600 hover:text-blue-800 text-sm underline"
+              className="text-blue-600 p-0 h-auto font-normal underline"
+              disabled={selectedCategories.length === 0}
             >
               選択リストを削除
-            </button>
+            </Button>
           </div>
 
           {/* テーブル */}
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-300">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="border border-gray-300 p-3 text-left">
-                    <input
-                      type="checkbox"
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[50px]">
+                    <Checkbox
                       checked={selectAll}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
+                      onCheckedChange={(checked) => handleSelectAll(!!checked)}
+                      aria-label="Select all"
                     />
-                  </th>
-                  <th className="border border-gray-300 p-3 text-left">カテゴリ名</th>
-                  <th className="border border-gray-300 p-3 text-left">コンテンツ数</th>
-                </tr>
-              </thead>
-              <tbody>
+                  </TableHead>
+                  <TableHead>カテゴリ名</TableHead>
+                  <TableHead className="text-center">コンテンツ数</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {categories.map((category) => (
-                  <tr key={category.id} className="hover:bg-gray-50">
-                    <td className="border border-gray-300 p-3">
-                      <input
-                        type="checkbox"
+                  <TableRow key={category.id}>
+                    <TableCell>
+                      <Checkbox
                         checked={selectedCategories.includes(category.id)}
-                        onChange={(e) => handleSelectCategory(category.id, e.target.checked)}
+                        onCheckedChange={(checked) => handleSelectCategory(category.id, !!checked)}
+                        aria-label={`Select ${category.name}`}
                       />
-                    </td>
-                    <td className="border border-gray-300 p-3 text-sm">
+                    </TableCell>
+                    <TableCell>
                       <div>
-                        <div className="font-medium text-blue-600 hover:text-blue-800 cursor-pointer">
+                        <div className="font-medium text-blue-600 hover:underline cursor-pointer">
                           {category.name}
                         </div>
                         {category.description && (
-                          <div className="text-gray-600 text-xs mt-1">{category.description}</div>
+                          <div className="text-gray-500 text-xs mt-1">{category.description}</div>
                         )}
                       </div>
-                    </td>
-                    <td className="border border-gray-300 p-3 text-sm text-center">
+                    </TableCell>
+                    <TableCell className="text-center font-mono text-sm">
                       {category.contentCount}
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </div>

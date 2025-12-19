@@ -139,7 +139,7 @@ export const propertySchema = z.object({
   // ============================================
   // メディア・公開（MediaTab）
   // ============================================
-  images: z.array(z.any()).optional(),
+  images: z.array(z.unknown()).optional(),
   propertyCategory: z.string().optional(),
   inquiryCount: z.number().default(0),
   featured: z.string().optional(),

@@ -48,10 +48,10 @@ export const DataTable = <T extends { id: string | number }>({
       <div className="p-3 border-t bg-white flex items-center justify-between text-sm">
         <span className="text-muted-foreground">Page 1 of 1</span>
         <div className="flex gap-2">
-          <button className="px-3 py-1 border rounded disabled:opacity-50" disabled>
+          <button type="button" className="px-3 py-1 border rounded disabled:opacity-50" disabled>
             Prev
           </button>
-          <button className="px-3 py-1 border rounded disabled:opacity-50" disabled>
+          <button type="button" className="px-3 py-1 border rounded disabled:opacity-50" disabled>
             Next
           </button>
         </div>

@@ -151,10 +151,7 @@ export const AgentInquirySearchForm: React.FC<AgentInquirySearchFormProps> = ({
                         onInputChange("selectedInquiryType", value);
                       }}
                     >
-                      <SelectTrigger
-                        className="w-full h-10 rounded-lg border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200"
-                        onClick={() => console.log("問い合わせ種別SelectTriggerクリック")}
-                      >
+                      <SelectTrigger className="w-full h-10 rounded-lg border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200">
                         <SelectValue placeholder="選択してください" />
                       </SelectTrigger>
                       <SelectContent>
@@ -238,25 +235,20 @@ export const AgentInquirySearchForm: React.FC<AgentInquirySearchFormProps> = ({
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("開始日カレンダー全体クリック")}
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
+                                !formData.inquiryDateFrom && "text-muted-foreground"
+                              )}
                             >
-                              <Button
-                                variant="outline"
-                                className={cn(
-                                  "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
-                                  !formData.inquiryDateFrom && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {formData.inquiryDateFrom
-                                  ? format(new Date(formData.inquiryDateFrom), "yyyy/MM/dd", {
-                                      locale: ja,
-                                    })
-                                  : "開始日を選択"}
-                              </Button>
-                            </div>
+                              <CalendarIcon className="mr-2 h-4 w-4" />
+                              {formData.inquiryDateFrom
+                                ? format(new Date(formData.inquiryDateFrom), "yyyy/MM/dd", {
+                                    locale: ja,
+                                  })
+                                : "開始日を選択"}
+                            </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
@@ -281,25 +273,20 @@ export const AgentInquirySearchForm: React.FC<AgentInquirySearchFormProps> = ({
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("終了日カレンダー全体クリック")}
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
+                                !formData.inquiryDateTo && "text-muted-foreground"
+                              )}
                             >
-                              <Button
-                                variant="outline"
-                                className={cn(
-                                  "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
-                                  !formData.inquiryDateTo && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {formData.inquiryDateTo
-                                  ? format(new Date(formData.inquiryDateTo), "yyyy/MM/dd", {
-                                      locale: ja,
-                                    })
-                                  : "終了日を選択"}
-                              </Button>
-                            </div>
+                              <CalendarIcon className="mr-2 h-4 w-4" />
+                              {formData.inquiryDateTo
+                                ? format(new Date(formData.inquiryDateTo), "yyyy/MM/dd", {
+                                    locale: ja,
+                                  })
+                                : "終了日を選択"}
+                            </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="end" side="bottom">
                             <Calendar

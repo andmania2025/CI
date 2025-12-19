@@ -1,10 +1,35 @@
 import { ConfirmDialog } from "@/components/common/ConfirmDialog";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ChevronDown, ChevronUp, FileText, Search } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
+interface UserPostFormData {
+  freeword: string;
+  questionCategory: string;
+  questionType: string;
+  questionCategoryGeneral: string;
+  publicStatus: {
+    public: boolean;
+    nonPublic: boolean;
+  };
+  postDateFrom: string;
+  postDateTo: string;
+  displayCount: string;
+}
+
 const UserPostManagement: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<UserPostFormData>({
     freeword: "",
     questionCategory: "",
     questionType: "",
@@ -50,18 +75,25 @@ const UserPostManagement: React.FC = () => {
     },
   ];
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (
+    field: keyof Omit<UserPostFormData, "publicStatus">,
+    value: string
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const handleCheckboxChange = (category: string, field: string, checked: boolean) => {
+  const handleCheckboxChange = (
+    category: "publicStatus",
+    field: keyof UserPostFormData["publicStatus"],
+    checked: boolean
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [category]: {
-        ...(prev[category as keyof typeof prev] as any),
+        ...prev[category],
         [field]: checked,
       },
     }));
@@ -124,8 +156,9 @@ const UserPostManagement: React.FC = () => {
       {/* ユーザー投稿一覧セクション */}
       <div className="bg-white rounded-lg shadow-sm">
         {/* 検索アコーディオンヘッダー */}
-        <div
-          className="bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors"
+        <Button
+          type="button"
+          className="w-full bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors border-none"
           onClick={() => setIsSearchExpanded(!isSearchExpanded)}
         >
           <div className="flex items-center gap-2">
@@ -137,7 +170,7 @@ const UserPostManagement: React.FC = () => {
           ) : (
             <ChevronDown className="w-5 h-5" />
           )}
-        </div>
+        </Button>
 
         {/* 検索フォーム（アコーディオン） */}
         {isSearchExpanded && (
@@ -147,113 +180,117 @@ const UserPostManagement: React.FC = () => {
               <div className="col-span-6 space-y-6">
                 {/* フリーワード */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    フリーワード
-                  </label>
-                  <input
+                  <Label className="mb-2 block">フリーワード</Label>
+                  <Input
                     type="text"
                     value={formData.freeword}
                     onChange={(e) => handleInputChange("freeword", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="キーワードで検索"
                   />
                 </div>
 
                 {/* 不動産種別 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">不動産種別</label>
-                  <select
+                  <Label className="mb-2 block">不動産種別</Label>
+                  <Select
                     value={formData.questionCategory}
-                    onChange={(e) => handleInputChange("questionCategory", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onValueChange={(value) => handleInputChange("questionCategory", value)}
                   >
-                    <option value="">選択してください</option>
-                    <option value="house">一戸建て</option>
-                    <option value="apartment">マンション</option>
-                    <option value="land">土地</option>
-                  </select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="選択してください" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="house">一戸建て</SelectItem>
+                      <SelectItem value="apartment">マンション</SelectItem>
+                      <SelectItem value="land">土地</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* 質問種別 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">質問種別</label>
-                  <select
+                  <Label className="mb-2 block">質問種別</Label>
+                  <Select
                     value={formData.questionType}
-                    onChange={(e) => handleInputChange("questionType", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onValueChange={(value) => handleInputChange("questionType", value)}
                   >
-                    <option value="">選択してください</option>
-                    <option value="sale">売却について</option>
-                    <option value="purchase">購入について</option>
-                    <option value="rent">賃貸について</option>
-                  </select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="選択してください" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sale">売却について</SelectItem>
+                      <SelectItem value="purchase">購入について</SelectItem>
+                      <SelectItem value="rent">賃貸について</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* 質問カテゴリ（全般） */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    質問カテゴリ（全般）
-                  </label>
-                  <select
+                  <Label className="mb-2 block">質問カテゴリ（全般）</Label>
+                  <Select
                     value={formData.questionCategoryGeneral}
-                    onChange={(e) => handleInputChange("questionCategoryGeneral", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onValueChange={(value) => handleInputChange("questionCategoryGeneral", value)}
                   >
-                    <option value="">選択してください</option>
-                    <option value="general">一般的な質問</option>
-                    <option value="technical">技術的な質問</option>
-                    <option value="legal">法的な質問</option>
-                  </select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="選択してください" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="general">一般的な質問</SelectItem>
+                      <SelectItem value="technical">技術的な質問</SelectItem>
+                      <SelectItem value="legal">法的な質問</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* 公開状況 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">公開状況</label>
+                  <Label className="mb-3 block">公開状況</Label>
                   <div className="flex gap-6">
-                    <label className="flex items-center">
-                      <input
-                        type="checkbox"
+                    <div className="flex items-center gap-2">
+                      <Checkbox
+                        id="publicStatus-public"
                         checked={formData.publicStatus.public}
-                        onChange={(e) =>
-                          handleCheckboxChange("publicStatus", "public", e.target.checked)
+                        onCheckedChange={(checked) =>
+                          handleCheckboxChange("publicStatus", "public", checked as boolean)
                         }
-                        className="mr-2"
                       />
-                      <span className="text-sm">公開</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input
-                        type="checkbox"
+                      <Label htmlFor="publicStatus-public" className="font-normal">
+                        公開
+                      </Label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Checkbox
+                        id="publicStatus-nonPublic"
                         checked={formData.publicStatus.nonPublic}
-                        onChange={(e) =>
-                          handleCheckboxChange("publicStatus", "nonPublic", e.target.checked)
+                        onCheckedChange={(checked) =>
+                          handleCheckboxChange("publicStatus", "nonPublic", checked as boolean)
                         }
-                        className="mr-2"
                       />
-                      <span className="text-sm">非公開</span>
-                    </label>
+                      <Label htmlFor="publicStatus-nonPublic" className="font-normal">
+                        非公開
+                      </Label>
+                    </div>
                   </div>
                 </div>
 
                 {/* 投稿日 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">投稿日</label>
+                  <Label className="mb-2 block">投稿日</Label>
                   <div className="flex items-center gap-2">
-                    <div className="relative">
-                      <input
+                    <div className="relative w-full">
+                      <Input
                         type="date"
                         value={formData.postDateFrom}
                         onChange={(e) => handleInputChange("postDateFrom", e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                     <span className="text-gray-500">〜</span>
-                    <div className="relative">
-                      <input
+                    <div className="relative w-full">
+                      <Input
                         type="date"
                         value={formData.postDateTo}
                         onChange={(e) => handleInputChange("postDateTo", e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
                   </div>
@@ -266,19 +303,20 @@ const UserPostManagement: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-4 mt-8">
-              <button
+              <Button
+                variant="outline"
                 onClick={handleReset}
-                className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                className="px-6 border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 条件をリセット
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleSearch}
-                className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
+                className="px-8 bg-gray-700 text-white hover:bg-gray-800 flex items-center gap-2"
               >
                 <Search className="w-4 h-4" />
                 検索する
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -289,35 +327,38 @@ const UserPostManagement: React.FC = () => {
 
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
-            <button
+            <Button
+              variant="link"
               onClick={handleDeleteSelected}
-              className="text-blue-600 hover:text-blue-800 text-sm underline"
+              className="text-blue-600 hover:text-blue-800 text-sm underline p-0 h-auto"
             >
               選択リストを削除
-            </button>
+            </Button>
           </div>
 
           {/* ページネーション情報 */}
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-600">101件中 1-20件表示</span>
             <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700">
+                1
+              </Button>
+              <Button size="sm" variant="outline" className="text-gray-700 border-gray-300">
                 2
-              </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              </Button>
+              <Button size="sm" variant="outline" className="text-gray-700 border-gray-300">
                 3
-              </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              </Button>
+              <Button size="sm" variant="outline" className="text-gray-700 border-gray-300">
                 4
-              </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              </Button>
+              <Button size="sm" variant="outline" className="text-gray-700 border-gray-300">
                 5
-              </button>
+              </Button>
               <span className="px-3 py-1">...</span>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <Button size="sm" variant="outline" className="text-gray-700 border-gray-300">
                 »
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -327,10 +368,9 @@ const UserPostManagement: React.FC = () => {
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-300 p-3 text-left">
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       checked={selectAll}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
+                      onCheckedChange={(checked) => handleSelectAll(checked as boolean)}
                     />
                   </th>
                   <th className="border border-gray-300 p-3 text-left">質問タイトル</th>
@@ -345,10 +385,9 @@ const UserPostManagement: React.FC = () => {
                 {posts.map((post) => (
                   <tr key={post.id} className="hover:bg-gray-50">
                     <td className="border border-gray-300 p-3">
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={selectedPosts.includes(post.id)}
-                        onChange={(e) => handleSelectPost(post.id, e.target.checked)}
+                        onCheckedChange={(checked) => handleSelectPost(post.id, checked as boolean)}
                       />
                     </td>
                     <td className="border border-gray-300 p-3 text-sm text-blue-600 hover:text-blue-800 cursor-pointer">
@@ -372,12 +411,18 @@ const UserPostManagement: React.FC = () => {
                     </td>
                     <td className="border border-gray-300 p-3">
                       <div className="flex gap-1">
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                        <Button
+                          size="sm"
+                          className="bg-gray-500 hover:bg-gray-600 text-white h-7 text-xs"
+                        >
                           詳細
-                        </button>
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="bg-gray-500 hover:bg-gray-600 text-white h-7 text-xs"
+                        >
                           編集
-                        </button>
+                        </Button>
                       </div>
                     </td>
                   </tr>

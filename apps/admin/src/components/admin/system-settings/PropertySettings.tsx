@@ -85,13 +85,16 @@ const PropertySettings: React.FC = () => {
                     <div className="flex items-center">
                       <FormControl>
                         <input
+                          id="enableInquiry"
                           type="checkbox"
                           className="mr-3"
                           checked={field.value}
                           onChange={(e) => field.onChange(e.target.checked)}
                         />
                       </FormControl>
-                      <FormLabel className="m-0">物件問い合わせを有効にする</FormLabel>
+                      <FormLabel htmlFor="enableInquiry" className="m-0">
+                        物件問い合わせを有効にする
+                      </FormLabel>
                     </div>
                     <FormMessage />
                   </FormItem>
@@ -105,13 +108,16 @@ const PropertySettings: React.FC = () => {
                     <div className="flex items-center">
                       <FormControl>
                         <input
+                          id="enableDetailedInquiry"
                           type="checkbox"
                           className="mr-3"
                           checked={field.value}
                           onChange={(e) => field.onChange(e.target.checked)}
                         />
                       </FormControl>
-                      <FormLabel className="m-0">詳細問い合わせを有効にする</FormLabel>
+                      <FormLabel htmlFor="enableDetailedInquiry" className="m-0">
+                        詳細問い合わせを有効にする
+                      </FormLabel>
                     </div>
                     <FormMessage />
                   </FormItem>
@@ -161,24 +167,30 @@ const PropertySettings: React.FC = () => {
                   </FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-4">
-                      <label className="flex items-center">
+                      <div className="flex items-center">
                         <input
+                          id="enableAutoMail_true"
                           type="radio"
                           className="mr-2"
                           checked={field.value === true}
                           onChange={() => field.onChange(true)}
                         />
-                        <span className="text-sm">送信する</span>
-                      </label>
-                      <label className="flex items-center">
+                        <label htmlFor="enableAutoMail_true" className="text-sm">
+                          送信する
+                        </label>
+                      </div>
+                      <div className="flex items-center">
                         <input
+                          id="enableAutoMail_false"
                           type="radio"
                           className="mr-2"
                           checked={field.value === false}
                           onChange={() => field.onChange(false)}
                         />
-                        <span className="text-sm">送信しない</span>
-                      </label>
+                        <label htmlFor="enableAutoMail_false" className="text-sm">
+                          送信しない
+                        </label>
+                      </div>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -190,14 +202,20 @@ const PropertySettings: React.FC = () => {
             </p>
 
             <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="mailTemplate"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 自動メール送信時の件名とメール本文
               </label>
               <div className="flex items-center gap-2 mb-2">
-                <select className="px-3 py-2 border border-gray-300 rounded-md">
+                <select id="mailTemplate" className="px-3 py-2 border border-gray-300 rounded-md">
                   <option>物件問い合わせ</option>
                 </select>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
                   選択する
                 </button>
               </div>

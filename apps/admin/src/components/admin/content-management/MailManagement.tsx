@@ -244,14 +244,24 @@ const MailManagement: React.FC = () => {
     }));
   };
 
-  const handleCheckboxChange = (category: string, field: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      [category]: {
-        ...(prev[category as keyof typeof prev] as any),
-        [field]: checked,
-      },
-    }));
+  const handleCheckboxChange = (
+    category: keyof typeof formData,
+    field: string,
+    checked: boolean
+  ) => {
+    setFormData((prev) => {
+      const currentCategory = prev[category];
+      if (typeof currentCategory === "object" && currentCategory !== null) {
+        return {
+          ...prev,
+          [category]: {
+            ...(currentCategory as Record<string, boolean>),
+            [field]: checked,
+          },
+        };
+      }
+      return prev;
+    });
   };
 
   const handleSearch = () => {

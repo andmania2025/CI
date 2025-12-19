@@ -67,7 +67,7 @@ const BulkAssessmentManagement: React.FC = () => {
   };
 
   const handleDetailSearch = () => {
-    console.log("検索実行:", formData);
+    // TODO: 検索処理を実装
     setIsDetailSearchOpen(false);
   };
 

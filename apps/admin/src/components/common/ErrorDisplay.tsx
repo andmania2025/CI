@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 interface ErrorDisplayProps {
   title?: string;
   message?: string;
@@ -22,12 +24,9 @@ export const ErrorDisplay = ({
         <h2 className="text-xl font-semibold text-gray-700 mb-2">{message}</h2>
         <p className="text-gray-600 mb-6">{description}</p>
         {onRetry && (
-          <button
-            onClick={onRetry}
-            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
+          <Button onClick={onRetry} className="hover:bg-blue-700 transition-colors">
             {retryText}
-          </button>
+          </Button>
         )}
       </div>
     </div>

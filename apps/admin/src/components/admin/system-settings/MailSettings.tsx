@@ -11,7 +11,10 @@ const MailSettings: React.FC = () => {
         </div>
 
         <div className="pt-2 flex justify-center">
-          <button className="px-8 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          <button
+            type="button"
+            className="px-8 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
             保存する
           </button>
         </div>

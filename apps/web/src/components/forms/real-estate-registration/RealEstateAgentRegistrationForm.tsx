@@ -111,8 +111,7 @@ export const RealEstateAgentRegistrationForm = () => {
   const canCheckAgreement = hasViewedTerms && hasViewedPrivacy;
 
   // フォーム送信
-  const onSubmit = (data: RealEstateAgentFormData) => {
-    console.log("Form submitted:", data);
+  const onSubmit = (_data: RealEstateAgentFormData) => {
     // TODO: API送信処理
   };
 

@@ -24,7 +24,7 @@ RUN pnpm install --frozen-lockfile
 
 # Prismaクライアントを生成（Prisma 7: 設定ファイルベース）
 ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=true
-RUN pnpm exec prisma generate
+RUN DATABASE_URL=postgresql://dummy:dummy@localhost:5432/dummy pnpm exec prisma generate
 
 # ソースコードをコピー
 COPY apps/admin ./apps/admin

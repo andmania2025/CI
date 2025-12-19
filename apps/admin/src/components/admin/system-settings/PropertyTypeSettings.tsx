@@ -1,3 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Plus, Search, Settings } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
@@ -18,7 +22,12 @@ const PropertyTypeSettings: React.FC = () => {
     { id: "type004", name: "アパート", status: "使用中", order: 20 },
     { id: "type005", name: "店舗・事務所", status: "使用中", order: 25 },
     { id: "type006", name: "工場・倉庫", status: "使用中", order: 30 },
-    { id: "type007", name: "一棟ビル・一棟マンション", status: "使用中", order: 35 },
+    {
+      id: "type007",
+      name: "一棟ビル・一棟マンション",
+      status: "使用中",
+      order: 35,
+    },
     { id: "type008", name: "その他", status: "使用中", order: 40 },
   ];
 
@@ -30,7 +39,7 @@ const PropertyTypeSettings: React.FC = () => {
   };
 
   const handleSearch = () => {
-    console.log("検索実行:", formData);
+    // TODO: 検索処理を実装
   };
 
   const handleReset = () => {
@@ -80,12 +89,15 @@ const PropertyTypeSettings: React.FC = () => {
             <div className="col-span-6 space-y-6">
               {/* フリーワード */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">フリーワード</label>
-                <input
+                <Label htmlFor="freeword" className="mb-2 block">
+                  フリーワード
+                </Label>
+                <Input
+                  id="freeword"
                   type="text"
                   value={formData.freeword}
                   onChange={(e) => handleInputChange("freeword", e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full"
                   placeholder="キーワードで検索"
                 />
               </div>
@@ -95,28 +107,31 @@ const PropertyTypeSettings: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="flex gap-4 mt-8">
-            <button
+            <Button
+              type="button"
+              variant="outline"
               onClick={handleReset}
-              className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+              className="px-6 text-gray-700 border-gray-300 hover:bg-gray-50"
             >
               条件をリセット
-            </button>
-            <button
+            </Button>
+            <Button
+              type="button"
               onClick={handleSearch}
-              className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
+              className="px-8 bg-gray-700 hover:bg-gray-800 gap-2"
             >
               <Search className="w-4 h-4" />
               検索する
-            </button>
+            </Button>
           </div>
         </div>
 
         {/* アクションボタン */}
         <div className="p-4 border-b border-gray-200">
-          <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2">
+          <Button type="button" className="bg-orange-500 hover:bg-orange-600 gap-2">
             <Plus className="w-4 h-4" />
             物件種別追加
-          </button>
+          </Button>
         </div>
 
         {/* 物件種別設定一覧 */}
@@ -125,16 +140,22 @@ const PropertyTypeSettings: React.FC = () => {
 
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
-            <button className="text-blue-600 hover:text-blue-800 text-sm underline">
+            <Button
+              type="button"
+              variant="link"
+              className="text-blue-600 hover:text-blue-800 p-0 h-auto font-normal underline"
+            >
               選択リストを削除
-            </button>
+            </Button>
           </div>
 
           {/* ページネーション情報 */}
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-600">8件中 1-8件表示</span>
             <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
+              <Button type="button" size="sm" className="bg-blue-600 hover:bg-blue-700">
+                1
+              </Button>
             </div>
           </div>
 
@@ -144,10 +165,9 @@ const PropertyTypeSettings: React.FC = () => {
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-300 p-3 text-left">
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       checked={selectAll}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
+                      onCheckedChange={(checked) => handleSelectAll(!!checked)}
                     />
                   </th>
                   <th className="border border-gray-300 p-3 text-left">項目名</th>
@@ -160,10 +180,9 @@ const PropertyTypeSettings: React.FC = () => {
                 {propertyTypes.map((type) => (
                   <tr key={type.id} className="hover:bg-gray-50">
                     <td className="border border-gray-300 p-3">
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={selectedTypes.includes(type.id)}
-                        onChange={(e) => handleSelectType(type.id, e.target.checked)}
+                        onCheckedChange={(checked) => handleSelectType(type.id, !!checked)}
                       />
                     </td>
                     <td className="border border-gray-300 p-3 text-sm text-blue-600 hover:text-blue-800 cursor-pointer">
@@ -172,9 +191,13 @@ const PropertyTypeSettings: React.FC = () => {
                     <td className="border border-gray-300 p-3 text-sm">{type.status}</td>
                     <td className="border border-gray-300 p-3 text-sm text-center">{type.order}</td>
                     <td className="border border-gray-300 p-3">
-                      <button className="px-3 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                      <Button
+                        type="button"
+                        size="sm"
+                        className="bg-gray-500 hover:bg-gray-600 text-xs h-7"
+                      >
                         編集
-                      </button>
+                      </Button>
                     </td>
                   </tr>
                 ))}

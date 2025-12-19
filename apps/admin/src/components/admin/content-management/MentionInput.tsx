@@ -38,8 +38,8 @@ export const MentionInput = React.forwardRef<HTMLInputElement, MentionInputProps
         ) {
           setMentionStart(cursorPos);
           setMentionQuery("");
-          setShowMentions(true);
           setSelectedIndex(0);
+          setShowMentions(true);
         }
       }
 
@@ -95,6 +95,7 @@ export const MentionInput = React.forwardRef<HTMLInputElement, MentionInputProps
           closeMentions();
         } else {
           setMentionQuery(textAfterSlash);
+          setSelectedIndex(0);
         }
       }
     };
@@ -120,11 +121,6 @@ export const MentionInput = React.forwardRef<HTMLInputElement, MentionInputProps
         }
       }, 0);
     };
-
-    // メンション候補が変更されたときに選択インデックスをリセット
-    useEffect(() => {
-      setSelectedIndex(0);
-    }, [mentionQuery]);
 
     // refの統合
     useEffect(() => {
@@ -166,12 +162,11 @@ export const MentionInput = React.forwardRef<HTMLInputElement, MentionInputProps
             onMouseDown={(e) => e.preventDefault()} // クリック時のフォーカス喪失を防ぐ
           >
             {filteredVariables.map((variable, index) => (
-              <div
+              <button
+                type="button"
                 key={variable.id}
                 onClick={() => insertMention(variable)}
-                className={`px-3 py-2 cursor-pointer hover:bg-gray-100 ${
-                  index === selectedIndex ? "bg-gray-100" : "bg-white"
-                }`}
+                className={`w-full text-left px-3 py-2 cursor-pointer hover:bg-gray-100 ${index === selectedIndex ? "bg-gray-100" : "bg-white"}`}
               >
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-sm text-black">
@@ -182,7 +177,7 @@ export const MentionInput = React.forwardRef<HTMLInputElement, MentionInputProps
                 {variable.description && (
                   <div className="text-xs text-gray-500 mt-1">{variable.description}</div>
                 )}
-              </div>
+              </button>
             ))}
           </div>
         )}

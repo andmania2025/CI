@@ -122,8 +122,7 @@ export const useQuestionForm = ({
     if (!validate()) {
       return;
     }
-    console.log("Question submitted:", formData);
-    // ここで質問投稿の処理を実装
+    // TODO: ここで質問投稿の処理を実装
   };
 
   return {

@@ -148,14 +148,10 @@ export const BulkAssessmentSearchForm: React.FC<BulkAssessmentSearchFormProps> =
                     <Select
                       value={formData.propertyType}
                       onValueChange={(value) => {
-                        console.log("物件種別選択:", value);
                         onInputChange("propertyType", value);
                       }}
                     >
-                      <SelectTrigger
-                        className="w-full h-10 rounded-lg border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200"
-                        onClick={() => console.log("物件種別SelectTriggerクリック")}
-                      >
+                      <SelectTrigger className="w-full h-10 rounded-lg border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200">
                         <SelectValue placeholder="選択してください" />
                       </SelectTrigger>
                       <SelectContent>
@@ -242,25 +238,20 @@ export const BulkAssessmentSearchForm: React.FC<BulkAssessmentSearchFormProps> =
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("開始日カレンダー全体クリック")}
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
+                                !formData.inquiryDateFrom && "text-muted-foreground"
+                              )}
                             >
-                              <Button
-                                variant="outline"
-                                className={cn(
-                                  "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
-                                  !formData.inquiryDateFrom && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {formData.inquiryDateFrom
-                                  ? format(new Date(formData.inquiryDateFrom), "yyyy/MM/dd", {
-                                      locale: ja,
-                                    })
-                                  : "開始日を選択"}
-                              </Button>
-                            </div>
+                              <CalendarIcon className="mr-2 h-4 w-4" />
+                              {formData.inquiryDateFrom
+                                ? format(new Date(formData.inquiryDateFrom), "yyyy/MM/dd", {
+                                    locale: ja,
+                                  })
+                                : "開始日を選択"}
+                            </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
@@ -271,7 +262,6 @@ export const BulkAssessmentSearchForm: React.FC<BulkAssessmentSearchFormProps> =
                                   : undefined
                               }
                               onSelect={(date) => {
-                                console.log("開始日選択:", date);
                                 onInputChange(
                                   "inquiryDateFrom",
                                   date ? format(date, "yyyy-MM-dd") : ""
@@ -285,25 +275,20 @@ export const BulkAssessmentSearchForm: React.FC<BulkAssessmentSearchFormProps> =
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("終了日カレンダー全体クリック")}
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
+                                !formData.inquiryDateTo && "text-muted-foreground"
+                              )}
                             >
-                              <Button
-                                variant="outline"
-                                className={cn(
-                                  "w-full h-10 justify-start text-left font-normal rounded-lg border-gray-300 hover:border-gray-400",
-                                  !formData.inquiryDateTo && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {formData.inquiryDateTo
-                                  ? format(new Date(formData.inquiryDateTo), "yyyy/MM/dd", {
-                                      locale: ja,
-                                    })
-                                  : "終了日を選択"}
-                              </Button>
-                            </div>
+                              <CalendarIcon className="mr-2 h-4 w-4" />
+                              {formData.inquiryDateTo
+                                ? format(new Date(formData.inquiryDateTo), "yyyy/MM/dd", {
+                                    locale: ja,
+                                  })
+                                : "終了日を選択"}
+                            </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0" align="end" side="bottom">
                             <Calendar
@@ -314,7 +299,6 @@ export const BulkAssessmentSearchForm: React.FC<BulkAssessmentSearchFormProps> =
                                   : undefined
                               }
                               onSelect={(date) => {
-                                console.log("終了日選択:", date);
                                 onInputChange(
                                   "inquiryDateTo",
                                   date ? format(date, "yyyy-MM-dd") : ""

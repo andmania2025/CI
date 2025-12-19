@@ -59,6 +59,7 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -100,7 +101,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   className,
 }) => {
   const defaultIcon = (
-    <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -203,6 +204,7 @@ export const PropertyListConditional: React.FC<PropertyListConditionalProps> = (
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -255,7 +257,6 @@ export const FavoriteListConditional: React.FC<FavoriteListConditionalProps> = (
               label: "物件を探す",
               onClick: () => {
                 // TODO: 検索ページへのナビゲーション
-                console.log("Navigate to property search");
               },
             },
         icon: (
@@ -264,6 +265,7 @@ export const FavoriteListConditional: React.FC<FavoriteListConditionalProps> = (
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"

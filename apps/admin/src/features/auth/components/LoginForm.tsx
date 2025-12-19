@@ -24,7 +24,8 @@ const SNSLoginButton: React.FC<{
       textColor: "text-gray-700",
       borderColor: "border-gray-300",
       icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" viewBox="0 0 24 24" role="img" aria-labelledby="googleIconTitle">
+          <title id="googleIconTitle">Google</title>
           <path
             fill="#4285F4"
             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -84,10 +85,9 @@ export const LoginForm: React.FC = () => {
   const handleGoogleLogin = async () => {
     try {
       // デモ版：Googleログインは無効化
-      console.log("Googleログインはデモ版では無効化されています");
       alert("Googleログインはデモ版では無効化されています。デモアカウントをご利用ください。");
-    } catch (error) {
-      console.error("Googleログインエラー:", error);
+    } catch (_error) {
+      // エラー処理
     }
   };
 
@@ -100,7 +100,7 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
         {/* Header Section */}
         <div className="text-center">

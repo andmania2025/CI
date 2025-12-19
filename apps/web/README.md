@@ -20,6 +20,7 @@
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (最新版)
 - **UI Components**: [Radix UI](https://www.radix-ui.com/) + [shadcn/ui](https://ui.shadcn.com/)
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) + [TanStack Query](https://tanstack.com/query/latest)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
 ### 開発環境
@@ -28,78 +29,7 @@
 - **Package Manager**: [pnpm](https://pnpm.io/)
 - **Linting & Formatting**: [Biome](https://biomejs.dev/)
 - **Type Checking**: TypeScript
-- **Pre-commit Hooks**: Husky + lint-staged
-
-## 前提条件
-
-このプロジェクトを実行するには、以下がシステムにインストールされている必要があります：
-
-- [Node.js](https://nodejs.org/en/) (v20.0.0 以上)
-- [pnpm](https://pnpm.io/) (Node.js 20 以上では`corepack enable`で有効化可能)
-
-## セットアップ
-
-### 1. pnpm の有効化（初回のみ）
-
-Node.js 20 以上を使用している場合、corepack で pnpm を有効化できます：
-
-```bash
-corepack enable
-```
-
-### 2. 依存関係のインストール
-
-```bash
-pnpm install
-```
-
-### 2.5. 環境変数の設定（初回のみ）
-
-```bash
-# .env.exampleをコピーして.env.localを作成
-cp .env.example .env.local
-
-# .env.localを編集して実際の値を設定
-# 必要な環境変数:
-# - NEXT_PUBLIC_SUPABASE_URL
-# - NEXT_PUBLIC_SUPABASE_ANON_KEY
-# - SUPABASE_SERVICE_ROLE_KEY (サーバーサイドのみ)
-# - DATABASE_URL
-# - DIRECT_URL
-```
-
-### 3. 開発サーバーの起動
-
-```bash
-pnpm run dev
-```
-
-数秒後、プロジェクトは以下のアドレスでアクセス可能になります：  
-**通常の開発サーバー**: [http://localhost:3000](http://localhost:3000)
-
-**注意**: Docker を使用する場合は http://localhost:3001 でアクセス可能です（詳細は「Docker 環境での起動」セクションを参照）。
-
-### 4. 本番ビルド
-
-```bash
-pnpm run build
-```
-
-### 5. 本番サーバーの起動
-
-```bash
-pnpm start
-```
-
-## 利用可能なスクリプト
-
-- `pnpm run dev` - 開発サーバーを起動
-- `pnpm run build` - 本番用ビルドを作成
-- `pnpm start` - 本番サーバーを起動
-- `pnpm run lint` - Biome によるコードチェック
-- `pnpm run lint:fix` - Biome によるコードチェックと自動修正
-- `pnpm run format` - Biome によるコードフォーマット
-- `pnpm run type-check` - TypeScript の型チェック
+- **Pre-commit Hooks**: [Lefthook](https://github.com/evilmartians/lefthook)
 
 ## プロジェクト構造
 
@@ -137,6 +67,19 @@ src/
 - カスタムカラーパレット
 - 日本語フォント（Noto Sans JP）対応
 
+## データベース (Prisma)
+
+このプロジェクトでは ORM として **Prisma** (v7.x) を使用しています。
+データベーススキーマはルートディレクトリの `prisma/schema.prisma` で一元管理されています。
+
+### 開発フロー
+
+1. **スキーマの変更**: ルートの `prisma/schema.prisma` を編集
+2. **マイグレーション**: `docker compose exec web pnpm exec prisma migrate dev` を実行
+3. **クライアント生成**: `docker compose exec web pnpm exec prisma generate` (変更後に自動的に実行されます)
+
+Server Actions や Route Handlers 内でデータベースにアクセスする際は、生成された Prisma Client を使用してください。
+
 ## 開発ガイドライン
 
 ### コンポーネント設計
@@ -153,9 +96,12 @@ src/
 
 ### 状態管理
 
+### 状態管理
+
 - **ローカル状態**: `useState`, `useReducer`
-- **フォーム状態**: React Hook Form
-- **サーバー状態**: TanStack Query（将来実装予定）
+- **グローバル状態**: `Zustand`（アプリケーション全体で共有する状態）
+- **フォーム状態**: `React Hook Form`
+- **サーバー状態**: `TanStack Query`（APIデータの取得・キャッシュ・更新）
 
 ## SEO 対応
 
@@ -171,59 +117,46 @@ src/
 - **Tailwind CSS**のブレークポイント使用
 - **タッチフレンドリー**なインターフェース
 
-## Docker 環境での起動（開発用のみ）
+## Docker 環境での起動
 
-このプロジェクトは開発環境でのみ Docker を使用できます。本番環境は Vercel でデプロイするため、Docker コンテナは使用しません。
+このプロジェクトは Docker 環境での開発を前提として構築されています。
 
-### 前提条件
+### コンテナ構成
 
-- [Docker](https://www.docker.com/) がインストールされていること
-- [Docker Compose](https://docs.docker.com/compose/) がインストールされていること
+- **PostgreSQL**: データベース (ポート 5432)
+- **Web App**: Next.js アプリケーション (ポート 3001)
+- **Admin App**: 管理画面アプリケーション (ポート 3000)
 
-### 開発環境での起動
-
-```bash
-# 開発サーバーを起動（ホットリロード対応）
-docker-compose up
-
-# バックグラウンドで起動
-docker-compose up -d
-
-# ログを確認
-docker-compose logs -f
-```
-
-開発サーバーは http://localhost:3001 でアクセス可能です。
-
-### 個別の Docker コマンド
+### 開発フロー
 
 ```bash
-# 開発用イメージをビルド
-docker build -f Dockerfile -t front-dev .
+# コンテナのビルドと起動
+docker compose up -d
 
-# 開発用コンテナを起動（ボリュームマウント付きでホットリロード対応）
-docker run -p 3001:3000 \
-  -v $(pwd):/app \
-  -v /app/node_modules \
-  -v /app/.next \
-  -e NODE_ENV=development \
-  front-dev
+# ログの確認
+docker compose logs -f
+
+# コンテナの停止
+docker compose down
 ```
 
-**注意**: ホットリロードを有効にするにはボリュームマウントが必要です。通常は`docker-compose up`の使用を推奨します。
 
-### 停止・クリーンアップ
+### パッケージの追加時
+
+新しいパッケージを追加した場合は、コンテナの再ビルドが必要です：
 
 ```bash
-# コンテナを停止
-docker-compose down
+# コンテナを停止・削除
+docker compose down -v
 
-# イメージも含めて削除
-docker-compose down --rmi all
-
-# ボリュームも含めて完全削除
-docker-compose down --volumes --rmi all
+# 再ビルドして起動
+docker compose up -d --build
 ```
+
+### 注意事項
+
+- 本番環境（Vercel）では Docker は使用されません。
+- ホスト側での `pnpm dev` の実行は不要です。
 
 ## デプロイ
 
@@ -242,12 +175,12 @@ docker-compose down --volumes --rmi all
 プロジェクトへの貢献を歓迎します。プルリクエストを送信する前に：
 
 1. コードスタイルガイドラインに従ってください
-2. `pnpm run lint`でコードをチェックしてください
-3. `pnpm run type-check`で型チェックを実行してください
+2. `docker compose exec web pnpm run lint`でコードをチェックしてください
+3. `docker compose exec web pnpm run type-check`で型チェックを実行してください
 
-### Pre-commit フック
+### Pre-commit フック (Lefthook)
 
-このプロジェクトでは、コミット前に自動的に以下が実行されます：
+このプロジェクトでは、**Lefthook** を使用してコミット前に自動的に以下が実行されます：
 
 - **Biome**: 変更されたファイルの lint/format チェックと自動修正
 - **TypeScript**: 全プロジェクトの型チェック

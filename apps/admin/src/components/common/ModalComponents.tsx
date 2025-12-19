@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import {
   type FieldProps,
   MODAL_STYLES,
@@ -18,7 +19,7 @@ export { MODAL_STYLES };
 // ============================================
 export const Field: React.FC<FieldProps> = ({ label, value, isMono = false, className = "" }) => (
   <div className={className}>
-    <label className={MODAL_STYLES.fieldLabel}>{label}</label>
+    <Label className={MODAL_STYLES.fieldLabel}>{label}</Label>
     <p className={isMono ? MODAL_STYLES.fieldValueMono : MODAL_STYLES.fieldValue}>{value || "-"}</p>
   </div>
 );

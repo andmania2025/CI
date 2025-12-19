@@ -185,7 +185,6 @@ export const useFavoritesStore = create<FavoritesState>()(
         if (result.success) {
           const { favorites } = get();
           set({ favorites: [...favorites, item] });
-          console.log("Favorite added:", item.title);
         }
         return result.success;
       },
@@ -197,7 +196,6 @@ export const useFavoritesStore = create<FavoritesState>()(
           set({
             favorites: favorites.filter((item) => !(item.id === id && item.type === type)),
           });
-          console.log("Favorite removed:", id);
         }
         return result.success;
       },
@@ -206,7 +204,6 @@ export const useFavoritesStore = create<FavoritesState>()(
         const result = clearFavorites();
         if (result.success) {
           set({ favorites: [] });
-          console.log("All favorites cleared");
         }
         return result.success;
       },

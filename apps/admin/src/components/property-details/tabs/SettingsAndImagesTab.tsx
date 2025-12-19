@@ -3,37 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DatePicker } from "@/components/ui/date-picker";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { Table, TableBody } from "@/components/ui/table";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { PropertyImageSlider } from "../PropertyImageSlider";
 import type { PropertyDetailTabsProps, PropertyImage } from "../types";
-
-// 日付をYYYY-MM-DD形式でフォーマット
-const formatDateToString = (date: Date | undefined): string => {
-  if (!date) return "未設定";
-  return date.toISOString().split("T")[0];
-};
-
-// YYYY-MM-DD形式の文字列をDateオブジェクトに変換
-const _parseDateString = (dateStr: string | undefined): Date | undefined => {
-  if (!dateStr) return undefined;
-  try {
-    const date = new Date(dateStr);
-    return Number.isNaN(date.getTime()) ? undefined : date;
-  } catch {
-    return undefined;
-  }
-};
+import { DateInputRow, SelectInputRow } from "./PropertyDetailRows";
 
 export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyDetailTabsProps) => {
   const [publicationStartDate, setPublicationStartDate] = useState<Date | undefined>(
@@ -90,15 +66,9 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
   });
 
   // ローカルストレージに編集データを保存（画像データは除外）
-  // TODO: 最終的にDB連携を実装する
-  // - 画像データをSupabase Storageにアップロード
-  // - 物件情報をDBのpropertiesテーブルに保存
-  // - 画像メタデータをDBのproperty_imagesテーブルに保存
-  // - 公開設定をDBのproperty_publicationsテーブルに保存
   useEffect(() => {
     if (isEditMode) {
       try {
-        // 画像の完全なデータを保存せず、IDとURLのみを保存
         const imageMetadata = images.map((img) => ({
           id: img.id,
           url: img.url,
@@ -118,7 +88,6 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
 
         localStorage.setItem(`property_${property.id}_edit`, JSON.stringify(editData));
       } catch (error) {
-        // localStorageの容量エラーをキャッチして、エラーを無視
         console.warn("Failed to save to localStorage:", error);
       }
     }
@@ -137,7 +106,6 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
   // キャンセル時にローカルストレージをクリアして、元の状態に戻す
   useEffect(() => {
     if (!isEditMode) {
-      // 編集モードを抜けたときにデータをリセット
       try {
         const savedEditData = localStorage.getItem(`property_${property.id}_edit`);
         if (savedEditData) {
@@ -147,7 +115,6 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
         console.warn("Failed to remove from localStorage:", error);
       }
 
-      // 元の状態に戻す
       if (property.images) {
         setImages(property.images);
       }
@@ -166,28 +133,12 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
       setPriorityDisplay(property.priorityDisplay || "なし");
       setCategory(property.category || "賃貸");
     }
-  }, [
-    isEditMode,
-    property.id,
-    property.images,
-    property.publicationStartDate,
-    property.publicationEndDate,
-    property.publicScope,
-    property.priorityDisplay,
-    property.category,
-  ]);
+  }, [isEditMode, property]);
 
   const handleImageUpload = async (files: FileList) => {
-    // TODO: 最終的にDB連携を実装する
-    // - 画像ファイルをSupabase Storageにアップロード
-    // - アップロード成功後にDBのproperty_imagesテーブルに画像メタデータを保存
-    // - エラーハンドリングとローディング状態の管理
-    // - 画像のリサイズ・最適化処理
-
     const fileArray = Array.from(files);
     const timestamp = Date.now();
 
-    // 全ファイルの読み込みをPromiseで並列処理
     const imagePromises = fileArray.map((file, index) => {
       return new Promise<{ file: File; url: string; index: number }>((resolve, reject) => {
         const reader = new FileReader();
@@ -201,25 +152,22 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
           reject(new Error(`Failed to read file: ${file.name}`));
         };
 
-        // ファイルを読み込む
         reader.readAsDataURL(file);
       });
     });
 
     try {
-      // 全ファイルの読み込み完了を待つ
       const results = await Promise.all(imagePromises);
 
-      // setImages内で現在の画像数を正確に取得して計算
       setImages((prev) => {
         const newImages = results.map(({ file, url, index }) => {
           const newImage: PropertyImage = {
             id: `uploaded-${timestamp}-${index}`,
             url: url,
-            imageType: "EXTERIOR", // デフォルトは外観
+            imageType: "EXTERIOR",
             caption: file.name,
             order: prev.length + index,
-            isMain: prev.length === 0 && index === 0, // 最初の画像をメイン画像に
+            isMain: prev.length === 0 && index === 0,
             uploadedAt: new Date().toISOString(),
           };
           return newImage;
@@ -227,7 +175,6 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
         return [...prev, ...newImages];
       });
 
-      // ファイル入力をリセット（同じファイルを再度選択可能にする）
       const fileInput = document.getElementById("image-upload") as HTMLInputElement;
       if (fileInput) {
         fileInput.value = "";
@@ -238,21 +185,10 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
   };
 
   const handleImageDelete = (imageId: string) => {
-    // TODO: 最終的にDB連携を実装する
-    // - Supabase Storageから画像ファイルを削除
-    // - DBのproperty_imagesテーブルから該当レコードを削除
-    // - 削除確認のダイアログ表示
-    // - エラーハンドリング
-
     setImages((prev) => prev.filter((img) => img.id !== imageId));
   };
 
   const handleSetMainImage = (imageId: string) => {
-    // TODO: 最終的にDB連携を実装する
-    // - DBのproperty_imagesテーブルでis_mainフラグを更新
-    // - 他の画像のis_mainフラグをfalseに設定
-    // - エラーハンドリング
-
     setImages((prev) =>
       prev.map((img) => ({
         ...img,
@@ -309,126 +245,81 @@ export const SettingsAndImagesTab = ({ property, isEditMode = false }: PropertyD
         <div className="flex flex-col h-full overflow-hidden">
           {/* 統合された設定カード */}
           <Card className="flex-1 flex flex-col overflow-hidden">
-            <CardHeader className="flex-shrink-0">
+            <CardHeader className="shrink-0">
               <CardTitle className="text-lg">掲載設定</CardTitle>
             </CardHeader>
             <CardContent className="flex-1 overflow-hidden px-6 py-0">
               <Table className="w-full table-fixed">
                 <TableBody>
                   {/* 掲載カテゴリー */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">掲載カテゴリー</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <Select value={category} onValueChange={setCategory}>
-                          <SelectTrigger className="max-w-xs">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="賃貸">賃貸</SelectItem>
-                            <SelectItem value="売買">売買</SelectItem>
-                            <SelectItem value="新築分譲">新築分譲</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      ) : (
-                        property.category || "賃貸"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <SelectInputRow
+                    label="掲載カテゴリー"
+                    isEditMode={isEditMode}
+                    defaultValue={category}
+                    value={category}
+                    onValueChange={setCategory}
+                    options={[
+                      { value: "賃貸", label: "賃貸" },
+                      { value: "売買", label: "売買" },
+                      { value: "新築分譲", label: "新築分譲" },
+                    ]}
+                  />
 
                   {/* 公開/非公開設定 */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">公開設定</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <Select value={publicScope} onValueChange={setPublicScope}>
-                          <SelectTrigger className="max-w-xs">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="一般公開">一般公開</SelectItem>
-                            <SelectItem value="限定公開">限定公開</SelectItem>
-                            <SelectItem value="非公開">非公開</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      ) : (
-                        property.publicScope || "一般公開"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <SelectInputRow
+                    label="公開設定"
+                    isEditMode={isEditMode}
+                    defaultValue={publicScope}
+                    value={publicScope}
+                    onValueChange={setPublicScope}
+                    options={[
+                      { value: "一般公開", label: "一般公開" },
+                      { value: "限定公開", label: "限定公開" },
+                      { value: "非公開", label: "非公開" },
+                    ]}
+                  />
 
                   {/* 優先表示 */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">優先表示</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <Select value={priorityDisplay} onValueChange={setPriorityDisplay}>
-                          <SelectTrigger className="max-w-xs">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="なし">なし</SelectItem>
-                            <SelectItem value="通常">通常</SelectItem>
-                            <SelectItem value="強調">強調</SelectItem>
-                            <SelectItem value="最優先">最優先</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      ) : (
-                        property.priorityDisplay || "なし"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <SelectInputRow
+                    label="優先表示"
+                    isEditMode={isEditMode}
+                    defaultValue={priorityDisplay}
+                    value={priorityDisplay}
+                    onValueChange={setPriorityDisplay}
+                    options={[
+                      { value: "なし", label: "なし" },
+                      { value: "通常", label: "通常" },
+                      { value: "強調", label: "強調" },
+                      { value: "最優先", label: "最優先" },
+                    ]}
+                  />
 
                   {/* 掲載開始日 */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">掲載開始日</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <DatePicker
-                          value={publicationStartDate}
-                          onChange={setPublicationStartDate}
-                          placeholder="掲載開始日を選択"
-                          className="max-w-xs"
-                        />
-                      ) : (
-                        formatDateToString(publicationStartDate) || "未設定"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <DateInputRow
+                    label="掲載開始日"
+                    isEditMode={isEditMode}
+                    value={publicationStartDate}
+                    onChange={setPublicationStartDate}
+                    placeholder="掲載開始日を選択"
+                  />
 
                   {/* 掲載終了日 */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">掲載終了日</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <DatePicker
-                          value={publicationEndDate}
-                          onChange={setPublicationEndDate}
-                          placeholder="掲載終了日を選択"
-                          className="max-w-xs"
-                        />
-                      ) : (
-                        formatDateToString(publicationEndDate) || "未設定"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <DateInputRow
+                    label="掲載終了日"
+                    isEditMode={isEditMode}
+                    value={publicationEndDate}
+                    onChange={setPublicationEndDate}
+                    placeholder="掲載終了日を選択"
+                  />
 
                   {/* 取引条件有効期限 */}
-                  <TableRow>
-                    <TableHead className="w-1/3 break-words pl-0">取引条件有効期限</TableHead>
-                    <TableCell className="w-2/3 break-words">
-                      {isEditMode ? (
-                        <DatePicker
-                          value={contractValidityPeriod}
-                          onChange={setContractValidityPeriod}
-                          placeholder="取引条件有効期限を選択"
-                          className="max-w-xs"
-                        />
-                      ) : (
-                        formatDateToString(contractValidityPeriod) || "未設定"
-                      )}
-                    </TableCell>
-                  </TableRow>
+                  <DateInputRow
+                    label="取引条件有効期限"
+                    isEditMode={isEditMode}
+                    value={contractValidityPeriod}
+                    onChange={setContractValidityPeriod}
+                    placeholder="取引条件有効期限を選択"
+                  />
                 </TableBody>
               </Table>
             </CardContent>

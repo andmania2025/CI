@@ -1,10 +1,11 @@
 "use client";
 
-// 動的レンダリングを強制（プリレンダリングを無効化）
-export const dynamic = "force-dynamic";
-
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+
+// 動的レンダリングを強制（プリレンダリングを無効化）
+export const dynamic = "force-dynamic";
 
 export default function NotFound() {
   const router = useRouter();
@@ -24,18 +25,10 @@ export default function NotFound() {
           お探しのページは存在しないか、移動または削除された可能性があります。
         </p>
         <div className="flex gap-4 justify-center">
-          <button
-            onClick={() => router.back()}
-            className="px-6 py-3 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors"
-          >
+          <Button variant="outline" onClick={() => router.back()}>
             戻る
-          </button>
-          <button
-            onClick={() => router.push("/dashboard")}
-            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-          >
-            ダッシュボードへ
-          </button>
+          </Button>
+          <Button onClick={() => router.push("/dashboard")}>ダッシュボードへ</Button>
         </div>
       </div>
     </div>

@@ -111,6 +111,7 @@ export function useDataTable<T>({
   }, [defaultItemsPerPage]);
 
   // 表示件数が変更されたときに現在のページをリセット
+  // biome-ignore lint/correctness/useExhaustiveDependencies: itemsPerPage is intentionally watched to reset page on change
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage]);

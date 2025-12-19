@@ -89,8 +89,11 @@ const AreaSettings: React.FC = () => {
             <div className="col-span-6 space-y-6">
               {/* フリーワード */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">フリーワード</label>
+                <label htmlFor="freeword" className="block text-sm font-medium text-gray-700 mb-2">
+                  フリーワード
+                </label>
                 <input
+                  id="freeword"
                   type="text"
                   value={formData.freeword}
                   onChange={(e) => handleInputChange("freeword", e.target.value)}
@@ -105,12 +108,14 @@ const AreaSettings: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex gap-4 mt-8">
             <button
+              type="button"
               onClick={handleReset}
               className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
             >
               条件をリセット
             </button>
             <button
+              type="button"
               onClick={handleSearch}
               className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
             >
@@ -122,7 +127,10 @@ const AreaSettings: React.FC = () => {
 
         {/* アクションボタン */}
         <div className="p-4 border-b border-gray-200">
-          <button className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2">
+          <button
+            type="button"
+            className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center gap-2"
+          >
             <Plus className="w-4 h-4" />
             エリア追加
           </button>
@@ -135,6 +143,7 @@ const AreaSettings: React.FC = () => {
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
             <button
+              type="button"
               onClick={handleDeleteSelected}
               className="text-blue-600 hover:text-blue-800 text-sm underline"
             >
@@ -146,7 +155,9 @@ const AreaSettings: React.FC = () => {
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-600">8件中 1-8件表示</span>
             <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
+              <button type="button" className="px-3 py-1 bg-blue-600 text-white rounded">
+                1
+              </button>
             </div>
           </div>
 
@@ -184,7 +195,10 @@ const AreaSettings: React.FC = () => {
                     <td className="border border-gray-300 p-3 text-sm">{area.status}</td>
                     <td className="border border-gray-300 p-3 text-sm text-center">{area.order}</td>
                     <td className="border border-gray-300 p-3">
-                      <button className="px-3 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                      <button
+                        type="button"
+                        className="px-3 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600"
+                      >
                         編集
                       </button>
                     </td>

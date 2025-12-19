@@ -10,7 +10,11 @@ export const FormError: React.FC<FormErrorProps> = ({ name }) => {
     formState: { errors },
   } = useFormContext();
 
-  const error = name.split(".").reduce((acc, key) => acc?.[key], errors as any);
+  const error = name
+    .split(".")
+    .reduce((acc: unknown, key: string) => (acc as Record<string, unknown>)?.[key], errors) as
+    | { message?: string }
+    | undefined;
 
   if (!error?.message) return null;
 

@@ -110,13 +110,12 @@ export function LoginFormContent({
 }
 
 // カード形式のログインフォーム（ページ用）
-export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
+export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (data: LoginValues) => {
+  const handleSubmit = async (_data: LoginValues) => {
     setIsLoading(true);
     // TODO: 認証ロジックを実装
-    console.log(data);
     setTimeout(() => setIsLoading(false), 1000);
   };
 

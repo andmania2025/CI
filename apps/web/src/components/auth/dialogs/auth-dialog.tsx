@@ -26,17 +26,15 @@ export function AuthDialog({
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(true);
 
-  const handleLoginSubmit = async (data: LoginValues) => {
+  const handleLoginSubmit = async (_data: LoginValues) => {
     setIsLoading(true);
     // TODO: ログインロジックを実装
-    console.log("Login:", data);
     setTimeout(() => setIsLoading(false), 1000);
   };
 
-  const handleSignUpSubmit = async (data: SignUpValues) => {
+  const handleSignUpSubmit = async (_data: SignUpValues) => {
     setIsLoading(true);
     // TODO: 新規登録ロジックを実装
-    console.log("Signup:", data);
     setTimeout(() => setIsLoading(false), 1000);
   };
 

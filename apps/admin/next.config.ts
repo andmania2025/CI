@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,6 +6,14 @@ const nextConfig: NextConfig = {
   // 管理画面はSSRを基本方針とするため、force-dynamicを優先
   experimental: {
     turbopackFileSystemCacheForDev: true,
+  },
+  // Prisma generated client のパス解決
+  webpack: (config) => {
+    config.resolve.alias["@prisma/generated"] = path.resolve(
+      __dirname,
+      "../../generated/client",
+    );
+    return config;
   },
 };
 

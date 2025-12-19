@@ -27,7 +27,7 @@ interface MailSearchDialogProps {
   onOpenChange: (open: boolean) => void;
   formData: MailFormData;
   onFormDataChange: (field: string, value: string) => void;
-  onCheckboxChange: (category: string, field: string, checked: boolean) => void;
+  onCheckboxChange: (category: "deliverySetting", field: string, checked: boolean) => void;
   onSearch: () => void;
   onReset: () => void;
 }

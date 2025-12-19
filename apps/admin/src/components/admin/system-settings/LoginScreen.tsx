@@ -86,8 +86,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-md">
               <h3 className="text-sm font-medium text-blue-800 mb-3">テストユーザー</h3>
               <div className="space-y-2">
-                {TEST_USERS.map((user, index) => (
-                  <div key={index} className="flex items-center justify-between text-xs">
+                {TEST_USERS.map((user, _index) => (
+                  <div key={user.id} className="flex items-center justify-between text-xs">
                     <div className="text-gray-600">
                       <span className="font-medium">ID:</span> {user.id} /
                       <span className="font-medium"> PW:</span> {user.password}

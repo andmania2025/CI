@@ -2,21 +2,12 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DatePicker } from "@/components/ui/date-picker";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { Table, TableBody } from "@/components/ui/table";
 import { searchDataService } from "@/services/searchDataService";
 import type { SearchOption } from "@/types/search";
-import type React from "react";
 import { useEffect, useState } from "react";
 import type { PropertyDetailTabsProps } from "../types";
+import { DateInputRow, NumberInputRow, SelectInputRow, TextInputRow } from "./PropertyDetailRows";
 
 export const BasicInfoTab = ({ property, isEditMode = false }: PropertyDetailTabsProps) => {
   const [updateDate, setUpdateDate] = useState<Date | undefined>(
@@ -63,7 +54,7 @@ export const BasicInfoTab = ({ property, isEditMode = false }: PropertyDetailTab
     };
 
     loadInitialData();
-  }, []);
+  }, [selectedPrefecture]);
 
   return (
     <div className="h-full">
@@ -75,227 +66,132 @@ export const BasicInfoTab = ({ property, isEditMode = false }: PropertyDetailTab
           <div className="h-full overflow-auto">
             <Table>
               <TableBody>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle sticky left-0 bg-background pl-0">
-                    物件名
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue={property.title} className="max-w-md" />
-                    ) : (
-                      property.title
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    更新日
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <DatePicker
-                        value={updateDate}
-                        onChange={setUpdateDate}
-                        placeholder="更新日を選択"
-                        className="max-w-xs"
-                      />
-                    ) : (
-                      updateDate?.toISOString().split("T")[0] || property.updateDate
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    次回更新予定日
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <DatePicker
-                        value={nextUpdateDate}
-                        onChange={setNextUpdateDate}
-                        placeholder="次回更新予定日を選択"
-                        className="max-w-xs"
-                      />
-                    ) : (
-                      nextUpdateDate?.toISOString().split("T")[0] || property.nextUpdateDate
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    掲載状況
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Select defaultValue={property.publicationStatus}>
-                        <SelectTrigger className="max-w-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="公開">公開</SelectItem>
-                          <SelectItem value="非公開">非公開</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    ) : (
-                      <Badge
-                        variant={
-                          (property.publicationStatus === "公開" ? "success" : "neutral") as
-                            | "success"
-                            | "neutral"
-                        }
-                      >
-                        {property.publicationStatus}
-                      </Badge>
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    問い合わせ数
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input
-                        type="number"
-                        defaultValue={property.inquiryCount.toString()}
-                        className="max-w-xs"
-                      />
-                    ) : (
-                      <Badge variant="outline" className="bg-blue-50 text-blue-700 text-xs">
-                        {property.inquiryCount}回
-                      </Badge>
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    不動産業者名
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="サンプル不動産株式会社" className="max-w-md" />
-                    ) : (
-                      "サンプル不動産株式会社"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    都道府県
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Select value={selectedPrefecture} onValueChange={setSelectedPrefecture}>
-                        <SelectTrigger className="max-w-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="tokyo">東京都</SelectItem>
-                          <SelectItem value="kanagawa">神奈川県</SelectItem>
-                          <SelectItem value="saitama">埼玉県</SelectItem>
-                          <SelectItem value="chiba">千葉県</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    ) : (
-                      "東京都"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    市区町村
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Select value={selectedCity} onValueChange={setSelectedCity}>
-                        <SelectTrigger className="max-w-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {cities.map((city) => (
-                            <SelectItem key={city.value} value={city.value}>
-                              {city.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    ) : (
-                      "渋谷区"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    町名・番地
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="恵比寿1-2-3" className="max-w-md" />
-                    ) : (
-                      "恵比寿1-2-3"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    最寄り駅
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="恵比寿駅 徒歩5分" className="max-w-md" />
-                    ) : (
-                      "恵比寿駅 徒歩5分"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    担当者名
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="田中太郎" className="max-w-md" />
-                    ) : (
-                      "田中太郎"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    電話番号
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="03-1234-5678" className="max-w-xs" />
-                    ) : (
-                      "03-1234-5678"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
-                    メールアドレス
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="tanaka@example.com" type="email" className="max-w-md" />
-                    ) : (
-                      "tanaka@example.com"
-                    )}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead className="w-1/3 align-top pt-4 pb-4 sticky left-0 bg-background pl-0">
-                    売主の名称または商号
-                  </TableHead>
-                  <TableCell className="pl-6 py-4">
-                    {isEditMode ? (
-                      <Input defaultValue="サンプル不動産株式会社" className="max-w-md" />
-                    ) : (
-                      "サンプル不動産株式会社"
-                    )}
-                  </TableCell>
-                </TableRow>
+                <TextInputRow
+                  label="物件名"
+                  isEditMode={isEditMode}
+                  defaultValue={property.title}
+                  value={property.title}
+                />
+
+                <DateInputRow
+                  label="更新日"
+                  isEditMode={isEditMode}
+                  value={updateDate}
+                  onChange={setUpdateDate}
+                  placeholder="更新日を選択"
+                />
+
+                <DateInputRow
+                  label="次回更新予定日"
+                  isEditMode={isEditMode}
+                  value={nextUpdateDate}
+                  onChange={setNextUpdateDate}
+                  placeholder="次回更新予定日を選択"
+                />
+
+                <SelectInputRow
+                  label="掲載状況"
+                  isEditMode={isEditMode}
+                  defaultValue={property.publicationStatus}
+                  value={property.publicationStatus}
+                  options={[
+                    { value: "公開", label: "公開" },
+                    { value: "非公開", label: "非公開" },
+                  ]}
+                  renderView={(val) => (
+                    <Badge
+                      variant={(val === "公開" ? "success" : "neutral") as "success" | "neutral"}
+                    >
+                      {val}
+                    </Badge>
+                  )}
+                />
+
+                <NumberInputRow
+                  label="問い合わせ数"
+                  isEditMode={isEditMode}
+                  defaultValue={property.inquiryCount}
+                  value={property.inquiryCount}
+                  unit="回"
+                  renderView={(val) => (
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700 text-xs">
+                      {val}回
+                    </Badge>
+                  )}
+                />
+
+                <TextInputRow
+                  label="不動産業者名"
+                  isEditMode={isEditMode}
+                  defaultValue="サンプル不動産株式会社"
+                  value="サンプル不動産株式会社"
+                />
+
+                <SelectInputRow
+                  label="都道府県"
+                  isEditMode={isEditMode}
+                  defaultValue={selectedPrefecture}
+                  value={isEditMode ? selectedPrefecture : "東京都"}
+                  onValueChange={setSelectedPrefecture}
+                  options={[
+                    { value: "tokyo", label: "東京都" },
+                    { value: "kanagawa", label: "神奈川県" },
+                    { value: "saitama", label: "埼玉県" },
+                    { value: "chiba", label: "千葉県" },
+                  ]}
+                />
+
+                <SelectInputRow
+                  label="市区町村"
+                  isEditMode={isEditMode}
+                  defaultValue={selectedCity}
+                  value={isEditMode ? selectedCity : "渋谷区"}
+                  onValueChange={setSelectedCity}
+                  options={cities}
+                />
+
+                <TextInputRow
+                  label="町名・番地"
+                  isEditMode={isEditMode}
+                  defaultValue="恵比寿1-2-3"
+                  value="恵比寿1-2-3"
+                />
+
+                <TextInputRow
+                  label="最寄り駅"
+                  isEditMode={isEditMode}
+                  defaultValue="恵比寿駅 徒歩5分"
+                  value="恵比寿駅 徒歩5分"
+                />
+
+                <TextInputRow
+                  label="担当者名"
+                  isEditMode={isEditMode}
+                  defaultValue="田中太郎"
+                  value="田中太郎"
+                />
+
+                <TextInputRow
+                  label="電話番号"
+                  isEditMode={isEditMode}
+                  defaultValue="03-1234-5678"
+                  value="03-1234-5678"
+                />
+
+                <TextInputRow
+                  label="メールアドレス"
+                  isEditMode={isEditMode}
+                  defaultValue="tanaka@example.com"
+                  value="tanaka@example.com"
+                  placeholder="メールアドレスを入力"
+                />
+
+                <TextInputRow
+                  label="売主の名称または商号"
+                  isEditMode={isEditMode}
+                  defaultValue="サンプル不動産株式会社"
+                  value="サンプル不動産株式会社"
+                />
               </TableBody>
             </Table>
           </div>

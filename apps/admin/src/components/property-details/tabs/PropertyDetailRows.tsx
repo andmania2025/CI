@@ -1,7 +1,10 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -10,25 +13,34 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { Textarea } from "@/components/ui/textarea";
 import type React from "react";
 
 // ============================================
 // 共通Props型定義
 // ============================================
 
-interface BaseRowProps {
+interface BaseRowProps<T = unknown> {
   label: string;
   isEditMode: boolean;
   className?: string;
+  renderView?: (value: T) => React.ReactNode;
 }
 
-interface TextRowProps extends BaseRowProps {
+interface TextRowProps extends BaseRowProps<string> {
   value?: string;
   defaultValue: string;
   placeholder?: string;
 }
 
-interface NumberRowProps extends BaseRowProps {
+interface TextAreaRowProps extends BaseRowProps<string> {
+  value?: string;
+  defaultValue: string;
+  placeholder?: string;
+  rows?: number;
+}
+
+interface NumberRowProps extends BaseRowProps<number> {
   value?: number;
   defaultValue: number;
   unit: string;
@@ -36,23 +48,34 @@ interface NumberRowProps extends BaseRowProps {
   formatValue?: (val: number) => string;
 }
 
-interface SelectRowProps extends BaseRowProps {
+interface SelectRowProps extends BaseRowProps<string> {
   value?: string;
   defaultValue: string;
   options: { value: string; label: string }[];
+  onValueChange?: (value: string) => void;
 }
 
-interface BooleanSelectRowProps extends BaseRowProps {
+interface BooleanSelectRowProps extends BaseRowProps<string> {
   value?: boolean;
   trueLabel?: string;
   falseLabel?: string;
   options: { value: string; label: string }[];
 }
 
-interface DateRowProps extends BaseRowProps {
+interface DateRowProps extends BaseRowProps<Date | undefined> {
   value?: Date;
   onChange: (date: Date | undefined) => void;
   placeholder?: string;
+}
+
+interface CheckboxItem {
+  id: string; // ID for htmlFor
+  label: string;
+  checked: boolean;
+}
+
+interface CheckboxGroupRowProps extends BaseRowProps {
+  items: CheckboxItem[];
 }
 
 // ============================================
@@ -68,42 +91,63 @@ const INPUT_NUMBER_CLASS =
 // テキスト入力行
 // ============================================
 
-export const TextInputRow: React.FC<TextRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-  placeholder,
-}) => (
-  <TableRow>
-    <TableHead className={HEAD_CLASS}>{label}</TableHead>
-    <TableCell className={CELL_CLASS}>
-      {isEditMode ? (
-        <Input
-          defaultValue={value ?? defaultValue}
-          placeholder={placeholder}
-          className="max-w-md"
-        />
-      ) : (
-        (value ?? defaultValue)
-      )}
-    </TableCell>
-  </TableRow>
-);
+export const TextInputRow: React.FC<TextRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, placeholder } = props;
+  return (
+    <TableRow>
+      <TableHead className={HEAD_CLASS}>{label}</TableHead>
+      <TableCell className={CELL_CLASS}>
+        {isEditMode ? (
+          <Input
+            defaultValue={value ?? defaultValue}
+            placeholder={placeholder}
+            className="max-w-md"
+          />
+        ) : props.renderView ? (
+          props.renderView(value ?? defaultValue)
+        ) : (
+          (value ?? defaultValue)
+        )}
+      </TableCell>
+    </TableRow>
+  );
+};
+
+// ============================================
+// テキストエリア入力行
+// ============================================
+
+export const TextAreaRow: React.FC<TextAreaRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, placeholder, rows = 3 } = props;
+  return (
+    <TableRow>
+      <TableHead className="w-1/3 align-top pt-4 sticky left-0 bg-background pl-0">
+        {label}
+      </TableHead>
+      <TableCell className={CELL_CLASS}>
+        {isEditMode ? (
+          <Textarea
+            defaultValue={value ?? defaultValue}
+            placeholder={placeholder}
+            className="max-w-md"
+            rows={rows}
+          />
+        ) : props.renderView ? (
+          props.renderView(value ?? defaultValue)
+        ) : (
+          (value ?? defaultValue)
+        )}
+      </TableCell>
+    </TableRow>
+  );
+};
 
 // ============================================
 // 数値入力行（単位付き）
 // ============================================
 
-export const NumberInputRow: React.FC<NumberRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-  unit,
-  step,
-  formatValue,
-}) => {
+export const NumberInputRow: React.FC<NumberRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, unit, step, formatValue } = props;
   const displayValue = value ?? defaultValue;
   const formattedDisplay = formatValue
     ? formatValue(displayValue)
@@ -123,6 +167,8 @@ export const NumberInputRow: React.FC<NumberRowProps> = ({
             />
             <span className="text-sm text-gray-500">{unit}</span>
           </div>
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
           formattedDisplay
         )}
@@ -135,19 +181,14 @@ export const NumberInputRow: React.FC<NumberRowProps> = ({
 // 金額入力行（円単位）
 // ============================================
 
-interface PriceRowProps extends BaseRowProps {
+interface PriceRowProps extends BaseRowProps<number> {
   value?: number;
   defaultValue: number;
   noValueText?: string;
 }
 
-export const PriceInputRow: React.FC<PriceRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-  noValueText = "なし",
-}) => {
+export const PriceInputRow: React.FC<PriceRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, noValueText = "なし" } = props;
   const displayValue = value ?? defaultValue;
 
   return (
@@ -160,7 +201,13 @@ export const PriceInputRow: React.FC<PriceRowProps> = ({
             <span className="text-sm text-gray-500">円</span>
           </div>
         ) : displayValue > 0 ? (
-          `${displayValue.toLocaleString()}円`
+          props.renderView ? (
+            props.renderView(displayValue)
+          ) : (
+            `${displayValue.toLocaleString()}円`
+          )
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
           noValueText
         )}
@@ -173,17 +220,14 @@ export const PriceInputRow: React.FC<PriceRowProps> = ({
 // 面積入力行（㎡単位）
 // ============================================
 
-interface AreaRowProps extends BaseRowProps {
+interface AreaRowProps extends BaseRowProps<number> {
   value?: number;
   defaultValue: number;
+  step?: string;
 }
 
-export const AreaInputRow: React.FC<AreaRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-}) => {
+export const AreaInputRow: React.FC<AreaRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, step = "0.01" } = props;
   const displayValue = value ?? defaultValue;
 
   return (
@@ -194,12 +238,14 @@ export const AreaInputRow: React.FC<AreaRowProps> = ({
           <div className="flex items-center gap-2">
             <Input
               type="number"
-              step="0.01"
+              step={step}
               defaultValue={displayValue}
               className={INPUT_NUMBER_CLASS}
             />
             <span className="text-sm text-gray-500">㎡</span>
           </div>
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
           `${displayValue.toFixed(2)}㎡`
         )}
@@ -212,19 +258,14 @@ export const AreaInputRow: React.FC<AreaRowProps> = ({
 // パーセント入力行
 // ============================================
 
-interface PercentRowProps extends BaseRowProps {
+interface PercentRowProps extends BaseRowProps<number> {
   value?: number;
   defaultValue: number;
   noValueText?: string;
 }
 
-export const PercentInputRow: React.FC<PercentRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-  noValueText = "未設定",
-}) => {
+export const PercentInputRow: React.FC<PercentRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, noValueText = "未設定" } = props;
   const displayValue = value ?? defaultValue;
 
   return (
@@ -242,7 +283,13 @@ export const PercentInputRow: React.FC<PercentRowProps> = ({
             <span className="text-sm text-gray-500">%</span>
           </div>
         ) : displayValue > 0 ? (
-          `${displayValue}%`
+          props.renderView ? (
+            props.renderView(displayValue)
+          ) : (
+            `${displayValue}%`
+          )
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
           noValueText
         )}
@@ -255,13 +302,8 @@ export const PercentInputRow: React.FC<PercentRowProps> = ({
 // セレクト入力行
 // ============================================
 
-export const SelectInputRow: React.FC<SelectRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  defaultValue,
-  options,
-}) => {
+export const SelectInputRow: React.FC<SelectRowProps> = (props) => {
+  const { label, isEditMode, value, defaultValue, options, onValueChange } = props;
   const displayValue = value ?? defaultValue;
 
   return (
@@ -269,7 +311,11 @@ export const SelectInputRow: React.FC<SelectRowProps> = ({
       <TableHead className={HEAD_CLASS}>{label}</TableHead>
       <TableCell className={CELL_CLASS}>
         {isEditMode ? (
-          <Select defaultValue={displayValue}>
+          <Select
+            defaultValue={displayValue}
+            value={onValueChange ? displayValue : undefined}
+            onValueChange={onValueChange}
+          >
             <SelectTrigger className="max-w-xs">
               <SelectValue />
             </SelectTrigger>
@@ -281,8 +327,10 @@ export const SelectInputRow: React.FC<SelectRowProps> = ({
               ))}
             </SelectContent>
           </Select>
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
-          displayValue
+          options.find((opt) => opt.value === displayValue)?.label || displayValue
         )}
       </TableCell>
     </TableRow>
@@ -293,14 +341,8 @@ export const SelectInputRow: React.FC<SelectRowProps> = ({
 // Boolean セレクト入力行
 // ============================================
 
-export const BooleanSelectRow: React.FC<BooleanSelectRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  trueLabel = "可",
-  falseLabel = "不可",
-  options,
-}) => {
+export const BooleanSelectRow: React.FC<BooleanSelectRowProps> = (props) => {
+  const { label, isEditMode, value, trueLabel = "可", falseLabel = "不可", options } = props;
   const displayValue = value ? trueLabel : falseLabel;
 
   return (
@@ -320,6 +362,8 @@ export const BooleanSelectRow: React.FC<BooleanSelectRowProps> = ({
               ))}
             </SelectContent>
           </Select>
+        ) : props.renderView ? (
+          props.renderView(displayValue)
         ) : (
           displayValue
         )}
@@ -332,29 +376,65 @@ export const BooleanSelectRow: React.FC<BooleanSelectRowProps> = ({
 // 日付入力行
 // ============================================
 
-export const DateInputRow: React.FC<DateRowProps> = ({
-  label,
-  isEditMode,
-  value,
-  onChange,
-  placeholder,
-}) => (
-  <TableRow>
-    <TableHead className={HEAD_CLASS}>{label}</TableHead>
-    <TableCell className={CELL_CLASS}>
-      {isEditMode ? (
-        <DatePicker
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder || `${label}を選択`}
-          className="max-w-xs"
-        />
-      ) : (
-        value?.toISOString().split("T")[0] || placeholder || "未設定"
-      )}
-    </TableCell>
-  </TableRow>
-);
+export const DateInputRow: React.FC<DateRowProps> = (props) => {
+  const { label, isEditMode, value, onChange, placeholder } = props;
+  return (
+    <TableRow>
+      <TableHead className={HEAD_CLASS}>{label}</TableHead>
+      <TableCell className={CELL_CLASS}>
+        {isEditMode ? (
+          <DatePicker
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder || `${label}を選択`}
+            className="max-w-xs"
+          />
+        ) : props.renderView ? (
+          props.renderView(value)
+        ) : (
+          value?.toISOString().split("T")[0] || placeholder || "未設定"
+        )}
+      </TableCell>
+    </TableRow>
+  );
+};
+
+// ============================================
+// チェックボックスグループ行 (Features用)
+// ============================================
+
+export const CheckboxGroupRow: React.FC<CheckboxGroupRowProps> = (props) => {
+  const { label, isEditMode, items } = props;
+  return (
+    <TableRow>
+      <TableHead className="w-1/3 align-top pt-4 sticky left-0 bg-background pl-0">
+        {label}
+      </TableHead>
+      <TableCell className={CELL_CLASS}>
+        {isEditMode ? (
+          <div className="flex flex-wrap gap-4">
+            {items.map((item) => (
+              <div key={item.id} className="flex items-center space-x-2">
+                <Checkbox id={item.id} defaultChecked={item.checked} />
+                <Label htmlFor={item.id}>{item.label}</Label>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {items
+              .filter((item) => item.checked)
+              .map((item) => (
+                <Badge key={item.id} variant="outline">
+                  {item.label}
+                </Badge>
+              ))}
+          </div>
+        )}
+      </TableCell>
+    </TableRow>
+  );
+};
 
 // ============================================
 // オプション定義のエクスポート

@@ -4,6 +4,9 @@ import {
   type ChangeEvent,
   type DragEvent,
   type InputHTMLAttributes,
+  type Ref,
+  type RefAttributes,
+  type RefCallback,
   useCallback,
   useRef,
   useState,
@@ -53,8 +56,20 @@ export type FileUploadActions = {
   getInputProps: (
     props?: InputHTMLAttributes<HTMLInputElement>
   ) => InputHTMLAttributes<HTMLInputElement> & {
-    // Use `any` here to avoid cross-React ref type conflicts across packages
-    ref: any;
+    ref: Ref<HTMLInputElement>;
+  };
+};
+
+// Helper to merge refs
+const mergeRefs = <T>(...refs: (Ref<T> | undefined | null)[]): RefCallback<T> => {
+  return (value) => {
+    for (const ref of refs) {
+      if (typeof ref === "function") {
+        ref(value);
+      } else if (ref != null) {
+        (ref as { current: T | null }).current = value;
+      }
+    }
   };
 };
 
@@ -85,34 +100,41 @@ export const useFileUpload = (
 
   const validateFile = useCallback(
     (file: File | FileMetadata): string | null => {
-      if (file instanceof File) {
-        if (file.size > maxSize) {
-          return `File "${file.name}" exceeds the maximum size of ${formatBytes(maxSize)}.`;
-        }
-      } else {
-        if (file.size > maxSize) {
-          return `File "${file.name}" exceeds the maximum size of ${formatBytes(maxSize)}.`;
-        }
+      const { name, size, type } = file;
+
+      // Determine file extension and type
+      // Note: for FileMetadata, we rely on the type property being accurate or the name having an extension
+      const fileType = file instanceof File ? file.type || "" : type;
+      const fileName = file instanceof File ? file.name : name;
+      const fileSize = file instanceof File ? file.size : size;
+      const fileExtension = `.${fileName.split(".").pop() || ""}`;
+
+      if (fileSize > maxSize) {
+        return `File "${fileName}" exceeds the maximum size of ${formatBytes(maxSize)}.`;
       }
 
       if (accept !== "*") {
-        const acceptedTypes = accept.split(",").map((type) => type.trim());
-        const fileType = file instanceof File ? file.type || "" : file.type;
-        const fileExtension = `.${file instanceof File ? file.name.split(".").pop() : file.name.split(".").pop()}`;
+        const acceptedTypes = accept.split(",").map((t) => t.trim());
 
-        const isAccepted = acceptedTypes.some((type) => {
-          if (type.startsWith(".")) {
-            return fileExtension.toLowerCase() === type.toLowerCase();
+        const isAccepted = acceptedTypes.some((acceptedType) => {
+          if (acceptedType.startsWith(".")) {
+            // Check extension (case-insensitive)
+            return fileExtension.toLowerCase() === acceptedType.toLowerCase();
           }
-          if (type.endsWith("/*")) {
-            const baseType = type.split("/")[0];
+          if (acceptedType.endsWith("/*")) {
+            // Check broad mime type (e.g. image/*)
+            const baseType = acceptedType.split("/")[0];
             return fileType.startsWith(`${baseType}/`);
           }
-          return fileType === type;
+          // Check exact mime type
+          if (fileType) {
+            return fileType === acceptedType;
+          }
+          return false;
         });
 
         if (!isAccepted) {
-          return `File "${file instanceof File ? file.name : file.name}" is not an accepted file type.`;
+          return `File "${fileName}" is not an accepted file type.`;
         }
       }
 
@@ -138,11 +160,11 @@ export const useFileUpload = (
   const clearFiles = useCallback(() => {
     setState((prev) => {
       // Clean up object URLs
-      prev.files.forEach((file) => {
+      for (const file of prev.files) {
         if (file.preview && file.file instanceof File && file.file.type.startsWith("image/")) {
           URL.revokeObjectURL(file.preview);
         }
-      });
+      }
 
       if (inputRef.current) {
         inputRef.current.value = "";
@@ -187,18 +209,23 @@ export const useFileUpload = (
 
       const validFiles: FileWithPreview[] = [];
 
-      newFilesArray.forEach((file) => {
+      for (const file of newFilesArray) {
         // Only check for duplicates if multiple files are allowed
+        let isDuplicate = false;
         if (multiple) {
-          const isDuplicate = state.files.some(
-            (existingFile) =>
-              existingFile.file.name === file.name && existingFile.file.size === file.size
-          );
+          isDuplicate = state.files.some((existingFile) => {
+            // Handle both File and FileMetadata which both have name/size
+            const existingName =
+              existingFile.file instanceof File ? existingFile.file.name : existingFile.file.name;
+            const existingSize =
+              existingFile.file instanceof File ? existingFile.file.size : existingFile.file.size;
+            return existingName === file.name && existingSize === file.size;
+          });
+        }
 
-          // Skip duplicate files silently
-          if (isDuplicate) {
-            return;
-          }
+        // Skip duplicate files silently
+        if (isDuplicate) {
+          continue;
         }
 
         // Check file size
@@ -208,7 +235,7 @@ export const useFileUpload = (
               ? `Some files exceed the maximum size of ${formatBytes(maxSize)}.`
               : `File exceeds the maximum size of ${formatBytes(maxSize)}.`
           );
-          return;
+          continue;
         }
 
         const error = validateFile(file);
@@ -221,7 +248,7 @@ export const useFileUpload = (
             preview: createPreview(file),
           });
         }
-      });
+      }
 
       // Only update state if we have valid files to add
       if (validFiles.length > 0) {
@@ -357,15 +384,18 @@ export const useFileUpload = (
   }, []);
 
   const getInputProps = useCallback(
-    (props: InputHTMLAttributes<HTMLInputElement> = {}) => {
+    (props: InputHTMLAttributes<HTMLInputElement> & RefAttributes<HTMLInputElement> = {}) => {
+      // Destructure ref from props to merge it
+      const { ref, ...rest } = props;
+
       return {
-        ...props,
+        ...rest,
         type: "file" as const,
         onChange: handleFileChange,
         accept: props.accept || accept,
         multiple: props.multiple !== undefined ? props.multiple : multiple,
-        // Cast to `any` to prevent mismatched React ref type errors across workspaces
-        ref: inputRef as any,
+        // Merge internal inputRef with any ref passed in props
+        ref: mergeRefs(inputRef, ref),
       };
     },
     [accept, multiple, handleFileChange]

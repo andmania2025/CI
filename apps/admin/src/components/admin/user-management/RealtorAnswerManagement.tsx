@@ -3,8 +3,23 @@ import { ChevronDown, ChevronUp, FileText, Search } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 
+interface FormData {
+  freeword: string;
+  realEstateCompany: string;
+  questionType: string;
+  questionCategory: string;
+  questionCategoryGeneral: string;
+  publicStatus: {
+    public: boolean;
+    nonPublic: boolean;
+  };
+  answerDateFrom: string;
+  answerDateTo: string;
+  displayCount: string;
+}
+
 const RealtorAnswerManagement: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     freeword: "",
     realEstateCompany: "",
     questionType: "",
@@ -98,14 +113,20 @@ const RealtorAnswerManagement: React.FC = () => {
     }));
   };
 
-  const handleCheckboxChange = (category: string, field: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      [category]: {
-        ...(prev[category as keyof typeof prev] as any),
-        [field]: checked,
-      },
-    }));
+  const handleCheckboxChange = (category: keyof FormData, field: string, checked: boolean) => {
+    setFormData((prev) => {
+      const target = prev[category];
+      if (typeof target === "object" && target !== null && !Array.isArray(target)) {
+        return {
+          ...prev,
+          [category]: {
+            ...target,
+            [field]: checked,
+          },
+        };
+      }
+      return prev;
+    });
   };
 
   const handleSearch = () => {
@@ -166,8 +187,9 @@ const RealtorAnswerManagement: React.FC = () => {
       {/* 不動産業者回答一覧セクション */}
       <div className="bg-white rounded-lg shadow-sm">
         {/* 検索アコーディオンヘッダー */}
-        <div
-          className="bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors"
+        <button
+          type="button"
+          className="w-full bg-blue-700 text-white p-4 rounded-t-lg flex items-center justify-between cursor-pointer hover:bg-blue-800 transition-colors"
           onClick={() => setIsSearchExpanded(!isSearchExpanded)}
         >
           <div className="flex items-center gap-2">
@@ -179,7 +201,7 @@ const RealtorAnswerManagement: React.FC = () => {
           ) : (
             <ChevronDown className="w-5 h-5" />
           )}
-        </div>
+        </button>
 
         {/* 検索フォーム（アコーディオン） */}
         {isSearchExpanded && (
@@ -189,10 +211,14 @@ const RealtorAnswerManagement: React.FC = () => {
               <div className="col-span-6 space-y-6">
                 {/* フリーワード */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="freeword"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     フリーワード
                   </label>
                   <input
+                    id="freeword"
                     type="text"
                     value={formData.freeword}
                     onChange={(e) => handleInputChange("freeword", e.target.value)}
@@ -203,12 +229,19 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 不動産業者名 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="realEstateCompanySearch"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     不動産業者名
                   </label>
                   <div className="relative">
-                    <button className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-600 text-white text-left flex items-center justify-between">
-                      <span>ラ不動産業者名検索</span>
+                    <button
+                      id="realEstateCompanySearch"
+                      type="button"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md bg-blue-600 text-white text-left flex items-center justify-between"
+                    >
+                      <span>不動産業者名検索</span>
                       <Search className="w-4 h-4" />
                     </button>
                   </div>
@@ -216,8 +249,14 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 不動産種別 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">不動産種別</label>
+                  <label
+                    htmlFor="questionType"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    不動産種別
+                  </label>
                   <select
+                    id="questionType"
                     value={formData.questionType}
                     onChange={(e) => handleInputChange("questionType", e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -231,8 +270,14 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 質問種別 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">質問種別</label>
+                  <label
+                    htmlFor="questionCategory"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    質問種別
+                  </label>
                   <select
+                    id="questionCategory"
                     value={formData.questionCategory}
                     onChange={(e) => handleInputChange("questionCategory", e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -246,10 +291,14 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 質問カテゴリ（全般） */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="questionCategoryGeneral"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     質問カテゴリ（全般）
                   </label>
                   <select
+                    id="questionCategoryGeneral"
                     value={formData.questionCategoryGeneral}
                     onChange={(e) => handleInputChange("questionCategoryGeneral", e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -263,7 +312,7 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 公開状況 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">公開状況</label>
+                  <span className="block text-sm font-medium text-gray-700 mb-3">公開状況</span>
                   <div className="flex gap-6">
                     <label className="flex items-center">
                       <input
@@ -292,11 +341,13 @@ const RealtorAnswerManagement: React.FC = () => {
 
                 {/* 回答日 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">回答日</label>
+                  <div className="block text-sm font-medium text-gray-700 mb-2">回答日</div>
                   <div className="flex items-center gap-2">
                     <div className="relative">
                       <input
+                        id="answerDateFrom"
                         type="date"
+                        aria-label="回答日（開始）"
                         value={formData.answerDateFrom}
                         onChange={(e) => handleInputChange("answerDateFrom", e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -305,7 +356,9 @@ const RealtorAnswerManagement: React.FC = () => {
                     <span className="text-gray-500">〜</span>
                     <div className="relative">
                       <input
+                        id="answerDateTo"
                         type="date"
+                        aria-label="回答日（終了）"
                         value={formData.answerDateTo}
                         onChange={(e) => handleInputChange("answerDateTo", e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -322,12 +375,14 @@ const RealtorAnswerManagement: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex gap-4 mt-8">
               <button
+                type="button"
                 onClick={handleReset}
                 className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 条件をリセット
               </button>
               <button
+                type="button"
                 onClick={handleSearch}
                 className="px-8 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
               >
@@ -345,6 +400,7 @@ const RealtorAnswerManagement: React.FC = () => {
           {/* 選択リストを削除ボタン */}
           <div className="mb-4">
             <button
+              type="button"
               onClick={handleDeleteSelected}
               className="text-blue-600 hover:text-blue-800 text-sm underline"
             >
@@ -356,21 +412,38 @@ const RealtorAnswerManagement: React.FC = () => {
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-600">210件中 1-20件表示</span>
             <div className="flex gap-1">
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button type="button" className="px-3 py-1 bg-blue-600 text-white rounded">
+                1
+              </button>
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 2
               </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 3
               </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 4
               </button>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 5
               </button>
               <span className="px-3 py-1">...</span>
-              <button className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50">
+              <button
+                type="button"
+                className="px-3 py-1 border border-gray-300 rounded hover:bg-gray-50"
+              >
                 »
               </button>
             </div>
@@ -416,10 +489,16 @@ const RealtorAnswerManagement: React.FC = () => {
                     </td>
                     <td className="border border-gray-300 p-3">
                       <div className="flex gap-1">
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                        <button
+                          type="button"
+                          className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600"
+                        >
                           詳細
                         </button>
-                        <button className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600">
+                        <button
+                          type="button"
+                          className="px-2 py-1 bg-gray-500 text-white text-xs rounded hover:bg-gray-600"
+                        >
                           編集
                         </button>
                       </div>

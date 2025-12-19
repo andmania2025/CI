@@ -79,7 +79,7 @@ export const LoginErrorDisplay: React.FC<LoginErrorDisplayProps> = ({ error, cla
       role="alert"
       aria-live="polite"
     >
-      <Icon className={cn("w-5 h-5 mt-0.5 flex-shrink-0", config.iconColor)} />
+      <Icon className={cn("w-5 h-5 mt-0.5 shrink-0", config.iconColor)} />
       <div className="flex-1">
         <p className={cn("text-sm font-medium", config.textColor)}>{error.message}</p>
       </div>
@@ -99,7 +99,7 @@ export const FieldErrorDisplay: React.FC<FieldErrorDisplayProps> = ({ error, cla
       aria-live="polite"
       id={error.field ? `${error.field}-error` : undefined}
     >
-      <Icon className={cn("w-4 h-4 flex-shrink-0", config.iconColor)} />
+      <Icon className={cn("w-4 h-4 shrink-0", config.iconColor)} />
       <span>{error.message}</span>
     </div>
   );

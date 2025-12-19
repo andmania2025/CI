@@ -88,8 +88,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose, com
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // フォーム送信処理をここに実装
-    console.log("お問い合わせ送信:", formData);
+    // TODO: フォーム送信処理をここに実装
     onClose();
   };
 
@@ -320,8 +319,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ isOpen, onClose, com
                       type="button"
                       className="text-blue-600 hover:underline p-0 h-auto font-normal"
                       onClick={() => {
-                        // プライバシーポリシーページを開く処理
-                        console.log("プライバシーポリシーを開く");
+                        // TODO: プライバシーポリシーページを開く処理
                       }}
                     >
                       プライバシーポリシー

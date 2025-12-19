@@ -117,7 +117,6 @@ export const useLoginForm = () => {
   const onSubmit = useCallback(
     async (data: LoginFormData) => {
       try {
-        console.log("ログイン試行:", data);
         setLoginError(null);
         setIsRedirecting(false);
 
@@ -125,7 +124,6 @@ export const useLoginForm = () => {
         const result = await login(data.email, data.password);
 
         if (result.success) {
-          console.log("ログイン成功");
           setIsRedirecting(true);
 
           // リダイレクト
@@ -133,14 +131,12 @@ export const useLoginForm = () => {
             window.location.href = "/dashboard";
           }, 500);
         } else {
-          console.log("ログイン失敗:", result.error);
           setLoginError({
             type: "authentication",
             message: result.error || "メールアドレスまたはパスワードが正しくありません",
           });
         }
-      } catch (error) {
-        console.error("ログインエラー:", error);
+      } catch (_error) {
         setLoginError({
           type: "network",
           message: "ログインに失敗しました。しばらく時間をおいて再度お試しください。",
