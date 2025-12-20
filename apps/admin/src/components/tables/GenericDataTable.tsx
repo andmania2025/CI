@@ -45,17 +45,24 @@ export function GenericDataTable<T>({
   maxHeight = "400px",
 }: GenericDataTableProps<T>) {
   const [data, _setData] = React.useState(() => initialData);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    [],
+  );
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [pagination, setPagination] = React.useState({ pageIndex: 0, pageSize: 10 });
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
 
   const table = useReactTable({
     data,
     columns,
     state: { sorting, columnVisibility, columnFilters, pagination },
     getRowId: (row: T) =>
-      (row as unknown as { id?: string | number }).id?.toString() || Math.random().toString(),
+      (row as unknown as { id?: string | number }).id?.toString() ||
+      Math.random().toString(),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
@@ -72,7 +79,9 @@ export function GenericDataTable<T>({
     <div className="w-full h-full flex flex-col">
       <div
         className="overflow-hidden rounded-lg border bg-white flex-1 min-h-0"
-        style={maxHeight === "100%" ? {} : { maxHeight: `calc(${maxHeight} - 60px)` }}
+        style={
+          maxHeight === "100%" ? {} : { maxHeight: `calc(${maxHeight} - 60px)` }
+        }
       >
         <div className="overflow-auto h-full">
           <Table>
@@ -101,15 +110,24 @@ export function GenericDataTable<T>({
                     className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id} className="px-4 py-3 text-sm text-gray-900">
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      <TableCell
+                        key={cell.id}
+                        className="px-4 py-3 text-sm text-gray-900"
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
                       </TableCell>
                     ))}
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={columns.length} className="h-24 text-center text-gray-500">
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center text-gray-500"
+                  >
                     データがありません。
                   </TableCell>
                 </TableRow>
@@ -120,7 +138,10 @@ export function GenericDataTable<T>({
       </div>
       {table.getPageCount() > 1 && (
         <div className="flex items-center justify-end pt-4 px-4 fshrink-0">
-          <Pagination className="m-0 !mx-0 !w-auto !justify-end">
+          <Pagination
+            className="m-0 mx-0 w-auto"
+            style={{ justifyContent: "flex-end" }}
+          >
             <PaginationContent className="flex items-center gap-2 m-0">
               <PaginationItem>
                 <Button
@@ -145,9 +166,25 @@ export function GenericDataTable<T>({
                   } else if (current < 4) {
                     pages = [1, 2, 3, 4, 5, "...", total];
                   } else if (current > total - 3) {
-                    pages = [1, "...", total - 4, total - 3, total - 2, total - 1, total];
+                    pages = [
+                      1,
+                      "...",
+                      total - 4,
+                      total - 3,
+                      total - 2,
+                      total - 1,
+                      total,
+                    ];
                   } else {
-                    pages = [1, "...", current - 1, current, current + 1, "...", total];
+                    pages = [
+                      1,
+                      "...",
+                      current - 1,
+                      current,
+                      current + 1,
+                      "...",
+                      total,
+                    ];
                   }
 
                   return pages.map((page, i) => (

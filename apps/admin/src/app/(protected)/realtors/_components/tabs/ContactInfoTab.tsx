@@ -1,6 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@/components/ui/table";
 import type React from "react";
 import { useState } from "react";
 import type { RealtorDetailTabsProps } from "../types";
@@ -31,7 +37,7 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
   return (
     <div className="h-full">
       <Card className="h-full flex flex-col gap-0">
-        <CardHeader className="flex-shrink-0 pb-2">
+        <CardHeader className="shrink-0 pb-2">
           <CardTitle className="text-lg">連絡先情報</CardTitle>
         </CardHeader>
         <CardContent className="flex-1 min-h-0 px-6 py-0">
@@ -46,7 +52,9 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
                     {isEditMode ? (
                       <Input
                         value={formData.representativeName}
-                        onChange={(e) => updateField("representativeName", e.target.value)}
+                        onChange={(e) =>
+                          updateField("representativeName", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -62,7 +70,9 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
                     {isEditMode ? (
                       <Input
                         value={formData.contactPerson}
-                        onChange={(e) => updateField("contactPerson", e.target.value)}
+                        onChange={(e) =>
+                          updateField("contactPerson", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -167,7 +177,9 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
                     {isEditMode ? (
                       <Input
                         value={formData.postalCode}
-                        onChange={(e) => updateField("postalCode", e.target.value)}
+                        onChange={(e) =>
+                          updateField("postalCode", e.target.value)
+                        }
                         className="w-full"
                         placeholder="150-0013"
                       />
@@ -202,7 +214,9 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
                     {isEditMode ? (
                       <Input
                         value={formData.businessHours}
-                        onChange={(e) => updateField("businessHours", e.target.value)}
+                        onChange={(e) =>
+                          updateField("businessHours", e.target.value)
+                        }
                         className="w-full"
                         placeholder="平日 9:00-18:00"
                       />
@@ -219,7 +233,9 @@ export const ContactInfoTab: React.FC<RealtorDetailTabsProps> = ({
                     {isEditMode ? (
                       <Input
                         value={formData.holidays}
-                        onChange={(e) => updateField("holidays", e.target.value)}
+                        onChange={(e) =>
+                          updateField("holidays", e.target.value)
+                        }
                         className="w-full"
                         placeholder="土日祝日"
                       />

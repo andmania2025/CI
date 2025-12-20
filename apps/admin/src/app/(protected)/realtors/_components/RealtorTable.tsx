@@ -125,8 +125,12 @@ export const RealtorTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [columns, setColumns] = useState<ColumnDef[]>(defaultColumns);
-  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(null);
-  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(null);
+  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(
+    null,
+  );
+  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(
+    null,
+  );
 
   // 外部から渡されたcolumnsが変更されたら更新
   useEffect(() => {
@@ -134,11 +138,15 @@ export const RealtorTable = ({
       setColumns((prev) => {
         const sourceColumns = prev.length > 0 ? prev : defaultColumns;
         return externalColumns.map((extCol) => {
-          const existingCol = sourceColumns.find((col) => col.key === extCol.key);
+          const existingCol = sourceColumns.find(
+            (col) => col.key === extCol.key,
+          );
           if (existingCol) {
             return { ...existingCol, visible: extCol.visible };
           }
-          const defaultCol = defaultColumns.find((col) => col.key === extCol.key);
+          const defaultCol = defaultColumns.find(
+            (col) => col.key === extCol.key,
+          );
           return defaultCol
             ? { ...defaultCol, visible: extCol.visible }
             : { ...extCol, align: "left" };
@@ -171,7 +179,9 @@ export const RealtorTable = ({
 
   // 表示件数が変更されたときに現在のページをリセット
   useEffect(() => {
-    setCurrentPage(1);
+    if (itemsPerPage > 0) {
+      setCurrentPage(1);
+    }
   }, [itemsPerPage]);
 
   // 詳細ページへのナビゲーション
@@ -206,7 +216,7 @@ export const RealtorTable = ({
       }
       return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(
         2,
-        "0"
+        "0",
       )}/${String(date.getDate()).padStart(2, "0")}`;
     } catch (_error) {
       return dateString; // エラーの場合は元の文字列を返す
@@ -214,14 +224,16 @@ export const RealtorTable = ({
   };
 
   const truncateTitle = (title: string, maxLength = 30) => {
-    return title.length > maxLength ? `${title.substring(0, maxLength)}...` : title;
+    return title.length > maxLength
+      ? `${title.substring(0, maxLength)}...`
+      : title;
   };
 
   // 列の表示/非表示を切り替え
   const toggleColumnVisibility = (columnKey: string) => {
     setColumns((prev) => {
       const newColumns = prev.map((col) =>
-        col.key === columnKey ? { ...col, visible: !col.visible } : col
+        col.key === columnKey ? { ...col, visible: !col.visible } : col,
       );
       // visibleプロパティとalignプロパティを親に通知
       onColumnsChange?.(
@@ -230,7 +242,7 @@ export const RealtorTable = ({
           label: col.label,
           visible: col.visible,
           align: col.align,
-        }))
+        })),
       );
       return newColumns;
     });
@@ -279,7 +291,7 @@ export const RealtorTable = ({
         label: col.label,
         visible: col.visible,
         align: col.align,
-      }))
+      })),
     );
     setDraggedColumnIndex(null);
     setDragOverColumnIndex(null);
@@ -288,14 +300,15 @@ export const RealtorTable = ({
   return (
     <div className="space-y-4 h-full max-h-screen flex flex-col overflow-hidden">
       {/* ページネーション情報 */}
-      <div className="flex items-center justify-between w-full px-0 flex-shrink-0">
+      <div className="flex items-center justify-between w-full px-0 shrink-0">
         {/* 左端：表示件数情報 */}
-        <div className="text-sm text-gray-500 whitespace-nowrap flex-shrink-0">
-          {realtors.length}件中 {startIndex + 1}-{Math.min(endIndex, realtors.length)}件を表示
+        <div className="text-sm text-gray-500 whitespace-nowrap shrink-0">
+          {realtors.length}件中 {startIndex + 1}-
+          {Math.min(endIndex, realtors.length)}件を表示
         </div>
 
         {/* 右端：列の表示設定 + ページネーション */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {columns.length > 0 && onToggleColumnVisibility && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -335,17 +348,19 @@ export const RealtorTable = ({
 
                 {/* ページ番号 */}
                 <div className="flex items-center gap-1">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <PaginationItem key={page}>
-                      <PaginationLink
-                        onClick={() => setCurrentPage(page)}
-                        isActive={currentPage === page}
-                        className="cursor-pointer"
-                      >
-                        {page}
-                      </PaginationLink>
-                    </PaginationItem>
-                  ))}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          onClick={() => setCurrentPage(page)}
+                          isActive={currentPage === page}
+                          className="cursor-pointer"
+                        >
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ),
+                  )}
                 </div>
 
                 {/* 次へボタン */}
@@ -353,7 +368,9 @@ export const RealtorTable = ({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    onClick={() =>
+                      setCurrentPage(Math.min(totalPages, currentPage + 1))
+                    }
                     disabled={currentPage === totalPages}
                     className="h-8 w-16"
                   >
@@ -375,7 +392,9 @@ export const RealtorTable = ({
                 <Checkbox checked={selectAll} onCheckedChange={onSelectAll} />
               </TableHead>
               {visibleColumns.map((column, visibleIndex) => {
-                const originalIndex = columns.findIndex((col) => col.key === column.key);
+                const originalIndex = columns.findIndex(
+                  (col) => col.key === column.key,
+                );
                 const isDragOver = dragOverColumnIndex === originalIndex;
 
                 return (
@@ -422,11 +441,19 @@ export const RealtorTable = ({
                         {truncateTitle(realtor.title)}
                       </div>
                     )}
-                    {column.key === "representativeName" && (realtor.representativeName || "-")}
-                    {column.key === "contactPerson" && (realtor.contactPerson || "-")}
+                    {column.key === "representativeName" &&
+                      (realtor.representativeName || "-")}
+                    {column.key === "contactPerson" &&
+                      (realtor.contactPerson || "-")}
                     {column.key === "accountType" && (
                       <div className="flex justify-center">
-                        <Badge variant={realtor.accountType === "paid" ? "success" : "neutral"}>
+                        <Badge
+                          variant={
+                            realtor.accountType === "paid"
+                              ? "success"
+                              : "neutral"
+                          }
+                        >
                           {realtor.accountType === "paid"
                             ? "有料"
                             : realtor.accountType === "free"
@@ -450,11 +477,15 @@ export const RealtorTable = ({
                         </Badge>
                       </div>
                     )}
-                    {column.key === "updateDate" && formatDate(realtor.updateDate)}
-                    {column.key === "nextUpdateDate" && formatDate(realtor.nextUpdateDate)}
+                    {column.key === "updateDate" &&
+                      formatDate(realtor.updateDate)}
+                    {column.key === "nextUpdateDate" &&
+                      formatDate(realtor.nextUpdateDate)}
                     {column.key === "inquiryCount" && (
                       <div className="flex justify-center">
-                        <Badge variant="info">{Number(realtor.inquiryCount)}件</Badge>
+                        <Badge variant="info">
+                          {Number(realtor.inquiryCount)}件
+                        </Badge>
                       </div>
                     )}
                   </TableCell>
@@ -463,15 +494,23 @@ export const RealtorTable = ({
                   <div className="flex justify-center">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-gray-100">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0 hover:bg-gray-100"
+                        >
                           <MoreVertical className="w-4 h-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => handleViewDetail(realtor.id)}>
+                        <DropdownMenuItem
+                          onClick={() => handleViewDetail(realtor.id)}
+                        >
                           詳細
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => handleDuplicateRealtor(realtor.id)}>
+                        <DropdownMenuItem
+                          onClick={() => handleDuplicateRealtor(realtor.id)}
+                        >
                           削除
                         </DropdownMenuItem>
                       </DropdownMenuContent>

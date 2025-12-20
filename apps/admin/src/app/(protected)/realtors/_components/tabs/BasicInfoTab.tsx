@@ -7,13 +7,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@/components/ui/table";
 import type React from "react";
 import { useState } from "react";
 import type { RealtorDetailTabsProps } from "../types";
 
 // 基本情報タブ
-export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEditMode = false }) => {
+export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({
+  realtor,
+  isEditMode = false,
+}) => {
   const [formData, setFormData] = useState({
     companyName: realtor.title || "",
     branchName: "渋谷支店",
@@ -29,7 +38,8 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
     website: "https://www.sample-realtor.com",
     businessHours: "平日 9:00-18:00",
     holidays: "土日祝日",
-    accessInfo: "JR山手線 恵比寿駅 徒歩5分\n東京メトロ日比谷線 恵比寿駅 徒歩3分",
+    accessInfo:
+      "JR山手線 恵比寿駅 徒歩5分\n東京メトロ日比谷線 恵比寿駅 徒歩3分",
     memberNumber: "M-12345",
     transactionStartDate: "2024-01-01",
     transactionPeriod: "12ヶ月",
@@ -48,7 +58,7 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
   return (
     <div className="h-full">
       <Card className="h-full flex flex-col gap-0">
-        <CardHeader className="flex-shrink-0 pb-2">
+        <CardHeader className="shrink-0 pb-2">
           <CardTitle className="text-lg">基本情報</CardTitle>
         </CardHeader>
         <CardContent className="flex-1 min-h-0 px-6 py-0">
@@ -63,7 +73,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.companyName}
-                        onChange={(e) => updateField("companyName", e.target.value)}
+                        onChange={(e) =>
+                          updateField("companyName", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -79,7 +91,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.branchName}
-                        onChange={(e) => updateField("branchName", e.target.value)}
+                        onChange={(e) =>
+                          updateField("branchName", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -95,7 +109,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.storeName}
-                        onChange={(e) => updateField("storeName", e.target.value)}
+                        onChange={(e) =>
+                          updateField("storeName", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -111,7 +127,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.representativeName}
-                        onChange={(e) => updateField("representativeName", e.target.value)}
+                        onChange={(e) =>
+                          updateField("representativeName", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -127,7 +145,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.contactPerson}
-                        onChange={(e) => updateField("contactPerson", e.target.value)}
+                        onChange={(e) =>
+                          updateField("contactPerson", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -144,7 +164,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.postalCode}
-                        onChange={(e) => updateField("postalCode", e.target.value)}
+                        onChange={(e) =>
+                          updateField("postalCode", e.target.value)
+                        }
                         className="w-full"
                         placeholder="150-0013"
                       />
@@ -268,7 +290,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.businessHours}
-                        onChange={(e) => updateField("businessHours", e.target.value)}
+                        onChange={(e) =>
+                          updateField("businessHours", e.target.value)
+                        }
                         className="w-full"
                         placeholder="平日 9:00-18:00"
                       />
@@ -285,7 +309,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.holidays}
-                        onChange={(e) => updateField("holidays", e.target.value)}
+                        onChange={(e) =>
+                          updateField("holidays", e.target.value)
+                        }
                         className="w-full"
                         placeholder="土日祝日"
                       />
@@ -302,17 +328,15 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <textarea
                         value={formData.accessInfo}
-                        onChange={(e) => updateField("accessInfo", e.target.value)}
+                        onChange={(e) =>
+                          updateField("accessInfo", e.target.value)
+                        }
                         className="w-full min-h-[80px] px-3 py-2 text-sm border border-input bg-background rounded-md"
                         placeholder="JR山手線 恵比寿駅 徒歩5分&#10;東京メトロ日比谷線 恵比寿駅 徒歩3分"
                       />
                     ) : (
-                      <div className="space-y-1">
-                        {formData.accessInfo.split("\n").map((line, index) => (
-                          <div key={index} className="text-sm">
-                            {line}
-                          </div>
-                        ))}
+                      <div className="text-sm whitespace-pre-wrap">
+                        {formData.accessInfo}
                       </div>
                     )}
                   </TableCell>
@@ -326,7 +350,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.memberNumber}
-                        onChange={(e) => updateField("memberNumber", e.target.value)}
+                        onChange={(e) =>
+                          updateField("memberNumber", e.target.value)
+                        }
                         className="w-full"
                         placeholder="M-12345"
                       />
@@ -344,7 +370,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                       <Input
                         type="date"
                         value={formData.transactionStartDate}
-                        onChange={(e) => updateField("transactionStartDate", e.target.value)}
+                        onChange={(e) =>
+                          updateField("transactionStartDate", e.target.value)
+                        }
                         className="w-full"
                       />
                     ) : (
@@ -360,7 +388,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.transactionPeriod}
-                        onChange={(e) => updateField("transactionPeriod", e.target.value)}
+                        onChange={(e) =>
+                          updateField("transactionPeriod", e.target.value)
+                        }
                         className="w-full"
                         placeholder="12ヶ月"
                       />
@@ -377,7 +407,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.businessCategory}
-                        onChange={(e) => updateField("businessCategory", e.target.value)}
+                        onChange={(e) =>
+                          updateField("businessCategory", e.target.value)
+                        }
                         className="w-full"
                         placeholder="不動産売買・賃貸"
                       />
@@ -394,7 +426,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.realEstateTypes}
-                        onChange={(e) => updateField("realEstateTypes", e.target.value)}
+                        onChange={(e) =>
+                          updateField("realEstateTypes", e.target.value)
+                        }
                         className="w-full"
                         placeholder="住宅、土地、マンション"
                       />
@@ -411,7 +445,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.propertyIndicator}
-                        onChange={(e) => updateField("propertyIndicator", e.target.value)}
+                        onChange={(e) =>
+                          updateField("propertyIndicator", e.target.value)
+                        }
                         className="w-full"
                         placeholder="駅近物件中心"
                       />
@@ -428,7 +464,12 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.preferredEntrustmentMethod}
-                        onChange={(e) => updateField("preferredEntrustmentMethod", e.target.value)}
+                        onChange={(e) =>
+                          updateField(
+                            "preferredEntrustmentMethod",
+                            e.target.value,
+                          )
+                        }
                         className="w-full"
                         placeholder="専任媒介"
                       />
@@ -445,7 +486,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Input
                         value={formData.salesPrice}
-                        onChange={(e) => updateField("salesPrice", e.target.value)}
+                        onChange={(e) =>
+                          updateField("salesPrice", e.target.value)
+                        }
                         className="w-full"
                         placeholder="3,000万円～5,000万円"
                       />
@@ -462,7 +505,9 @@ export const BasicInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor, isEdit
                     {isEditMode ? (
                       <Select
                         value={formData.fairTradeMember}
-                        onValueChange={(value) => updateField("fairTradeMember", value)}
+                        onValueChange={(value) =>
+                          updateField("fairTradeMember", value)
+                        }
                       >
                         <SelectTrigger className="w-full">
                           <SelectValue />

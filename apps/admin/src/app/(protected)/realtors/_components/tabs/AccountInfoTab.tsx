@@ -1,15 +1,23 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@/components/ui/table";
 import type React from "react";
 import type { RealtorDetailTabsProps } from "../types";
 
 // アカウント情報タブ
-export const AccountInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor }) => {
+export const AccountInfoTab: React.FC<RealtorDetailTabsProps> = ({
+  realtor,
+}) => {
   return (
     <div className="h-full">
       <Card className="h-full flex flex-col gap-0">
-        <CardHeader className="flex-shrink-0 pb-2">
+        <CardHeader className="shrink-0 pb-2">
           <CardTitle className="text-lg">アカウント情報</CardTitle>
         </CardHeader>
         <CardContent className="flex-1 min-h-0 px-6 py-0">
@@ -30,7 +38,9 @@ export const AccountInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor }) =>
                   <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
                     プラン
                   </TableHead>
-                  <TableCell className="pl-6 py-4">スタンダードプラン</TableCell>
+                  <TableCell className="pl-6 py-4">
+                    スタンダードプラン
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
@@ -54,20 +64,27 @@ export const AccountInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor }) =>
                   <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
                     登録日
                   </TableHead>
-                  <TableCell className="pl-6 py-4">{realtor.updateDate}</TableCell>
+                  <TableCell className="pl-6 py-4">
+                    {realtor.updateDate}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
                     最終ログイン
                   </TableHead>
-                  <TableCell className="pl-6 py-4">{realtor.nextUpdateDate}</TableCell>
+                  <TableCell className="pl-6 py-4">
+                    {realtor.nextUpdateDate}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableHead className="w-1/3 align-middle pt-4 sticky left-0 bg-background pl-0">
                     ログイン回数
                   </TableHead>
                   <TableCell className="pl-6 py-4">
-                    <Badge variant="outline" className="bg-blue-50 text-blue-700 text-xs">
+                    <Badge
+                      variant="outline"
+                      className="bg-blue-50 text-blue-700 text-xs"
+                    >
                       156回
                     </Badge>
                   </TableCell>
@@ -107,7 +124,10 @@ export const AccountInfoTab: React.FC<RealtorDetailTabsProps> = ({ realtor }) =>
                     現在の掲載数
                   </TableHead>
                   <TableCell className="pl-6 py-4">
-                    <Badge variant="outline" className="bg-blue-50 text-blue-700 text-xs">
+                    <Badge
+                      variant="outline"
+                      className="bg-blue-50 text-blue-700 text-xs"
+                    >
                       {realtor.inquiryCount}件
                     </Badge>
                   </TableCell>

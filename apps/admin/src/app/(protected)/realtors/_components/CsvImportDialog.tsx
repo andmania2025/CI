@@ -11,7 +11,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
-import { AlertCircle, CheckCircle, Download, FileText, Upload } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle,
+  Download,
+  FileText,
+  Upload,
+} from "lucide-react";
 import type React from "react";
 import { useRef, useState } from "react";
 
@@ -90,7 +96,9 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
     try {
       // 簡単なCSV解析（実際の実装ではより詳細な検証が必要）
       const lines = csvData.split("\n").filter((line) => line.trim());
-      const _headers = lines[0].split(",").map((h) => h.trim().replace(/"/g, ""));
+      const _headers = lines[0]
+        .split(",")
+        .map((h) => h.trim().replace(/"/g, ""));
 
       // サンプル結果を返す
       setTimeout(() => {
@@ -185,10 +193,11 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
               </span>
             </div>
             <Button
+              type="button"
               variant="outline"
               size="sm"
               onClick={handleDownloadSample}
-              className="flex items-center gap-1 flex-shrink-0"
+              className="flex items-center gap-1 shrink-0"
             >
               <Download className="w-4 h-4" />
               サンプルCSV
@@ -199,7 +208,9 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
           {!importResult && (
             <div
               className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                dragOver ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-gray-400"
+                dragOver
+                  ? "border-blue-500 bg-blue-50"
+                  : "border-gray-300 hover:border-gray-400"
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -211,6 +222,7 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
               </p>
               <p className="text-sm text-gray-500 mb-4">または</p>
               <Button
+                type="button"
                 onClick={() => fileInputRef.current?.click()}
                 disabled={isLoading}
                 className="mb-2"
@@ -250,7 +262,9 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
             <div className="space-y-4">
               <Alert
                 className={
-                  importResult.success ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
+                  importResult.success
+                    ? "border-green-200 bg-green-50"
+                    : "border-red-200 bg-red-50"
                 }
               >
                 <div className="flex items-center gap-2">
@@ -260,7 +274,9 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
                     <AlertCircle className="w-4 h-4 text-red-600" />
                   )}
                   <AlertDescription
-                    className={importResult.success ? "text-green-800" : "text-red-800"}
+                    className={
+                      importResult.success ? "text-green-800" : "text-red-800"
+                    }
                   >
                     {importResult.message}
                   </AlertDescription>
@@ -270,14 +286,17 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
               {/* エラー詳細 */}
               {importResult.errors && importResult.errors.length > 0 && (
                 <div className="space-y-2">
-                  <h4 className="font-medium text-sm text-gray-700">エラー詳細:</h4>
+                  <h4 className="font-medium text-sm text-gray-700">
+                    エラー詳細:
+                  </h4>
                   <div className="max-h-40 overflow-y-auto space-y-1">
-                    {importResult.errors.map((error, index) => (
+                    {importResult.errors.map((error) => (
                       <div
-                        key={index}
+                        key={`${error.row}-${error.field}-${error.message}`}
                         className="text-xs bg-red-50 border border-red-200 rounded p-2"
                       >
-                        <span className="font-medium">行 {error.row}:</span> {error.message}
+                        <span className="font-medium">行 {error.row}:</span>{" "}
+                        {error.message}
                       </div>
                     ))}
                   </div>
@@ -294,7 +313,9 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
                 </div>
                 <div className="bg-red-50 border border-red-200 rounded p-3">
                   <div className="font-medium text-red-800">エラー</div>
-                  <div className="text-lg font-bold text-red-600">{importResult.errorCount}件</div>
+                  <div className="text-lg font-bold text-red-600">
+                    {importResult.errorCount}件
+                  </div>
                 </div>
               </div>
             </div>
@@ -302,11 +323,13 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={handleClose}>
+          <Button type="button" variant="outline" onClick={handleClose}>
             {importResult ? "閉じる" : "キャンセル"}
           </Button>
           {importResult && (
-            <Button onClick={() => setImportResult(null)}>新しいファイルをインポート</Button>
+            <Button type="button" onClick={() => setImportResult(null)}>
+              新しいファイルをインポート
+            </Button>
           )}
         </DialogFooter>
       </DialogContent>

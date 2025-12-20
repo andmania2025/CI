@@ -1,7 +1,6 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Image as ImageIcon, Upload, X } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { ChevronLeft, ChevronRight, Upload, X } from "lucide-react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import type { PropertyImage } from "./types";
@@ -31,6 +30,7 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
   const [_isDragging, _setIsDragging] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
   const dragCounterRef = useRef(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // imagesプロップを直接使用
   const displayImages = images;
@@ -119,8 +119,20 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
             onDragLeave={isEditMode ? handleDragLeave : undefined}
             onDrop={isEditMode ? handleDrop : undefined}
             onClick={
-              isEditMode ? () => document.getElementById("image-upload")?.click() : undefined
+              isEditMode ? () => fileInputRef.current?.click() : undefined
             }
+            onKeyDown={
+              isEditMode
+                ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      fileInputRef.current?.click();
+                    }
+                  }
+                : undefined
+            }
+            role={isEditMode ? "button" : undefined}
+            tabIndex={isEditMode ? 0 : undefined}
           >
             {displayImages.length > 0 ? (
               <>
@@ -130,12 +142,14 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
                     alt={displayImages[currentIndex]?.alt || "物件画像"}
                     className="w-full h-full object-cover"
                     onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
                   />
 
                   {/* スライダーナビゲーション（画像内配置） */}
                   {displayImages.length > 1 && (
                     <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                       <Button
+                        type="button"
                         variant="secondary"
                         size="sm"
                         onClick={(e) => {
@@ -147,6 +161,7 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
                         <ChevronLeft className="w-4 h-4" />
                       </Button>
                       <Button
+                        type="button"
                         variant="secondary"
                         size="sm"
                         onClick={(e) => {
@@ -195,6 +210,7 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
 
             {/* 非表示のファイル入力 */}
             <input
+              ref={fileInputRef}
               type="file"
               id="image-upload"
               multiple
@@ -217,16 +233,22 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
                         : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
-                    <img
-                      src={image.url}
-                      alt={image.alt}
-                      className="w-full h-full object-cover cursor-pointer"
+                    <button
+                      type="button"
+                      className="w-full h-full block p-0 bg-transparent border-0 cursor-pointer"
                       onClick={() => handleImageClick(index)}
-                    />
+                    >
+                      <img
+                        src={image.url}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
 
                     {/* 削除アイコン（編集モード時のみ表示） */}
                     {isEditMode && (
                       <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           if (onImageDelete) {

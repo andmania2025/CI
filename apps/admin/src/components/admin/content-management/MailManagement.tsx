@@ -50,7 +50,9 @@ const MailManagement: React.FC = () => {
     status: string;
   };
 
-  const [editingTemplate, setEditingTemplate] = useState<MailTemplate | null>(null);
+  const [editingTemplate, setEditingTemplate] = useState<MailTemplate | null>(
+    null,
+  );
   const [mailVariables, _setMailVariables] = useState<MailVariable[]>([
     {
       id: "var_1",
@@ -96,7 +98,8 @@ const MailManagement: React.FC = () => {
     {
       id: "mt001",
       templateName: "物件問い合わせ対応メール1",
-      subject: "【ウチカツ】カテゴリー不動産のお問い合わせありがとうございました",
+      subject:
+        "【ウチカツ】カテゴリー不動産のお問い合わせありがとうございました",
       templateType: "配信",
       status: "編集",
     },
@@ -247,7 +250,7 @@ const MailManagement: React.FC = () => {
   const handleCheckboxChange = (
     category: keyof typeof formData,
     field: string,
-    checked: boolean
+    checked: boolean,
   ) => {
     setFormData((prev) => {
       const currentCategory = prev[category];
@@ -302,7 +305,9 @@ const MailManagement: React.FC = () => {
 
   // 表示件数が変更されたときに現在のページをリセット
   useEffect(() => {
-    setCurrentPage(1);
+    if (itemsPerPage) {
+      setCurrentPage(1);
+    }
   }, [itemsPerPage]);
 
   // ページネーション計算
@@ -330,12 +335,14 @@ const MailManagement: React.FC = () => {
   };
 
   // 選択されているメールの配信設定状態を計算
-  const selectedTemplates = mailTemplates.filter((template) => selectedMails.includes(template.id));
+  const selectedTemplates = mailTemplates.filter((template) =>
+    selectedMails.includes(template.id),
+  );
   const stoppedCount = selectedTemplates.filter(
-    (template) => template.templateType === "停止"
+    (template) => template.templateType === "停止",
   ).length;
   const deliveryCount = selectedTemplates.filter(
-    (template) => template.templateType === "配信"
+    (template) => template.templateType === "配信",
   ).length;
 
   return (
@@ -370,7 +377,7 @@ const MailManagement: React.FC = () => {
       {/* 自動メールテンプレート一覧セクション */}
       <div className="space-y-4 h-full max-h-screen flex flex-col overflow-hidden">
         {/* 説明文ボタン */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           <Button
             variant="outline"
             size="sm"
@@ -381,7 +388,8 @@ const MailManagement: React.FC = () => {
             }}
             disabled={stoppedCount === 0}
           >
-            選択リストの配信設定を「配信」に変更{stoppedCount > 0 && `（${stoppedCount}件）`}
+            選択リストの配信設定を「配信」に変更
+            {stoppedCount > 0 && `（${stoppedCount}件）`}
           </Button>
           <Button
             variant="outline"
@@ -393,20 +401,22 @@ const MailManagement: React.FC = () => {
             }}
             disabled={deliveryCount === 0}
           >
-            選択リストの配信設定を「停止」に変更{deliveryCount > 0 && `（${deliveryCount}件）`}
+            選択リストの配信設定を「停止」に変更
+            {deliveryCount > 0 && `（${deliveryCount}件）`}
           </Button>
         </div>
 
         {/* ページネーション情報 */}
-        <div className="flex items-center justify-between w-full px-0 flex-shrink-0">
+        <div className="flex items-center justify-between w-full px-0 shrink-0">
           {/* 左端：表示件数情報 */}
-          <div className="text-sm text-gray-500 whitespace-nowrap flex-shrink-0">
-            {mailTemplates.length}件中 {startIndex + 1}-{Math.min(endIndex, mailTemplates.length)}
+          <div className="text-sm text-gray-500 whitespace-nowrap shrink-0">
+            {mailTemplates.length}件中 {startIndex + 1}-
+            {Math.min(endIndex, mailTemplates.length)}
             件を表示
           </div>
 
           {/* 右端：ページネーション */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <Pagination className="m-0">
               <PaginationContent className="flex items-center gap-2 m-0">
                 {/* 前へボタン */}
@@ -425,17 +435,19 @@ const MailManagement: React.FC = () => {
                 {/* ページ番号 */}
                 <div className="flex items-center gap-1">
                   {totalPages > 0 &&
-                    Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <PaginationItem key={page}>
-                        <PaginationLink
-                          onClick={() => setCurrentPage(page)}
-                          isActive={currentPage === page}
-                          className="cursor-pointer"
-                        >
-                          {page}
-                        </PaginationLink>
-                      </PaginationItem>
-                    ))}
+                    Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <PaginationItem key={page}>
+                          <PaginationLink
+                            onClick={() => setCurrentPage(page)}
+                            isActive={currentPage === page}
+                            className="cursor-pointer"
+                          >
+                            {page}
+                          </PaginationLink>
+                        </PaginationItem>
+                      ),
+                    )}
                 </div>
 
                 {/* 次へボタン */}
@@ -443,7 +455,9 @@ const MailManagement: React.FC = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    onClick={() =>
+                      setCurrentPage(Math.min(totalPages, currentPage + 1))
+                    }
                     disabled={currentPage === totalPages || totalPages <= 1}
                     className="h-8 w-16"
                   >
@@ -462,7 +476,10 @@ const MailManagement: React.FC = () => {
               <TableHeader>
                 <TableRow className="border-b border-gray-200 bg-gray-50">
                   <TableHead className="w-12 text-center font-semibold text-gray-700 py-2 bg-gray-50">
-                    <Checkbox checked={selectAll} onCheckedChange={handleSelectAll} />
+                    <Checkbox
+                      checked={selectAll}
+                      onCheckedChange={handleSelectAll}
+                    />
                   </TableHead>
                   <TableHead className="text-left font-semibold text-gray-700 py-2 bg-gray-50">
                     テンプレート名
@@ -478,7 +495,10 @@ const MailManagement: React.FC = () => {
               </TableHeader>
               <TableBody>
                 {currentTemplates.map((template) => (
-                  <TableRow key={template.id} className="border-b border-gray-100 hover:bg-gray-50">
+                  <TableRow
+                    key={template.id}
+                    className="border-b border-gray-100 hover:bg-gray-50"
+                  >
                     <TableCell className="text-center py-2">
                       <Checkbox
                         checked={selectedMails.includes(template.id)}
@@ -494,7 +514,13 @@ const MailManagement: React.FC = () => {
                       {template.subject}
                     </TableCell>
                     <TableCell className="text-left text-gray-600 py-2">
-                      <Badge variant={template.templateType === "配信" ? "success" : "neutral"}>
+                      <Badge
+                        variant={
+                          template.templateType === "配信"
+                            ? "success"
+                            : "neutral"
+                        }
+                      >
                         {template.templateType}
                       </Badge>
                     </TableCell>
