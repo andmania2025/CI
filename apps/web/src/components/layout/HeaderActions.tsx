@@ -10,7 +10,7 @@ export const HeaderActions = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
-    <div className="flex items-center space-x-4 flex-shrink-0">
+    <div className="flex items-center space-x-4 shrink-0">
       {/* ハートアイコン - お気に入り一覧ページへのリンク */}
       <Link href="/favorites" className="block">
         <CiHeart className="w-6 h-6 text-gray-600 hover:text-[#093893] transition-colors cursor-pointer" />

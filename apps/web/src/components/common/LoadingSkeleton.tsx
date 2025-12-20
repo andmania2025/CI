@@ -2,6 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import type React from "react";
 
+const range = (count: number) => Array.from({ length: count }, (_, i) => i);
+
 interface LoadingSkeletonProps {
   variant?:
     | "default"
@@ -23,9 +25,9 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
       case "favorites-grid":
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
+            {range(6).map((id) => (
               <div
-                key={i}
+                key={id}
                 className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-200"
               >
                 <div className="space-y-4 p-4">
@@ -95,9 +97,9 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
 
             {/* 物件カードのスケルトン */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 9 }).map((_, i) => (
+              {range(9).map((id) => (
                 <div
-                  key={i}
+                  key={id}
                   className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-200"
                 >
                   <div className="space-y-4 p-4">
@@ -156,9 +158,9 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
             <div className="space-y-4">
               <Skeleton className="h-6 w-48" />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, i) => (
+                {range(6).map((id) => (
                   <div
-                    key={i}
+                    key={id}
                     className="bg-white rounded-lg p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-200"
                   >
                     <div className="space-y-3">
@@ -182,8 +184,8 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
           <div className="space-y-6">
             <Skeleton className="h-8 w-64" />
             <div className="space-y-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="space-y-2">
+              {range(8).map((id) => (
+                <div key={id} className="space-y-2">
                   <Skeleton className="h-4 w-32" />
                   <Skeleton className="h-10 w-full" />
                 </div>
@@ -198,8 +200,11 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
       case "list":
         return (
           <div className="space-y-4">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="flex items-center space-x-4 p-4 border rounded-lg">
+            {range(5).map((id) => (
+              <div
+                key={id}
+                className="flex items-center space-x-4 p-4 border rounded-lg"
+              >
                 <Skeleton className="h-16 w-16 rounded-full" />
                 <div className="flex-1 space-y-2">
                   <Skeleton className="h-4 w-3/4" />
@@ -227,5 +232,7 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
     }
   };
 
-  return <div className={cn("animate-pulse", className)}>{renderSkeleton()}</div>;
+  return (
+    <div className={cn("animate-pulse", className)}>{renderSkeleton()}</div>
+  );
 };

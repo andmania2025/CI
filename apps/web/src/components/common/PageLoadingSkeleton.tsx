@@ -81,9 +81,9 @@ export const PageLoadingSkeleton: React.FC<PageLoadingSkeletonProps> = ({
 
               {/* 物件カードのスケルトン */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 12 }).map((_, i) => (
+                {Array.from({ length: 12 }, (_, i) => i).map((index) => (
                   <div
-                    key={i}
+                    key={index}
                     className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-200"
                   >
                     <div className="space-y-4 p-4">
@@ -142,9 +142,9 @@ export const PageLoadingSkeleton: React.FC<PageLoadingSkeletonProps> = ({
             <div className="space-y-4">
               <Skeleton className="h-6 w-48" />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Array.from({ length: 6 }).map((_, i) => (
+                {Array.from({ length: 6 }, (_, i) => i).map((index) => (
                   <div
-                    key={i}
+                    key={index}
                     className="bg-white rounded-lg p-4 border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-200"
                   >
                     <div className="space-y-3">
@@ -167,8 +167,8 @@ export const PageLoadingSkeleton: React.FC<PageLoadingSkeletonProps> = ({
           <div className="space-y-6">
             <Skeleton className="h-8 w-64" />
             <div className="space-y-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="space-y-2">
+              {Array.from({ length: 8 }, (_, i) => i).map((index) => (
+                <div key={index} className="space-y-2">
                   <Skeleton className="h-4 w-32" />
                   <Skeleton className="h-10 w-full" />
                 </div>
@@ -182,8 +182,11 @@ export const PageLoadingSkeleton: React.FC<PageLoadingSkeletonProps> = ({
 
         {variant === "list" && (
           <div className="space-y-4">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50">
+            {Array.from({ length: 5 }, (_, i) => i).map((index) => (
+              <div
+                key={index}
+                className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50"
+              >
                 <Skeleton className="h-16 w-16 rounded-full" />
                 <div className="flex-1 space-y-2">
                   <Skeleton className="h-4 w-3/4" />

@@ -172,8 +172,12 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
   const [columns, setColumns] = useState<ColumnDef[]>(defaultColumns);
-  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(null);
-  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(null);
+  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(
+    null,
+  );
+  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(
+    null,
+  );
   const prevColumnsRef = useRef<string>("");
 
   // 外部から渡されたcolumnsが変更されたら更新（render関数をマージ）
@@ -184,13 +188,17 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
         const sourceColumns = prev.length > 0 ? prev : defaultColumns;
 
         return externalColumns.map((extCol) => {
-          const existingCol = sourceColumns.find((col) => col.key === extCol.key);
+          const existingCol = sourceColumns.find(
+            (col) => col.key === extCol.key,
+          );
           if (existingCol) {
             // 既存の列のrender関数とalignを保持し、visibleのみ更新
             return { ...existingCol, visible: extCol.visible };
           }
           // 見つからない場合はdefaultColumnsから取得
-          const defaultCol = defaultColumns.find((col) => col.key === extCol.key);
+          const defaultCol = defaultColumns.find(
+            (col) => col.key === extCol.key,
+          );
           return defaultCol
             ? { ...defaultCol, visible: extCol.visible }
             : { ...extCol, render: () => "-", align: "left" };
@@ -223,6 +231,7 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   }, []);
 
   // 表示件数が変更されたときに現在のページをリセット
+  // biome-ignore lint/correctness/useExhaustiveDependencies: itemsPerPage の変更をトリガーとして検知するために依存配列に含めている
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage]);
@@ -249,14 +258,18 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   // 列の表示/非表示を切り替え
   const toggleColumnVisibility = (columnKey: string) => {
     setColumns((prev) => {
-      return prev.map((col) => (col.key === columnKey ? { ...col, visible: !col.visible } : col));
+      return prev.map((col) =>
+        col.key === columnKey ? { ...col, visible: !col.visible } : col,
+      );
     });
     onToggleColumnVisibility?.(columnKey);
   };
 
   // columnsが変更されたときに親に通知（レンダリング後）
   useEffect(() => {
-    const currentColumnsString = columns.map((col) => `${col.key}-${col.visible}`).join(",");
+    const currentColumnsString = columns
+      .map((col) => `${col.key}-${col.visible}`)
+      .join(",");
 
     // 前回と異なる場合のみ親に通知
     if (prevColumnsRef.current !== currentColumnsString && onColumnsChange) {
@@ -267,7 +280,7 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
           visible: col.visible,
           align: col.align,
           render: col.render,
-        }))
+        })),
       );
       prevColumnsRef.current = currentColumnsString;
     }
@@ -316,7 +329,7 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
         visible: col.visible,
         align: col.align,
         render: col.render,
-      }))
+      })),
     );
     setDraggedColumnIndex(null);
     setDragOverColumnIndex(null);
@@ -328,7 +341,8 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
       <div className="flex items-center justify-between w-full px-0 flex-shrink-0">
         {/* 左端：表示件数情報 */}
         <div className="text-sm text-gray-500 whitespace-nowrap flex-shrink-0">
-          {properties.length}件中 {startIndex + 1}-{Math.min(endIndex, properties.length)}件を表示
+          {properties.length}件中 {startIndex + 1}-
+          {Math.min(endIndex, properties.length)}件を表示
         </div>
 
         {/* 右端：列の表示設定 + ページネーション */}
@@ -372,17 +386,19 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
               {/* ページ番号 */}
               <div className="flex items-center gap-1">
                 {totalPages > 0 &&
-                  Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <PaginationItem key={page}>
-                      <PaginationLink
-                        onClick={() => setCurrentPage(page)}
-                        isActive={currentPage === page}
-                        className="cursor-pointer"
-                      >
-                        {page}
-                      </PaginationLink>
-                    </PaginationItem>
-                  ))}
+                  Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          onClick={() => setCurrentPage(page)}
+                          isActive={currentPage === page}
+                          className="cursor-pointer"
+                        >
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ),
+                  )}
               </div>
 
               {/* 次へボタン */}
@@ -390,7 +406,9 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                  onClick={() =>
+                    setCurrentPage(Math.min(totalPages, currentPage + 1))
+                  }
                   disabled={currentPage === totalPages || totalPages <= 1}
                   className="h-8 w-16"
                 >
@@ -411,7 +429,9 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
                 <Checkbox checked={selectAll} onCheckedChange={onSelectAll} />
               </TableHead>
               {visibleColumns.map((column, visibleIndex) => {
-                const originalIndex = columns.findIndex((col) => col.key === column.key);
+                const originalIndex = columns.findIndex(
+                  (col) => col.key === column.key,
+                );
                 const isDragOver = dragOverColumnIndex === originalIndex;
 
                 return (
@@ -459,7 +479,11 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
                 <TableCell className="text-center py-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-gray-100">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-8 w-8 p-0 hover:bg-gray-100"
+                      >
                         <MoreVertical className="w-4 h-4" />
                       </Button>
                     </DropdownMenuTrigger>

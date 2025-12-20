@@ -84,7 +84,12 @@ export function CompanyList({
     const propertyTypeCategories = {
       売買不動産: ["一戸建て", "マンション", "土地", "アパート"],
       その他: ["駐車場", "その他"],
-      "投資用・事業用不動産": ["店舗・事務所・倉庫・工場", "宿泊施設", "一棟ビル", "一棟マンション"],
+      投資用・事業用不動産: [
+        "店舗・事務所・倉庫・工場",
+        "宿泊施設",
+        "一棟ビル",
+        "一棟マンション",
+      ],
     };
 
     // 不動産種別の分類
@@ -121,11 +126,15 @@ export function CompanyList({
     };
 
     const getRealEstateTypes = () => {
-      return realEstateTypes.filter((type) => company.propertyTypes.includes(type));
+      return realEstateTypes.filter((type) =>
+        company.propertyTypes.includes(type),
+      );
     };
 
     const getPropertyFeatures = () => {
-      return propertyFeatures.filter((feature) => company.propertyFeatures.includes(feature));
+      return propertyFeatures.filter((feature) =>
+        company.propertyFeatures.includes(feature),
+      );
     };
 
     const handleInquiryClick = () => {
@@ -140,7 +149,9 @@ export function CompanyList({
           {/* 会社名と所在地（左上）とアクションボタン（右上） */}
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-[#093893] mb-2">{company.name}</h3>
+              <h3 className="text-lg font-bold text-[#093893] mb-2">
+                {company.name}
+              </h3>
               <p className="text-gray-700">所在地 {company.location}</p>
             </div>
 
@@ -165,11 +176,13 @@ export function CompanyList({
           <div className="space-y-4">
             {/* 取扱物件種別 */}
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">取扱物件種別</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">
+                取扱物件種別
+              </h4>
               <div className="flex flex-wrap gap-2">
-                {getPropertyTypeHandled().map((category, index) => (
+                {getPropertyTypeHandled().map((category) => (
                   <span
-                    key={index}
+                    key={category}
                     className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium border border-[#093893] text-[#093893] bg-white"
                   >
                     {category}
@@ -180,11 +193,13 @@ export function CompanyList({
 
             {/* 不動産種別 */}
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">不動産種別</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">
+                不動産種別
+              </h4>
               <div className="flex flex-wrap gap-2">
-                {getRealEstateTypes().map((type, index) => (
+                {getRealEstateTypes().map((type) => (
                   <span
-                    key={index}
+                    key={type}
                     className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium border border-[#093893] text-[#093893] bg-white"
                   >
                     {type}
@@ -195,11 +210,13 @@ export function CompanyList({
 
             {/* 物件特徴 */}
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">物件特徴</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">
+                物件特徴
+              </h4>
               <div className="flex flex-wrap gap-2">
-                {getPropertyFeatures().map((feature, index) => (
+                {getPropertyFeatures().map((feature) => (
                   <span
-                    key={index}
+                    key={feature}
                     className="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium border border-[#093893] text-[#093893] bg-white"
                   >
                     {feature}
@@ -241,7 +258,7 @@ export function CompanyList({
                   "inline-flex items-center justify-center gap-1 px-2.5 py-2 text-sm font-medium rounded-md border h-auto",
                   currentPage === 1
                     ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
                 )}
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -258,7 +275,7 @@ export function CompanyList({
                     "inline-flex items-center justify-center h-10 w-10 text-sm font-medium rounded-md border p-0",
                     currentPage === pageNumber
                       ? "bg-[#093893] text-white border-[#093893]"
-                      : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                      : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
                   )}
                 >
                   {pageNumber}
@@ -274,7 +291,7 @@ export function CompanyList({
                   "inline-flex items-center justify-center gap-1 px-2.5 py-2 text-sm font-medium rounded-md border h-auto",
                   currentPage === totalPages
                     ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
                 )}
               >
                 <span className="hidden sm:block">次へ</span>
@@ -313,7 +330,7 @@ export function CompanyList({
                 "inline-flex items-center justify-center gap-1 px-2.5 py-2 text-sm font-medium rounded-md border h-auto",
                 currentPage === 1
                   ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                  : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                  : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
               )}
             >
               <ChevronLeft className="w-4 h-4" />
@@ -330,7 +347,7 @@ export function CompanyList({
                   "inline-flex items-center justify-center h-10 w-10 text-sm font-medium rounded-md border p-0",
                   currentPage === pageNumber
                     ? "bg-[#093893] text-white border-[#093893]"
-                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                    : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
                 )}
               >
                 {pageNumber}
@@ -346,7 +363,7 @@ export function CompanyList({
                 "inline-flex items-center justify-center gap-1 px-2.5 py-2 text-sm font-medium rounded-md border h-auto",
                 currentPage === totalPages
                   ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                  : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white"
+                  : "border-[#093893] text-[#093893] bg-white hover:bg-[#093893] hover:text-white",
               )}
             >
               <span className="hidden sm:block">次へ</span>

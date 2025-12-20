@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React from "react";
 
 interface ServiceCardProps {
   iconSrc: string;
@@ -10,12 +9,17 @@ interface ServiceCardProps {
   alt: string;
 }
 
-export const ServiceCard = ({ iconSrc, title, description, alt }: ServiceCardProps) => {
+export const ServiceCard = ({
+  iconSrc,
+  title,
+  description,
+  alt,
+}: ServiceCardProps) => {
   return (
     <Card
       className={cn(
         "text-center hover:shadow-lg transition-all duration-200 cursor-pointer hover:bg-[#093893]/5 h-52 md:h-64 shadow-md border-0 bg-transparent",
-        "rounded-lg overflow-hidden"
+        "rounded-lg overflow-hidden",
       )}
     >
       <CardContent className="p-2 md:p-3 h-full flex flex-col justify-center">

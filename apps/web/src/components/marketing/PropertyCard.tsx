@@ -1,12 +1,6 @@
 "use client";
 
-import { FavoriteButton } from "@/components/FavoriteButton";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { useImageNavigation } from "@/hooks/useImageNavigation";
-import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { PropertyCardContent } from "./PropertyCardContent";
@@ -62,7 +56,12 @@ export const PropertyCard = React.memo((props: PropertyCardProps) => {
 
   if (linkUrl) {
     return (
-      <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="block h-full">
+      <a
+        href={linkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
         {content}
       </a>
     );

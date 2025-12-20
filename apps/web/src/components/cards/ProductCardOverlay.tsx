@@ -70,7 +70,10 @@ export const ProductCardOverlay = ({
         <div className="relative w-full overflow-hidden rounded-t-lg h-[60%]">
           <Image
             src={thumbnails[activeIndex]}
-            alt={product.alt[activeIndex] || `${product.title} - 画像${activeIndex + 1}`}
+            alt={
+              product.alt[activeIndex] ||
+              `${product.title} - 画像${activeIndex + 1}`
+            }
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -109,7 +112,7 @@ export const ProductCardOverlay = ({
                 variant="ghost"
                 className={cn(
                   "h-8 w-8 rounded-full bg-[oklch(0.35_0_0)]/20 backdrop-blur-sm text-white hover:text-white transition-colors duration-200 pointer-events-auto z-40",
-                  isTransitioning && "pointer-events-none opacity-70"
+                  isTransitioning && "pointer-events-none opacity-70",
                 )}
                 aria-label="Show previous image"
                 disabled={isTransitioning}
@@ -133,7 +136,7 @@ export const ProductCardOverlay = ({
                 variant="ghost"
                 className={cn(
                   "h-8 w-8 rounded-full bg-[oklch(0.35_0_0)]/20 backdrop-blur-sm text-white hover:text-white transition-colors duration-200 pointer-events-auto z-40",
-                  isTransitioning && "pointer-events-none opacity-70"
+                  isTransitioning && "pointer-events-none opacity-70",
                 )}
                 aria-label="Show next image"
                 disabled={isTransitioning}
@@ -146,9 +149,9 @@ export const ProductCardOverlay = ({
           {/* ドットナビゲーション */}
           {thumbnails.length > 1 && (
             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20 flex gap-1.5">
-              {thumbnails.map((_, index) => (
+              {thumbnails.map((url, index) => (
                 <Button
-                  key={index}
+                  key={url}
                   onClick={() => onDotClick(index)}
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
@@ -156,7 +159,9 @@ export const ProductCardOverlay = ({
                   size="icon"
                   className={cn(
                     "w-2 h-2 p-0 rounded-full transition-all duration-200 hover:bg-transparent",
-                    activeIndex === index ? "bg-white scale-110" : "bg-white/50 hover:bg-white/70"
+                    activeIndex === index
+                      ? "bg-white scale-110"
+                      : "bg-white/50 hover:bg-white/70",
                   )}
                   aria-label={`Show image ${index + 1}`}
                   disabled={isTransitioning}
@@ -170,6 +175,6 @@ export const ProductCardOverlay = ({
         <ProductCardContent product={product} />
       </div>
     </motion.div>,
-    document.body
+    document.body,
   );
 };

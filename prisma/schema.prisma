@@ -23,6 +23,17 @@ model User {
   role   UserRole   @default(USER)
   status UserStatus @default(ACTIVE)
 
+  // プロフィール情報
+  furigana   String?   @db.VarChar(100) // ふりがな
+  gender     Gender?
+  birthDate  DateTime? // 生年月日
+  phone      String?   @db.VarChar(20)
+  fax        String?   @db.VarChar(20)
+  postalCode String?   @db.VarChar(8)
+  prefecture String?   @db.VarChar(10)
+  city       String?   @db.VarChar(50)
+  address    String?   @db.Text
+
   // 業者情報（業者の場合）
   companyName   String? @db.VarChar(200)
   licenseNumber String? @db.VarChar(50) // 不動産業者免許番号
@@ -33,8 +44,12 @@ model User {
   lastLoginAt DateTime?
 
   // Relations
-  properties Property[]
-  inquiries  Inquiry[]
+  properties      Property[]
+  inquiries       Inquiry[]
+  favorites       Favorite[]
+  questions       Question[]
+  answers         Answer[]
+  realEstateAgent RealEstateAgent?
 
   @@index([email])
   @@index([role, status]) // 複合インデックス：権限+ステータス検索用
@@ -43,6 +58,7 @@ model User {
 
 enum UserRole {
   ADMIN // システム管理者
+  SALES // 営業担当
   REALTOR // 不動産業者
   USER // 一般ユーザー
 }
@@ -50,6 +66,108 @@ enum UserRole {
 enum UserStatus {
   ACTIVE // アクティブ
   INACTIVE // 非アクティブ
+  PENDING // 承認待ち
+  CANCELLED // 退会済み
+  INVALID // 無効
+}
+
+enum Gender {
+  MALE // 男性
+  FEMALE // 女性
+  OTHER // その他
+}
+
+// ============================================
+// 不動産会社（業者登録）
+// ============================================
+
+model RealEstateAgent {
+  id String @id @default(cuid())
+
+  // 企業情報
+  companyName        String  @db.VarChar(200)
+  branchName         String? @db.VarChar(200) // 支店名
+  departmentName     String? @db.VarChar(200) // 部署名
+  representativeName String  @db.VarChar(100) // 代表者名
+  contactPersonName  String  @db.VarChar(100) // 担当者名
+
+  // 連絡先情報
+  email      String  @db.VarChar(255)
+  phone      String  @db.VarChar(20)
+  fax        String? @db.VarChar(20)
+  postalCode String  @db.VarChar(8)
+  prefecture String  @db.VarChar(10)
+  city       String  @db.VarChar(50)
+  address    String  @db.Text
+  website    String? @db.VarChar(500)
+
+  // 営業情報
+  businessHours String? @db.VarChar(100) // 営業時間
+  holidays      String? @db.VarChar(200) // 定休日
+  access        String? @db.Text // アクセス
+  parking       String? @db.Text // 駐車場情報
+
+  // 免許・所属情報
+  licenseNumber         String @db.VarChar(100) // 免許番号
+  associationMembership String @db.VarChar(200) // 所属協会
+  fairTradeMembership   String @db.VarChar(200) // 公正取引協議会加盟状況
+
+  // 取扱物件情報（JSON配列として保存）
+  propertyTypes    String[] // 取扱物件種別
+  handlingTypes    String[] // 取扱業務種別（売買、賃貸など）
+  realEstateTypes  String[] // 不動産種別
+  propertyFeatures String[] // 物件特徴
+
+  // 質問対応カテゴリ
+  questionCategories String[]
+
+  // 査定方法
+  appraisalMethods String[]
+
+  // 会社紹介
+  message  String? @db.Text // 会社紹介メッセージ
+  features Json? // 特徴（配列として保存）
+
+  // 対応エリア
+  serviceAreas String? @db.Text
+
+  // 評価
+  goodCount Int @default(0)
+
+  // アカウントタイプ
+  accountType AccountType @default(FREE)
+
+  // ステータス
+  status AgentStatus @default(PENDING)
+
+  // ユーザーとの関連（業者アカウント）
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  properties     Property[]
+  answers        Answer[]
+  agentInquiries AgentInquiry[]
+
+  @@index([prefecture, city])
+  @@index([status])
+  @@map("real_estate_agents")
+}
+
+enum AgentStatus {
+  PENDING // 承認待ち
+  APPROVED // 承認済み
+  REJECTED // 却下
+  SUSPENDED // 停止
+}
+
+enum AccountType {
+  FREE // 無料
+  PAID // 有料
 }
 
 // ============================================
@@ -129,6 +247,11 @@ model Property {
   expectedAnnualIncome Decimal? @db.Decimal(12, 0) // 想定年間収入（円）
   surfaceYield         Decimal? @db.Decimal(5, 2) // 表面利回り（%）
 
+  // 賃貸関連費用
+  deposit         Decimal? @db.Decimal(10, 0) // 敷金（円）
+  keyMoney        Decimal? @db.Decimal(10, 0) // 礼金（円）
+  securityDeposit Decimal? @db.Decimal(10, 0) // 保証金（円）
+
   // ============================================
   // 土地情報
   // ============================================
@@ -191,6 +314,7 @@ model Property {
   // カウンター
   // ============================================
   inquiryCount Int @default(0)
+  viewCount    Int @default(0)
 
   // ============================================
   // Relations
@@ -198,9 +322,14 @@ model Property {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  // 不動産業者との関連（オプション）
+  agentId String?
+  agent   RealEstateAgent? @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
   images    PropertyImage[]
   features  PropertyFeature[]
   inquiries Inquiry[]
+  favorites Favorite[]
 
   // ============================================
   // Timestamps
@@ -211,6 +340,7 @@ model Property {
 
   // 検索用複合インデックス
   @@index([userId])
+  @@index([agentId]) // 業者別物件検索
   @@index([publicationStatus, propertyType]) // 公開物件一覧
   @@index([publicationStatus, createdAt(sort: Desc)]) // 新着順
   @@index([propertyType, saleOrRent]) // 種別×売買/賃貸
@@ -232,6 +362,7 @@ model PropertyImage {
   caption   String?   @db.VarChar(200)
   imageType ImageType @default(EXTERIOR) // 画像種別を追加
   order     Int       @default(0)
+  isMain    Boolean   @default(false) // メイン画像フラグ
 
   // Relation
   propertyId String
@@ -293,6 +424,29 @@ enum FeatureCategory {
 }
 
 // ============================================
+// お気に入り
+// ============================================
+
+model Favorite {
+  id String @id @default(cuid())
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+
+  @@unique([userId, propertyId]) // ユーザーと物件の組み合わせはユニーク
+  @@index([userId])
+  @@index([propertyId])
+  @@map("favorites")
+}
+
+// ============================================
 // 問い合わせ管理（InquiryType追加）
 // ============================================
 
@@ -300,13 +454,24 @@ model Inquiry {
   id String @id @default(cuid())
 
   // 問い合わせ者情報
-  name  String  @db.VarChar(100)
-  email String  @db.VarChar(255)
-  phone String? @db.VarChar(20)
+  name     String  @db.VarChar(100)
+  furigana String? @db.VarChar(100)
+  email    String  @db.VarChar(255)
+  phone    String? @db.VarChar(20)
+  fax      String? @db.VarChar(20)
+
+  // 住所情報
+  postalCode String? @db.VarChar(8)
+  address    String? @db.Text
+
+  // 個人情報
+  gender    Gender?
+  birthDate DateTime?
 
   // 内容
   inquiryType InquiryType @default(GENERAL) // 問い合わせ種別を追加
   message     String      @db.Text
+  remarks     String?     @db.Text // 備考
 
   // ステータス
   status InquiryStatus @default(NEW)
@@ -332,6 +497,435 @@ enum InquiryType {
   VIEWING // 内見希望
   DOCUMENT // 資料請求
   NEGOTIATION // 価格交渉
+  ENVIRONMENT // 周辺環境
+  MOVE_IN // 入居について
+  OTHER // その他
+}
+
+// ============================================
+// サイト問い合わせ（物件に関連しない一般問い合わせ）
+// ============================================
+
+model SiteInquiry {
+  id String @id @default(cuid())
+
+  // 問い合わせ者情報
+  name     String  @db.VarChar(100)
+  furigana String? @db.VarChar(100)
+  email    String  @db.VarChar(255)
+  phone    String? @db.VarChar(20)
+  fax      String? @db.VarChar(20)
+
+  // 住所情報
+  postalCode String? @db.VarChar(8)
+  address    String? @db.Text
+
+  // 個人情報
+  gender    Gender?
+  birthDate DateTime?
+
+  // 内容
+  inquiryType    String  @db.VarChar(100) // 問い合わせ種別（自由形式）
+  inquiryContent String  @db.Text
+  remarks        String? @db.Text
+
+  // ステータス
+  status InquiryStatus @default(NEW)
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  respondedAt DateTime?
+
+  @@index([status, createdAt(sort: Desc)])
+  @@map("site_inquiries")
+}
+
+// ============================================
+// 業者問い合わせ
+// ============================================
+
+model AgentInquiry {
+  id String @id @default(cuid())
+
+  // 会社情報
+  companyName   String @db.VarChar(200)
+  contactPerson String @db.VarChar(100)
+
+  // 連絡先
+  email String  @db.VarChar(255)
+  phone String  @db.VarChar(20)
+  fax   String? @db.VarChar(20)
+
+  // 住所情報
+  postalCode String? @db.VarChar(8)
+  address    String? @db.Text
+
+  // 担当者個人情報
+  furigana  String?   @db.VarChar(100)
+  gender    Gender?
+  birthDate DateTime?
+
+  // 内容
+  inquiryType    String  @db.VarChar(100) // 問い合わせ種別
+  inquiryContent String  @db.Text
+  remarks        String? @db.Text
+
+  // ステータス
+  status InquiryStatus @default(NEW)
+
+  // Relations（業者が登録済みの場合）
+  agentId String?
+  agent   RealEstateAgent? @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  respondedAt DateTime?
+
+  @@index([status, createdAt(sort: Desc)])
+  @@map("agent_inquiries")
+}
+
+// ============================================
+// 一括査定
+// ============================================
+
+model BulkAssessment {
+  id String @id @default(cuid())
+
+  // 物件情報
+  propertyAddress String @db.Text
+  propertyType    String @db.VarChar(50) // マンション、戸建て、土地など
+  area            String @db.VarChar(50) // 面積
+
+  // 所有者情報
+  ownerName String  @db.VarChar(100)
+  furigana  String? @db.VarChar(100)
+  email     String  @db.VarChar(255)
+  phone     String? @db.VarChar(20)
+  fax       String? @db.VarChar(20)
+
+  // 住所情報
+  postalCode String? @db.VarChar(8)
+  address    String? @db.Text
+
+  // 個人情報
+  gender    Gender?
+  birthDate DateTime?
+
+  // 内容
+  inquiryContent String? @db.Text
+  remarks        String? @db.Text
+
+  // ステータス
+  status AssessmentStatus @default(PENDING)
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@index([status, createdAt(sort: Desc)])
+  @@map("bulk_assessments")
+}
+
+enum AssessmentStatus {
+  PENDING // 受付
+  IN_PROGRESS // 査定中
+  COMPLETED // 完了
+  CANCELLED // キャンセル
+}
+
+// ============================================
+// 質問・回答（掲示板機能）
+// ============================================
+
+model Question {
+  id String @id @default(cuid())
+
+  title   String @db.VarChar(200)
+  content String @db.Text
+
+  // カテゴリ
+  category String @db.VarChar(50)
+
+  // 統計
+  viewCount  Int @default(0)
+  replyCount Int @default(0)
+
+  // ステータス
+  status QuestionStatus @default(OPEN)
+
+  // Relations
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  answers Answer[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([status, createdAt(sort: Desc)])
+  @@map("questions")
+}
+
+enum QuestionStatus {
+  OPEN // 公開中
+  CLOSED // クローズ
+  RESOLVED // 解決済み
+  HIDDEN // 非表示
+}
+
+model Answer {
+  id String @id @default(cuid())
+
+  content String @db.Text
+
+  // 評価
+  goodCount Int @default(0)
+
+  // Relations
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  // 回答者（ユーザー or 業者）
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  agentId String?
+  agent   RealEstateAgent? @relation(fields: [agentId], references: [id], onDelete: SetNull)
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([questionId])
+  @@map("answers")
+}
+
+// ============================================
+// 質問カテゴリマスタ
+// ============================================
+
+model QuestionCategory {
+  id String @id @default(cuid())
+
+  name         String               @unique @db.VarChar(100)
+  categoryType QuestionCategoryType
+  displayOrder Int                  @default(0)
+  isActive     Boolean              @default(true)
+
+  @@index([categoryType, displayOrder])
+  @@map("question_categories")
+}
+
+enum QuestionCategoryType {
+  PROPERTY_TYPE // 物件種別（一戸建て、マンション等）
+  PROPERTY_FEATURE // 物件特徴（底地・借地等）
+  GENERAL // 一般（税金、相続等）
+}
+
+// ============================================
+// エリアマスタ
+// ============================================
+
+model AreaMaster {
+  id String @id @default(cuid())
+
+  prefecture   String  @db.VarChar(10)
+  city         String  @db.VarChar(50)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  @@unique([prefecture, city])
+  @@index([prefecture])
+  @@map("area_masters")
+}
+
+// ============================================
+// 物件種別マスタ
+// ============================================
+
+model PropertyTypeMaster {
+  id String @id @default(cuid())
+
+  name         String  @unique @db.VarChar(50)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  @@map("property_type_masters")
+}
+
+// ============================================
+// 物件カテゴリマスタ
+// ============================================
+
+model PropertyCategoryMaster {
+  id String @id @default(cuid())
+
+  name         String  @unique @db.VarChar(100)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  @@map("property_category_masters")
+}
+
+// ============================================
+// 間取りマスタ
+// ============================================
+
+model FloorPlanMaster {
+  id String @id @default(cuid())
+
+  name         String  @unique @db.VarChar(20)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  @@map("floor_plan_masters")
+}
+
+// ============================================
+// メール管理
+// ============================================
+
+model Mail {
+  id String @id @default(cuid())
+
+  // 送信者/受信者
+  fromEmail String  @db.VarChar(255)
+  toEmail   String  @db.VarChar(255)
+  ccEmail   String? @db.Text
+  bccEmail  String? @db.Text
+
+  // 内容
+  subject  String  @db.VarChar(500)
+  body     String  @db.Text
+  bodyHtml String? @db.Text
+
+  // ステータス
+  status   MailStatus @default(DRAFT)
+  mailType MailType   @default(GENERAL)
+
+  // Timestamps
+  createdAt DateTime  @default(now())
+  sentAt    DateTime?
+
+  @@index([status, createdAt(sort: Desc)])
+  @@map("mails")
+}
+
+enum MailStatus {
+  DRAFT // 下書き
+  SENT // 送信済み
+  FAILED // 送信失敗
+}
+
+enum MailType {
+  GENERAL // 一般
+  INQUIRY // 問い合わせ返信
+  NEWSLETTER // ニュースレター
+  SYSTEM // システム通知
+}
+
+// ============================================
+// ファイルボックス
+// ============================================
+
+model FileBox {
+  id String @id @default(cuid())
+
+  fileName     String @db.VarChar(255)
+  originalName String @db.VarChar(255)
+  fileUrl      String @db.VarChar(500)
+  fileType     String @db.VarChar(50)
+  fileSize     Int // bytes
+
+  // 分類
+  category String?  @db.VarChar(100)
+  tags     String[] // タグ
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@map("file_boxes")
+}
+
+// ============================================
+// システム設定
+// ============================================
+
+model SystemSetting {
+  id String @id @default(cuid())
+
+  key         String  @unique @db.VarChar(100)
+  value       String  @db.Text
+  description String? @db.Text
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("system_settings")
+}
+
+// ============================================
+// 路線マスタ
+// ============================================
+
+model RouteMaster {
+  id String @id @default(cuid())
+
+  name         String  @unique @db.VarChar(100) // 路線名
+  code         String? @unique @db.VarChar(50) // 路線コード
+  company      String? @db.VarChar(100) // 運営会社
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  stations Station[]
+
+  @@index([displayOrder])
+  @@map("route_masters")
+}
+
+// ============================================
+// 駅マスタ
+// ============================================
+
+model Station {
+  id String @id @default(cuid())
+
+  name         String  @db.VarChar(100) // 駅名
+  code         String? @db.VarChar(50) // 駅コード
+  prefecture   String? @db.VarChar(10)
+  city         String? @db.VarChar(50)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  // 路線との関連
+  routeId String?
+  route   RouteMaster? @relation(fields: [routeId], references: [id], onDelete: SetNull)
+
+  @@unique([name, routeId])
+  @@index([routeId])
+  @@index([prefecture])
+  @@map("stations")
+}
+
+// ============================================
+// 地域マスタ
+// ============================================
+
+model RegionMaster {
+  id String @id @default(cuid())
+
+  name         String  @unique @db.VarChar(50) // 地域名（関東、関西、中部など）
+  code         String? @unique @db.VarChar(20)
+  displayOrder Int     @default(0)
+  isActive     Boolean @default(true)
+
+  @@map("region_masters")
 }
 
 // ============================================
@@ -354,6 +948,11 @@ enum PropertyType {
   HOUSE // 一戸建て
   LAND // 土地
   BUILDING // ビル・事務所
+  APARTMENT // アパート
+  STORE // 店舗・倉庫・工場
+  LODGING // 宿泊施設
+  PARKING // 駐車場
+  OTHER // その他
 }
 
 enum PropertyCondition {

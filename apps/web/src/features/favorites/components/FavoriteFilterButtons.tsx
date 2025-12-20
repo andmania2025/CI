@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import React from "react";
 import type { FavoriteFilter } from "../hooks/useFavorites";
 
 interface FavoriteFilterButtonsProps {
@@ -30,7 +29,7 @@ export const FavoriteFilterButtons = ({
             "px-6 py-2 rounded-md transition-colors font-medium",
             filter === "all"
               ? "bg-[#093893] text-white hover:bg-[#072d6f]"
-              : "border-gray-300 text-gray-700 hover:bg-gray-50"
+              : "border-gray-300 text-gray-700 hover:bg-gray-50",
           )}
         >
           すべて ({counts.all})
@@ -42,7 +41,7 @@ export const FavoriteFilterButtons = ({
             "px-6 py-2 rounded-md transition-colors font-medium",
             filter === "sale"
               ? "bg-[#093893] text-white hover:bg-[#072d6f]"
-              : "border-gray-300 text-gray-700 hover:bg-gray-50"
+              : "border-gray-300 text-gray-700 hover:bg-gray-50",
           )}
         >
           売買物件 ({counts.sale})
@@ -54,7 +53,7 @@ export const FavoriteFilterButtons = ({
             "px-6 py-2 rounded-md transition-colors font-medium",
             filter === "rental"
               ? "bg-[#093893] text-white hover:bg-[#072d6f]"
-              : "border-gray-300 text-gray-700 hover:bg-gray-50"
+              : "border-gray-300 text-gray-700 hover:bg-gray-50",
           )}
         >
           賃貸物件 ({counts.rental})

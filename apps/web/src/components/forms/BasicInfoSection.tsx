@@ -8,16 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import type { QuestionFormData } from "@/hooks/useQuestionForm";
 import { PREFECTURE_MAP } from "@/lib/constants/prefectureMap";
 import { useCitiesQuery } from "@/lib/tanstack-query/queries/cities";
+import { cn } from "@/lib/utils";
 import type React from "react";
 
 interface BasicInfoSectionProps {
   formData: QuestionFormData;
   errors: Record<string, string>;
-  onInputChange: (field: keyof QuestionFormData, value: string | boolean) => void;
+  onInputChange: (
+    field: keyof QuestionFormData,
+    value: string | boolean,
+  ) => void;
 }
 
 export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
@@ -26,7 +29,9 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
   onInputChange,
 }) => {
   // 都道府県キーから都道府県名を取得
-  const prefectureName = formData.prefecture ? PREFECTURE_MAP[formData.prefecture] : undefined;
+  const prefectureName = formData.prefecture
+    ? PREFECTURE_MAP[formData.prefecture]
+    : undefined;
 
   // TanStack Queryを使用して市区町村データを取得
   const {
@@ -40,42 +45,6 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
     console.error("市区町村取得エラー:", citiesError);
   }
 
-  // 旧実装（admin統合時に確認のためコメントアウトで残す）
-  // const [cityOptions, setCityOptions] = useState<CityOption[]>([]);
-  // const [isLoadingCities, setIsLoadingCities] = useState(false);
-  //
-  // // 都道府県から市区町村を取得する関数
-  // const fetchCitiesFromPrefecture = async (prefectureKey: string) => {
-  //   const prefectureName = PREFECTURE_MAP[prefectureKey];
-  //   if (!prefectureName) return;
-  //
-  //   setIsLoadingCities(true);
-  //   try {
-  //     const response = await fetch(`/api/cities?prefecture=${encodeURIComponent(prefectureName)}`);
-  //     const result = await response.json();
-  //
-  //     if (result.success && result.data) {
-  //       setCityOptions(result.data);
-  //     } else {
-  //       console.error("市区町村取得エラー:", result.error);
-  //       setCityOptions([]);
-  //     }
-  //   } catch (error) {
-  //     console.error("市区町村取得エラー:", error);
-  //     setCityOptions([]);
-  //   } finally {
-  //     setIsLoadingCities(false);
-  //   }
-  // };
-  //
-  // // 都道府県が変更された時に市区町村を取得
-  // useEffect(() => {
-  //   if (formData.prefecture) {
-  //     fetchCitiesFromPrefecture(formData.prefecture);
-  //   } else {
-  //     setCityOptions([]);
-  //   }
-  // }, [formData.prefecture]);
   return (
     <section>
       <div className="space-y-4">
@@ -100,7 +69,9 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
               aria-invalid={!!errors.title}
               className={cn("w-full", errors.title && "border-red-500")}
             />
-            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
+            {errors.title && (
+              <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+            )}
           </div>
         </div>
 
@@ -122,13 +93,16 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
               onValueChange={(value) => {
                 // 日本語名から英語キーに変換
                 const englishKey =
-                  Object.entries(PREFECTURE_MAP).find(([_key, name]) => name === value)?.[0] ||
-                  value;
+                  Object.entries(PREFECTURE_MAP).find(
+                    ([_key, name]) => name === value,
+                  )?.[0] || value;
                 onInputChange("prefecture", englishKey);
                 onInputChange("city", "");
               }}
             >
-              <SelectTrigger className={cn("h-10", errors.prefecture && "border-red-500")}>
+              <SelectTrigger
+                className={cn("h-10", errors.prefecture && "border-red-500")}
+              >
                 <SelectValue placeholder="都道府県を選択してください" />
               </SelectTrigger>
               <SelectContent>
@@ -139,7 +113,9 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
                 ))}
               </SelectContent>
             </Select>
-            {errors.prefecture && <p className="text-red-500 text-sm mt-1">{errors.prefecture}</p>}
+            {errors.prefecture && (
+              <p className="text-red-500 text-sm mt-1">{errors.prefecture}</p>
+            )}
           </div>
         </div>
 
@@ -152,7 +128,10 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
             </Badge>
           </Label>
           <div className="w-full max-w-[720px]">
-            <Select value={formData.city} onValueChange={(value) => onInputChange("city", value)}>
+            <Select
+              value={formData.city}
+              onValueChange={(value) => onInputChange("city", value)}
+            >
               <SelectTrigger
                 className={cn("h-10", errors.city && "border-red-500")}
                 disabled={!formData.prefecture || isLoadingCities}
@@ -169,13 +148,18 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({
               </SelectTrigger>
               <SelectContent>
                 {cityOptions.map((option) => (
-                  <SelectItem key={`${option.city}-${option.suburb}`} value={option.city}>
+                  <SelectItem
+                    key={`${option.city}-${option.suburb}`}
+                    value={option.city}
+                  >
                     {option.city}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
+            {errors.city && (
+              <p className="text-red-500 text-sm mt-1">{errors.city}</p>
+            )}
           </div>
         </div>
       </div>

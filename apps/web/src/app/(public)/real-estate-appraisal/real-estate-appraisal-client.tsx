@@ -1,16 +1,24 @@
 "use client";
 
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
-import { type Company, CompanyList } from "@/components/search/AppraisalCompanyList";
+import {
+  type Company,
+  CompanyList,
+} from "@/components/search/AppraisalCompanyList";
 import {
   AppraisalSearchForm,
   type AppraisalSearchFormData,
 } from "@/components/search/AppraisalSearchForm";
 import { Skeleton } from "@/components/ui/skeleton";
-import { type AppraisalCompany, mockAppraisalCompanies } from "@/data/mockAppraisalCompanies";
+import {
+  type AppraisalCompany,
+  mockAppraisalCompanies,
+} from "@/data/mockAppraisalCompanies";
 import { Home } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState, Suspense } from "react";
+
+const SKELETON_IDS = Array.from({ length: 6 }, (_, i) => `skeleton-${i}`);
 
 // 動的コンテンツ（不動産査定業者一覧）のローディング状態を管理
 function CompanyListWithSuspense({
@@ -35,9 +43,9 @@ function CompanyListWithSuspense({
 
         {/* 不動産査定業者カードのスケルトン - 2グリッドレイアウト */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {SKELETON_IDS.map((id) => (
             <div
-              key={i}
+              key={id}
               className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm relative"
             >
               {/* Header: Company Info & Buttons */}
@@ -121,10 +129,14 @@ function CompanyListWithSuspense({
 function RealEstateAppraisalContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [_searchData, setSearchData] = useState<AppraisalSearchFormData | undefined>();
+  const [_searchData, setSearchData] = useState<
+    AppraisalSearchFormData | undefined
+  >();
   const [isSearching, setIsSearching] = useState(false);
   const [searchType, setSearchType] = useState<"sale" | "rental">("sale");
-  const [companies, setCompanies] = useState<AppraisalCompany[]>(mockAppraisalCompanies);
+  const [companies, setCompanies] = useState<AppraisalCompany[]>(
+    mockAppraisalCompanies,
+  );
   const [isLoadingCompanies, setIsLoadingCompanies] = useState(false);
 
   useEffect(() => {
@@ -166,8 +178,12 @@ function RealEstateAppraisalContent() {
       <main className="pt-4 pb-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">不動産査定検索</h1>
-            <p className="text-gray-600">不動産査定に関する検索・条件指定が行えます。</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              不動産査定検索
+            </h1>
+            <p className="text-gray-600">
+              不動産査定に関する検索・条件指定が行えます。
+            </p>
           </div>
 
           <AppraisalSearchForm
@@ -195,9 +211,9 @@ function RealEstateAppraisalContent() {
 
                   {/* 不動産査定業者カードのスケルトン - 2グリッドレイアウト */}
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {Array.from({ length: 6 }).map((_, i) => (
+                    {SKELETON_IDS.map((id) => (
                       <div
-                        key={i}
+                        key={id}
                         className="bg-white rounded-lg overflow-hidden border border-gray-200"
                       >
                         <div className="p-6 space-y-4">
@@ -300,8 +316,12 @@ export function RealEstateAppraisalClient() {
           <main className="pt-4 pb-8">
             <div className="max-w-7xl mx-auto px-4">
               <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">不動産査定検索</h1>
-                <p className="text-gray-600">不動産査定に関する検索・条件指定が行えます。</p>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                  不動産査定検索
+                </h1>
+                <p className="text-gray-600">
+                  不動産査定に関する検索・条件指定が行えます。
+                </p>
               </div>
               <div className="space-y-6">
                 {/* 結果件数のスケルトン */}
@@ -312,9 +332,9 @@ export function RealEstateAppraisalClient() {
 
                 {/* 不動産査定業者カードのスケルトン - 2グリッドレイアウト */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
+                  {SKELETON_IDS.map((id) => (
                     <div
-                      key={i}
+                      key={id}
                       className="bg-white rounded-lg overflow-hidden border border-gray-200"
                     >
                       <div className="p-6 space-y-4">

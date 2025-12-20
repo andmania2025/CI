@@ -21,14 +21,18 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
   realtor,
   isEditMode = false,
 }) => {
-  const [publicationStartDate, setPublicationStartDate] = useState<Date | undefined>(
-    new Date("2024-01-01")
-  );
-  const [publicationEndDate, setPublicationEndDate] = useState<Date | undefined>(undefined);
+  const [publicationStartDate, setPublicationStartDate] = useState<
+    Date | undefined
+  >(new Date("2024-01-01"));
+  const [publicationEndDate, setPublicationEndDate] = useState<
+    Date | undefined
+  >(undefined);
   const [publicScope, setPublicScope] = useState<string>("一般公開");
   const [priorityDisplay, setPriorityDisplay] = useState<string>("なし");
   const [category, setCategory] = useState<string>("賃貸");
-  const [contractValidityPeriod, setContractValidityPeriod] = useState<Date | undefined>(undefined);
+  const [contractValidityPeriod, setContractValidityPeriod] = useState<
+    Date | undefined
+  >(undefined);
 
   // 住所・緯度経度の状態
   const [prefecture, setPrefecture] = useState<string>("");
@@ -74,7 +78,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
   const [images, setImages] = useState<PropertyImage[]>(() => {
     // TODO: Realtor型にimagesプロパティを追加する
-    return realtor.images && realtor.images.length > 0 ? realtor.images : sampleImages;
+    return realtor.images && realtor.images.length > 0
+      ? realtor.images
+      : sampleImages;
   });
 
   // 都道府県と市区町村のデータを読み込み
@@ -138,20 +144,22 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
     const timestamp = Date.now();
 
     const imagePromises = fileArray.map((file, index) => {
-      return new Promise<{ file: File; url: string; index: number }>((resolve, reject) => {
-        const reader = new FileReader();
+      return new Promise<{ file: File; url: string; index: number }>(
+        (resolve, reject) => {
+          const reader = new FileReader();
 
-        reader.onload = (e) => {
-          const url = e.target?.result as string;
-          resolve({ file, url, index });
-        };
+          reader.onload = (e) => {
+            const url = e.target?.result as string;
+            resolve({ file, url, index });
+          };
 
-        reader.onerror = () => {
-          reject(new Error(`Failed to read file: ${file.name}`));
-        };
+          reader.onerror = () => {
+            reject(new Error(`Failed to read file: ${file.name}`));
+          };
 
-        reader.readAsDataURL(file);
-      });
+          reader.readAsDataURL(file);
+        },
+      );
     });
 
     try {
@@ -173,7 +181,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
         return [...prev, ...newImages];
       });
 
-      const fileInput = document.getElementById("image-upload") as HTMLInputElement;
+      const fileInput = document.getElementById(
+        "image-upload",
+      ) as HTMLInputElement;
       if (fileInput) {
         fileInput.value = "";
       }
@@ -193,7 +203,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
       prev.map((img) => ({
         ...img,
         isMain: img.id === imageId,
-      }))
+      })),
     );
   };
 
@@ -206,7 +216,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
   // 画像タイトル変更ハンドラー
   const handleImageTitleChange = (imageId: string, newTitle: string) => {
     setImages((prev) =>
-      prev.map((img) => (img.id === imageId ? { ...img, title: newTitle } : img))
+      prev.map((img) =>
+        img.id === imageId ? { ...img, title: newTitle } : img,
+      ),
     );
   };
 
@@ -249,7 +261,10 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載開始日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="publicationStartDate" className="text-sm font-medium">
+                      <label
+                        htmlFor="publicationStartDate"
+                        className="text-sm font-medium"
+                      >
                         掲載開始日
                       </label>
                       <div>
@@ -263,7 +278,8 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                           />
                         ) : (
                           <div className="text-sm">
-                            {formatDateToString(publicationStartDate) || "未設定"}
+                            {formatDateToString(publicationStartDate) ||
+                              "未設定"}
                           </div>
                         )}
                       </div>
@@ -271,13 +287,22 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 優先表示 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="priorityDisplay" className="text-sm font-medium">
+                      <label
+                        htmlFor="priorityDisplay"
+                        className="text-sm font-medium"
+                      >
                         優先表示
                       </label>
                       <div>
                         {isEditMode ? (
-                          <Select value={priorityDisplay} onValueChange={setPriorityDisplay}>
-                            <SelectTrigger id="priorityDisplay" className="w-full">
+                          <Select
+                            value={priorityDisplay}
+                            onValueChange={setPriorityDisplay}
+                          >
+                            <SelectTrigger
+                              id="priorityDisplay"
+                              className="w-full"
+                            >
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -295,12 +320,18 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 公開設定 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="publicScope" className="text-sm font-medium">
+                      <label
+                        htmlFor="publicScope"
+                        className="text-sm font-medium"
+                      >
                         公開設定
                       </label>
                       <div>
                         {isEditMode ? (
-                          <Select value={publicScope} onValueChange={setPublicScope}>
+                          <Select
+                            value={publicScope}
+                            onValueChange={setPublicScope}
+                          >
                             <SelectTrigger id="publicScope" className="w-full">
                               <SelectValue />
                             </SelectTrigger>
@@ -318,7 +349,10 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 掲載終了日 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="publicationEndDate" className="text-sm font-medium">
+                      <label
+                        htmlFor="publicationEndDate"
+                        className="text-sm font-medium"
+                      >
                         掲載終了日
                       </label>
                       <div>
@@ -340,7 +374,10 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 取引条件有効期限 */}
                     <div className="grid grid-cols-2 gap-4 items-center">
-                      <label htmlFor="contractValidityPeriod" className="text-sm font-medium">
+                      <label
+                        htmlFor="contractValidityPeriod"
+                        className="text-sm font-medium"
+                      >
                         取引条件有効期限
                       </label>
                       <div>
@@ -354,7 +391,8 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                           />
                         ) : (
                           <div className="text-sm">
-                            {formatDateToString(contractValidityPeriod) || "未設定"}
+                            {formatDateToString(contractValidityPeriod) ||
+                              "未設定"}
                           </div>
                         )}
                       </div>
@@ -382,7 +420,7 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
               {/* 右カラム: 住所 */}
               <Card className="flex flex-col gap-0">
-                <CardHeader className="flex-shrink-0 pb-2">
+                <CardHeader className="shrink-0 pb-2">
                   <CardTitle className="text-lg">住所</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 overflow-hidden px-6 py-0">
@@ -391,18 +429,27 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                     <div className="space-y-4 mb-6">
                       {/* 都道府県 */}
                       <div className="grid grid-cols-2 gap-4 items-center">
-                        <label htmlFor="prefecture" className="text-sm font-medium">
+                        <label
+                          htmlFor="prefecture"
+                          className="text-sm font-medium"
+                        >
                           都道府県
                         </label>
                         <div>
                           {isEditMode ? (
-                            <Select value={prefecture} onValueChange={setPrefecture}>
+                            <Select
+                              value={prefecture}
+                              onValueChange={setPrefecture}
+                            >
                               <SelectTrigger id="prefecture" className="w-full">
                                 <SelectValue placeholder="選択してください" />
                               </SelectTrigger>
                               <SelectContent>
                                 {prefectures.map((pref) => (
-                                  <SelectItem key={pref.value} value={pref.value}>
+                                  <SelectItem
+                                    key={pref.value}
+                                    value={pref.value}
+                                  >
                                     {pref.label}
                                   </SelectItem>
                                 ))}
@@ -410,7 +457,8 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                             </Select>
                           ) : (
                             <div className="text-sm">
-                              {prefectures.find((p) => p.value === prefecture)?.label || "未設定"}
+                              {prefectures.find((p) => p.value === prefecture)
+                                ?.label || "未設定"}
                             </div>
                           )}
                         </div>
@@ -423,13 +471,20 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                         </label>
                         <div>
                           {isEditMode ? (
-                            <Select value={city} onValueChange={setCity} disabled={!prefecture}>
+                            <Select
+                              value={city}
+                              onValueChange={setCity}
+                              disabled={!prefecture}
+                            >
                               <SelectTrigger id="city" className="w-full">
                                 <SelectValue placeholder="都道府県を選択してください" />
                               </SelectTrigger>
                               <SelectContent>
                                 {cities.map((cityOption) => (
-                                  <SelectItem key={cityOption.value} value={cityOption.value}>
+                                  <SelectItem
+                                    key={cityOption.value}
+                                    value={cityOption.value}
+                                  >
                                     {cityOption.label}
                                   </SelectItem>
                                 ))}
@@ -437,7 +492,8 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                             </Select>
                           ) : (
                             <div className="text-sm">
-                              {cities.find((c) => c.value === city)?.label || "未設定"}
+                              {cities.find((c) => c.value === city)?.label ||
+                                "未設定"}
                             </div>
                           )}
                         </div>
@@ -445,7 +501,10 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                       {/* 町・番地 */}
                       <div className="grid grid-cols-2 gap-4 items-center">
-                        <label htmlFor="streetAddress" className="text-sm font-medium">
+                        <label
+                          htmlFor="streetAddress"
+                          className="text-sm font-medium"
+                        >
                           町・番地
                         </label>
                         <div>
@@ -458,7 +517,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                               className="w-full"
                             />
                           ) : (
-                            <div className="text-sm">{streetAddress || "未設定"}</div>
+                            <div className="text-sm">
+                              {streetAddress || "未設定"}
+                            </div>
                           )}
                         </div>
                       </div>
@@ -466,7 +527,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
 
                     {/* 所在地（地図）セクション */}
                     <div className="border-t pt-6">
-                      <h4 className="text-base font-semibold mb-4">所在地（地図）</h4>
+                      <h4 className="text-base font-semibold mb-4">
+                        所在地（地図）
+                      </h4>
                       <div className="w-full h-[400px] border rounded-lg overflow-hidden">
                         {getGoogleMapUrl() ? (
                           <iframe
@@ -481,7 +544,9 @@ export const PropertiesTab: React.FC<RealtorDetailTabsProps> = ({
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500">
-                            <p className="text-sm">住所を入力すると地図が表示されます</p>
+                            <p className="text-sm">
+                              住所を入力すると地図が表示されます
+                            </p>
                           </div>
                         )}
                       </div>

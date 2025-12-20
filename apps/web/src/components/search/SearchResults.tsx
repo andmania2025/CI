@@ -51,9 +51,12 @@ export const SearchResults = ({
   const currentProperties = filteredProperties.slice(startIndex, endIndex);
 
   // 検索条件が変更された時にページを1に戻す
+  // 検索条件や結果が変更された時にページを1に戻す
   useEffect(() => {
-    setCurrentPage(1);
-  }, [searchData, detailedSearchData, searchType, propertyType]);
+    if (filteredProperties) {
+      setCurrentPage(1);
+    }
+  }, [filteredProperties]);
 
   const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
@@ -67,7 +70,8 @@ export const SearchResults = ({
 
   // 検索タイプと物件種別に応じたタイトルを取得
   const getTitle = useCallback(() => {
-    const baseType = searchType === "rental" ? "賃貸物件検索一覧" : "売買物件検索一覧";
+    const baseType =
+      searchType === "rental" ? "賃貸物件検索一覧" : "売買物件検索一覧";
     const propertyTypeLabel = getPropertyTypeLabelFromMap(propertyType || null);
 
     if (propertyTypeLabel) {
@@ -116,7 +120,9 @@ export const SearchResults = ({
           <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg">
             <div className="text-center">
               <div className="text-gray-500 mb-2">地図表示機能</div>
-              <div className="text-sm text-gray-400">地図での表示は現在開発中です</div>
+              <div className="text-sm text-gray-400">
+                地図での表示は現在開発中です
+              </div>
             </div>
           </div>
         )}

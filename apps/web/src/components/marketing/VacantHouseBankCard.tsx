@@ -17,10 +17,12 @@ export const VacantHouseBankCard = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div>
-        <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+          {title}
+        </h3>
         <p className="text-gray-600 mb-4">{subtitle}</p>
       </div>
-      <Card className="bg-gradient-to-r from-blue-500 to-green-500">
+      <Card className="bg-linear-to-r from-blue-500 to-green-500">
         <CardContent className="p-6 text-white">
           <div className="flex items-center space-x-4">
             <div className="text-2xl">🏠</div>

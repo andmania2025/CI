@@ -49,7 +49,7 @@ export const useFavorites = () => {
       sale: favorites.filter((f) => f.type === "sale").length,
       rental: favorites.filter((f) => f.type === "rental").length,
     }),
-    [favorites]
+    [favorites],
   );
 
   // 全てのお気に入りをクリア（確認ダイアログ付き）
@@ -64,7 +64,7 @@ export const useFavorites = () => {
     async (id: string, type: FavoriteItem["type"]) => {
       return await storeRemoveFavorite(id, type);
     },
-    [storeRemoveFavorite]
+    [storeRemoveFavorite],
   );
 
   // お気に入りに追加（既存のインターフェースを保持）
@@ -97,7 +97,7 @@ export const useFavorites = () => {
 
       return await storeAddFavorite(favoriteItem);
     },
-    [storeAddFavorite]
+    [storeAddFavorite],
   );
 
   // お気に入り状態を確認
@@ -105,7 +105,7 @@ export const useFavorites = () => {
     (id: string, type: FavoriteItem["type"]) => {
       return storeIsFavorite(id, type);
     },
-    [storeIsFavorite]
+    [storeIsFavorite],
   );
 
   // フィルターの変更
@@ -113,30 +113,8 @@ export const useFavorites = () => {
     (newFilter: FavoriteFilter) => {
       setFilter(newFilter);
     },
-    [setFilter]
+    [setFilter],
   );
-
-  // Supabase接続後のデータ読み込み関数（コメントアウト）
-  // const loadFavoritesFromSupabase = useCallback(async () => {
-  //   try {
-  //     // 環境変数でSupabase使用を判定
-  //     const useSupabase = process.env.NEXT_PUBLIC_USE_SUPABASE === 'true';
-  //
-  //     if (useSupabase) {
-  //       console.log("Loading favorites from Supabase...");
-  //       // Supabaseからデータを読み込み
-  //       await storeLoadFavoritesFromSupabase();
-  //     } else {
-  //       console.log("Loading favorites from localStorage...");
-  //       // ローカルストレージからデータを読み込み
-  //       loadFavorites();
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to load favorites:", error);
-  //     // エラー時はローカルストレージから読み込み
-  //     loadFavorites();
-  //   }
-  // }, [storeLoadFavoritesFromSupabase, loadFavorites]);
 
   // 既存のインターフェースを保持してエクスポート
   return {

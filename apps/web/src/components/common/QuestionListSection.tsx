@@ -59,15 +59,22 @@ export const QuestionListSection: React.FC<QuestionListSectionProps> = ({
   // サーバーサイドレンダリング時はローディング状態を表示（スケルトン）
   if (!isMounted) {
     return (
-      <section ref={sectionRef} id="question-list-section" className={cn("py-8", className)}>
+      <section
+        ref={sectionRef}
+        id="question-list-section"
+        className={cn("py-8", className)}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold text-gray-800">投稿質問をみる</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {Array.from({ length: questionsPerPage }).map((_, i) => (
+            {Array.from(
+              { length: questionsPerPage },
+              (_, i) => `skeleton-${i}`,
+            ).map((id) => (
               <div
-                key={i}
+                key={id}
                 className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm h-full flex flex-col"
               >
                 {/* Header: Badge & Date */}
@@ -109,7 +116,11 @@ export const QuestionListSection: React.FC<QuestionListSectionProps> = ({
   }
 
   return (
-    <section ref={sectionRef} id="question-list-section" className={`py-8 ${className}`}>
+    <section
+      ref={sectionRef}
+      id="question-list-section"
+      className={`py-8 ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-gray-800">投稿質問をみる</h2>

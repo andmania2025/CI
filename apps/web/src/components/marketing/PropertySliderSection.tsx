@@ -1,6 +1,9 @@
 "use client";
 
-import { type ProductData, ProductSwapCard } from "@/components/cards/product-swap-card";
+import {
+  type ProductData,
+  ProductSwapCard,
+} from "@/components/cards/product-swap-card";
 import { Button } from "@/components/ui/button";
 import type { MockProperty } from "@/data/mockProperties";
 import { cn } from "@/lib/utils";
@@ -22,21 +25,27 @@ const convertToProductData = (property: MockProperty): ProductData => {
   const stationInfo = property.station || "";
 
   // 交通手段のパターンマッチング（徒歩、車、バスなど）
-  const transportationMatch = stationInfo.match(/(徒歩\d+分|車\d+分|バス.*?\d+分)/);
+  const transportationMatch = stationInfo.match(
+    /(徒歩\d+分|車\d+分|バス.*?\d+分)/,
+  );
   const transportation = transportationMatch
     ? transportationMatch[1]
     : property.transportation || "";
 
   // 駅名の抽出（交通手段を除いた部分）
-  let stationName = stationInfo.replace(/(徒歩\d+分|車\d+分|バス.*?\d+分)/, "").trim();
+  let stationName = stationInfo
+    .replace(/(徒歩\d+分|車\d+分|バス.*?\d+分)/, "")
+    .trim();
 
   // 距離情報（m表記）を除去
   stationName = stationName.replace(/\(\d+m\)/, "").trim();
 
   // バス停や交通手段のみの場合は非表示にする判定
   const isOnlyTransportation = !stationName && transportation;
-  const isBusRoute = stationInfo.includes("バス") || transportation?.includes("バス");
-  const isCarOnly = transportation?.includes("車") || stationInfo.includes("車");
+  const isBusRoute =
+    stationInfo.includes("バス") || transportation?.includes("バス");
+  const isCarOnly =
+    transportation?.includes("車") || stationInfo.includes("車");
 
   // stationの完全な情報を一つのバッジにまとめる（適切な場合のみ）
   const stationDisplay = (() => {
@@ -82,7 +91,7 @@ const convertToProductData = (property: MockProperty): ProductData => {
 
   // 画像配列が1枚以下の場合はデフォルトプールから補完して最大5枚にする
   const thumbnail: string[] = Array.from(
-    new Set([...(property.images || []), ...fallbackThumbnails])
+    new Set([...(property.images || []), ...fallbackThumbnails]),
   ).slice(0, 5);
 
   return {
@@ -139,10 +148,21 @@ export const PropertySliderSection = ({
     const el = scrollRef.current;
     updateCanScroll();
     if (!el) return;
+
     const onScroll = () => updateCanScroll();
     el.addEventListener("scroll", onScroll);
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [properties.length, updateCanScroll]);
+
+    const observer = new ResizeObserver(() => updateCanScroll());
+    observer.observe(el);
+    if (el.firstElementChild) {
+      observer.observe(el.firstElementChild);
+    }
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, [updateCanScroll]);
 
   const getScrollStep = React.useCallback(() => {
     const el = scrollRef.current;
@@ -212,7 +232,7 @@ export const PropertySliderSection = ({
                     "shrink-0 relative",
                     isFullWidth
                       ? "w-[calc((100%-36px)/4)] min-w-[280px] xl:w-[calc((100%-48px)/5)] 2xl:w-[calc((100%-60px)/6)]" // 4-6カラム表示用
-                      : "w-[calc((100%-12px)/2)] min-w-[280px] xl:w-[calc((100%-12px)/2)] 2xl:w-[calc((100%-12px)/2)]" // 常に2カラム表示用
+                      : "w-[calc((100%-12px)/2)] min-w-[280px] xl:w-[calc((100%-12px)/2)] 2xl:w-[calc((100%-12px)/2)]", // 常に2カラム表示用
                   )}
                 >
                   <ProductSwapCard

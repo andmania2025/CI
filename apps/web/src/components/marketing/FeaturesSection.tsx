@@ -1,5 +1,4 @@
 import { horizontalCards, serviceCards } from "@/data/mockServiceCards";
-import React from "react";
 import { ServiceCard } from "./ServiceCard";
 import { ServiceCardHorizontal } from "./ServiceCardHorizontal";
 
@@ -32,9 +31,9 @@ export const FeaturesSection = () => {
 
           {/* サービスカード（上段4枚） */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            {serviceCards.map((card, index) => (
+            {serviceCards.map((card) => (
               <ServiceCard
-                key={index}
+                key={card.title}
                 iconSrc={card.iconSrc}
                 title={card.title}
                 description={card.description}
@@ -45,9 +44,9 @@ export const FeaturesSection = () => {
 
           {/* サービスカード（下段横並び2枚） */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {horizontalCards.map((card, index) => (
+            {horizontalCards.map((card) => (
               <ServiceCardHorizontal
-                key={index}
+                key={card.title}
                 iconSrc={card.iconSrc}
                 title={card.title}
                 description={card.description}

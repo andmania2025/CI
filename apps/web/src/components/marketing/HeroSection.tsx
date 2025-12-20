@@ -5,7 +5,7 @@ import { cache } from "react";
 
 const CachedHeroSection = cache(() => {
   return (
-    <section className="relative h-[600px] bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 overflow-hidden">
+    <section className="relative h-[600px] bg-linear-to-br from-blue-400 via-blue-500 to-blue-600 overflow-hidden">
       {/* 背景画像 */}
       <div className="absolute inset-0">
         <Image
@@ -20,7 +20,7 @@ const CachedHeroSection = cache(() => {
       </div>
 
       {/* オーバーレイ */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-blue-800/3 to-blue-700/5" />
+      <div className="absolute inset-0 bg-linear-to-br from-blue-900/5 via-blue-800/3 to-blue-700/5" />
 
       {/* コンテンツ */}
       <div className="relative z-10 flex items-center justify-center h-full">
@@ -56,7 +56,7 @@ const CachedHeroSection = cache(() => {
       </div>
 
       {/* 追加の装飾要素 */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white/10 to-transparent" />
     </section>
   );
 });

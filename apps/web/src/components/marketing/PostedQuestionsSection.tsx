@@ -2,34 +2,29 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { type AnswerData, mockAnswers, mockQuestionPosts } from "@/data";
+import { mockQuestionPosts } from "@/data";
 import { Clock, MessageCircle, User } from "lucide-react";
-import { useRouter } from "next/navigation";
-import React from "react";
+import Link from "next/link";
 
 // モックデータ（分離済み）
 const mockQuestions = mockQuestionPosts;
 
 export const PostedQuestionsSection = () => {
-  const router = useRouter();
-
-  const handleQuestionClick = (questionId: string) => {
-    router.push(`/question-detail?id=${questionId}`);
-  };
-
   return (
     <section className="pb-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-md md:text-xl font-bold text-gray-800">投稿質問をみる</h2>
+          <h2 className="text-md md:text-xl font-bold text-gray-800">
+            投稿質問をみる
+          </h2>
         </div>
 
         <div className="space-y-6">
           {mockQuestions.map((question) => (
-            <div
+            <Link
               key={question.id}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-              onClick={() => handleQuestionClick(question.id)}
+              href={`/question-detail?id=${question.id}`}
+              className="block bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1">
@@ -53,7 +48,9 @@ export const PostedQuestionsSection = () => {
                     {question.title}
                   </h3>
 
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{question.excerpt}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    {question.excerpt}
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-6 text-sm text-gray-500">
@@ -64,7 +61,7 @@ export const PostedQuestionsSection = () => {
                   <div className="text-gray-400">{question.views}回閲覧</div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

@@ -12,6 +12,89 @@ import React, { useEffect, useState, Suspense } from "react";
 // 不動産会社検索用のモックデータ（分離済み）
 const mockAgentCompanies = mockCompanies;
 
+const SKELETON_IDS = Array.from({ length: 6 }, (_, i) => `skeleton-${i}`);
+
+function CompanyListSkeleton() {
+  return (
+    <div className="space-y-6">
+      {/* 結果件数のスケルトン */}
+      <div className="flex justify-between items-center">
+        <div className="h-6 w-48 bg-gray-200 animate-pulse rounded" />
+        <div className="h-6 w-32 bg-gray-200 animate-pulse rounded" />
+      </div>
+
+      {/* 不動産業者カードのスケルトン - 2グリッドレイアウト */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {SKELETON_IDS.map((id) => (
+          <div
+            key={id}
+            className="bg-white rounded-lg overflow-hidden border border-gray-200"
+          >
+            <div className="p-6 space-y-4">
+              {/* 会社名と所在地のスケルトン */}
+              <div className="flex justify-between items-start">
+                <div className="flex-1 space-y-2">
+                  <div className="h-5 w-3/4 bg-gray-200 animate-pulse rounded" />
+                  <div className="h-4 w-1/2 bg-gray-200 animate-pulse rounded" />
+                </div>
+                {/* ボタンのスケルトン */}
+                <div className="flex flex-col gap-2 ml-4">
+                  <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
+                  <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
+                </div>
+              </div>
+
+              {/* カテゴリのスケルトン */}
+              <div className="space-y-4">
+                {/* 取扱物件種別 */}
+                <div className="space-y-2">
+                  <div className="h-4 w-32 bg-gray-200 animate-pulse rounded" />
+                  <div className="flex gap-2">
+                    <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-32 bg-gray-200 animate-pulse rounded-md" />
+                  </div>
+                </div>
+
+                {/* 不動産種別 */}
+                <div className="space-y-2">
+                  <div className="h-4 w-24 bg-gray-200 animate-pulse rounded" />
+                  <div className="flex gap-2 flex-wrap">
+                    <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-12 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-18 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
+                  </div>
+                </div>
+
+                {/* 物件特徴 */}
+                <div className="space-y-2">
+                  <div className="h-4 w-20 bg-gray-200 animate-pulse rounded" />
+                  <div className="flex gap-2 flex-wrap">
+                    <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-28 bg-gray-200 animate-pulse rounded-md" />
+                    <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ページネーションのスケルトン - 右下に配置 */}
+      <div className="flex justify-end items-center space-x-2 pt-6">
+        <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
+        <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
+        <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
+        <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
+        <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
+      </div>
+    </div>
+  );
+}
+
 // 動的コンテンツ（不動産業者一覧）のローディング状態を管理
 function CompanyListWithSuspense({
   companies,
@@ -25,81 +108,7 @@ function CompanyListWithSuspense({
   onInquiryClick: (company: Company) => void;
 }) {
   if (isLoading) {
-    return (
-      <div className="space-y-6">
-        {/* 結果件数のスケルトン */}
-        <div className="flex justify-between items-center">
-          <div className="h-6 w-48 bg-gray-200 animate-pulse rounded" />
-          <div className="h-6 w-32 bg-gray-200 animate-pulse rounded" />
-        </div>
-
-        {/* 不動産業者カードのスケルトン - 2グリッドレイアウト */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-lg overflow-hidden border border-gray-200">
-              <div className="p-6 space-y-4">
-                {/* 会社名と所在地のスケルトン */}
-                <div className="flex justify-between items-start">
-                  <div className="flex-1 space-y-2">
-                    <div className="h-5 w-3/4 bg-gray-200 animate-pulse rounded" />
-                    <div className="h-4 w-1/2 bg-gray-200 animate-pulse rounded" />
-                  </div>
-                  {/* ボタンのスケルトン */}
-                  <div className="flex flex-col gap-2 ml-4">
-                    <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                    <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                  </div>
-                </div>
-
-                {/* カテゴリのスケルトン */}
-                <div className="space-y-4">
-                  {/* 取扱物件種別 */}
-                  <div className="space-y-2">
-                    <div className="h-4 w-32 bg-gray-200 animate-pulse rounded" />
-                    <div className="flex gap-2">
-                      <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-32 bg-gray-200 animate-pulse rounded-md" />
-                    </div>
-                  </div>
-
-                  {/* 不動産種別 */}
-                  <div className="space-y-2">
-                    <div className="h-4 w-24 bg-gray-200 animate-pulse rounded" />
-                    <div className="flex gap-2 flex-wrap">
-                      <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-12 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-18 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                    </div>
-                  </div>
-
-                  {/* 物件特徴 */}
-                  <div className="space-y-2">
-                    <div className="h-4 w-20 bg-gray-200 animate-pulse rounded" />
-                    <div className="flex gap-2 flex-wrap">
-                      <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-28 bg-gray-200 animate-pulse rounded-md" />
-                      <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ページネーションのスケルトン - 右下に配置 */}
-        <div className="flex justify-end items-center space-x-2 pt-6">
-          <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-          <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-          <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-          <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-          <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-        </div>
-      </div>
-    );
+    return <CompanyListSkeleton />;
   }
 
   return (
@@ -166,8 +175,12 @@ function RealEstateAgentSearchContent() {
       <main className="pt-4 pb-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">不動産業者検索</h1>
-            <p className="text-gray-600">不動産業者に関する検索・条件指定が行えます。</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+              不動産業者検索
+            </h1>
+            <p className="text-gray-600">
+              不動産業者に関する検索・条件指定が行えます。
+            </p>
           </div>
 
           <SearchForm
@@ -177,86 +190,7 @@ function RealEstateAgentSearchContent() {
             initialPropertyType={propertyType}
           />
 
-          <Suspense
-            fallback={
-              <div className="space-y-6">
-                {/* 結果件数のスケルトン */}
-                <div className="flex justify-between items-center">
-                  <div className="h-6 w-48 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-6 w-32 bg-gray-200 animate-pulse rounded" />
-                </div>
-
-                {/* 不動産業者カードのスケルトン - 2グリッドレイアウト */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-white rounded-lg overflow-hidden border border-gray-200"
-                    >
-                      <div className="p-6 space-y-4">
-                        {/* 会社名と所在地のスケルトン */}
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1 space-y-2">
-                            <div className="h-5 w-3/4 bg-gray-200 animate-pulse rounded" />
-                            <div className="h-4 w-1/2 bg-gray-200 animate-pulse rounded" />
-                          </div>
-                          {/* ボタンのスケルトン */}
-                          <div className="flex flex-col gap-2 ml-4">
-                            <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                            <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                          </div>
-                        </div>
-
-                        {/* カテゴリのスケルトン */}
-                        <div className="space-y-4">
-                          {/* 取扱物件種別 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-32 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2">
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-32 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-
-                          {/* 不動産種別 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-24 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2 flex-wrap">
-                              <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-12 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-18 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-
-                          {/* 物件特徴 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-20 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2 flex-wrap">
-                              <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-28 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* ページネーションのスケルトン - 右下に配置 */}
-                <div className="flex justify-end items-center space-x-2 pt-6">
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                </div>
-              </div>
-            }
-          >
+          <Suspense fallback={<CompanyListSkeleton />}>
             <CompanyListWithSuspense
               companies={companies}
               totalItems={companies.length}
@@ -292,85 +226,14 @@ export function RealEstateAgentSearchClient() {
           <main className="pt-4 pb-8">
             <div className="max-w-7xl mx-auto px-4">
               <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">不動産業者検索</h1>
-                <p className="text-gray-600">不動産業者に関する検索・条件指定が行えます。</p>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                  不動産業者検索
+                </h1>
+                <p className="text-gray-600">
+                  不動産業者に関する検索・条件指定が行えます。
+                </p>
               </div>
-              <div className="space-y-6">
-                {/* 結果件数のスケルトン */}
-                <div className="flex justify-between items-center">
-                  <div className="h-6 w-48 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-6 w-32 bg-gray-200 animate-pulse rounded" />
-                </div>
-
-                {/* 不動産業者カードのスケルトン - 2グリッドレイアウト */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-white rounded-lg overflow-hidden border border-gray-200"
-                    >
-                      <div className="p-6 space-y-4">
-                        {/* 会社名と所在地のスケルトン */}
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1 space-y-2">
-                            <div className="h-5 w-3/4 bg-gray-200 animate-pulse rounded" />
-                            <div className="h-4 w-1/2 bg-gray-200 animate-pulse rounded" />
-                          </div>
-                          {/* ボタンのスケルトン */}
-                          <div className="flex flex-col gap-2 ml-4">
-                            <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                            <div className="h-8 w-24 bg-gray-200 animate-pulse rounded" />
-                          </div>
-                        </div>
-
-                        {/* カテゴリのスケルトン */}
-                        <div className="space-y-4">
-                          {/* 取扱物件種別 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-32 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2">
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-32 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-
-                          {/* 不動産種別 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-24 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2 flex-wrap">
-                              <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-12 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-18 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-24 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-
-                          {/* 物件特徴 */}
-                          <div className="space-y-2">
-                            <div className="h-4 w-20 bg-gray-200 animate-pulse rounded" />
-                            <div className="flex gap-2 flex-wrap">
-                              <div className="h-6 w-16 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-28 bg-gray-200 animate-pulse rounded-md" />
-                              <div className="h-6 w-20 bg-gray-200 animate-pulse rounded-md" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* ページネーションのスケルトン - 右下に配置 */}
-                <div className="flex justify-end items-center space-x-2 pt-6">
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                  <div className="h-10 w-10 bg-gray-200 animate-pulse rounded" />
-                </div>
-              </div>
+              <CompanyListSkeleton />
             </div>
           </main>
         </>

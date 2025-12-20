@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +12,11 @@ interface CategoryButtonProps {
   onClick?: () => void;
 }
 
-const CategoryButton = ({ label, isActive = false, onClick }: CategoryButtonProps) => {
+const CategoryButton = ({
+  label,
+  isActive = false,
+  onClick,
+}: CategoryButtonProps) => {
   return (
     <Button
       variant="outline"
@@ -22,7 +25,7 @@ const CategoryButton = ({ label, isActive = false, onClick }: CategoryButtonProp
         "px-2.5 text-sm border rounded-md transition-colors h-10 inline-flex items-center justify-center whitespace-nowrap",
         isActive
           ? "bg-[#093893] text-white border-[#093893]"
-          : "bg-white text-[#093893] border-[#093893] hover:text-white hover:bg-[#093893]"
+          : "bg-white text-[#093893] border-[#093893] hover:text-white hover:bg-[#093893]",
       )}
     >
       {label}
@@ -81,7 +84,7 @@ export const QuestionCategoryCard = ({
             <div className="flex flex-wrap gap-3">
               {categories.map((category, index) => (
                 <CategoryButton
-                  key={index}
+                  key={category}
                   label={category}
                   isActive={category === activeCategory}
                   onClick={() => handleCategoryClick(category)}

@@ -1,7 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Save, X } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
@@ -117,8 +122,10 @@ export const MemberEditModal: React.FC<MemberEditModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[800px] flex flex-col p-0 border-0">
-        <DialogHeader className="flex-shrink-0 px-6 pt-6 pb-4">
-          <DialogTitle className="text-lg font-semibold">会員情報編集</DialogTitle>
+        <DialogHeader className="shrink-0 px-6 pt-6 pb-4">
+          <DialogTitle className="text-lg font-semibold">
+            会員情報編集
+          </DialogTitle>
         </DialogHeader>
 
         <div className="flex-1 min-h-0 px-6 pb-6 overflow-hidden">

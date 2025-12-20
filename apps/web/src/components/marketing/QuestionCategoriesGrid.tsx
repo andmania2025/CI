@@ -4,7 +4,6 @@ import {
   propertyFeatureCategories,
   propertyTypeCategories,
 } from "@/data/mockQuestionCategories";
-import React from "react";
 import { QuestionCategoryCard } from "./QuestionCategoryCard";
 
 export const QuestionCategoriesGrid = () => {

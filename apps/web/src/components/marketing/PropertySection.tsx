@@ -1,6 +1,9 @@
 "use client";
 
-import { type ProductData, ProductSwapCard } from "@/components/cards/product-swap-card";
+import {
+  type ProductData,
+  ProductSwapCard,
+} from "@/components/cards/product-swap-card";
 import { Button } from "@/components/ui/button";
 import type { MockProperty } from "@/data/mockProperties";
 import { cn } from "@/lib/utils";
@@ -27,21 +30,27 @@ const convertToProductData = (property: MockProperty): ProductData => {
   const stationInfo = property.station || "";
 
   // 交通手段のパターンマッチング（徒歩、車、バスなど）
-  const transportationMatch = stationInfo.match(/(徒歩\d+分|車\d+分|バス.*?\d+分)/);
+  const transportationMatch = stationInfo.match(
+    /(徒歩\d+分|車\d+分|バス.*?\d+分)/,
+  );
   const transportation = transportationMatch
     ? transportationMatch[1]
     : property.transportation || "";
 
   // 駅名の抽出（交通手段を除いた部分）
-  let stationName = stationInfo.replace(/(徒歩\d+分|車\d+分|バス.*?\d+分)/, "").trim();
+  let stationName = stationInfo
+    .replace(/(徒歩\d+分|車\d+分|バス.*?\d+分)/, "")
+    .trim();
 
   // 距離情報（m表記）を除去
   stationName = stationName.replace(/\(\d+m\)/, "").trim();
 
   // バス停や交通手段のみの場合は非表示にする判定
   const isOnlyTransportation = !stationName && transportation;
-  const isBusRoute = stationInfo.includes("バス") || transportation?.includes("バス");
-  const isCarOnly = transportation?.includes("車") || stationInfo.includes("車");
+  const isBusRoute =
+    stationInfo.includes("バス") || transportation?.includes("バス");
+  const isCarOnly =
+    transportation?.includes("車") || stationInfo.includes("車");
 
   // stationの完全な情報を一つのバッジにまとめる（適切な場合のみ）
   const stationDisplay = (() => {
@@ -87,7 +96,7 @@ const convertToProductData = (property: MockProperty): ProductData => {
 
   // 画像配列が1枚以下の場合はデフォルトプールから補完して最大5枚にする
   const thumbnail: string[] = Array.from(
-    new Set([...(property.images || []), ...fallbackThumbnails])
+    new Set([...(property.images || []), ...fallbackThumbnails]),
   ).slice(0, 5);
 
   return {
@@ -106,7 +115,10 @@ const convertToProductData = (property: MockProperty): ProductData => {
   };
 };
 
-export const PropertySection = ({ title, properties }: PropertySectionProps) => {
+export const PropertySection = ({
+  title,
+  properties,
+}: PropertySectionProps) => {
   // カルーセルUIを適用するセクション（売買・賃貸・100万円以下）を判定
   const isCarouselSection =
     title.includes("100万円以下") ||
@@ -129,9 +141,17 @@ export const PropertySection = ({ title, properties }: PropertySectionProps) => 
   const updateCanScroll = React.useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
+
+    // プロパティが空の場合はスクロール不可にする
+    if (properties.length === 0) {
+      setCanPrev(false);
+      setCanNext(false);
+      return;
+    }
+
     setCanPrev(el.scrollLeft > 0);
     setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
-  }, []);
+  }, [properties]);
 
   React.useEffect(() => {
     if (!isCarouselSection) return;
@@ -141,7 +161,7 @@ export const PropertySection = ({ title, properties }: PropertySectionProps) => 
     const onScroll = () => updateCanScroll();
     el.addEventListener("scroll", onScroll);
     return () => el.removeEventListener("scroll", onScroll);
-  }, [isCarouselSection, properties.length, updateCanScroll]);
+  }, [isCarouselSection, updateCanScroll]);
 
   const getScrollStep = React.useCallback(() => {
     const el = scrollRef.current;
@@ -174,7 +194,9 @@ export const PropertySection = ({ title, properties }: PropertySectionProps) => 
   return (
     <div className="mb-16">
       <div className="flex items-center justify-between mb-10">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-800 m-0">{title}</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-gray-800 m-0">
+          {title}
+        </h2>
         {isCarouselSection && (
           <div className="flex items-center gap-3">
             <Button
@@ -219,7 +241,10 @@ export const PropertySection = ({ title, properties }: PropertySectionProps) => 
 
       {isCarouselSection && (
         <div className="relative">
-          <div ref={scrollRef} className="overflow-x-auto no-scrollbar scroll-smooth">
+          <div
+            ref={scrollRef}
+            className="overflow-x-auto no-scrollbar scroll-smooth"
+          >
             <div className="flex gap-6 px-2">
               {properties.map((property, index) => {
                 return (
@@ -231,7 +256,7 @@ export const PropertySection = ({ title, properties }: PropertySectionProps) => 
                       // 新着物件セクションでは4つのカードが完全に表示されるように横幅を調整
                       isNewSection
                         ? "w-[calc((100%-96px)/4)] min-w-[360px]" // ギャップを24pxに増加し、最小幅を360pxに設定
-                        : "w-[380px] sm:w-[420px]" // その他のセクションは従来の横幅
+                        : "w-[380px] sm:w-[420px]", // その他のセクションは従来の横幅
                     )}
                   >
                     <ProductSwapCard

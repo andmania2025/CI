@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 export const VacantHouseBankSection = () => {
   return (
@@ -9,7 +8,9 @@ export const VacantHouseBankSection = () => {
           <div className="pl-0 pr-6 pb-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
               <div className="md:col-span-1">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">空き家バンク</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                  空き家バンク
+                </h3>
                 <p className="text-gray-600 mb-4">自治体運営の空き家バンク</p>
               </div>
               <div className="relative md:col-span-3">
