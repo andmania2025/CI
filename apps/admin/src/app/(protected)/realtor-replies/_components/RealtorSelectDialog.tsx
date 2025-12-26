@@ -93,13 +93,13 @@ export const RealtorSelectDialog: React.FC<RealtorSelectDialogProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col p-0">
-        <DialogHeader className="flex-shrink-0 px-6 pt-6 pb-4 text-left">
+        <DialogHeader className="shrink-0 px-6 pt-6 pb-4 text-left">
           <DialogTitle className="text-lg font-semibold">不動産業者様一覧</DialogTitle>
         </DialogHeader>
 
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden px-6">
           {/* 検索セクション */}
-          <div className="flex-shrink-0 mb-4">
+          <div className="shrink-0 mb-4">
             <div className="flex items-center gap-2 py-2">
               <Input
                 type="text"
@@ -115,7 +115,7 @@ export const RealtorSelectDialog: React.FC<RealtorSelectDialogProps> = ({
               />
               <Button
                 onClick={handleSearch}
-                className="bg-black hover:bg-gray-800 text-white flex-shrink-0"
+                className="bg-black hover:bg-gray-800 text-white shrink-0"
               >
                 検索
               </Button>
@@ -123,7 +123,7 @@ export const RealtorSelectDialog: React.FC<RealtorSelectDialogProps> = ({
           </div>
 
           {/* 不動産業者リストヘッダー */}
-          <div className="flex-shrink-0 flex items-center justify-between mb-4">
+          <div className="shrink-0 flex items-center justify-between mb-4">
             <span className="text-sm text-gray-600 ml-2">
               {totalItems}件中 {startIndex + 1}-{endIndex}件表示
             </span>

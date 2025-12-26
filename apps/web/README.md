@@ -26,7 +26,7 @@
 ### 開発環境
 
 - **Node.js**: >=20.0.0
-- **Package Manager**: [pnpm](https://pnpm.io/)
+- **Package Manager**: [Bun](https://bun.sh/)
 - **Linting & Formatting**: [Biome](https://biomejs.dev/)
 - **Type Checking**: TypeScript
 - **Pre-commit Hooks**: [Lefthook](https://github.com/evilmartians/lefthook)
@@ -75,8 +75,8 @@ src/
 ### 開発フロー
 
 1. **スキーマの変更**: ルートの `prisma/schema.prisma` を編集
-2. **マイグレーション**: `docker compose exec web pnpm exec prisma migrate dev` を実行
-3. **クライアント生成**: `docker compose exec web pnpm exec prisma generate` (変更後に自動的に実行されます)
+2. **マイグレーション**: `docker compose exec web bun x prisma migrate dev` を実行
+3. **クライアント生成**: `docker compose exec web bun x prisma generate` (変更後に自動的に実行されます)
 
 Server Actions や Route Handlers 内でデータベースにアクセスする際は、生成された Prisma Client を使用してください。
 
@@ -156,7 +156,7 @@ docker compose up -d --build
 ### 注意事項
 
 - 本番環境（Vercel）では Docker は使用されません。
-- ホスト側での `pnpm dev` の実行は不要です。
+- ホスト側での `bun run dev` の実行は不要です。
 
 ## デプロイ
 
@@ -168,15 +168,15 @@ docker compose up -d --build
 2. 環境変数を設定（必要に応じて）
 3. 自動的にビルド・デプロイが実行されます
 
-**注意**: 本番環境は Vercel でデプロイするため、Docker コンテナは使用しません。`pnpm run build`コマンドでビルドが実行されます。
+**注意**: 本番環境は Vercel でデプロイするため、Docker コンテナは使用しません。`bun run build`コマンドでビルドが実行されます。
 
 ## 貢献
 
 プロジェクトへの貢献を歓迎します。プルリクエストを送信する前に：
 
 1. コードスタイルガイドラインに従ってください
-2. `docker compose exec web pnpm run lint`でコードをチェックしてください
-3. `docker compose exec web pnpm run type-check`で型チェックを実行してください
+2. `docker compose exec web bun run lint`でコードをチェックしてください
+3. `docker compose exec web bun run type-check`で型チェックを実行してください
 
 ### Pre-commit フック (Lefthook)
 

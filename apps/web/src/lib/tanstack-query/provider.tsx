@@ -14,7 +14,7 @@ interface QueryProviderProps {
  * アプリケーション全体でTanStack Queryを使用するためのProvider
  * 
  * 注意: React Query Devtoolsはオプショナルな依存関係です
- * 開発環境で使用する場合は、`pnpm add -D @tanstack/react-query-devtools`でインストールしてください
+ * 開発環境で使用する場合は、`bun add -d @tanstack/react-query-devtools`でインストールしてください
  */
 export const QueryProvider = ({ children }: QueryProviderProps) => {
   return (

@@ -9,7 +9,7 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
-    // seed: 'pnpm db:seed', // 必要に応じて追加
+    // seed: 'bun run db:seed', // 必要に応じて追加
   },
   datasource: {
     url: env("DATABASE_URL"),

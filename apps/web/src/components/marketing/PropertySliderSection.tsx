@@ -14,11 +14,11 @@ import React from "react";
 const convertToProductData = (property: MockProperty): ProductData => {
   // サムネイル補完用のデフォルト画像プール（public/section 配下）
   const fallbackThumbnails: string[] = [
-    "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
-    "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
-    "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
-    "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-    "/section/tommy-wong-ebUqtlITycQ-unsplash.jpg",
+    "/section/section-17.jpg",
+    "/section/section-18.jpg",
+    "/section/section-19.jpg",
+    "/section/section-20.jpg",
+    "/section/section-22.jpg",
   ];
 
   // 最寄り駅と交通手段の解析

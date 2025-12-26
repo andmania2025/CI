@@ -130,7 +130,7 @@ export const PropertyDuplicateToast: React.FC<PropertyDuplicateToastProps> = ({
         }`}
       >
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             {isLoading ? (
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600" />
             ) : result?.success ? (
@@ -162,7 +162,7 @@ export const PropertyDuplicateToast: React.FC<PropertyDuplicateToastProps> = ({
           <button
             type="button"
             onClick={handleClose}
-            className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors"
+            className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>

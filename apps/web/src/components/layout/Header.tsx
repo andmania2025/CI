@@ -12,7 +12,7 @@ const CachedHeader = cache(() => {
         {/* 上段: ロゴ・文言と右側リンク */}
         <div className="flex items-center h-18">
           {/* 左側: ロゴと文言 */}
-          <Link href="/" className="flex items-center space-x-3 flex-shrink-0">
+          <Link href="/" className="flex items-center space-x-3 shrink-0">
             <Image
               src="/top/logo/blue-logo.png"
               alt="ウチカツ"

@@ -6,7 +6,7 @@ import type React from "react";
 export const MODAL_STYLES = {
   container:
     "!w-[95vw] !max-w-[1000px] !max-h-[90vh] rounded-2xl shadow-xl border border-neutral-200 bg-white p-0 flex flex-col",
-  header: "p-5 pb-4 flex-shrink-0 border-b border-neutral-200",
+  header: "p-5 pb-4 shrink-0 border-b border-neutral-200",
   content: "flex-1 px-5 pt-1 pb-4 overflow-y-auto",
   section: "space-y-3",
   card: "bg-white p-3 rounded-lg border border-neutral-200",

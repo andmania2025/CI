@@ -143,7 +143,7 @@ const PropertyInquiryManagement: React.FC = () => {
             />
           </div>
 
-          <div className="mt-2 flex-shrink-0">
+          <div className="mt-2 shrink-0">
             <PropertyInquiryPagination
               totalItems={totalItems}
               currentPage={currentPage}

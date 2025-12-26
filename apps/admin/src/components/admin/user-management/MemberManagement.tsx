@@ -1,4 +1,3 @@
-import { ConfirmDialog } from "@/components/common/ConfirmDialog";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, Search, Upload, Users } from "lucide-react";
 import type React from "react";
@@ -41,8 +40,6 @@ const MemberManagement: React.FC = () => {
     displayCount: "20",
   });
 
-  const [selectedMembers, setSelectedMembers] = useState<string[]>([]);
-  const [_selectAll, setSelectAll] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   // サンプル会員データ
@@ -147,32 +144,6 @@ const MemberManagement: React.FC = () => {
       },
       displayCount: "20",
     });
-  };
-
-  const _handleSelectAll = (checked: boolean) => {
-    setSelectAll(checked);
-    if (checked) {
-      setSelectedMembers(members.map((m) => m.id));
-    } else {
-      setSelectedMembers([]);
-    }
-  };
-
-  const _handleSelectMember = (memberId: string, checked: boolean) => {
-    if (checked) {
-      setSelectedMembers((prev) => [...prev, memberId]);
-    } else {
-      setSelectedMembers((prev) => prev.filter((id) => id !== memberId));
-      setSelectAll(false);
-    }
-  };
-
-  const [confirmOpen, setConfirmOpen] = useState(false);
-  const _handleDeleteSelected = () => {
-    setConfirmOpen(true);
-  };
-  const executeDelete = () => {
-    console.log("選択された会員を削除:", selectedMembers);
   };
 
   return (
@@ -459,14 +430,6 @@ const MemberManagement: React.FC = () => {
           </div>
         </div>
       </div>
-      <ConfirmDialog
-        open={confirmOpen}
-        onOpenChange={setConfirmOpen}
-        title="選択削除の確認"
-        description={`選択された ${selectedMembers.length} 件を削除します。よろしいですか？`}
-        confirmText="削除する"
-        onConfirm={executeDelete}
-      />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import type { MockProperty } from "@/data/mockProperties";
 export const asahiProperties: MockProperty[] = [
   {
     id: "asahi-1",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "大和市 中古マンション",
     location: "神奈川県大和市大和南2-2-6",
     station: "大和駅 徒歩3分",
@@ -23,7 +23,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-2",
-    images: ["/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg"],
+    images: ["/section/section-06.jpg"],
     title: "大和市 一戸建て",
     location: "神奈川県大和市中央1-1-1",
     station: "大和駅 徒歩5分",
@@ -40,7 +40,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-3",
-    images: ["/section/marek-okon-6CKzlX70Xqo-unsplash.jpg"],
+    images: ["/section/section-14.jpg"],
     title: "大和市 土地",
     location: "神奈川県大和市下鶴間1-2-3",
     station: "大和駅 徒歩8分",
@@ -53,7 +53,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-4",
-    images: ["/section/redd-francisco-sejLyCD2UQE-unsplash.jpg"],
+    images: ["/section/section-18.jpg"],
     title: "大和市 新築マンション",
     location: "神奈川県大和市中央2-3-4",
     station: "大和駅 徒歩2分",
@@ -69,7 +69,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-5",
-    images: ["/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg"],
+    images: ["/section/section-19.jpg"],
     title: "大和市 中古一戸建て",
     location: "神奈川県大和市下鶴間2-1-5",
     station: "大和駅 徒歩7分",
@@ -86,7 +86,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-6",
-    images: ["/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg"],
+    images: ["/section/section-20.jpg"],
     title: "大和市 投資用アパート",
     location: "神奈川県大和市中央3-2-1",
     station: "大和駅 徒歩4分",
@@ -103,7 +103,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-7",
-    images: ["/section/tommy-wong-ebUqtlITycQ-unsplash.jpg"],
+    images: ["/section/section-22.jpg"],
     title: "大和市 店舗物件",
     location: "神奈川県大和市中央1-4-7",
     station: "大和駅 徒歩1分",
@@ -119,7 +119,7 @@ export const asahiProperties: MockProperty[] = [
   },
   {
     id: "asahi-8",
-    images: ["/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg"],
+    images: ["/section/section-17.jpg"],
     title: "大和市 分譲マンション",
     location: "神奈川県大和市下鶴間3-3-2",
     station: "大和駅 徒歩6分",

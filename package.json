@@ -2,14 +2,17 @@
   "name": "ucikatu-monorepo",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.15.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev:web": "pnpm --filter web dev",
-    "dev:admin": "pnpm --filter admin dev",
-    "build:web": "pnpm --filter web build",
-    "build:admin": "pnpm --filter admin build",
-    "lint": "pnpm -r lint",
-    "test": "pnpm -r test",
+    "dev:web": "bun run --cwd apps/web dev",
+    "dev:admin": "bun run --cwd apps/admin dev",
+    "build:web": "bun run --cwd apps/web build",
+    "build:admin": "bun run --cwd apps/admin build",
+    "lint": "bun run lint",
+    "test": "bun run test",
     "prepare": "lefthook install || true"
   },
   "engines": {

@@ -1,0 +1,148 @@
+import type { MailTemplate } from "./types";
+
+// サンプルメールテンプレートデータ
+export const MOCK_MAIL_TEMPLATES: MailTemplate[] = [
+  {
+    id: "mt001",
+    templateName: "物件問い合わせ対応メール1",
+    subject:
+      "【ウチカツ】カテゴリー不動産のお問い合わせありがとうございました",
+    templateType: "配信",
+    status: "編集",
+  },
+  {
+    id: "mt002",
+    templateName: "物件問い合わせ対応メール2",
+    subject: "お問い合わせありがとうございます",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt003",
+    templateName: "物件問い合わせ対応メール3",
+    subject: "お問い合わせありがとうございます",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt004",
+    templateName: "物件問い合わせ対応メール1【管理者】",
+    subject: "【会員登録不動産問合せ】",
+    templateType: "配信",
+    status: "編集",
+  },
+  {
+    id: "mt005",
+    templateName: "物件問い合わせ対応メール2【管理者】",
+    subject: "物件問い合わせを受信しました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt006",
+    templateName: "物件問い合わせ対応メール3【管理者】",
+    subject: "物件問い合わせを受信しました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt007",
+    templateName: "物件問い合わせ対応メール　物件問合せ1",
+    subject: "物件問い合わせを受信しました物件問合せ",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt008",
+    templateName: "物件問い合わせ対応メール　物件問合せ2",
+    subject: "物件問い合わせを受信しました物件問合せ",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt009",
+    templateName: "物件問い合わせ対応メール　物件問合せ3",
+    subject: "物件問い合わせを受信しました物件問合せ",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt010",
+    templateName: "物件問い合わせ対応メール1【不動産業者様】",
+    subject:
+      "ご登録頂いたウーチカツの業者登録情報について【owner_name】【owner_branch_name】様宛",
+    templateType: "配信",
+    status: "編集",
+  },
+  {
+    id: "mt011",
+    templateName: "物件問い合わせ対応メール2【不動産業者様】",
+    subject: "物件問い合わせを受信しました【不動産業者様】",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt012",
+    templateName: "物件問い合わせ対応メール3【不動産業者様】",
+    subject: "物件問い合わせを受信しました【不動産業者様】",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt013",
+    templateName: "会員登録完了メール1【会員】",
+    subject: "会員登録ありがとうございました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt014",
+    templateName: "会員登録完了メール2【会員】",
+    subject: "会員登録ありがとうございました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt015",
+    templateName: "会員登録完了メール3【会員】",
+    subject: "会員登録ありがとうございました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt016",
+    templateName: "会員登録完了通知メール1【管理者】",
+    subject: "会員登録がありました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt017",
+    templateName: "会員登録完了通知メール2【管理者】",
+    subject: "会員登録がありました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt018",
+    templateName: "会員登録完了通知メール3【管理者】",
+    subject: "会員登録がありました",
+    templateType: "停止",
+    status: "編集",
+  },
+  {
+    id: "mt019",
+    templateName: "不動産業者登録完了メール1【不動産業者様】",
+    subject:
+      "ご登録頂いたウーチカツの業者登録情報についてご案内いたします。【name】【branch_name】様宛",
+    templateType: "配信",
+    status: "編集",
+  },
+  {
+    id: "mt020",
+    templateName: "不動産業者登録完了メール2【不動産業者様】",
+    subject: "不動産業者登録ありがとうございました",
+    templateType: "停止",
+    status: "編集",
+  },
+];

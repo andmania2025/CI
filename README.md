@@ -14,7 +14,7 @@
 - **Framework**: Next.js 16
 - **Styling**: Tailwind CSS v4
 - **Database**: Supabase (PostgreSQL), Prisma ORM
-- **Package Manager**: pnpm
+- **Package Manager**: Bun
 - **Infrastructure**: Docker, Vercel
 
 ### 詳細スタック

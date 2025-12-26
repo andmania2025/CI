@@ -106,7 +106,7 @@ export const PropertySearchDialog: React.FC<PropertySearchDialogProps> = ({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-end gap-4 pt-4 flex-shrink-0">
+        <div className="flex justify-end gap-4 pt-4 shrink-0">
           <Button variant="outline" onClick={onReset}>
             クリア
           </Button>

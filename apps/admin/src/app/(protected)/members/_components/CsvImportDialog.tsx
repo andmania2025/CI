@@ -245,7 +245,7 @@ export const CsvImportDialog: React.FC<CsvImportDialogProps> = ({
               variant="outline"
               size="sm"
               onClick={handleDownloadSample}
-              className="flex items-center gap-1 flex-shrink-0"
+              className="flex items-center gap-1 shrink-0"
             >
               <Download className="w-4 h-4" />
               サンプルCSV

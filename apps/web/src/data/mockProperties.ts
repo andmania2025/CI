@@ -46,7 +46,7 @@ export const PROPERTY_TYPES = {
 export const saleProperties: MockProperty[] = [
   {
     id: "sale-1",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "八尾市 中古マンション",
     location: "大阪府八尾市南太子堂1丁目",
     station: "八尾駅 徒歩12分",
@@ -60,7 +60,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-2",
-    images: ["/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg"],
+    images: ["/section/section-06.jpg"],
     title: "駒ヶ根市東町 売家 空き家バンク登録物件★",
     location: "長野県駒ヶ根市東町14953-11",
     station: "駒ヶ根駅 徒歩8分",
@@ -75,7 +75,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-3",
-    images: ["/section/hyungman-jeon-q1W6dfb0cOQ-unsplash.jpg"],
+    images: ["/section/section-11.jpg"],
     title: "名張・桔梗が丘3番町",
     location: "三重県名張市桔梗が丘3番町4-46-2",
     station: "桔梗が丘駅 徒歩10分",
@@ -87,7 +87,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-4",
-    images: ["/section/marek-okon-6CKzlX70Xqo-unsplash.jpg"],
+    images: ["/section/section-14.jpg"],
     title: "中央三条一丁目 1棟",
     location: "北海道札幌市白石区中央三条1丁目",
     station: "東札幌駅 徒歩22分",
@@ -105,7 +105,7 @@ export const saleProperties: MockProperty[] = [
   // 朝日土地建物株式会社の物件を追加
   {
     id: "sale-company1-1",
-    images: ["/section/avi-werde-hHz4yrvxwlA-unsplash.jpg"],
+    images: ["/section/section-01.jpg"],
     title: "大和市 新築一戸建て",
     location: "神奈川県大和市大和南2丁目",
     station: "大和駅 徒歩5分",
@@ -121,7 +121,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-company1-2",
-    images: ["/section/bailey-anselme-Bkp3gLygyeA-unsplash.jpg"],
+    images: ["/section/section-02.jpg"],
     title: "大和市 中古マンション",
     location: "神奈川県大和市中央1丁目",
     station: "大和駅 徒歩3分",
@@ -136,7 +136,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-company1-3",
-    images: ["/section/chuttersnap-awL_YCtPGv4-unsplash.jpg"],
+    images: ["/section/section-03.jpg"],
     title: "大和市 土地",
     location: "神奈川県大和市下鶴間1丁目",
     station: "鶴間駅 徒歩8分",
@@ -148,7 +148,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-5",
-    images: ["/section/redd-francisco-sejLyCD2UQE-unsplash.jpg"],
+    images: ["/section/section-18.jpg"],
     title: "三重・名張・富貴ケ丘3番町",
     location: "三重県名張市富貴ケ丘3番町113番",
     station: "名張駅 徒歩30分",
@@ -160,7 +160,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-6",
-    images: ["/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg"],
+    images: ["/section/section-20.jpg"],
     title: "伊賀・東谷",
     location: "三重県伊賀市東谷1202",
     station: "丸山駅 徒歩54分",
@@ -172,7 +172,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-7",
-    images: ["/section/dillon-kydd-2keCPb73aQY-unsplash.jpg"],
+    images: ["/section/section-07.jpg"],
     title: "由良二丁目",
     location: "洲本市由良2-1-7",
     station: "バス由良線 由良支所前 徒歩2分",
@@ -187,7 +187,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-8",
-    images: ["/section/vu-anh-TiVPTYCG_3E-unsplash.jpg"],
+    images: ["/section/section-23.jpg"],
     title: "愛知・名古屋市 土地",
     location: "愛知県名古屋市東区",
     station: "今池駅 徒歩12分",
@@ -200,7 +200,7 @@ export const saleProperties: MockProperty[] = [
   // 追加データ
   {
     id: "sale-9",
-    images: ["/section/mylene-larnaud-ZoPSn0WI94k-unsplash.jpg"],
+    images: ["/section/section-16.jpg"],
     title: "東京・新宿区 マンション",
     location: "東京都新宿区西新宿",
     station: "新宿駅 徒歩8分",
@@ -213,7 +213,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-10",
-    images: ["/section/dillon-kydd-XGvwt544g8k-unsplash.jpg"],
+    images: ["/section/section-08.jpg"],
     title: "大阪・梅田区 一戸建て",
     location: "大阪府大阪市北区梅田",
     station: "JR大阪駅 徒歩5分",
@@ -226,7 +226,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-11",
-    images: ["/section/henry-chen-x7clQSWhlfE-unsplash.jpg"],
+    images: ["/section/section-10.jpg"],
     title: "神奈川・川崎市 土地",
     location: "神奈川県川崎市川崎区",
     station: "JR川崎駅 徒歩15分",
@@ -237,7 +237,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-12",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "千葉・船橋市 マンション",
     location: "千葉県船橋市",
     station: "JR船橋駅 徒歩10分",
@@ -250,7 +250,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-13",
-    images: ["/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg"],
+    images: ["/section/section-06.jpg"],
     title: "埼玉・さいたま市 一戸建て",
     location: "埼玉県さいたま市大宮区",
     station: "JR大宮駅 徒歩12分",
@@ -263,7 +263,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-14",
-    images: ["/section/hyungman-jeon-q1W6dfb0cOQ-unsplash.jpg"],
+    images: ["/section/section-11.jpg"],
     title: "茨城・水戸市 土地",
     location: "茨城県水戸市",
     station: "JR水戸駅 徒歩8分",
@@ -274,7 +274,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-15",
-    images: ["/section/marek-okon-6CKzlX70Xqo-unsplash.jpg"],
+    images: ["/section/section-14.jpg"],
     title: "栃木・宇都宮市 マンション",
     location: "栃木県宇都宮市",
     station: "JR宇都宮駅 徒歩6分",
@@ -287,7 +287,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-16",
-    images: ["/section/redd-francisco-sejLyCD2UQE-unsplash.jpg"],
+    images: ["/section/section-18.jpg"],
     title: "群馬・前橋市 一戸建て",
     location: "群馬県前橋市",
     station: "JR前橋駅 徒歩10分",
@@ -300,7 +300,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-17",
-    images: ["/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg"],
+    images: ["/section/section-20.jpg"],
     title: "静岡・浜松市 土地",
     location: "静岡県浜松市",
     station: "JR浜松駅 徒歩15分",
@@ -311,7 +311,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-18",
-    images: ["/section/dillon-kydd-2keCPb73aQY-unsplash.jpg"],
+    images: ["/section/section-07.jpg"],
     title: "愛知・名古屋市 マンション",
     location: "愛知県名古屋市",
     station: "地下鉄名古屋駅 徒歩5分",
@@ -324,7 +324,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-19",
-    images: ["/section/vu-anh-TiVPTYCG_3E-unsplash.jpg"],
+    images: ["/section/section-23.jpg"],
     title: "三重・津市 一戸建て",
     location: "三重県津市",
     station: "JR津駅 徒歩8分",
@@ -337,7 +337,7 @@ export const saleProperties: MockProperty[] = [
   },
   {
     id: "sale-20",
-    images: ["/section/mylene-larnaud-ZoPSn0WI94k-unsplash.jpg"],
+    images: ["/section/section-16.jpg"],
     title: "滋賀・大津市 土地",
     location: "滋賀県大津市",
     station: "JR大津駅 徒歩12分",
@@ -351,7 +351,7 @@ export const saleProperties: MockProperty[] = [
 export const rentalProperties: MockProperty[] = [
   {
     id: "rental-1",
-    images: ["/section/vu-anh-TiVPTYCG_3E-unsplash.jpg"],
+    images: ["/section/section-23.jpg"],
     title: "日栄住宅加美北 204号室",
     location: "大阪府大阪市平野区加美北9-10-25",
     station: "衣摺加美北駅 徒歩6分",
@@ -367,7 +367,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-2",
-    images: ["/section/mylene-larnaud-ZoPSn0WI94k-unsplash.jpg"],
+    images: ["/section/section-16.jpg"],
     title: "魚住町貸家",
     location: "兵庫県明石市魚住町清水137-26",
     station: "JR魚住駅 徒歩6分",
@@ -383,7 +383,7 @@ export const rentalProperties: MockProperty[] = [
   // 朝日土地建物株式会社の賃貸物件を追加
   {
     id: "rental-company1-1",
-    images: ["/section/claudia-messner-QScjaJkbXYA-unsplash.jpg"],
+    images: ["/section/section-04.jpg"],
     title: "大和市 アパート 1K",
     location: "神奈川県大和市大和南1丁目",
     station: "大和駅 徒歩2分",
@@ -399,7 +399,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-company1-2",
-    images: ["/section/cody-dueitt - MCQa2-6Gzw-unsplash.jpg"],
+    images: ["/section/section-05.jpg"],
     title: "大和市 一戸建て賃貸",
     location: "神奈川県大和市中央2丁目",
     station: "大和駅 徒歩7分",
@@ -414,7 +414,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-company1-3",
-    images: ["/section/dillon-kydd-2keCPb73aQY-unsplash.jpg"],
+    images: ["/section/section-07.jpg"],
     title: "大和市 店舗賃貸",
     location: "神奈川県大和市下鶴間2丁目",
     station: "鶴間駅 徒歩5分",
@@ -429,7 +429,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-3",
-    images: ["/section/dillon-kydd-XGvwt544g8k-unsplash.jpg"],
+    images: ["/section/section-08.jpg"],
     title: "サンテプロダクトビル4A",
     location: "愛知県名古屋市西区押切1-3-1",
     station: "浅間町駅 徒歩7分",
@@ -443,7 +443,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-4",
-    images: ["/section/henry-chen-x7clQSWhlfE-unsplash.jpg"],
+    images: ["/section/section-10.jpg"],
     title: "リブステージ富加106",
     location: "岐阜県加茂郡富加町大平賀字大坪1…",
     station: "富加駅 車7分 (3600m)",
@@ -457,7 +457,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-5",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "東京・新宿区 アパート",
     location: "東京都新宿区西新宿",
     station: "新宿駅 徒歩8分",
@@ -472,7 +472,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-6",
-    images: ["/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg"],
+    images: ["/section/section-06.jpg"],
     title: "大阪・梅田区 マンション",
     location: "大阪府大阪市北区梅田",
     station: "JR大阪駅 徒歩5分",
@@ -487,7 +487,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-7",
-    images: ["/section/hyungman-jeon-q1W6dfb0cOQ-unsplash.jpg"],
+    images: ["/section/section-11.jpg"],
     title: "神奈川・川崎市 一戸建て",
     location: "神奈川県川崎市川崎区",
     station: "JR川崎駅 徒歩15分",
@@ -501,7 +501,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-8",
-    images: ["/section/marek-okon-6CKzlX70Xqo-unsplash.jpg"],
+    images: ["/section/section-14.jpg"],
     title: "千葉・船橋市 アパート",
     location: "千葉県船橋市",
     station: "JR船橋駅 徒歩10分",
@@ -516,7 +516,7 @@ export const rentalProperties: MockProperty[] = [
   // 追加データ
   {
     id: "rental-9",
-    images: ["/section/redd-francisco-sejLyCD2UQE-unsplash.jpg"],
+    images: ["/section/section-18.jpg"],
     title: "埼玉・さいたま市 マンション",
     location: "埼玉県さいたま市大宮区",
     station: "JR大宮駅 徒歩12分",
@@ -530,7 +530,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-10",
-    images: ["/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg"],
+    images: ["/section/section-20.jpg"],
     title: "茨城・水戸市 アパート",
     location: "茨城県水戸市",
     station: "JR水戸駅 徒歩8分",
@@ -544,7 +544,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-11",
-    images: ["/section/dillon-kydd-2keCPb73aQY-unsplash.jpg"],
+    images: ["/section/section-07.jpg"],
     title: "栃木・宇都宮市 マンション",
     location: "栃木県宇都宮市",
     station: "JR宇都宮駅 徒歩6分",
@@ -558,7 +558,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-12",
-    images: ["/section/vu-anh-TiVPTYCG_3E-unsplash.jpg"],
+    images: ["/section/section-23.jpg"],
     title: "群馬・前橋市 一戸建て",
     location: "群馬県前橋市",
     station: "JR前橋駅 徒歩10分",
@@ -572,7 +572,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-13",
-    images: ["/section/mylene-larnaud-ZoPSn0WI94k-unsplash.jpg"],
+    images: ["/section/section-16.jpg"],
     title: "静岡・浜松市 アパート",
     location: "静岡県浜松市",
     station: "JR浜松駅 徒歩15分",
@@ -586,7 +586,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-14",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "愛知・名古屋市 マンション",
     location: "愛知県名古屋市",
     station: "地下鉄名古屋駅 徒歩5分",
@@ -600,7 +600,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-15",
-    images: ["/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg"],
+    images: ["/section/section-06.jpg"],
     title: "三重・津市 アパート",
     location: "三重県津市",
     station: "JR津駅 徒歩8分",
@@ -614,7 +614,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-16",
-    images: ["/section/hyungman-jeon-q1W6dfb0cOQ-unsplash.jpg"],
+    images: ["/section/section-11.jpg"],
     title: "滋賀・大津市 マンション",
     location: "滋賀県大津市",
     station: "JR大津駅 徒歩12分",
@@ -628,7 +628,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-17",
-    images: ["/section/marek-okon-6CKzlX70Xqo-unsplash.jpg"],
+    images: ["/section/section-14.jpg"],
     title: "京都・京都市 一戸建て",
     location: "京都府京都市",
     station: "JR京都駅 徒歩10分",
@@ -642,7 +642,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-18",
-    images: ["/section/redd-francisco-sejLyCD2UQE-unsplash.jpg"],
+    images: ["/section/section-18.jpg"],
     title: "大阪・堺市 アパート",
     location: "大阪府堺市",
     station: "JR堺駅 徒歩7分",
@@ -656,7 +656,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-19",
-    images: ["/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg"],
+    images: ["/section/section-20.jpg"],
     title: "兵庫・神戸市 マンション",
     location: "兵庫県神戸市",
     station: "JR神戸駅 徒歩8分",
@@ -670,7 +670,7 @@ export const rentalProperties: MockProperty[] = [
   },
   {
     id: "rental-20",
-    images: ["/section/dillon-kydd-2keCPb73aQY-unsplash.jpg"],
+    images: ["/section/section-07.jpg"],
     title: "奈良・奈良市 一戸建て",
     location: "奈良県奈良市",
     station: "JR奈良駅 徒歩12分",
@@ -688,11 +688,11 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-1",
     images: [
-      "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
-      "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
-      "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
-      "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-      "/section/tommy-wong-ebUqtlITycQ-unsplash.jpg",
+      "/section/section-17.jpg",
+      "/section/section-18.jpg",
+      "/section/section-19.jpg",
+      "/section/section-20.jpg",
+      "/section/section-22.jpg",
     ],
     title: "三重・名張・富貴ケ丘3番町",
     location: "三重県名張市富貴ケ丘3番町113番",
@@ -707,8 +707,8 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-company1-1",
     images: [
-      "/section/grant-lemons-jTCLppdwSEc-unsplash.jpg",
-      "/section/joshua-tsu-aME732XuCCw-unsplash.jpg",
+      "/section/section-09.jpg",
+      "/section/section-13.jpg",
     ],
     title: "大和市 格安土地",
     location: "神奈川県大和市下鶴間3丁目",
@@ -721,7 +721,7 @@ export const cheapProperties: MockProperty[] = [
   },
   {
     id: "cheap-company1-2",
-    images: ["/section/matt-jones-9CPAjGVB378-unsplash.jpg"],
+    images: ["/section/section-15.jpg"],
     title: "大和市 中古アパート",
     location: "神奈川県大和市中央3丁目",
     station: "大和駅 徒歩10分",
@@ -736,11 +736,11 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-2",
     images: [
-      "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
-      "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
-      "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-      "/section/tommy-wong-ebUqtlITycQ-unsplash.jpg",
-      "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
+      "/section/section-18.jpg",
+      "/section/section-19.jpg",
+      "/section/section-20.jpg",
+      "/section/section-22.jpg",
+      "/section/section-17.jpg",
     ],
     title: "伊賀・東谷",
     location: "三重県伊賀市東谷1202",
@@ -753,11 +753,11 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-3",
     images: [
-      "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
-      "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-      "/section/tommy-wong-ebUqtlITycQ-unsplash.jpg",
-      "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
-      "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
+      "/section/section-19.jpg",
+      "/section/section-20.jpg",
+      "/section/section-22.jpg",
+      "/section/section-17.jpg",
+      "/section/section-18.jpg",
     ],
     title: "由良二丁目",
     location: "洲本市由良2-1-7",
@@ -774,11 +774,11 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-4",
     images: [
-      "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-      "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-      "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
-      "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
-      "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
+      "/section/section-20.jpg",
+      "/section/section-20.jpg",
+      "/section/section-17.jpg",
+      "/section/section-18.jpg",
+      "/section/section-19.jpg",
     ],
     title: "中古店舗兼住宅 木造2階建",
     location: "青森県三戸郡五戸町横丁9",
@@ -796,8 +796,8 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-5",
     images: [
-      "/section/bailey-anselme-Bkp3gLygyeA-unsplash.jpg",
-      "/section/grant-lemons-jTCLppdwSEc-unsplash.jpg",
+      "/section/section-02.jpg",
+      "/section/section-09.jpg",
     ],
     title: "千葉・袖ヶ浦",
     location: "千葉県袖ヶ浦市",
@@ -810,8 +810,8 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-6",
     images: [
-      "/section/joshua-tsu-aME732XuCCw-unsplash.jpg",
-      "/section/matt-jones-9CPAjGVB378-unsplash.jpg",
+      "/section/section-13.jpg",
+      "/section/section-15.jpg",
     ],
     title: "福岡・糸島",
     location: "福岡県糸島市",
@@ -824,8 +824,8 @@ export const cheapProperties: MockProperty[] = [
   {
     id: "cheap-7",
     images: [
-      "/section/marek-okon-6CKzlX70Xqo-unsplash.jpg",
-      "/section/henry-chen-x7clQSWhlfE-unsplash.jpg",
+      "/section/section-14.jpg",
+      "/section/section-10.jpg",
     ],
     title: "北海道・小樽",
     location: "北海道小樽市",

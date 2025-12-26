@@ -117,7 +117,7 @@ export const MemberEditModal: React.FC<MemberEditModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[800px] flex flex-col p-0 border-0">
-        <DialogHeader className="flex-shrink-0 px-6 pt-6 pb-4">
+        <DialogHeader className="shrink-0 px-6 pt-6 pb-4">
           <DialogTitle className="text-lg font-semibold">会員情報編集</DialogTitle>
         </DialogHeader>
 
@@ -125,7 +125,7 @@ export const MemberEditModal: React.FC<MemberEditModalProps> = ({
           <MemberBasicInfoTab member={member} isEditMode={true} />
         </div>
 
-        <div className="flex justify-end gap-4 pt-4 pb-6 px-6 flex-shrink-0">
+        <div className="flex justify-end gap-4 pt-4 pb-6 px-6 shrink-0">
           <Button variant="outline" onClick={handleClose} disabled={isSaving}>
             <X className="w-4 h-4 mr-2" />
             キャンセル

@@ -77,7 +77,7 @@ const FAQItem = memo(
               </h4>
               <p className="text-sm text-gray-600 mb-1 font-normal">{faq.subtitle}</p>
             </div>
-            <div className="ml-4 flex-shrink-0">
+            <div className="ml-4 shrink-0">
               {isOpen ? (
                 <ChevronUp className="h-5 w-5 text-[#093893]" />
               ) : (

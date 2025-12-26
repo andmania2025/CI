@@ -4,8 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -159,7 +158,7 @@ export const BulkAssessmentTable: React.FC<BulkAssessmentTableProps> = ({
   return (
     <div className="relative h-full bg-white rounded-lg border flex-1 overflow-hidden flex flex-col max-h-[calc(100vh-24rem)]">
       {/* 固定ヘッダー */}
-      <div className="sticky top-0 z-20 bg-gray-50 border-b flex-shrink-0">
+      <div className="sticky top-0 z-20 bg-gray-50 border-b shrink-0">
         <Table className="w-full table-fixed">
           <TableHeader>
             <TableRow className="h-12 hover:bg-transparent">

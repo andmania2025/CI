@@ -19,7 +19,7 @@ export const mockSearchResults: SearchResult[] = [
     type: "sale",
     price: "3,500万円",
     location: "東京都渋谷区",
-    image: "/section/matt-jones-9CPAjGVB378-unsplash.jpg",
+    image: "/section/section-15.jpg",
     details: {
       area: "70㎡",
       year: "2020年",
@@ -32,7 +32,7 @@ export const mockSearchResults: SearchResult[] = [
     type: "sale",
     price: "4,200万円",
     location: "東京都新宿区",
-    image: "/section/henry-chen-x7clQSWhlfE-unsplash.jpg",
+    image: "/section/section-10.jpg",
     details: {
       area: "85㎡",
       year: "2018年",
@@ -45,7 +45,7 @@ export const mockSearchResults: SearchResult[] = [
     type: "sale",
     price: "8,500万円",
     location: "東京都港区",
-    image: "/section/bailey-anselme-Bkp3gLygyeA-unsplash.jpg",
+    image: "/section/section-02.jpg",
     details: {
       area: "120㎡",
       year: "2021年",
@@ -58,7 +58,7 @@ export const mockSearchResults: SearchResult[] = [
     type: "sale",
     price: "6,800万円",
     location: "東京都世田谷区",
-    image: "/section/chuttersnap-awL_YCtPGv4-unsplash.jpg",
+    image: "/section/section-03.jpg",
     details: {
       area: "150㎡",
       year: "2019年",
@@ -71,7 +71,7 @@ export const mockSearchResults: SearchResult[] = [
     type: "rental",
     price: "月額18万円",
     location: "東京都目黒区",
-    image: "/section/cosmin-georgian-2T9h1sxR5So-unsplash.jpg",
+    image: "/section/section-06.jpg",
     details: {
       area: "65㎡",
       year: "2020年",

@@ -286,14 +286,14 @@ export const PropertyTable = ({
   return (
     <div className="space-y-4 h-full max-h-screen flex flex-col overflow-hidden">
       {/* ページネーション情報 */}
-      <div className="flex items-center justify-between w-full px-0 flex-shrink-0">
+      <div className="flex items-center justify-between w-full px-0 shrink-0">
         {/* 左端：表示件数情報 */}
-        <div className="text-sm text-gray-500 whitespace-nowrap flex-shrink-0">
+        <div className="text-sm text-gray-500 whitespace-nowrap shrink-0">
           {properties.length}件中 {startIndex + 1}-{Math.min(endIndex, properties.length)}件を表示
         </div>
 
         {/* 右端：列の表示設定 + ページネーション */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {columns.length > 0 && onToggleColumnVisibility && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

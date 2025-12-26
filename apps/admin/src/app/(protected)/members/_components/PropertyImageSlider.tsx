@@ -107,7 +107,7 @@ export const PropertyImageSlider: React.FC<PropertyImageSliderProps> = ({
 
   return (
     <Card className="w-full h-full flex flex-col">
-      <CardHeader className="flex-shrink-0">
+      <CardHeader className="shrink-0">
         <CardTitle className="text-lg flex items-center justify-between">
           <span>物件画像・間取り図</span>
           {displayImages.length > 0 && (

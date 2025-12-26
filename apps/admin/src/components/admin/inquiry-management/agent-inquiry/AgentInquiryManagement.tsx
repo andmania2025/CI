@@ -143,7 +143,7 @@ const AgentInquiryManagement: React.FC = () => {
             />
           </div>
 
-          <div className="mt-2 flex-shrink-0">
+          <div className="mt-2 shrink-0">
             <AgentInquiryPagination
               totalItems={totalItems}
               currentPage={currentPage}

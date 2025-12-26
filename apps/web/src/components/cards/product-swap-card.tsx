@@ -31,11 +31,11 @@ const DEFAULT_PRODUCT: ProductData = {
   ],
   techStack: ["土地: 232.05㎡"],
   thumbnail: [
-    "/section/peter-hoogmoed-pmvHjs6wqhY-unsplash.jpg",
-    "/section/redd-francisco-sejLyCD2UQE-unsplash.jpg",
-    "/section/sava-bobov-WzxdkFw9OMU-unsplash.jpg",
-    "/section/terrah-holly-pmhdkgRCbtE-unsplash.jpg",
-    "/section/tommy-wong-ebUqtlITycQ-unsplash.jpg",
+    "/section/section-17.jpg",
+    "/section/section-18.jpg",
+    "/section/section-19.jpg",
+    "/section/section-20.jpg",
+    "/section/section-22.jpg",
   ],
 };
 

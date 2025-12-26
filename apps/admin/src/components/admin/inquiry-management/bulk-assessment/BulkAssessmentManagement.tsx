@@ -145,7 +145,7 @@ const BulkAssessmentManagement: React.FC = () => {
             />
           </div>
 
-          <div className="mt-2 flex-shrink-0">
+          <div className="mt-2 shrink-0">
             <BulkAssessmentPagination
               totalItems={totalItems}
               currentPage={currentPage}

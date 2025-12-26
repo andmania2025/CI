@@ -89,7 +89,7 @@ export const PropertyInquirySearchForm: React.FC<PropertyInquirySearchFormProps>
           >
             <DialogHeader className="p-6 pb-4">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center shrink-0">
                   <Search className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -241,10 +241,7 @@ export const PropertyInquirySearchForm: React.FC<PropertyInquirySearchFormProps>
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("開始日カレンダー全体クリック")}
-                            >
+                            <div className="w-full cursor-pointer">
                               <Button
                                 variant="outline"
                                 className={cn(
@@ -284,10 +281,7 @@ export const PropertyInquirySearchForm: React.FC<PropertyInquirySearchFormProps>
                       <div>
                         <Popover>
                           <PopoverTrigger asChild>
-                            <div
-                              className="w-full cursor-pointer"
-                              onClick={() => console.log("終了日カレンダー全体クリック")}
-                            >
+                            <div className="w-full cursor-pointer">
                               <Button
                                 variant="outline"
                                 className={cn(

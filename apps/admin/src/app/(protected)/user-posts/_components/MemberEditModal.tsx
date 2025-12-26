@@ -132,7 +132,7 @@ export const MemberEditModal: React.FC<MemberEditModalProps> = ({
           <MemberBasicInfoTab member={member} isEditMode={true} />
         </div>
 
-        <div className="flex justify-end gap-4 pt-4 pb-6 px-6 flex-shrink-0">
+        <div className="flex justify-end gap-4 pt-4 pb-6 px-6 shrink-0">
           <Button variant="outline" onClick={handleClose} disabled={isSaving}>
             <X className="w-4 h-4 mr-2" />
             キャンセル

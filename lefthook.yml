@@ -3,13 +3,13 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: bun x biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
 
 pre-push:
   parallel: true
   commands:
     type-check-web:
-      run: pnpm --filter web type-check
+      run: bun run --cwd apps/web type-check
     type-check-admin:
-      run: pnpm --filter admin type-check
+      run: bun run --cwd apps/admin type-check

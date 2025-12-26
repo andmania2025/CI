@@ -158,7 +158,7 @@ export default function Page() {
   return (
     <div className="flex flex-1 flex-col min-h-0 h-full">
       {/* 固定ヘッダー */}
-      <div className="sticky top-0 z-10 bg-background pb-4 pt-6 px-6 flex-shrink-0">
+      <div className="sticky top-0 z-10 bg-background pb-4 pt-6 px-6 shrink-0">
         <div className="flex items-baseline justify-between space-y-2 mb-4">
           <h2 className="text-3xl font-bold tracking-tight leading-none">不動産業者様回答一覧</h2>
         </div>
