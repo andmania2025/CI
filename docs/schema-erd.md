@@ -1,8 +1,452 @@
 # データベーススキーマ ER図
 
-このドキュメントは `prisma/schema.prisma` のエンティティ・リレーションシップ図（ER図）を Mermaid 形式で表現しています。
+このドキュメントは `prisma/schema.prisma` のエンティティ・リレーションシップ図（ER図）を表現しています。
 
-## 全体概要
+## Eraser.io ER図
+
+以下のコードは [Eraser.io](https://app.eraser.io/) にコピー＆ペーストして使用できます。
+
+```
+// title
+title 不動産プラットフォーム データモデル
+
+// tables
+
+User [icon: user, color: yellow]{
+  id string pk
+  email string
+  name string
+  role UserRole
+  status UserStatus
+  furigana string
+  gender Gender
+  birthDate timestamp
+  phone string
+  fax string
+  postalCode string
+  prefecture string
+  city string
+  address string
+  companyName string
+  licenseNumber string
+  createdAt timestamp
+  updatedAt timestamp
+  lastLoginAt timestamp
+}
+
+RealEstateAgent [icon: home, color: blue]{
+  id string pk
+  companyName string
+  branchName string
+  departmentName string
+  representativeName string
+  contactPersonName string
+  email string
+  phone string
+  fax string
+  postalCode string
+  prefecture string
+  city string
+  address string
+  website string
+  businessHours string
+  holidays string
+  access string
+  parking string
+  licenseNumber string
+  associationMembership string
+  fairTradeMembership string
+  propertyTypes string[]
+  handlingTypes string[]
+  realEstateTypes string[]
+  propertyFeatures string[]
+  questionCategories string[]
+  appraisalMethods string[]
+  message string
+  features json
+  serviceAreas string
+  goodCount int
+  accountType AccountType
+  status AgentStatus
+  userId string fk
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Property [icon: map-pin, color: green]{
+  id string pk
+  propertyName string
+  propertyType PropertyType
+  publicationStatus PublicationStatus
+  saleOrRent SaleOrRent
+  transactionType TransactionType
+  propertyCondition PropertyCondition
+  postalCode string
+  prefecture string
+  city string
+  town string
+  block string
+  building string
+  lotNumber string
+  nearestStation string
+  walkMinutes int
+  otherTransportation string
+  latitude decimal
+  longitude decimal
+  layoutNumber string
+  layoutType LayoutType
+  buildingArea decimal
+  landArea decimal
+  balconyArea decimal
+  layoutDetail string
+  buildingStructure string
+  floor string
+  totalUnits int
+  direction Direction
+  directionDetail string
+  mainLighting string
+  constructionDate timestamp
+  buildingConfirmationNumber string
+  constructionCompany string
+  utilities Utilities
+  reform string
+  salePrice decimal
+  unitPrice decimal
+  expectedRent decimal
+  managementFee decimal
+  repairReserve decimal
+  usageFee decimal
+  stampTax decimal
+  expenses string
+  otherExpenses string
+  expectedAnnualIncome decimal
+  surfaceYield decimal
+  deposit decimal
+  keyMoney decimal
+  securityDeposit decimal
+  landType string
+  privateRoadArea decimal
+  setback string
+  cityPlanning string
+  roadContact string
+  landCategory string
+  useDistrict string
+  buildingCoverageRatio decimal
+  floorAreaRatio decimal
+  totalProperties int
+  developmentPermitNumber string
+  developmentArea decimal
+  residentialPermitNumber string
+  easement string
+  nationalLandAct string
+  siteRights string
+  parkingAvailable string
+  parkingFee decimal
+  parkingSpaces int
+  parkingDetail string
+  publicScope PublicScope
+  featured Featured
+  featurePeriodStart timestamp
+  featurePeriodEnd timestamp
+  reservedReleaseDate timestamp
+  publicScopeReservation string
+  validUntilDate timestamp
+  nextUpdateDate timestamp
+  publicationMedium string
+  salesUnits int
+  currentStatus string
+  propertyStatus string
+  deliveryDate timestamp
+  sellerName string
+  realEstateAgent string
+  managementType string
+  environment string
+  legalRestrictions string
+  otherConstructionInfo string
+  remarks string
+  adminMemo string
+  propertyCategory string
+  inquiryCount int
+  viewCount int
+  userId string fk
+  agentId string fk
+  createdAt timestamp
+  updatedAt timestamp
+  publishedAt timestamp
+}
+
+PropertyImage [icon: image, color: orange]{
+  id string pk
+  url string
+  caption string
+  imageType ImageType
+  order int
+  isMain boolean
+  propertyId string fk
+  createdAt timestamp
+}
+
+PropertyFeature [icon: tag, color: purple]{
+  id string pk
+  featureId string fk
+  propertyId string fk
+}
+
+FeatureMaster [icon: star, color: purple]{
+  id string pk
+  name string
+  category FeatureCategory
+  displayOrder int
+  isActive boolean
+}
+
+Favorite [icon: heart, color: pink]{
+  id string pk
+  userId string fk
+  propertyId string fk
+  createdAt timestamp
+}
+
+Inquiry [icon: mail, color: red]{
+  id string pk
+  name string
+  furigana string
+  email string
+  phone string
+  fax string
+  postalCode string
+  address string
+  gender Gender
+  birthDate timestamp
+  inquiryType InquiryType
+  message string
+  remarks string
+  status InquiryStatus
+  propertyId string fk
+  userId string fk
+  createdAt timestamp
+  respondedAt timestamp
+}
+
+SiteInquiry [icon: mail, color: red]{
+  id string pk
+  name string
+  furigana string
+  email string
+  phone string
+  fax string
+  postalCode string
+  address string
+  gender Gender
+  birthDate timestamp
+  inquiryType string
+  inquiryContent string
+  remarks string
+  status InquiryStatus
+  createdAt timestamp
+  respondedAt timestamp
+}
+
+AgentInquiry [icon: mail, color: red]{
+  id string pk
+  companyName string
+  contactPerson string
+  email string
+  phone string
+  fax string
+  postalCode string
+  address string
+  furigana string
+  gender Gender
+  birthDate timestamp
+  inquiryType string
+  inquiryContent string
+  remarks string
+  status InquiryStatus
+  agentId string fk
+  createdAt timestamp
+  respondedAt timestamp
+}
+
+BulkAssessment [icon: file-text, color: teal]{
+  id string pk
+  propertyAddress string
+  propertyType string
+  area string
+  ownerName string
+  furigana string
+  email string
+  phone string
+  fax string
+  postalCode string
+  address string
+  gender Gender
+  birthDate timestamp
+  inquiryContent string
+  remarks string
+  status AssessmentStatus
+  createdAt timestamp
+  completedAt timestamp
+}
+
+Question [icon: help-circle, color: cyan]{
+  id string pk
+  title string
+  content string
+  category string
+  viewCount int
+  replyCount int
+  status QuestionStatus
+  authorId string fk
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Answer [icon: message-square, color: cyan]{
+  id string pk
+  content string
+  goodCount int
+  questionId string fk
+  authorId string fk
+  agentId string fk
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+QuestionCategory [icon: folder, color: cyan]{
+  id string pk
+  name string
+  categoryType QuestionCategoryType
+  displayOrder int
+  isActive boolean
+}
+
+AreaMaster [icon: map, color: lightblue]{
+  id string pk
+  prefecture string
+  city string
+  displayOrder int
+  isActive boolean
+}
+
+PropertyTypeMaster [icon: home, color: lightblue]{
+  id string pk
+  name string
+  displayOrder int
+  isActive boolean
+}
+
+PropertyCategoryMaster [icon: tag, color: lightblue]{
+  id string pk
+  name string
+  displayOrder int
+  isActive boolean
+}
+
+FloorPlanMaster [icon: grid, color: lightblue]{
+  id string pk
+  name string
+  displayOrder int
+  isActive boolean
+}
+
+RouteMaster [icon: navigation, color: lightblue]{
+  id string pk
+  name string
+  code string
+  company string
+  displayOrder int
+  isActive boolean
+}
+
+Station [icon: map-pin, color: lightblue]{
+  id string pk
+  name string
+  code string
+  prefecture string
+  city string
+  displayOrder int
+  isActive boolean
+  routeId string fk
+}
+
+RegionMaster [icon: globe, color: lightblue]{
+  id string pk
+  name string
+  code string
+  displayOrder int
+  isActive boolean
+}
+
+Mail [icon: mail, color: gray]{
+  id string pk
+  fromEmail string
+  toEmail string
+  ccEmail string
+  bccEmail string
+  subject string
+  body string
+  bodyHtml string
+  status MailStatus
+  mailType MailType
+  createdAt timestamp
+  sentAt timestamp
+}
+
+FileBox [icon: file, color: gray]{
+  id string pk
+  fileName string
+  originalName string
+  fileUrl string
+  fileType string
+  fileSize int
+  category string
+  tags string[]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+SystemSetting [icon: settings, color: gray]{
+  id string pk
+  key string
+  value string
+  description string
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+// relationships
+
+// 1. User Relations
+User.id - RealEstateAgent.userId
+User.id > Property.userId
+User.id > Inquiry.userId
+User.id > Favorite.userId
+User.id > Question.authorId
+User.id > Answer.authorId
+
+// 2. RealEstateAgent Relations
+RealEstateAgent.id > Property.agentId
+RealEstateAgent.id > Answer.agentId
+RealEstateAgent.id > AgentInquiry.agentId
+
+// 3. Property Relations
+Property.id > PropertyImage.propertyId
+Property.id > PropertyFeature.propertyId
+Property.id > Inquiry.propertyId
+Property.id > Favorite.propertyId
+
+// 4. Master Data Linkage
+FeatureMaster.id > PropertyFeature.featureId
+
+// 5. Route - Station
+RouteMaster.id > Station.routeId
+
+// 6. Q&A
+Question.id > Answer.questionId
+```
+
+## Mermaid ER図
 
 ```mermaid
 erDiagram
@@ -477,3 +921,20 @@ erDiagram
 ### メール関連
 - **MailStatus**: DRAFT, SENT, FAILED
 - **MailType**: GENERAL, INQUIRY, NEWSLETTER, SYSTEM
+
+## 設計上の注意点
+
+### 1. Enum型 vs マスタテーブル
+現在のスキーマでは、物件種別（`PropertyType`）や間取り（`LayoutType`）などはEnum型として定義されています。
+マスタテーブル（`PropertyTypeMaster`, `FloorPlanMaster`等）は将来的な拡張や管理画面からの動的な設定変更のために用意されていますが、
+現時点ではPropertyモデルとの直接的なリレーションは設定されていません。
+
+### 2. 独立したエンティティ
+以下のエンティティは他のテーブルとの直接的なリレーションを持たない独立したエンティティです：
+- **SiteInquiry**: サイト全般への問い合わせ（ユーザーログイン不要）
+- **BulkAssessment**: 一括査定依頼（ユーザーログイン不要）
+- **Mail**: メール送信履歴
+- **FileBox**: ファイル管理
+- **SystemSetting**: システム設定
+- **QuestionCategory**: 質問カテゴリマスタ（Question.categoryはString型で参照）
+- **AreaMaster**, **PropertyTypeMaster**, **PropertyCategoryMaster**, **FloorPlanMaster**, **RegionMaster**: 各種マスタテーブル
