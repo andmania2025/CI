@@ -706,10 +706,7 @@ export const cheapProperties: MockProperty[] = [
   // 朝日土地建物株式会社の100万円以下物件を追加
   {
     id: "cheap-company1-1",
-    images: [
-      "/section/section-09.jpg",
-      "/section/section-13.jpg",
-    ],
+    images: ["/section/section-09.jpg", "/section/section-13.jpg"],
     title: "大和市 格安土地",
     location: "神奈川県大和市下鶴間3丁目",
     station: "鶴間駅 徒歩12分",
@@ -795,10 +792,7 @@ export const cheapProperties: MockProperty[] = [
   // 以降はスライダー検証のためのダミーを数件追加
   {
     id: "cheap-5",
-    images: [
-      "/section/section-02.jpg",
-      "/section/section-09.jpg",
-    ],
+    images: ["/section/section-02.jpg", "/section/section-09.jpg"],
     title: "千葉・袖ヶ浦",
     location: "千葉県袖ヶ浦市",
     station: "JR袖ヶ浦駅 徒歩20分",
@@ -809,10 +803,7 @@ export const cheapProperties: MockProperty[] = [
   },
   {
     id: "cheap-6",
-    images: [
-      "/section/section-13.jpg",
-      "/section/section-15.jpg",
-    ],
+    images: ["/section/section-13.jpg", "/section/section-15.jpg"],
     title: "福岡・糸島",
     location: "福岡県糸島市",
     station: "JR筑前前原駅 徒歩25分",
@@ -823,10 +814,7 @@ export const cheapProperties: MockProperty[] = [
   },
   {
     id: "cheap-7",
-    images: [
-      "/section/section-14.jpg",
-      "/section/section-10.jpg",
-    ],
+    images: ["/section/section-14.jpg", "/section/section-10.jpg"],
     title: "北海道・小樽",
     location: "北海道小樽市",
     station: "JR小樽駅 徒歩18分",

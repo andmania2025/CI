@@ -5,8 +5,7 @@ export const MOCK_MAIL_TEMPLATES: MailTemplate[] = [
   {
     id: "mt001",
     templateName: "物件問い合わせ対応メール1",
-    subject:
-      "【ウチカツ】カテゴリー不動産のお問い合わせありがとうございました",
+    subject: "【ウチカツ】カテゴリー不動産のお問い合わせありがとうございました",
     templateType: "配信",
     status: "編集",
   },

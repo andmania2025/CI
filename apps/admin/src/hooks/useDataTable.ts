@@ -77,14 +77,20 @@ export function useDataTable<T>({
   const [columns, setColumns] = useState<ColumnDef<T>[]>(defaultColumns);
 
   // ドラッグ&ドロップ状態
-  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(null);
-  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(null);
+  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(
+    null,
+  );
+  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(
+    null,
+  );
 
   // 外部からのカラム設定を反映
   useEffect(() => {
     if (externalColumns && externalColumns.length > 0) {
       const updatedColumns = defaultColumns.map((defaultCol) => {
-        const extCol = externalColumns.find((col) => col.key === defaultCol.key);
+        const extCol = externalColumns.find(
+          (col) => col.key === defaultCol.key,
+        );
         return extCol ? { ...defaultCol, visible: extCol.visible } : defaultCol;
       });
       setColumns(updatedColumns);
@@ -111,8 +117,9 @@ export function useDataTable<T>({
   }, [defaultItemsPerPage]);
 
   // 表示件数が変更されたときに現在のページをリセット
-  // biome-ignore lint/correctness/useExhaustiveDependencies: itemsPerPage is intentionally watched to reset page on change
   useEffect(() => {
+    // itemsPerPageの変更をトリガーとしてページをリセット
+    void itemsPerPage;
     setCurrentPage(1);
   }, [itemsPerPage]);
 
@@ -130,7 +137,7 @@ export function useDataTable<T>({
     (columnKey: string) => {
       setColumns((prev) => {
         const newColumns = prev.map((col) =>
-          col.key === columnKey ? { ...col, visible: !col.visible } : col
+          col.key === columnKey ? { ...col, visible: !col.visible } : col,
         );
 
         // 次のレンダリングサイクルで親に通知
@@ -142,7 +149,7 @@ export function useDataTable<T>({
                 label: col.label,
                 visible: col.visible,
                 align: col.align,
-              }))
+              })),
             );
           }
         }, 0);
@@ -152,7 +159,7 @@ export function useDataTable<T>({
 
       onToggleColumnVisibility?.(columnKey);
     },
-    [onColumnsChange, onToggleColumnVisibility]
+    [onColumnsChange, onToggleColumnVisibility],
   );
 
   // ドラッグ開始
@@ -162,7 +169,7 @@ export function useDataTable<T>({
       const originalIndex = columns.findIndex((col) => col.key === column.key);
       setDraggedColumnIndex(originalIndex);
     },
-    [columns, visibleColumns]
+    [columns, visibleColumns],
   );
 
   // ドラッグオーバー
@@ -177,7 +184,7 @@ export function useDataTable<T>({
       if (draggedColumnIndex === originalIndex) return;
       setDragOverColumnIndex(originalIndex);
     },
-    [draggedColumnIndex, columns, visibleColumns]
+    [draggedColumnIndex, columns, visibleColumns],
   );
 
   // ドラッグ終了
@@ -200,7 +207,7 @@ export function useDataTable<T>({
         label: col.label,
         visible: col.visible,
         align: col.align,
-      }))
+      })),
     );
 
     setDraggedColumnIndex(null);

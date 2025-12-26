@@ -3,7 +3,7 @@ FROM oven/bun:alpine AS development
 WORKDIR /app
 
 # ルートのpackage.jsonと設定をコピー
-COPY package.json bun.lockb* ./
+COPY package.json bun.lock* ./
 
 # apps/adminのpackage.jsonをコピー
 COPY apps/admin/package.json ./apps/admin/

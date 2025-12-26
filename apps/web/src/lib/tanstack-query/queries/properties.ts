@@ -1,5 +1,8 @@
+import type {
+  MansionProperty,
+  PropertySearchFilters,
+} from "@/features/properties/types/property.types";
 import { useQuery } from "@tanstack/react-query";
-import type { MansionProperty, PropertySearchFilters } from "@/features/properties/types/property.types";
 
 /**
  * APIレスポンスの型定義
@@ -23,11 +26,13 @@ export interface PropertySearchParams {
 
 /**
  * プロパティ検索を実行する関数
- * 
+ *
  * @param params 検索パラメータ
  * @returns 検索結果
  */
-const fetchProperties = async (params: PropertySearchParams): Promise<PropertySearchApiResponse> => {
+const fetchProperties = async (
+  params: PropertySearchParams,
+): Promise<PropertySearchApiResponse> => {
   const { filters, page = 1, limit = 8 } = params;
 
   // クエリパラメータを構築
@@ -53,21 +58,26 @@ const fetchProperties = async (params: PropertySearchParams): Promise<PropertySe
 
 /**
  * プロパティ検索を実行するTanStack Query hook
- * 
+ *
  * @param params 検索パラメータ
  * @param enabled クエリを有効にするかどうか
  * @returns TanStack Queryの結果
  */
 export const usePropertySearchQuery = (
   params: PropertySearchParams,
-  enabled = true
+  enabled = true,
 ) => {
   return useQuery({
-    queryKey: ["properties", "search", params.filters, params.page, params.limit],
+    queryKey: [
+      "properties",
+      "search",
+      params.filters,
+      params.page,
+      params.limit,
+    ],
     queryFn: () => fetchProperties(params),
     enabled,
     staleTime: 1000 * 60 * 2, // 2分間キャッシュ
     gcTime: 1000 * 60 * 5, // 5分間キャッシュを保持
   });
 };
-

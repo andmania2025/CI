@@ -26,40 +26,40 @@ export type AggregatePropertyFeature = {
 
 export type PropertyFeatureMinAggregateOutputType = {
   id: string | null
-  featureId: string | null
   propertyId: string | null
+  featureId: string | null
 }
 
 export type PropertyFeatureMaxAggregateOutputType = {
   id: string | null
-  featureId: string | null
   propertyId: string | null
+  featureId: string | null
 }
 
 export type PropertyFeatureCountAggregateOutputType = {
   id: number
-  featureId: number
   propertyId: number
+  featureId: number
   _all: number
 }
 
 
 export type PropertyFeatureMinAggregateInputType = {
   id?: true
-  featureId?: true
   propertyId?: true
+  featureId?: true
 }
 
 export type PropertyFeatureMaxAggregateInputType = {
   id?: true
-  featureId?: true
   propertyId?: true
+  featureId?: true
 }
 
 export type PropertyFeatureCountAggregateInputType = {
   id?: true
-  featureId?: true
   propertyId?: true
+  featureId?: true
   _all?: true
 }
 
@@ -137,8 +137,8 @@ export type PropertyFeatureGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 
 export type PropertyFeatureGroupByOutputType = {
   id: string
-  featureId: string
   propertyId: string
+  featureId: string
   _count: PropertyFeatureCountAggregateOutputType | null
   _min: PropertyFeatureMinAggregateOutputType | null
   _max: PropertyFeatureMaxAggregateOutputType | null
@@ -163,19 +163,19 @@ export type PropertyFeatureWhereInput = {
   AND?: Prisma.PropertyFeatureWhereInput | Prisma.PropertyFeatureWhereInput[]
   OR?: Prisma.PropertyFeatureWhereInput[]
   NOT?: Prisma.PropertyFeatureWhereInput | Prisma.PropertyFeatureWhereInput[]
-  id?: Prisma.StringFilter<"PropertyFeature"> | string
-  featureId?: Prisma.StringFilter<"PropertyFeature"> | string
-  propertyId?: Prisma.StringFilter<"PropertyFeature"> | string
-  feature?: Prisma.XOR<Prisma.FeatureMasterScalarRelationFilter, Prisma.FeatureMasterWhereInput>
+  id?: Prisma.UuidFilter<"PropertyFeature"> | string
+  propertyId?: Prisma.UuidFilter<"PropertyFeature"> | string
+  featureId?: Prisma.UuidFilter<"PropertyFeature"> | string
   property?: Prisma.XOR<Prisma.PropertyScalarRelationFilter, Prisma.PropertyWhereInput>
+  feature?: Prisma.XOR<Prisma.FeatureMasterScalarRelationFilter, Prisma.FeatureMasterWhereInput>
 }
 
 export type PropertyFeatureOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   propertyId?: Prisma.SortOrder
-  feature?: Prisma.FeatureMasterOrderByWithRelationInput
+  featureId?: Prisma.SortOrder
   property?: Prisma.PropertyOrderByWithRelationInput
+  feature?: Prisma.FeatureMasterOrderByWithRelationInput
 }
 
 export type PropertyFeatureWhereUniqueInput = Prisma.AtLeast<{
@@ -184,16 +184,16 @@ export type PropertyFeatureWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PropertyFeatureWhereInput | Prisma.PropertyFeatureWhereInput[]
   OR?: Prisma.PropertyFeatureWhereInput[]
   NOT?: Prisma.PropertyFeatureWhereInput | Prisma.PropertyFeatureWhereInput[]
-  featureId?: Prisma.StringFilter<"PropertyFeature"> | string
-  propertyId?: Prisma.StringFilter<"PropertyFeature"> | string
-  feature?: Prisma.XOR<Prisma.FeatureMasterScalarRelationFilter, Prisma.FeatureMasterWhereInput>
+  propertyId?: Prisma.UuidFilter<"PropertyFeature"> | string
+  featureId?: Prisma.UuidFilter<"PropertyFeature"> | string
   property?: Prisma.XOR<Prisma.PropertyScalarRelationFilter, Prisma.PropertyWhereInput>
+  feature?: Prisma.XOR<Prisma.FeatureMasterScalarRelationFilter, Prisma.FeatureMasterWhereInput>
 }, "id" | "propertyId_featureId">
 
 export type PropertyFeatureOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   propertyId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
   _count?: Prisma.PropertyFeatureCountOrderByAggregateInput
   _max?: Prisma.PropertyFeatureMaxOrderByAggregateInput
   _min?: Prisma.PropertyFeatureMinOrderByAggregateInput
@@ -203,39 +203,39 @@ export type PropertyFeatureScalarWhereWithAggregatesInput = {
   AND?: Prisma.PropertyFeatureScalarWhereWithAggregatesInput | Prisma.PropertyFeatureScalarWhereWithAggregatesInput[]
   OR?: Prisma.PropertyFeatureScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PropertyFeatureScalarWhereWithAggregatesInput | Prisma.PropertyFeatureScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"PropertyFeature"> | string
-  featureId?: Prisma.StringWithAggregatesFilter<"PropertyFeature"> | string
-  propertyId?: Prisma.StringWithAggregatesFilter<"PropertyFeature"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"PropertyFeature"> | string
+  propertyId?: Prisma.UuidWithAggregatesFilter<"PropertyFeature"> | string
+  featureId?: Prisma.UuidWithAggregatesFilter<"PropertyFeature"> | string
 }
 
 export type PropertyFeatureCreateInput = {
   id?: string
-  feature: Prisma.FeatureMasterCreateNestedOneWithoutPropertiesInput
   property: Prisma.PropertyCreateNestedOneWithoutFeaturesInput
+  feature: Prisma.FeatureMasterCreateNestedOneWithoutPropertiesInput
 }
 
 export type PropertyFeatureUncheckedCreateInput = {
   id?: string
-  featureId: string
   propertyId: string
+  featureId: string
 }
 
 export type PropertyFeatureUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  feature?: Prisma.FeatureMasterUpdateOneRequiredWithoutPropertiesNestedInput
   property?: Prisma.PropertyUpdateOneRequiredWithoutFeaturesNestedInput
+  feature?: Prisma.FeatureMasterUpdateOneRequiredWithoutPropertiesNestedInput
 }
 
 export type PropertyFeatureUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  featureId?: Prisma.StringFieldUpdateOperationsInput | string
   propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  featureId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PropertyFeatureCreateManyInput = {
   id?: string
-  featureId: string
   propertyId: string
+  featureId: string
 }
 
 export type PropertyFeatureUpdateManyMutationInput = {
@@ -244,8 +244,8 @@ export type PropertyFeatureUpdateManyMutationInput = {
 
 export type PropertyFeatureUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  featureId?: Prisma.StringFieldUpdateOperationsInput | string
   propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  featureId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PropertyFeatureListRelationFilter = {
@@ -265,20 +265,20 @@ export type PropertyFeaturePropertyIdFeatureIdCompoundUniqueInput = {
 
 export type PropertyFeatureCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   propertyId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type PropertyFeatureMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   propertyId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type PropertyFeatureMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  featureId?: Prisma.SortOrder
   propertyId?: Prisma.SortOrder
+  featureId?: Prisma.SortOrder
 }
 
 export type PropertyFeatureCreateNestedManyWithoutPropertyInput = {
@@ -405,9 +405,9 @@ export type PropertyFeatureScalarWhereInput = {
   AND?: Prisma.PropertyFeatureScalarWhereInput | Prisma.PropertyFeatureScalarWhereInput[]
   OR?: Prisma.PropertyFeatureScalarWhereInput[]
   NOT?: Prisma.PropertyFeatureScalarWhereInput | Prisma.PropertyFeatureScalarWhereInput[]
-  id?: Prisma.StringFilter<"PropertyFeature"> | string
-  featureId?: Prisma.StringFilter<"PropertyFeature"> | string
-  propertyId?: Prisma.StringFilter<"PropertyFeature"> | string
+  id?: Prisma.UuidFilter<"PropertyFeature"> | string
+  propertyId?: Prisma.UuidFilter<"PropertyFeature"> | string
+  featureId?: Prisma.UuidFilter<"PropertyFeature"> | string
 }
 
 export type PropertyFeatureCreateWithoutFeatureInput = {
@@ -490,58 +490,58 @@ export type PropertyFeatureUncheckedUpdateManyWithoutFeatureInput = {
 
 export type PropertyFeatureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  featureId?: boolean
   propertyId?: boolean
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
+  featureId?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["propertyFeature"]>
 
 export type PropertyFeatureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  featureId?: boolean
   propertyId?: boolean
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
+  featureId?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["propertyFeature"]>
 
 export type PropertyFeatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  featureId?: boolean
   propertyId?: boolean
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
+  featureId?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["propertyFeature"]>
 
 export type PropertyFeatureSelectScalar = {
   id?: boolean
-  featureId?: boolean
   propertyId?: boolean
+  featureId?: boolean
 }
 
-export type PropertyFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "featureId" | "propertyId", ExtArgs["result"]["propertyFeature"]>
+export type PropertyFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "propertyId" | "featureId", ExtArgs["result"]["propertyFeature"]>
 export type PropertyFeatureInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }
 export type PropertyFeatureIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }
 export type PropertyFeatureIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  feature?: boolean | Prisma.FeatureMasterDefaultArgs<ExtArgs>
 }
 
 export type $PropertyFeaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PropertyFeature"
   objects: {
-    feature: Prisma.$FeatureMasterPayload<ExtArgs>
     property: Prisma.$PropertyPayload<ExtArgs>
+    feature: Prisma.$FeatureMasterPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    featureId: string
     propertyId: string
+    featureId: string
   }, ExtArgs["result"]["propertyFeature"]>
   composites: {}
 }
@@ -936,8 +936,8 @@ readonly fields: PropertyFeatureFieldRefs;
  */
 export interface Prisma__PropertyFeatureClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  feature<T extends Prisma.FeatureMasterDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeatureMasterDefaultArgs<ExtArgs>>): Prisma.Prisma__FeatureMasterClient<runtime.Types.Result.GetResult<Prisma.$FeatureMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   property<T extends Prisma.PropertyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PropertyDefaultArgs<ExtArgs>>): Prisma.Prisma__PropertyClient<runtime.Types.Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  feature<T extends Prisma.FeatureMasterDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FeatureMasterDefaultArgs<ExtArgs>>): Prisma.Prisma__FeatureMasterClient<runtime.Types.Result.GetResult<Prisma.$FeatureMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -968,8 +968,8 @@ export interface Prisma__PropertyFeatureClient<T, Null = never, ExtArgs extends 
  */
 export interface PropertyFeatureFieldRefs {
   readonly id: Prisma.FieldRef<"PropertyFeature", 'String'>
-  readonly featureId: Prisma.FieldRef<"PropertyFeature", 'String'>
   readonly propertyId: Prisma.FieldRef<"PropertyFeature", 'String'>
+  readonly featureId: Prisma.FieldRef<"PropertyFeature", 'String'>
 }
     
 

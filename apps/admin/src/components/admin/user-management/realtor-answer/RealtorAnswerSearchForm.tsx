@@ -5,18 +5,18 @@ import type { RealtorAnswerFormData } from "../types";
 interface RealtorAnswerSearchFormProps {
   formData: RealtorAnswerFormData;
   onInputChange: (field: string, value: string) => void;
-  onCheckboxChange: (category: keyof RealtorAnswerFormData, field: string, checked: boolean) => void;
+  onCheckboxChange: (
+    category: keyof RealtorAnswerFormData,
+    field: string,
+    checked: boolean,
+  ) => void;
   onSearch: () => void;
   onReset: () => void;
 }
 
-export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = ({
-  formData,
-  onInputChange,
-  onCheckboxChange,
-  onSearch,
-  onReset,
-}) => {
+export const RealtorAnswerSearchForm: React.FC<
+  RealtorAnswerSearchFormProps
+> = ({ formData, onInputChange, onCheckboxChange, onSearch, onReset }) => {
   return (
     <div className="p-6 border-b border-gray-200">
       <div className="grid grid-cols-12 gap-6">
@@ -24,7 +24,10 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
         <div className="col-span-6 space-y-6">
           {/* フリーワード */}
           <div>
-            <label htmlFor="freeword" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="freeword"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               フリーワード
             </label>
             <input
@@ -39,7 +42,10 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 不動産業者名 */}
           <div>
-            <label htmlFor="realEstateCompanySearch" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="realEstateCompanySearch"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               不動産業者名
             </label>
             <div className="relative">
@@ -56,7 +62,10 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 不動産種別 */}
           <div>
-            <label htmlFor="questionType" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="questionType"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               不動産種別
             </label>
             <select
@@ -74,13 +83,18 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 質問種別 */}
           <div>
-            <label htmlFor="questionCategory" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="questionCategory"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               質問種別
             </label>
             <select
               id="questionCategory"
               value={formData.questionCategory}
-              onChange={(e) => onInputChange("questionCategory", e.target.value)}
+              onChange={(e) =>
+                onInputChange("questionCategory", e.target.value)
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">選択してください</option>
@@ -92,13 +106,18 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 質問カテゴリ（全般） */}
           <div>
-            <label htmlFor="questionCategoryGeneral" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="questionCategoryGeneral"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               質問カテゴリ（全般）
             </label>
             <select
               id="questionCategoryGeneral"
               value={formData.questionCategoryGeneral}
-              onChange={(e) => onInputChange("questionCategoryGeneral", e.target.value)}
+              onChange={(e) =>
+                onInputChange("questionCategoryGeneral", e.target.value)
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">選択してください</option>
@@ -110,13 +129,17 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 公開状況 */}
           <div>
-            <span className="block text-sm font-medium text-gray-700 mb-3">公開状況</span>
+            <span className="block text-sm font-medium text-gray-700 mb-3">
+              公開状況
+            </span>
             <div className="flex gap-6">
               <label className="flex items-center">
                 <input
                   type="checkbox"
                   checked={formData.publicStatus.public}
-                  onChange={(e) => onCheckboxChange("publicStatus", "public", e.target.checked)}
+                  onChange={(e) =>
+                    onCheckboxChange("publicStatus", "public", e.target.checked)
+                  }
                   className="mr-2"
                 />
                 <span className="text-sm">公開</span>
@@ -125,7 +148,13 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
                 <input
                   type="checkbox"
                   checked={formData.publicStatus.nonPublic}
-                  onChange={(e) => onCheckboxChange("publicStatus", "nonPublic", e.target.checked)}
+                  onChange={(e) =>
+                    onCheckboxChange(
+                      "publicStatus",
+                      "nonPublic",
+                      e.target.checked,
+                    )
+                  }
                   className="mr-2"
                 />
                 <span className="text-sm">非公開</span>
@@ -135,7 +164,9 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
 
           {/* 回答日 */}
           <div>
-            <div className="block text-sm font-medium text-gray-700 mb-2">回答日</div>
+            <div className="block text-sm font-medium text-gray-700 mb-2">
+              回答日
+            </div>
             <div className="flex items-center gap-2">
               <div className="relative">
                 <input
@@ -143,7 +174,9 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
                   type="date"
                   aria-label="回答日（開始）"
                   value={formData.answerDateFrom}
-                  onChange={(e) => onInputChange("answerDateFrom", e.target.value)}
+                  onChange={(e) =>
+                    onInputChange("answerDateFrom", e.target.value)
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -154,7 +187,9 @@ export const RealtorAnswerSearchForm: React.FC<RealtorAnswerSearchFormProps> = (
                   type="date"
                   aria-label="回答日（終了）"
                   value={formData.answerDateTo}
-                  onChange={(e) => onInputChange("answerDateTo", e.target.value)}
+                  onChange={(e) =>
+                    onInputChange("answerDateTo", e.target.value)
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>

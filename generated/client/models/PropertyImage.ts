@@ -27,80 +27,118 @@ export type AggregatePropertyImage = {
 }
 
 export type PropertyImageAvgAggregateOutputType = {
-  order: number | null
+  displayOrder: number | null
+  width: number | null
+  height: number | null
 }
 
 export type PropertyImageSumAggregateOutputType = {
-  order: number | null
+  displayOrder: number | null
+  width: number | null
+  height: number | null
 }
 
 export type PropertyImageMinAggregateOutputType = {
   id: string | null
+  propertyId: string | null
+  fileBoxId: string | null
   url: string | null
+  thumbnailUrl: string | null
   caption: string | null
   imageType: $Enums.ImageType | null
-  order: number | null
-  propertyId: string | null
+  displayOrder: number | null
+  isMain: boolean | null
+  width: number | null
+  height: number | null
   createdAt: Date | null
 }
 
 export type PropertyImageMaxAggregateOutputType = {
   id: string | null
+  propertyId: string | null
+  fileBoxId: string | null
   url: string | null
+  thumbnailUrl: string | null
   caption: string | null
   imageType: $Enums.ImageType | null
-  order: number | null
-  propertyId: string | null
+  displayOrder: number | null
+  isMain: boolean | null
+  width: number | null
+  height: number | null
   createdAt: Date | null
 }
 
 export type PropertyImageCountAggregateOutputType = {
   id: number
+  propertyId: number
+  fileBoxId: number
   url: number
+  thumbnailUrl: number
   caption: number
   imageType: number
-  order: number
-  propertyId: number
+  displayOrder: number
+  isMain: number
+  width: number
+  height: number
   createdAt: number
   _all: number
 }
 
 
 export type PropertyImageAvgAggregateInputType = {
-  order?: true
+  displayOrder?: true
+  width?: true
+  height?: true
 }
 
 export type PropertyImageSumAggregateInputType = {
-  order?: true
+  displayOrder?: true
+  width?: true
+  height?: true
 }
 
 export type PropertyImageMinAggregateInputType = {
   id?: true
+  propertyId?: true
+  fileBoxId?: true
   url?: true
+  thumbnailUrl?: true
   caption?: true
   imageType?: true
-  order?: true
-  propertyId?: true
+  displayOrder?: true
+  isMain?: true
+  width?: true
+  height?: true
   createdAt?: true
 }
 
 export type PropertyImageMaxAggregateInputType = {
   id?: true
+  propertyId?: true
+  fileBoxId?: true
   url?: true
+  thumbnailUrl?: true
   caption?: true
   imageType?: true
-  order?: true
-  propertyId?: true
+  displayOrder?: true
+  isMain?: true
+  width?: true
+  height?: true
   createdAt?: true
 }
 
 export type PropertyImageCountAggregateInputType = {
   id?: true
+  propertyId?: true
+  fileBoxId?: true
   url?: true
+  thumbnailUrl?: true
   caption?: true
   imageType?: true
-  order?: true
-  propertyId?: true
+  displayOrder?: true
+  isMain?: true
+  width?: true
+  height?: true
   createdAt?: true
   _all?: true
 }
@@ -193,11 +231,16 @@ export type PropertyImageGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type PropertyImageGroupByOutputType = {
   id: string
+  propertyId: string
+  fileBoxId: string | null
   url: string
+  thumbnailUrl: string | null
   caption: string | null
   imageType: $Enums.ImageType
-  order: number
-  propertyId: string
+  displayOrder: number
+  isMain: boolean
+  width: number | null
+  height: number | null
   createdAt: Date
   _count: PropertyImageCountAggregateOutputType | null
   _avg: PropertyImageAvgAggregateOutputType | null
@@ -225,25 +268,37 @@ export type PropertyImageWhereInput = {
   AND?: Prisma.PropertyImageWhereInput | Prisma.PropertyImageWhereInput[]
   OR?: Prisma.PropertyImageWhereInput[]
   NOT?: Prisma.PropertyImageWhereInput | Prisma.PropertyImageWhereInput[]
-  id?: Prisma.StringFilter<"PropertyImage"> | string
+  id?: Prisma.UuidFilter<"PropertyImage"> | string
+  propertyId?: Prisma.UuidFilter<"PropertyImage"> | string
+  fileBoxId?: Prisma.UuidNullableFilter<"PropertyImage"> | string | null
   url?: Prisma.StringFilter<"PropertyImage"> | string
+  thumbnailUrl?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   caption?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   imageType?: Prisma.EnumImageTypeFilter<"PropertyImage"> | $Enums.ImageType
-  order?: Prisma.IntFilter<"PropertyImage"> | number
-  propertyId?: Prisma.StringFilter<"PropertyImage"> | string
+  displayOrder?: Prisma.IntFilter<"PropertyImage"> | number
+  isMain?: Prisma.BoolFilter<"PropertyImage"> | boolean
+  width?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
+  height?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PropertyImage"> | Date | string
   property?: Prisma.XOR<Prisma.PropertyScalarRelationFilter, Prisma.PropertyWhereInput>
+  fileBox?: Prisma.XOR<Prisma.FileBoxNullableScalarRelationFilter, Prisma.FileBoxWhereInput> | null
 }
 
 export type PropertyImageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  propertyId?: Prisma.SortOrder
+  fileBoxId?: Prisma.SortOrderInput | Prisma.SortOrder
   url?: Prisma.SortOrder
+  thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   imageType?: Prisma.SortOrder
-  order?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  isMain?: Prisma.SortOrder
+  width?: Prisma.SortOrderInput | Prisma.SortOrder
+  height?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   property?: Prisma.PropertyOrderByWithRelationInput
+  fileBox?: Prisma.FileBoxOrderByWithRelationInput
 }
 
 export type PropertyImageWhereUniqueInput = Prisma.AtLeast<{
@@ -251,22 +306,33 @@ export type PropertyImageWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PropertyImageWhereInput | Prisma.PropertyImageWhereInput[]
   OR?: Prisma.PropertyImageWhereInput[]
   NOT?: Prisma.PropertyImageWhereInput | Prisma.PropertyImageWhereInput[]
+  propertyId?: Prisma.UuidFilter<"PropertyImage"> | string
+  fileBoxId?: Prisma.UuidNullableFilter<"PropertyImage"> | string | null
   url?: Prisma.StringFilter<"PropertyImage"> | string
+  thumbnailUrl?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   caption?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   imageType?: Prisma.EnumImageTypeFilter<"PropertyImage"> | $Enums.ImageType
-  order?: Prisma.IntFilter<"PropertyImage"> | number
-  propertyId?: Prisma.StringFilter<"PropertyImage"> | string
+  displayOrder?: Prisma.IntFilter<"PropertyImage"> | number
+  isMain?: Prisma.BoolFilter<"PropertyImage"> | boolean
+  width?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
+  height?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PropertyImage"> | Date | string
   property?: Prisma.XOR<Prisma.PropertyScalarRelationFilter, Prisma.PropertyWhereInput>
+  fileBox?: Prisma.XOR<Prisma.FileBoxNullableScalarRelationFilter, Prisma.FileBoxWhereInput> | null
 }, "id">
 
 export type PropertyImageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  propertyId?: Prisma.SortOrder
+  fileBoxId?: Prisma.SortOrderInput | Prisma.SortOrder
   url?: Prisma.SortOrder
+  thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   imageType?: Prisma.SortOrder
-  order?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  isMain?: Prisma.SortOrder
+  width?: Prisma.SortOrderInput | Prisma.SortOrder
+  height?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.PropertyImageCountOrderByAggregateInput
   _avg?: Prisma.PropertyImageAvgOrderByAggregateInput
@@ -279,81 +345,120 @@ export type PropertyImageScalarWhereWithAggregatesInput = {
   AND?: Prisma.PropertyImageScalarWhereWithAggregatesInput | Prisma.PropertyImageScalarWhereWithAggregatesInput[]
   OR?: Prisma.PropertyImageScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PropertyImageScalarWhereWithAggregatesInput | Prisma.PropertyImageScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"PropertyImage"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"PropertyImage"> | string
+  propertyId?: Prisma.UuidWithAggregatesFilter<"PropertyImage"> | string
+  fileBoxId?: Prisma.UuidNullableWithAggregatesFilter<"PropertyImage"> | string | null
   url?: Prisma.StringWithAggregatesFilter<"PropertyImage"> | string
+  thumbnailUrl?: Prisma.StringNullableWithAggregatesFilter<"PropertyImage"> | string | null
   caption?: Prisma.StringNullableWithAggregatesFilter<"PropertyImage"> | string | null
   imageType?: Prisma.EnumImageTypeWithAggregatesFilter<"PropertyImage"> | $Enums.ImageType
-  order?: Prisma.IntWithAggregatesFilter<"PropertyImage"> | number
-  propertyId?: Prisma.StringWithAggregatesFilter<"PropertyImage"> | string
+  displayOrder?: Prisma.IntWithAggregatesFilter<"PropertyImage"> | number
+  isMain?: Prisma.BoolWithAggregatesFilter<"PropertyImage"> | boolean
+  width?: Prisma.IntNullableWithAggregatesFilter<"PropertyImage"> | number | null
+  height?: Prisma.IntNullableWithAggregatesFilter<"PropertyImage"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PropertyImage"> | Date | string
 }
 
 export type PropertyImageCreateInput = {
   id?: string
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
   property: Prisma.PropertyCreateNestedOneWithoutImagesInput
+  fileBox?: Prisma.FileBoxCreateNestedOneWithoutPropertyImagesInput
 }
 
 export type PropertyImageUncheckedCreateInput = {
   id?: string
+  propertyId: string
+  fileBoxId?: string | null
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
-  propertyId: string
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
 }
 
 export type PropertyImageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   property?: Prisma.PropertyUpdateOneRequiredWithoutImagesNestedInput
+  fileBox?: Prisma.FileBoxUpdateOneWithoutPropertyImagesNestedInput
 }
 
 export type PropertyImageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileBoxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
-  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PropertyImageCreateManyInput = {
   id?: string
+  propertyId: string
+  fileBoxId?: string | null
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
-  propertyId: string
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
 }
 
 export type PropertyImageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PropertyImageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileBoxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
-  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -369,40 +474,59 @@ export type PropertyImageOrderByRelationAggregateInput = {
 
 export type PropertyImageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyId?: Prisma.SortOrder
+  fileBoxId?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  thumbnailUrl?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   imageType?: Prisma.SortOrder
-  order?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  isMain?: Prisma.SortOrder
+  width?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type PropertyImageAvgOrderByAggregateInput = {
-  order?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  width?: Prisma.SortOrder
+  height?: Prisma.SortOrder
 }
 
 export type PropertyImageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyId?: Prisma.SortOrder
+  fileBoxId?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  thumbnailUrl?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   imageType?: Prisma.SortOrder
-  order?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  isMain?: Prisma.SortOrder
+  width?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type PropertyImageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyId?: Prisma.SortOrder
+  fileBoxId?: Prisma.SortOrder
   url?: Prisma.SortOrder
+  thumbnailUrl?: Prisma.SortOrder
   caption?: Prisma.SortOrder
   imageType?: Prisma.SortOrder
-  order?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  isMain?: Prisma.SortOrder
+  width?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type PropertyImageSumOrderByAggregateInput = {
-  order?: Prisma.SortOrder
+  displayOrder?: Prisma.SortOrder
+  width?: Prisma.SortOrder
+  height?: Prisma.SortOrder
 }
 
 export type PropertyImageCreateNestedManyWithoutPropertyInput = {
@@ -451,21 +575,73 @@ export type EnumImageTypeFieldUpdateOperationsInput = {
   set?: $Enums.ImageType
 }
 
+export type PropertyImageCreateNestedManyWithoutFileBoxInput = {
+  create?: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput> | Prisma.PropertyImageCreateWithoutFileBoxInput[] | Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput[]
+  connectOrCreate?: Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput | Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput[]
+  createMany?: Prisma.PropertyImageCreateManyFileBoxInputEnvelope
+  connect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+}
+
+export type PropertyImageUncheckedCreateNestedManyWithoutFileBoxInput = {
+  create?: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput> | Prisma.PropertyImageCreateWithoutFileBoxInput[] | Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput[]
+  connectOrCreate?: Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput | Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput[]
+  createMany?: Prisma.PropertyImageCreateManyFileBoxInputEnvelope
+  connect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+}
+
+export type PropertyImageUpdateManyWithoutFileBoxNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput> | Prisma.PropertyImageCreateWithoutFileBoxInput[] | Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput[]
+  connectOrCreate?: Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput | Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput[]
+  upsert?: Prisma.PropertyImageUpsertWithWhereUniqueWithoutFileBoxInput | Prisma.PropertyImageUpsertWithWhereUniqueWithoutFileBoxInput[]
+  createMany?: Prisma.PropertyImageCreateManyFileBoxInputEnvelope
+  set?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  disconnect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  delete?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  connect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  update?: Prisma.PropertyImageUpdateWithWhereUniqueWithoutFileBoxInput | Prisma.PropertyImageUpdateWithWhereUniqueWithoutFileBoxInput[]
+  updateMany?: Prisma.PropertyImageUpdateManyWithWhereWithoutFileBoxInput | Prisma.PropertyImageUpdateManyWithWhereWithoutFileBoxInput[]
+  deleteMany?: Prisma.PropertyImageScalarWhereInput | Prisma.PropertyImageScalarWhereInput[]
+}
+
+export type PropertyImageUncheckedUpdateManyWithoutFileBoxNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput> | Prisma.PropertyImageCreateWithoutFileBoxInput[] | Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput[]
+  connectOrCreate?: Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput | Prisma.PropertyImageCreateOrConnectWithoutFileBoxInput[]
+  upsert?: Prisma.PropertyImageUpsertWithWhereUniqueWithoutFileBoxInput | Prisma.PropertyImageUpsertWithWhereUniqueWithoutFileBoxInput[]
+  createMany?: Prisma.PropertyImageCreateManyFileBoxInputEnvelope
+  set?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  disconnect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  delete?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  connect?: Prisma.PropertyImageWhereUniqueInput | Prisma.PropertyImageWhereUniqueInput[]
+  update?: Prisma.PropertyImageUpdateWithWhereUniqueWithoutFileBoxInput | Prisma.PropertyImageUpdateWithWhereUniqueWithoutFileBoxInput[]
+  updateMany?: Prisma.PropertyImageUpdateManyWithWhereWithoutFileBoxInput | Prisma.PropertyImageUpdateManyWithWhereWithoutFileBoxInput[]
+  deleteMany?: Prisma.PropertyImageScalarWhereInput | Prisma.PropertyImageScalarWhereInput[]
+}
+
 export type PropertyImageCreateWithoutPropertyInput = {
   id?: string
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
+  fileBox?: Prisma.FileBoxCreateNestedOneWithoutPropertyImagesInput
 }
 
 export type PropertyImageUncheckedCreateWithoutPropertyInput = {
   id?: string
+  fileBoxId?: string | null
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
 }
 
@@ -499,48 +675,183 @@ export type PropertyImageScalarWhereInput = {
   AND?: Prisma.PropertyImageScalarWhereInput | Prisma.PropertyImageScalarWhereInput[]
   OR?: Prisma.PropertyImageScalarWhereInput[]
   NOT?: Prisma.PropertyImageScalarWhereInput | Prisma.PropertyImageScalarWhereInput[]
-  id?: Prisma.StringFilter<"PropertyImage"> | string
+  id?: Prisma.UuidFilter<"PropertyImage"> | string
+  propertyId?: Prisma.UuidFilter<"PropertyImage"> | string
+  fileBoxId?: Prisma.UuidNullableFilter<"PropertyImage"> | string | null
   url?: Prisma.StringFilter<"PropertyImage"> | string
+  thumbnailUrl?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   caption?: Prisma.StringNullableFilter<"PropertyImage"> | string | null
   imageType?: Prisma.EnumImageTypeFilter<"PropertyImage"> | $Enums.ImageType
-  order?: Prisma.IntFilter<"PropertyImage"> | number
-  propertyId?: Prisma.StringFilter<"PropertyImage"> | string
+  displayOrder?: Prisma.IntFilter<"PropertyImage"> | number
+  isMain?: Prisma.BoolFilter<"PropertyImage"> | boolean
+  width?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
+  height?: Prisma.IntNullableFilter<"PropertyImage"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PropertyImage"> | Date | string
+}
+
+export type PropertyImageCreateWithoutFileBoxInput = {
+  id?: string
+  url: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  imageType?: $Enums.ImageType
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
+  createdAt?: Date | string
+  property: Prisma.PropertyCreateNestedOneWithoutImagesInput
+}
+
+export type PropertyImageUncheckedCreateWithoutFileBoxInput = {
+  id?: string
+  propertyId: string
+  url: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  imageType?: $Enums.ImageType
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
+  createdAt?: Date | string
+}
+
+export type PropertyImageCreateOrConnectWithoutFileBoxInput = {
+  where: Prisma.PropertyImageWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput>
+}
+
+export type PropertyImageCreateManyFileBoxInputEnvelope = {
+  data: Prisma.PropertyImageCreateManyFileBoxInput | Prisma.PropertyImageCreateManyFileBoxInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyImageUpsertWithWhereUniqueWithoutFileBoxInput = {
+  where: Prisma.PropertyImageWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyImageUpdateWithoutFileBoxInput, Prisma.PropertyImageUncheckedUpdateWithoutFileBoxInput>
+  create: Prisma.XOR<Prisma.PropertyImageCreateWithoutFileBoxInput, Prisma.PropertyImageUncheckedCreateWithoutFileBoxInput>
+}
+
+export type PropertyImageUpdateWithWhereUniqueWithoutFileBoxInput = {
+  where: Prisma.PropertyImageWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyImageUpdateWithoutFileBoxInput, Prisma.PropertyImageUncheckedUpdateWithoutFileBoxInput>
+}
+
+export type PropertyImageUpdateManyWithWhereWithoutFileBoxInput = {
+  where: Prisma.PropertyImageScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyImageUpdateManyMutationInput, Prisma.PropertyImageUncheckedUpdateManyWithoutFileBoxInput>
 }
 
 export type PropertyImageCreateManyPropertyInput = {
   id?: string
+  fileBoxId?: string | null
   url: string
+  thumbnailUrl?: string | null
   caption?: string | null
   imageType?: $Enums.ImageType
-  order?: number
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
   createdAt?: Date | string
 }
 
 export type PropertyImageUpdateWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fileBox?: Prisma.FileBoxUpdateOneWithoutPropertyImagesNestedInput
 }
 
 export type PropertyImageUncheckedUpdateWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileBoxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PropertyImageUncheckedUpdateManyWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileBoxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
-  order?: Prisma.IntFieldUpdateOperationsInput | number
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PropertyImageCreateManyFileBoxInput = {
+  id?: string
+  propertyId: string
+  url: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  imageType?: $Enums.ImageType
+  displayOrder?: number
+  isMain?: boolean
+  width?: number | null
+  height?: number | null
+  createdAt?: Date | string
+}
+
+export type PropertyImageUpdateWithoutFileBoxInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  property?: Prisma.PropertyUpdateOneRequiredWithoutImagesNestedInput
+}
+
+export type PropertyImageUncheckedUpdateWithoutFileBoxInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PropertyImageUncheckedUpdateManyWithoutFileBoxInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageType?: Prisma.EnumImageTypeFieldUpdateOperationsInput | $Enums.ImageType
+  displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isMain?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -548,70 +859,102 @@ export type PropertyImageUncheckedUpdateManyWithoutPropertyInput = {
 
 export type PropertyImageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyId?: boolean
+  fileBoxId?: boolean
   url?: boolean
+  thumbnailUrl?: boolean
   caption?: boolean
   imageType?: boolean
-  order?: boolean
-  propertyId?: boolean
+  displayOrder?: boolean
+  isMain?: boolean
+  width?: boolean
+  height?: boolean
   createdAt?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }, ExtArgs["result"]["propertyImage"]>
 
 export type PropertyImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyId?: boolean
+  fileBoxId?: boolean
   url?: boolean
+  thumbnailUrl?: boolean
   caption?: boolean
   imageType?: boolean
-  order?: boolean
-  propertyId?: boolean
+  displayOrder?: boolean
+  isMain?: boolean
+  width?: boolean
+  height?: boolean
   createdAt?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }, ExtArgs["result"]["propertyImage"]>
 
 export type PropertyImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyId?: boolean
+  fileBoxId?: boolean
   url?: boolean
+  thumbnailUrl?: boolean
   caption?: boolean
   imageType?: boolean
-  order?: boolean
-  propertyId?: boolean
+  displayOrder?: boolean
+  isMain?: boolean
+  width?: boolean
+  height?: boolean
   createdAt?: boolean
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }, ExtArgs["result"]["propertyImage"]>
 
 export type PropertyImageSelectScalar = {
   id?: boolean
+  propertyId?: boolean
+  fileBoxId?: boolean
   url?: boolean
+  thumbnailUrl?: boolean
   caption?: boolean
   imageType?: boolean
-  order?: boolean
-  propertyId?: boolean
+  displayOrder?: boolean
+  isMain?: boolean
+  width?: boolean
+  height?: boolean
   createdAt?: boolean
 }
 
-export type PropertyImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "caption" | "imageType" | "order" | "propertyId" | "createdAt", ExtArgs["result"]["propertyImage"]>
+export type PropertyImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "propertyId" | "fileBoxId" | "url" | "thumbnailUrl" | "caption" | "imageType" | "displayOrder" | "isMain" | "width" | "height" | "createdAt", ExtArgs["result"]["propertyImage"]>
 export type PropertyImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }
 export type PropertyImageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }
 export type PropertyImageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   property?: boolean | Prisma.PropertyDefaultArgs<ExtArgs>
+  fileBox?: boolean | Prisma.PropertyImage$fileBoxArgs<ExtArgs>
 }
 
 export type $PropertyImagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PropertyImage"
   objects: {
     property: Prisma.$PropertyPayload<ExtArgs>
+    fileBox: Prisma.$FileBoxPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    propertyId: string
+    fileBoxId: string | null
     url: string
+    thumbnailUrl: string | null
     caption: string | null
     imageType: $Enums.ImageType
-    order: number
-    propertyId: string
+    displayOrder: number
+    isMain: boolean
+    width: number | null
+    height: number | null
     createdAt: Date
   }, ExtArgs["result"]["propertyImage"]>
   composites: {}
@@ -1008,6 +1351,7 @@ readonly fields: PropertyImageFieldRefs;
 export interface Prisma__PropertyImageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   property<T extends Prisma.PropertyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PropertyDefaultArgs<ExtArgs>>): Prisma.Prisma__PropertyClient<runtime.Types.Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  fileBox<T extends Prisma.PropertyImage$fileBoxArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PropertyImage$fileBoxArgs<ExtArgs>>): Prisma.Prisma__FileBoxClient<runtime.Types.Result.GetResult<Prisma.$FileBoxPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1038,11 +1382,16 @@ export interface Prisma__PropertyImageClient<T, Null = never, ExtArgs extends ru
  */
 export interface PropertyImageFieldRefs {
   readonly id: Prisma.FieldRef<"PropertyImage", 'String'>
+  readonly propertyId: Prisma.FieldRef<"PropertyImage", 'String'>
+  readonly fileBoxId: Prisma.FieldRef<"PropertyImage", 'String'>
   readonly url: Prisma.FieldRef<"PropertyImage", 'String'>
+  readonly thumbnailUrl: Prisma.FieldRef<"PropertyImage", 'String'>
   readonly caption: Prisma.FieldRef<"PropertyImage", 'String'>
   readonly imageType: Prisma.FieldRef<"PropertyImage", 'ImageType'>
-  readonly order: Prisma.FieldRef<"PropertyImage", 'Int'>
-  readonly propertyId: Prisma.FieldRef<"PropertyImage", 'String'>
+  readonly displayOrder: Prisma.FieldRef<"PropertyImage", 'Int'>
+  readonly isMain: Prisma.FieldRef<"PropertyImage", 'Boolean'>
+  readonly width: Prisma.FieldRef<"PropertyImage", 'Int'>
+  readonly height: Prisma.FieldRef<"PropertyImage", 'Int'>
   readonly createdAt: Prisma.FieldRef<"PropertyImage", 'DateTime'>
 }
     
@@ -1437,6 +1786,25 @@ export type PropertyImageDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many PropertyImages to delete.
    */
   limit?: number
+}
+
+/**
+ * PropertyImage.fileBox
+ */
+export type PropertyImage$fileBoxArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FileBox
+   */
+  select?: Prisma.FileBoxSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FileBox
+   */
+  omit?: Prisma.FileBoxOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FileBoxInclude<ExtArgs> | null
+  where?: Prisma.FileBoxWhereInput
 }
 
 /**

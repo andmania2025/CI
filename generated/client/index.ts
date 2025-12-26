@@ -1,2 +1,2 @@
-// Re-export everything from client.ts for module resolution
-export * from "./client.ts";
+// Re-export everything from client.ts for backwards compatibility
+export * from "./client";

@@ -231,8 +231,9 @@ export const PropertyTable: React.FC<PropertyTableProps> = ({
   }, []);
 
   // 表示件数が変更されたときに現在のページをリセット
-  // biome-ignore lint/correctness/useExhaustiveDependencies: itemsPerPage の変更をトリガーとして検知するために依存配列に含めている
   useEffect(() => {
+    // itemsPerPageの変更をトリガーとしてページをリセット
+    void itemsPerPage;
     setCurrentPage(1);
   }, [itemsPerPage]);
 

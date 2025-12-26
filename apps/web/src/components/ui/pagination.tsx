@@ -67,7 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       <div className="flex items-center space-x-1">
         {visiblePages.map((page, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={page === "..." ? `ellipsis-${index}` : page}>
             {page === "..." ? (
               <span className="px-3 py-2 text-gray-500">...</span>
             ) : (
@@ -79,7 +79,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                   "min-w-[40px]",
                   currentPage === page
                     ? "bg-[#093893] text-white border-[#093893] hover:bg-[#093893]"
-                    : "hover:bg-gray-50"
+                    : "hover:bg-gray-50",
                 )}
               >
                 {page}

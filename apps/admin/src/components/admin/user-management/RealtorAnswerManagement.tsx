@@ -49,7 +49,11 @@ const RealtorAnswerManagement: React.FC = () => {
             <Search className="w-5 h-5" />
             <span className="font-medium">検索</span>
           </div>
-          {isSearchExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+          {isSearchExpanded ? (
+            <ChevronUp className="w-5 h-5" />
+          ) : (
+            <ChevronDown className="w-5 h-5" />
+          )}
         </button>
 
         {/* 検索フォーム（アコーディオン） */}

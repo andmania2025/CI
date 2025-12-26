@@ -27,67 +27,55 @@ export type AggregateProperty = {
 }
 
 export type PropertyAvgAggregateOutputType = {
-  walkMinutes: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  layoutNumber: number | null
   buildingArea: runtime.Decimal | null
   landArea: runtime.Decimal | null
   balconyArea: runtime.Decimal | null
-  totalUnits: number | null
-  salePrice: runtime.Decimal | null
-  unitPrice: runtime.Decimal | null
-  expectedRent: runtime.Decimal | null
-  managementFee: runtime.Decimal | null
-  repairReserve: runtime.Decimal | null
-  usageFee: runtime.Decimal | null
-  stampTax: runtime.Decimal | null
-  expectedAnnualIncome: runtime.Decimal | null
-  surfaceYield: runtime.Decimal | null
-  privateRoadArea: runtime.Decimal | null
-  buildingCoverageRatio: runtime.Decimal | null
-  floorAreaRatio: runtime.Decimal | null
-  totalProperties: number | null
-  developmentArea: runtime.Decimal | null
-  parkingFee: runtime.Decimal | null
-  parkingSpaces: number | null
-  salesUnits: number | null
+  totalFloors: number | null
+  floor: number | null
+  currentPrice: number | null
+  pricePerTsubo: number | null
+  managementFee: number | null
+  commonServiceFee: number | null
+  depositMonths: runtime.Decimal | null
+  keyMoneyMonths: runtime.Decimal | null
+  primaryStationWalkMinutes: number | null
+  viewCount: number | null
   inquiryCount: number | null
+  favoriteCount: number | null
 }
 
 export type PropertySumAggregateOutputType = {
-  walkMinutes: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  layoutNumber: number | null
   buildingArea: runtime.Decimal | null
   landArea: runtime.Decimal | null
   balconyArea: runtime.Decimal | null
-  totalUnits: number | null
-  salePrice: runtime.Decimal | null
-  unitPrice: runtime.Decimal | null
-  expectedRent: runtime.Decimal | null
-  managementFee: runtime.Decimal | null
-  repairReserve: runtime.Decimal | null
-  usageFee: runtime.Decimal | null
-  stampTax: runtime.Decimal | null
-  expectedAnnualIncome: runtime.Decimal | null
-  surfaceYield: runtime.Decimal | null
-  privateRoadArea: runtime.Decimal | null
-  buildingCoverageRatio: runtime.Decimal | null
-  floorAreaRatio: runtime.Decimal | null
-  totalProperties: number | null
-  developmentArea: runtime.Decimal | null
-  parkingFee: runtime.Decimal | null
-  parkingSpaces: number | null
-  salesUnits: number | null
+  totalFloors: number | null
+  floor: number | null
+  currentPrice: bigint | null
+  pricePerTsubo: bigint | null
+  managementFee: number | null
+  commonServiceFee: number | null
+  depositMonths: runtime.Decimal | null
+  keyMoneyMonths: runtime.Decimal | null
+  primaryStationWalkMinutes: number | null
+  viewCount: number | null
   inquiryCount: number | null
+  favoriteCount: number | null
 }
 
 export type PropertyMinAggregateOutputType = {
   id: string | null
+  propertyCode: string | null
   propertyName: string | null
-  propertyType: $Enums.PropertyType | null
-  publicationStatus: $Enums.PublicationStatus | null
-  saleOrRent: $Enums.SaleOrRent | null
+  propertyNameKana: string | null
+  propertyTypeId: string | null
+  propertyCategoryId: string | null
+  areaId: string | null
   transactionType: $Enums.TransactionType | null
   propertyCondition: $Enums.PropertyCondition | null
   postalCode: string | null
@@ -96,95 +84,50 @@ export type PropertyMinAggregateOutputType = {
   town: string | null
   block: string | null
   building: string | null
-  lotNumber: string | null
-  nearestStation: string | null
-  walkMinutes: number | null
-  otherTransportation: string | null
+  roomNumber: string | null
+  fullAddress: string | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
-  layoutNumber: string | null
-  layoutType: $Enums.LayoutType | null
+  layoutNumber: number | null
+  layoutTypeId: string | null
+  layoutDisplay: string | null
   buildingArea: runtime.Decimal | null
   landArea: runtime.Decimal | null
   balconyArea: runtime.Decimal | null
-  layoutDetail: string | null
   buildingStructure: string | null
-  floor: string | null
-  totalUnits: number | null
-  direction: $Enums.Direction | null
-  directionDetail: string | null
-  mainLighting: string | null
   constructionDate: Date | null
-  buildingConfirmationNumber: string | null
-  constructionCompany: string | null
-  utilities: $Enums.Utilities | null
-  reform: string | null
-  salePrice: runtime.Decimal | null
-  unitPrice: runtime.Decimal | null
-  expectedRent: runtime.Decimal | null
-  managementFee: runtime.Decimal | null
-  repairReserve: runtime.Decimal | null
-  usageFee: runtime.Decimal | null
-  stampTax: runtime.Decimal | null
-  expenses: string | null
-  otherExpenses: string | null
-  expectedAnnualIncome: runtime.Decimal | null
-  surfaceYield: runtime.Decimal | null
-  landType: string | null
-  privateRoadArea: runtime.Decimal | null
-  setback: string | null
-  cityPlanning: string | null
-  roadContact: string | null
-  landCategory: string | null
-  useDistrict: string | null
-  buildingCoverageRatio: runtime.Decimal | null
-  floorAreaRatio: runtime.Decimal | null
-  totalProperties: number | null
-  developmentPermitNumber: string | null
-  developmentArea: runtime.Decimal | null
-  residentialPermitNumber: string | null
-  easement: string | null
-  nationalLandAct: string | null
-  siteRights: string | null
-  parkingAvailable: string | null
-  parkingFee: runtime.Decimal | null
-  parkingSpaces: number | null
-  parkingDetail: string | null
-  publicScope: $Enums.PublicScope | null
-  featured: $Enums.Featured | null
-  featurePeriodStart: Date | null
-  featurePeriodEnd: Date | null
-  reservedReleaseDate: Date | null
-  publicScopeReservation: string | null
-  validUntilDate: Date | null
-  nextUpdateDate: Date | null
-  publicationMedium: string | null
-  salesUnits: number | null
-  currentStatus: string | null
-  propertyStatus: string | null
-  deliveryDate: Date | null
-  sellerName: string | null
-  realEstateAgent: string | null
-  managementType: string | null
-  environment: string | null
-  legalRestrictions: string | null
-  otherConstructionInfo: string | null
-  remarks: string | null
-  adminMemo: string | null
-  propertyCategory: string | null
+  constructionYearMonth: string | null
+  totalFloors: number | null
+  floor: number | null
+  currentPrice: bigint | null
+  pricePerTsubo: bigint | null
+  managementFee: number | null
+  commonServiceFee: number | null
+  depositMonths: runtime.Decimal | null
+  keyMoneyMonths: runtime.Decimal | null
+  mainImageUrl: string | null
+  primaryStationName: string | null
+  primaryStationWalkMinutes: number | null
+  viewCount: number | null
   inquiryCount: number | null
-  userId: string | null
+  favoriteCount: number | null
+  agentId: string | null
+  remarks: string | null
+  internalMemo: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  publishedAt: Date | null
+  deletedAt: Date | null
+  userId: string | null
 }
 
 export type PropertyMaxAggregateOutputType = {
   id: string | null
+  propertyCode: string | null
   propertyName: string | null
-  propertyType: $Enums.PropertyType | null
-  publicationStatus: $Enums.PublicationStatus | null
-  saleOrRent: $Enums.SaleOrRent | null
+  propertyNameKana: string | null
+  propertyTypeId: string | null
+  propertyCategoryId: string | null
+  areaId: string | null
   transactionType: $Enums.TransactionType | null
   propertyCondition: $Enums.PropertyCondition | null
   postalCode: string | null
@@ -193,95 +136,50 @@ export type PropertyMaxAggregateOutputType = {
   town: string | null
   block: string | null
   building: string | null
-  lotNumber: string | null
-  nearestStation: string | null
-  walkMinutes: number | null
-  otherTransportation: string | null
+  roomNumber: string | null
+  fullAddress: string | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
-  layoutNumber: string | null
-  layoutType: $Enums.LayoutType | null
+  layoutNumber: number | null
+  layoutTypeId: string | null
+  layoutDisplay: string | null
   buildingArea: runtime.Decimal | null
   landArea: runtime.Decimal | null
   balconyArea: runtime.Decimal | null
-  layoutDetail: string | null
   buildingStructure: string | null
-  floor: string | null
-  totalUnits: number | null
-  direction: $Enums.Direction | null
-  directionDetail: string | null
-  mainLighting: string | null
   constructionDate: Date | null
-  buildingConfirmationNumber: string | null
-  constructionCompany: string | null
-  utilities: $Enums.Utilities | null
-  reform: string | null
-  salePrice: runtime.Decimal | null
-  unitPrice: runtime.Decimal | null
-  expectedRent: runtime.Decimal | null
-  managementFee: runtime.Decimal | null
-  repairReserve: runtime.Decimal | null
-  usageFee: runtime.Decimal | null
-  stampTax: runtime.Decimal | null
-  expenses: string | null
-  otherExpenses: string | null
-  expectedAnnualIncome: runtime.Decimal | null
-  surfaceYield: runtime.Decimal | null
-  landType: string | null
-  privateRoadArea: runtime.Decimal | null
-  setback: string | null
-  cityPlanning: string | null
-  roadContact: string | null
-  landCategory: string | null
-  useDistrict: string | null
-  buildingCoverageRatio: runtime.Decimal | null
-  floorAreaRatio: runtime.Decimal | null
-  totalProperties: number | null
-  developmentPermitNumber: string | null
-  developmentArea: runtime.Decimal | null
-  residentialPermitNumber: string | null
-  easement: string | null
-  nationalLandAct: string | null
-  siteRights: string | null
-  parkingAvailable: string | null
-  parkingFee: runtime.Decimal | null
-  parkingSpaces: number | null
-  parkingDetail: string | null
-  publicScope: $Enums.PublicScope | null
-  featured: $Enums.Featured | null
-  featurePeriodStart: Date | null
-  featurePeriodEnd: Date | null
-  reservedReleaseDate: Date | null
-  publicScopeReservation: string | null
-  validUntilDate: Date | null
-  nextUpdateDate: Date | null
-  publicationMedium: string | null
-  salesUnits: number | null
-  currentStatus: string | null
-  propertyStatus: string | null
-  deliveryDate: Date | null
-  sellerName: string | null
-  realEstateAgent: string | null
-  managementType: string | null
-  environment: string | null
-  legalRestrictions: string | null
-  otherConstructionInfo: string | null
-  remarks: string | null
-  adminMemo: string | null
-  propertyCategory: string | null
+  constructionYearMonth: string | null
+  totalFloors: number | null
+  floor: number | null
+  currentPrice: bigint | null
+  pricePerTsubo: bigint | null
+  managementFee: number | null
+  commonServiceFee: number | null
+  depositMonths: runtime.Decimal | null
+  keyMoneyMonths: runtime.Decimal | null
+  mainImageUrl: string | null
+  primaryStationName: string | null
+  primaryStationWalkMinutes: number | null
+  viewCount: number | null
   inquiryCount: number | null
-  userId: string | null
+  favoriteCount: number | null
+  agentId: string | null
+  remarks: string | null
+  internalMemo: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  publishedAt: Date | null
+  deletedAt: Date | null
+  userId: string | null
 }
 
 export type PropertyCountAggregateOutputType = {
   id: number
+  propertyCode: number
   propertyName: number
-  propertyType: number
-  publicationStatus: number
-  saleOrRent: number
+  propertyNameKana: number
+  propertyTypeId: number
+  propertyCategoryId: number
+  areaId: number
   transactionType: number
   propertyCondition: number
   postalCode: number
@@ -290,153 +188,96 @@ export type PropertyCountAggregateOutputType = {
   town: number
   block: number
   building: number
-  lotNumber: number
-  nearestStation: number
-  walkMinutes: number
-  otherTransportation: number
+  roomNumber: number
+  fullAddress: number
   latitude: number
   longitude: number
   layoutNumber: number
-  layoutType: number
+  layoutTypeId: number
+  layoutDisplay: number
   buildingArea: number
   landArea: number
   balconyArea: number
-  layoutDetail: number
   buildingStructure: number
-  floor: number
-  totalUnits: number
-  direction: number
-  directionDetail: number
-  mainLighting: number
   constructionDate: number
-  buildingConfirmationNumber: number
-  constructionCompany: number
-  utilities: number
-  reform: number
-  salePrice: number
-  unitPrice: number
-  expectedRent: number
+  constructionYearMonth: number
+  totalFloors: number
+  floor: number
+  currentPrice: number
+  pricePerTsubo: number
   managementFee: number
-  repairReserve: number
-  usageFee: number
-  stampTax: number
-  expenses: number
-  otherExpenses: number
-  expectedAnnualIncome: number
-  surfaceYield: number
-  landType: number
-  privateRoadArea: number
-  setback: number
-  cityPlanning: number
-  roadContact: number
-  landCategory: number
-  useDistrict: number
-  buildingCoverageRatio: number
-  floorAreaRatio: number
-  totalProperties: number
-  developmentPermitNumber: number
-  developmentArea: number
-  residentialPermitNumber: number
-  easement: number
-  nationalLandAct: number
-  siteRights: number
-  parkingAvailable: number
-  parkingFee: number
-  parkingSpaces: number
-  parkingDetail: number
-  publicScope: number
-  featured: number
-  featurePeriodStart: number
-  featurePeriodEnd: number
-  reservedReleaseDate: number
-  publicScopeReservation: number
-  validUntilDate: number
-  nextUpdateDate: number
-  publicationMedium: number
-  salesUnits: number
-  currentStatus: number
-  propertyStatus: number
-  deliveryDate: number
-  sellerName: number
-  realEstateAgent: number
-  managementType: number
-  environment: number
-  legalRestrictions: number
-  otherConstructionInfo: number
-  remarks: number
-  adminMemo: number
-  propertyCategory: number
+  commonServiceFee: number
+  depositMonths: number
+  keyMoneyMonths: number
+  mainImageUrl: number
+  primaryStationName: number
+  primaryStationWalkMinutes: number
+  featureTags: number
+  viewCount: number
   inquiryCount: number
-  userId: number
+  favoriteCount: number
+  agentId: number
+  remarks: number
+  internalMemo: number
+  metadata: number
   createdAt: number
   updatedAt: number
-  publishedAt: number
+  deletedAt: number
+  userId: number
   _all: number
 }
 
 
 export type PropertyAvgAggregateInputType = {
-  walkMinutes?: true
   latitude?: true
   longitude?: true
+  layoutNumber?: true
   buildingArea?: true
   landArea?: true
   balconyArea?: true
-  totalUnits?: true
-  salePrice?: true
-  unitPrice?: true
-  expectedRent?: true
+  totalFloors?: true
+  floor?: true
+  currentPrice?: true
+  pricePerTsubo?: true
   managementFee?: true
-  repairReserve?: true
-  usageFee?: true
-  stampTax?: true
-  expectedAnnualIncome?: true
-  surfaceYield?: true
-  privateRoadArea?: true
-  buildingCoverageRatio?: true
-  floorAreaRatio?: true
-  totalProperties?: true
-  developmentArea?: true
-  parkingFee?: true
-  parkingSpaces?: true
-  salesUnits?: true
+  commonServiceFee?: true
+  depositMonths?: true
+  keyMoneyMonths?: true
+  primaryStationWalkMinutes?: true
+  viewCount?: true
   inquiryCount?: true
+  favoriteCount?: true
 }
 
 export type PropertySumAggregateInputType = {
-  walkMinutes?: true
   latitude?: true
   longitude?: true
+  layoutNumber?: true
   buildingArea?: true
   landArea?: true
   balconyArea?: true
-  totalUnits?: true
-  salePrice?: true
-  unitPrice?: true
-  expectedRent?: true
+  totalFloors?: true
+  floor?: true
+  currentPrice?: true
+  pricePerTsubo?: true
   managementFee?: true
-  repairReserve?: true
-  usageFee?: true
-  stampTax?: true
-  expectedAnnualIncome?: true
-  surfaceYield?: true
-  privateRoadArea?: true
-  buildingCoverageRatio?: true
-  floorAreaRatio?: true
-  totalProperties?: true
-  developmentArea?: true
-  parkingFee?: true
-  parkingSpaces?: true
-  salesUnits?: true
+  commonServiceFee?: true
+  depositMonths?: true
+  keyMoneyMonths?: true
+  primaryStationWalkMinutes?: true
+  viewCount?: true
   inquiryCount?: true
+  favoriteCount?: true
 }
 
 export type PropertyMinAggregateInputType = {
   id?: true
+  propertyCode?: true
   propertyName?: true
-  propertyType?: true
-  publicationStatus?: true
-  saleOrRent?: true
+  propertyNameKana?: true
+  propertyTypeId?: true
+  propertyCategoryId?: true
+  areaId?: true
   transactionType?: true
   propertyCondition?: true
   postalCode?: true
@@ -445,95 +286,50 @@ export type PropertyMinAggregateInputType = {
   town?: true
   block?: true
   building?: true
-  lotNumber?: true
-  nearestStation?: true
-  walkMinutes?: true
-  otherTransportation?: true
+  roomNumber?: true
+  fullAddress?: true
   latitude?: true
   longitude?: true
   layoutNumber?: true
-  layoutType?: true
+  layoutTypeId?: true
+  layoutDisplay?: true
   buildingArea?: true
   landArea?: true
   balconyArea?: true
-  layoutDetail?: true
   buildingStructure?: true
-  floor?: true
-  totalUnits?: true
-  direction?: true
-  directionDetail?: true
-  mainLighting?: true
   constructionDate?: true
-  buildingConfirmationNumber?: true
-  constructionCompany?: true
-  utilities?: true
-  reform?: true
-  salePrice?: true
-  unitPrice?: true
-  expectedRent?: true
+  constructionYearMonth?: true
+  totalFloors?: true
+  floor?: true
+  currentPrice?: true
+  pricePerTsubo?: true
   managementFee?: true
-  repairReserve?: true
-  usageFee?: true
-  stampTax?: true
-  expenses?: true
-  otherExpenses?: true
-  expectedAnnualIncome?: true
-  surfaceYield?: true
-  landType?: true
-  privateRoadArea?: true
-  setback?: true
-  cityPlanning?: true
-  roadContact?: true
-  landCategory?: true
-  useDistrict?: true
-  buildingCoverageRatio?: true
-  floorAreaRatio?: true
-  totalProperties?: true
-  developmentPermitNumber?: true
-  developmentArea?: true
-  residentialPermitNumber?: true
-  easement?: true
-  nationalLandAct?: true
-  siteRights?: true
-  parkingAvailable?: true
-  parkingFee?: true
-  parkingSpaces?: true
-  parkingDetail?: true
-  publicScope?: true
-  featured?: true
-  featurePeriodStart?: true
-  featurePeriodEnd?: true
-  reservedReleaseDate?: true
-  publicScopeReservation?: true
-  validUntilDate?: true
-  nextUpdateDate?: true
-  publicationMedium?: true
-  salesUnits?: true
-  currentStatus?: true
-  propertyStatus?: true
-  deliveryDate?: true
-  sellerName?: true
-  realEstateAgent?: true
-  managementType?: true
-  environment?: true
-  legalRestrictions?: true
-  otherConstructionInfo?: true
-  remarks?: true
-  adminMemo?: true
-  propertyCategory?: true
+  commonServiceFee?: true
+  depositMonths?: true
+  keyMoneyMonths?: true
+  mainImageUrl?: true
+  primaryStationName?: true
+  primaryStationWalkMinutes?: true
+  viewCount?: true
   inquiryCount?: true
-  userId?: true
+  favoriteCount?: true
+  agentId?: true
+  remarks?: true
+  internalMemo?: true
   createdAt?: true
   updatedAt?: true
-  publishedAt?: true
+  deletedAt?: true
+  userId?: true
 }
 
 export type PropertyMaxAggregateInputType = {
   id?: true
+  propertyCode?: true
   propertyName?: true
-  propertyType?: true
-  publicationStatus?: true
-  saleOrRent?: true
+  propertyNameKana?: true
+  propertyTypeId?: true
+  propertyCategoryId?: true
+  areaId?: true
   transactionType?: true
   propertyCondition?: true
   postalCode?: true
@@ -542,95 +338,50 @@ export type PropertyMaxAggregateInputType = {
   town?: true
   block?: true
   building?: true
-  lotNumber?: true
-  nearestStation?: true
-  walkMinutes?: true
-  otherTransportation?: true
+  roomNumber?: true
+  fullAddress?: true
   latitude?: true
   longitude?: true
   layoutNumber?: true
-  layoutType?: true
+  layoutTypeId?: true
+  layoutDisplay?: true
   buildingArea?: true
   landArea?: true
   balconyArea?: true
-  layoutDetail?: true
   buildingStructure?: true
-  floor?: true
-  totalUnits?: true
-  direction?: true
-  directionDetail?: true
-  mainLighting?: true
   constructionDate?: true
-  buildingConfirmationNumber?: true
-  constructionCompany?: true
-  utilities?: true
-  reform?: true
-  salePrice?: true
-  unitPrice?: true
-  expectedRent?: true
+  constructionYearMonth?: true
+  totalFloors?: true
+  floor?: true
+  currentPrice?: true
+  pricePerTsubo?: true
   managementFee?: true
-  repairReserve?: true
-  usageFee?: true
-  stampTax?: true
-  expenses?: true
-  otherExpenses?: true
-  expectedAnnualIncome?: true
-  surfaceYield?: true
-  landType?: true
-  privateRoadArea?: true
-  setback?: true
-  cityPlanning?: true
-  roadContact?: true
-  landCategory?: true
-  useDistrict?: true
-  buildingCoverageRatio?: true
-  floorAreaRatio?: true
-  totalProperties?: true
-  developmentPermitNumber?: true
-  developmentArea?: true
-  residentialPermitNumber?: true
-  easement?: true
-  nationalLandAct?: true
-  siteRights?: true
-  parkingAvailable?: true
-  parkingFee?: true
-  parkingSpaces?: true
-  parkingDetail?: true
-  publicScope?: true
-  featured?: true
-  featurePeriodStart?: true
-  featurePeriodEnd?: true
-  reservedReleaseDate?: true
-  publicScopeReservation?: true
-  validUntilDate?: true
-  nextUpdateDate?: true
-  publicationMedium?: true
-  salesUnits?: true
-  currentStatus?: true
-  propertyStatus?: true
-  deliveryDate?: true
-  sellerName?: true
-  realEstateAgent?: true
-  managementType?: true
-  environment?: true
-  legalRestrictions?: true
-  otherConstructionInfo?: true
-  remarks?: true
-  adminMemo?: true
-  propertyCategory?: true
+  commonServiceFee?: true
+  depositMonths?: true
+  keyMoneyMonths?: true
+  mainImageUrl?: true
+  primaryStationName?: true
+  primaryStationWalkMinutes?: true
+  viewCount?: true
   inquiryCount?: true
-  userId?: true
+  favoriteCount?: true
+  agentId?: true
+  remarks?: true
+  internalMemo?: true
   createdAt?: true
   updatedAt?: true
-  publishedAt?: true
+  deletedAt?: true
+  userId?: true
 }
 
 export type PropertyCountAggregateInputType = {
   id?: true
+  propertyCode?: true
   propertyName?: true
-  propertyType?: true
-  publicationStatus?: true
-  saleOrRent?: true
+  propertyNameKana?: true
+  propertyTypeId?: true
+  propertyCategoryId?: true
+  areaId?: true
   transactionType?: true
   propertyCondition?: true
   postalCode?: true
@@ -639,87 +390,42 @@ export type PropertyCountAggregateInputType = {
   town?: true
   block?: true
   building?: true
-  lotNumber?: true
-  nearestStation?: true
-  walkMinutes?: true
-  otherTransportation?: true
+  roomNumber?: true
+  fullAddress?: true
   latitude?: true
   longitude?: true
   layoutNumber?: true
-  layoutType?: true
+  layoutTypeId?: true
+  layoutDisplay?: true
   buildingArea?: true
   landArea?: true
   balconyArea?: true
-  layoutDetail?: true
   buildingStructure?: true
-  floor?: true
-  totalUnits?: true
-  direction?: true
-  directionDetail?: true
-  mainLighting?: true
   constructionDate?: true
-  buildingConfirmationNumber?: true
-  constructionCompany?: true
-  utilities?: true
-  reform?: true
-  salePrice?: true
-  unitPrice?: true
-  expectedRent?: true
+  constructionYearMonth?: true
+  totalFloors?: true
+  floor?: true
+  currentPrice?: true
+  pricePerTsubo?: true
   managementFee?: true
-  repairReserve?: true
-  usageFee?: true
-  stampTax?: true
-  expenses?: true
-  otherExpenses?: true
-  expectedAnnualIncome?: true
-  surfaceYield?: true
-  landType?: true
-  privateRoadArea?: true
-  setback?: true
-  cityPlanning?: true
-  roadContact?: true
-  landCategory?: true
-  useDistrict?: true
-  buildingCoverageRatio?: true
-  floorAreaRatio?: true
-  totalProperties?: true
-  developmentPermitNumber?: true
-  developmentArea?: true
-  residentialPermitNumber?: true
-  easement?: true
-  nationalLandAct?: true
-  siteRights?: true
-  parkingAvailable?: true
-  parkingFee?: true
-  parkingSpaces?: true
-  parkingDetail?: true
-  publicScope?: true
-  featured?: true
-  featurePeriodStart?: true
-  featurePeriodEnd?: true
-  reservedReleaseDate?: true
-  publicScopeReservation?: true
-  validUntilDate?: true
-  nextUpdateDate?: true
-  publicationMedium?: true
-  salesUnits?: true
-  currentStatus?: true
-  propertyStatus?: true
-  deliveryDate?: true
-  sellerName?: true
-  realEstateAgent?: true
-  managementType?: true
-  environment?: true
-  legalRestrictions?: true
-  otherConstructionInfo?: true
-  remarks?: true
-  adminMemo?: true
-  propertyCategory?: true
+  commonServiceFee?: true
+  depositMonths?: true
+  keyMoneyMonths?: true
+  mainImageUrl?: true
+  primaryStationName?: true
+  primaryStationWalkMinutes?: true
+  featureTags?: true
+  viewCount?: true
   inquiryCount?: true
-  userId?: true
+  favoriteCount?: true
+  agentId?: true
+  remarks?: true
+  internalMemo?: true
+  metadata?: true
   createdAt?: true
   updatedAt?: true
-  publishedAt?: true
+  deletedAt?: true
+  userId?: true
   _all?: true
 }
 
@@ -811,10 +517,12 @@ export type PropertyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type PropertyGroupByOutputType = {
   id: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus: $Enums.PublicationStatus
-  saleOrRent: $Enums.SaleOrRent | null
+  propertyNameKana: string | null
+  propertyTypeId: string | null
+  propertyCategoryId: string | null
+  areaId: string | null
   transactionType: $Enums.TransactionType | null
   propertyCondition: $Enums.PropertyCondition | null
   postalCode: string | null
@@ -823,87 +531,42 @@ export type PropertyGroupByOutputType = {
   town: string | null
   block: string | null
   building: string | null
-  lotNumber: string | null
-  nearestStation: string | null
-  walkMinutes: number | null
-  otherTransportation: string | null
+  roomNumber: string | null
+  fullAddress: string | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
-  layoutNumber: string | null
-  layoutType: $Enums.LayoutType | null
+  layoutNumber: number | null
+  layoutTypeId: string | null
+  layoutDisplay: string | null
   buildingArea: runtime.Decimal | null
   landArea: runtime.Decimal | null
   balconyArea: runtime.Decimal | null
-  layoutDetail: string | null
   buildingStructure: string | null
-  floor: string | null
-  totalUnits: number | null
-  direction: $Enums.Direction | null
-  directionDetail: string | null
-  mainLighting: string | null
   constructionDate: Date | null
-  buildingConfirmationNumber: string | null
-  constructionCompany: string | null
-  utilities: $Enums.Utilities | null
-  reform: string | null
-  salePrice: runtime.Decimal | null
-  unitPrice: runtime.Decimal | null
-  expectedRent: runtime.Decimal | null
-  managementFee: runtime.Decimal | null
-  repairReserve: runtime.Decimal | null
-  usageFee: runtime.Decimal | null
-  stampTax: runtime.Decimal | null
-  expenses: string | null
-  otherExpenses: string | null
-  expectedAnnualIncome: runtime.Decimal | null
-  surfaceYield: runtime.Decimal | null
-  landType: string | null
-  privateRoadArea: runtime.Decimal | null
-  setback: string | null
-  cityPlanning: string | null
-  roadContact: string | null
-  landCategory: string | null
-  useDistrict: string | null
-  buildingCoverageRatio: runtime.Decimal | null
-  floorAreaRatio: runtime.Decimal | null
-  totalProperties: number | null
-  developmentPermitNumber: string | null
-  developmentArea: runtime.Decimal | null
-  residentialPermitNumber: string | null
-  easement: string | null
-  nationalLandAct: string | null
-  siteRights: string | null
-  parkingAvailable: string | null
-  parkingFee: runtime.Decimal | null
-  parkingSpaces: number | null
-  parkingDetail: string | null
-  publicScope: $Enums.PublicScope
-  featured: $Enums.Featured
-  featurePeriodStart: Date | null
-  featurePeriodEnd: Date | null
-  reservedReleaseDate: Date | null
-  publicScopeReservation: string | null
-  validUntilDate: Date | null
-  nextUpdateDate: Date | null
-  publicationMedium: string | null
-  salesUnits: number | null
-  currentStatus: string | null
-  propertyStatus: string | null
-  deliveryDate: Date | null
-  sellerName: string | null
-  realEstateAgent: string | null
-  managementType: string | null
-  environment: string | null
-  legalRestrictions: string | null
-  otherConstructionInfo: string | null
-  remarks: string | null
-  adminMemo: string | null
-  propertyCategory: string | null
+  constructionYearMonth: string | null
+  totalFloors: number | null
+  floor: number | null
+  currentPrice: bigint | null
+  pricePerTsubo: bigint | null
+  managementFee: number | null
+  commonServiceFee: number | null
+  depositMonths: runtime.Decimal | null
+  keyMoneyMonths: runtime.Decimal | null
+  mainImageUrl: string | null
+  primaryStationName: string | null
+  primaryStationWalkMinutes: number | null
+  featureTags: string[]
+  viewCount: number
   inquiryCount: number
-  userId: string
+  favoriteCount: number
+  agentId: string | null
+  remarks: string | null
+  internalMemo: string | null
+  metadata: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
-  publishedAt: Date | null
+  deletedAt: Date | null
+  userId: string
   _count: PropertyCountAggregateOutputType | null
   _avg: PropertyAvgAggregateOutputType | null
   _sum: PropertySumAggregateOutputType | null
@@ -930,11 +593,13 @@ export type PropertyWhereInput = {
   AND?: Prisma.PropertyWhereInput | Prisma.PropertyWhereInput[]
   OR?: Prisma.PropertyWhereInput[]
   NOT?: Prisma.PropertyWhereInput | Prisma.PropertyWhereInput[]
-  id?: Prisma.StringFilter<"Property"> | string
+  id?: Prisma.UuidFilter<"Property"> | string
+  propertyCode?: Prisma.StringFilter<"Property"> | string
   propertyName?: Prisma.StringFilter<"Property"> | string
-  propertyType?: Prisma.EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFilter<"Property"> | $Enums.PublicationStatus
-  saleOrRent?: Prisma.EnumSaleOrRentNullableFilter<"Property"> | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.StringNullableFilter<"Property"> | string | null
+  propertyTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  propertyCategoryId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  areaId?: Prisma.UuidNullableFilter<"Property"> | string | null
   transactionType?: Prisma.EnumTransactionTypeNullableFilter<"Property"> | $Enums.TransactionType | null
   propertyCondition?: Prisma.EnumPropertyConditionNullableFilter<"Property"> | $Enums.PropertyCondition | null
   postalCode?: Prisma.StringNullableFilter<"Property"> | string | null
@@ -943,99 +608,68 @@ export type PropertyWhereInput = {
   town?: Prisma.StringNullableFilter<"Property"> | string | null
   block?: Prisma.StringNullableFilter<"Property"> | string | null
   building?: Prisma.StringNullableFilter<"Property"> | string | null
-  lotNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  nearestStation?: Prisma.StringNullableFilter<"Property"> | string | null
-  walkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
-  otherTransportation?: Prisma.StringNullableFilter<"Property"> | string | null
+  roomNumber?: Prisma.StringNullableFilter<"Property"> | string | null
+  fullAddress?: Prisma.StringNullableFilter<"Property"> | string | null
   latitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  layoutType?: Prisma.EnumLayoutTypeNullableFilter<"Property"> | $Enums.LayoutType | null
+  layoutNumber?: Prisma.IntNullableFilter<"Property"> | number | null
+  layoutTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  layoutDisplay?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingStructure?: Prisma.StringNullableFilter<"Property"> | string | null
-  floor?: Prisma.StringNullableFilter<"Property"> | string | null
-  totalUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  direction?: Prisma.EnumDirectionNullableFilter<"Property"> | $Enums.Direction | null
-  directionDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  mainLighting?: Prisma.StringNullableFilter<"Property"> | string | null
   constructionDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  buildingConfirmationNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  constructionCompany?: Prisma.StringNullableFilter<"Property"> | string | null
-  utilities?: Prisma.EnumUtilitiesNullableFilter<"Property"> | $Enums.Utilities | null
-  reform?: Prisma.StringNullableFilter<"Property"> | string | null
-  salePrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherExpenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  expectedAnnualIncome?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.StringNullableFilter<"Property"> | string | null
-  privateRoadArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.StringNullableFilter<"Property"> | string | null
-  cityPlanning?: Prisma.StringNullableFilter<"Property"> | string | null
-  roadContact?: Prisma.StringNullableFilter<"Property"> | string | null
-  landCategory?: Prisma.StringNullableFilter<"Property"> | string | null
-  useDistrict?: Prisma.StringNullableFilter<"Property"> | string | null
-  buildingCoverageRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.IntNullableFilter<"Property"> | number | null
-  developmentPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  developmentArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  easement?: Prisma.StringNullableFilter<"Property"> | string | null
-  nationalLandAct?: Prisma.StringNullableFilter<"Property"> | string | null
-  siteRights?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingAvailable?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.IntNullableFilter<"Property"> | number | null
-  parkingDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  publicScope?: Prisma.EnumPublicScopeFilter<"Property"> | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFilter<"Property"> | $Enums.Featured
-  featurePeriodStart?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  featurePeriodEnd?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  reservedReleaseDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicScopeReservation?: Prisma.StringNullableFilter<"Property"> | string | null
-  validUntilDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  nextUpdateDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicationMedium?: Prisma.StringNullableFilter<"Property"> | string | null
-  salesUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  currentStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  deliveryDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  sellerName?: Prisma.StringNullableFilter<"Property"> | string | null
-  realEstateAgent?: Prisma.StringNullableFilter<"Property"> | string | null
-  managementType?: Prisma.StringNullableFilter<"Property"> | string | null
-  environment?: Prisma.StringNullableFilter<"Property"> | string | null
-  legalRestrictions?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherConstructionInfo?: Prisma.StringNullableFilter<"Property"> | string | null
-  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
-  adminMemo?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyCategory?: Prisma.StringNullableFilter<"Property"> | string | null
+  constructionYearMonth?: Prisma.StringNullableFilter<"Property"> | string | null
+  totalFloors?: Prisma.IntNullableFilter<"Property"> | number | null
+  floor?: Prisma.IntNullableFilter<"Property"> | number | null
+  currentPrice?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  pricePerTsubo?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  managementFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  commonServiceFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  depositMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationName?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationWalkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
+  featureTags?: Prisma.StringNullableListFilter<"Property">
+  viewCount?: Prisma.IntFilter<"Property"> | number
   inquiryCount?: Prisma.IntFilter<"Property"> | number
-  userId?: Prisma.StringFilter<"Property"> | string
+  favoriteCount?: Prisma.IntFilter<"Property"> | number
+  agentId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
+  internalMemo?: Prisma.StringNullableFilter<"Property"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Property">
   createdAt?: Prisma.DateTimeFilter<"Property"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Property"> | Date | string
-  publishedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  userId?: Prisma.UuidFilter<"Property"> | string
+  propertyType?: Prisma.XOR<Prisma.PropertyTypeMasterNullableScalarRelationFilter, Prisma.PropertyTypeMasterWhereInput> | null
+  propertyCategory?: Prisma.XOR<Prisma.PropertyCategoryMasterNullableScalarRelationFilter, Prisma.PropertyCategoryMasterWhereInput> | null
+  area?: Prisma.XOR<Prisma.AreaMasterNullableScalarRelationFilter, Prisma.AreaMasterWhereInput> | null
+  layoutType?: Prisma.XOR<Prisma.FloorPlanMasterNullableScalarRelationFilter, Prisma.FloorPlanMasterWhereInput> | null
+  agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  publication?: Prisma.XOR<Prisma.PropertyPublicationNullableScalarRelationFilter, Prisma.PropertyPublicationWhereInput> | null
+  priceHistories?: Prisma.PropertyPriceHistoryListRelationFilter
+  statusHistories?: Prisma.PropertyStatusHistoryListRelationFilter
   images?: Prisma.PropertyImageListRelationFilter
   features?: Prisma.PropertyFeatureListRelationFilter
+  stations?: Prisma.PropertyStationListRelationFilter
   inquiries?: Prisma.InquiryListRelationFilter
+  favorites?: Prisma.FavoriteListRelationFilter
+  propertyViews?: Prisma.PropertyViewListRelationFilter
+  propertyViewDailies?: Prisma.PropertyViewDailyListRelationFilter
 }
 
 export type PropertyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  propertyCode?: Prisma.SortOrder
   propertyName?: Prisma.SortOrder
-  propertyType?: Prisma.SortOrder
-  publicationStatus?: Prisma.SortOrder
-  saleOrRent?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyNameKana?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyCategoryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  areaId?: Prisma.SortOrderInput | Prisma.SortOrder
   transactionType?: Prisma.SortOrderInput | Prisma.SortOrder
   propertyCondition?: Prisma.SortOrderInput | Prisma.SortOrder
   postalCode?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1044,102 +678,71 @@ export type PropertyOrderByWithRelationInput = {
   town?: Prisma.SortOrderInput | Prisma.SortOrder
   block?: Prisma.SortOrderInput | Prisma.SortOrder
   building?: Prisma.SortOrderInput | Prisma.SortOrder
-  lotNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  nearestStation?: Prisma.SortOrderInput | Prisma.SortOrder
-  walkMinutes?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherTransportation?: Prisma.SortOrderInput | Prisma.SortOrder
+  roomNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   latitude?: Prisma.SortOrderInput | Prisma.SortOrder
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   layoutNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  layoutType?: Prisma.SortOrderInput | Prisma.SortOrder
+  layoutTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  layoutDisplay?: Prisma.SortOrderInput | Prisma.SortOrder
   buildingArea?: Prisma.SortOrderInput | Prisma.SortOrder
   landArea?: Prisma.SortOrderInput | Prisma.SortOrder
   balconyArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  layoutDetail?: Prisma.SortOrderInput | Prisma.SortOrder
   buildingStructure?: Prisma.SortOrderInput | Prisma.SortOrder
-  floor?: Prisma.SortOrderInput | Prisma.SortOrder
-  totalUnits?: Prisma.SortOrderInput | Prisma.SortOrder
-  direction?: Prisma.SortOrderInput | Prisma.SortOrder
-  directionDetail?: Prisma.SortOrderInput | Prisma.SortOrder
-  mainLighting?: Prisma.SortOrderInput | Prisma.SortOrder
   constructionDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  buildingConfirmationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  constructionCompany?: Prisma.SortOrderInput | Prisma.SortOrder
-  utilities?: Prisma.SortOrderInput | Prisma.SortOrder
-  reform?: Prisma.SortOrderInput | Prisma.SortOrder
-  salePrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  unitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  expectedRent?: Prisma.SortOrderInput | Prisma.SortOrder
+  constructionYearMonth?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalFloors?: Prisma.SortOrderInput | Prisma.SortOrder
+  floor?: Prisma.SortOrderInput | Prisma.SortOrder
+  currentPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrderInput | Prisma.SortOrder
   managementFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  repairReserve?: Prisma.SortOrderInput | Prisma.SortOrder
-  usageFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  stampTax?: Prisma.SortOrderInput | Prisma.SortOrder
-  expenses?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherExpenses?: Prisma.SortOrderInput | Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrderInput | Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrderInput | Prisma.SortOrder
-  landType?: Prisma.SortOrderInput | Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  setback?: Prisma.SortOrderInput | Prisma.SortOrder
-  cityPlanning?: Prisma.SortOrderInput | Prisma.SortOrder
-  roadContact?: Prisma.SortOrderInput | Prisma.SortOrder
-  landCategory?: Prisma.SortOrderInput | Prisma.SortOrder
-  useDistrict?: Prisma.SortOrderInput | Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrderInput | Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrderInput | Prisma.SortOrder
-  totalProperties?: Prisma.SortOrderInput | Prisma.SortOrder
-  developmentPermitNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  developmentArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  residentialPermitNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  easement?: Prisma.SortOrderInput | Prisma.SortOrder
-  nationalLandAct?: Prisma.SortOrderInput | Prisma.SortOrder
-  siteRights?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingAvailable?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingDetail?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicScope?: Prisma.SortOrder
-  featured?: Prisma.SortOrder
-  featurePeriodStart?: Prisma.SortOrderInput | Prisma.SortOrder
-  featurePeriodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
-  reservedReleaseDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicScopeReservation?: Prisma.SortOrderInput | Prisma.SortOrder
-  validUntilDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  nextUpdateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicationMedium?: Prisma.SortOrderInput | Prisma.SortOrder
-  salesUnits?: Prisma.SortOrderInput | Prisma.SortOrder
-  currentStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  propertyStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  deliveryDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  sellerName?: Prisma.SortOrderInput | Prisma.SortOrder
-  realEstateAgent?: Prisma.SortOrderInput | Prisma.SortOrder
-  managementType?: Prisma.SortOrderInput | Prisma.SortOrder
-  environment?: Prisma.SortOrderInput | Prisma.SortOrder
-  legalRestrictions?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherConstructionInfo?: Prisma.SortOrderInput | Prisma.SortOrder
-  remarks?: Prisma.SortOrderInput | Prisma.SortOrder
-  adminMemo?: Prisma.SortOrderInput | Prisma.SortOrder
-  propertyCategory?: Prisma.SortOrderInput | Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  depositMonths?: Prisma.SortOrderInput | Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrderInput | Prisma.SortOrder
+  mainImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryStationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrderInput | Prisma.SortOrder
+  featureTags?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
+  agentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  remarks?: Prisma.SortOrderInput | Prisma.SortOrder
+  internalMemo?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  propertyType?: Prisma.PropertyTypeMasterOrderByWithRelationInput
+  propertyCategory?: Prisma.PropertyCategoryMasterOrderByWithRelationInput
+  area?: Prisma.AreaMasterOrderByWithRelationInput
+  layoutType?: Prisma.FloorPlanMasterOrderByWithRelationInput
+  agent?: Prisma.AgentOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  publication?: Prisma.PropertyPublicationOrderByWithRelationInput
+  priceHistories?: Prisma.PropertyPriceHistoryOrderByRelationAggregateInput
+  statusHistories?: Prisma.PropertyStatusHistoryOrderByRelationAggregateInput
   images?: Prisma.PropertyImageOrderByRelationAggregateInput
   features?: Prisma.PropertyFeatureOrderByRelationAggregateInput
+  stations?: Prisma.PropertyStationOrderByRelationAggregateInput
   inquiries?: Prisma.InquiryOrderByRelationAggregateInput
+  favorites?: Prisma.FavoriteOrderByRelationAggregateInput
+  propertyViews?: Prisma.PropertyViewOrderByRelationAggregateInput
+  propertyViewDailies?: Prisma.PropertyViewDailyOrderByRelationAggregateInput
 }
 
 export type PropertyWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  propertyCode?: string
   AND?: Prisma.PropertyWhereInput | Prisma.PropertyWhereInput[]
   OR?: Prisma.PropertyWhereInput[]
   NOT?: Prisma.PropertyWhereInput | Prisma.PropertyWhereInput[]
   propertyName?: Prisma.StringFilter<"Property"> | string
-  propertyType?: Prisma.EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFilter<"Property"> | $Enums.PublicationStatus
-  saleOrRent?: Prisma.EnumSaleOrRentNullableFilter<"Property"> | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.StringNullableFilter<"Property"> | string | null
+  propertyTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  propertyCategoryId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  areaId?: Prisma.UuidNullableFilter<"Property"> | string | null
   transactionType?: Prisma.EnumTransactionTypeNullableFilter<"Property"> | $Enums.TransactionType | null
   propertyCondition?: Prisma.EnumPropertyConditionNullableFilter<"Property"> | $Enums.PropertyCondition | null
   postalCode?: Prisma.StringNullableFilter<"Property"> | string | null
@@ -1148,99 +751,68 @@ export type PropertyWhereUniqueInput = Prisma.AtLeast<{
   town?: Prisma.StringNullableFilter<"Property"> | string | null
   block?: Prisma.StringNullableFilter<"Property"> | string | null
   building?: Prisma.StringNullableFilter<"Property"> | string | null
-  lotNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  nearestStation?: Prisma.StringNullableFilter<"Property"> | string | null
-  walkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
-  otherTransportation?: Prisma.StringNullableFilter<"Property"> | string | null
+  roomNumber?: Prisma.StringNullableFilter<"Property"> | string | null
+  fullAddress?: Prisma.StringNullableFilter<"Property"> | string | null
   latitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  layoutType?: Prisma.EnumLayoutTypeNullableFilter<"Property"> | $Enums.LayoutType | null
+  layoutNumber?: Prisma.IntNullableFilter<"Property"> | number | null
+  layoutTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  layoutDisplay?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingStructure?: Prisma.StringNullableFilter<"Property"> | string | null
-  floor?: Prisma.StringNullableFilter<"Property"> | string | null
-  totalUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  direction?: Prisma.EnumDirectionNullableFilter<"Property"> | $Enums.Direction | null
-  directionDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  mainLighting?: Prisma.StringNullableFilter<"Property"> | string | null
   constructionDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  buildingConfirmationNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  constructionCompany?: Prisma.StringNullableFilter<"Property"> | string | null
-  utilities?: Prisma.EnumUtilitiesNullableFilter<"Property"> | $Enums.Utilities | null
-  reform?: Prisma.StringNullableFilter<"Property"> | string | null
-  salePrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherExpenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  expectedAnnualIncome?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.StringNullableFilter<"Property"> | string | null
-  privateRoadArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.StringNullableFilter<"Property"> | string | null
-  cityPlanning?: Prisma.StringNullableFilter<"Property"> | string | null
-  roadContact?: Prisma.StringNullableFilter<"Property"> | string | null
-  landCategory?: Prisma.StringNullableFilter<"Property"> | string | null
-  useDistrict?: Prisma.StringNullableFilter<"Property"> | string | null
-  buildingCoverageRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.IntNullableFilter<"Property"> | number | null
-  developmentPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  developmentArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  easement?: Prisma.StringNullableFilter<"Property"> | string | null
-  nationalLandAct?: Prisma.StringNullableFilter<"Property"> | string | null
-  siteRights?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingAvailable?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.IntNullableFilter<"Property"> | number | null
-  parkingDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  publicScope?: Prisma.EnumPublicScopeFilter<"Property"> | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFilter<"Property"> | $Enums.Featured
-  featurePeriodStart?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  featurePeriodEnd?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  reservedReleaseDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicScopeReservation?: Prisma.StringNullableFilter<"Property"> | string | null
-  validUntilDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  nextUpdateDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicationMedium?: Prisma.StringNullableFilter<"Property"> | string | null
-  salesUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  currentStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  deliveryDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  sellerName?: Prisma.StringNullableFilter<"Property"> | string | null
-  realEstateAgent?: Prisma.StringNullableFilter<"Property"> | string | null
-  managementType?: Prisma.StringNullableFilter<"Property"> | string | null
-  environment?: Prisma.StringNullableFilter<"Property"> | string | null
-  legalRestrictions?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherConstructionInfo?: Prisma.StringNullableFilter<"Property"> | string | null
-  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
-  adminMemo?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyCategory?: Prisma.StringNullableFilter<"Property"> | string | null
+  constructionYearMonth?: Prisma.StringNullableFilter<"Property"> | string | null
+  totalFloors?: Prisma.IntNullableFilter<"Property"> | number | null
+  floor?: Prisma.IntNullableFilter<"Property"> | number | null
+  currentPrice?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  pricePerTsubo?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  managementFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  commonServiceFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  depositMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationName?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationWalkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
+  featureTags?: Prisma.StringNullableListFilter<"Property">
+  viewCount?: Prisma.IntFilter<"Property"> | number
   inquiryCount?: Prisma.IntFilter<"Property"> | number
-  userId?: Prisma.StringFilter<"Property"> | string
+  favoriteCount?: Prisma.IntFilter<"Property"> | number
+  agentId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
+  internalMemo?: Prisma.StringNullableFilter<"Property"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Property">
   createdAt?: Prisma.DateTimeFilter<"Property"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Property"> | Date | string
-  publishedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  userId?: Prisma.UuidFilter<"Property"> | string
+  propertyType?: Prisma.XOR<Prisma.PropertyTypeMasterNullableScalarRelationFilter, Prisma.PropertyTypeMasterWhereInput> | null
+  propertyCategory?: Prisma.XOR<Prisma.PropertyCategoryMasterNullableScalarRelationFilter, Prisma.PropertyCategoryMasterWhereInput> | null
+  area?: Prisma.XOR<Prisma.AreaMasterNullableScalarRelationFilter, Prisma.AreaMasterWhereInput> | null
+  layoutType?: Prisma.XOR<Prisma.FloorPlanMasterNullableScalarRelationFilter, Prisma.FloorPlanMasterWhereInput> | null
+  agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  publication?: Prisma.XOR<Prisma.PropertyPublicationNullableScalarRelationFilter, Prisma.PropertyPublicationWhereInput> | null
+  priceHistories?: Prisma.PropertyPriceHistoryListRelationFilter
+  statusHistories?: Prisma.PropertyStatusHistoryListRelationFilter
   images?: Prisma.PropertyImageListRelationFilter
   features?: Prisma.PropertyFeatureListRelationFilter
+  stations?: Prisma.PropertyStationListRelationFilter
   inquiries?: Prisma.InquiryListRelationFilter
-}, "id">
+  favorites?: Prisma.FavoriteListRelationFilter
+  propertyViews?: Prisma.PropertyViewListRelationFilter
+  propertyViewDailies?: Prisma.PropertyViewDailyListRelationFilter
+}, "id" | "propertyCode">
 
 export type PropertyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  propertyCode?: Prisma.SortOrder
   propertyName?: Prisma.SortOrder
-  propertyType?: Prisma.SortOrder
-  publicationStatus?: Prisma.SortOrder
-  saleOrRent?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyNameKana?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  propertyCategoryId?: Prisma.SortOrderInput | Prisma.SortOrder
+  areaId?: Prisma.SortOrderInput | Prisma.SortOrder
   transactionType?: Prisma.SortOrderInput | Prisma.SortOrder
   propertyCondition?: Prisma.SortOrderInput | Prisma.SortOrder
   postalCode?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1249,87 +821,42 @@ export type PropertyOrderByWithAggregationInput = {
   town?: Prisma.SortOrderInput | Prisma.SortOrder
   block?: Prisma.SortOrderInput | Prisma.SortOrder
   building?: Prisma.SortOrderInput | Prisma.SortOrder
-  lotNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  nearestStation?: Prisma.SortOrderInput | Prisma.SortOrder
-  walkMinutes?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherTransportation?: Prisma.SortOrderInput | Prisma.SortOrder
+  roomNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  fullAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   latitude?: Prisma.SortOrderInput | Prisma.SortOrder
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   layoutNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  layoutType?: Prisma.SortOrderInput | Prisma.SortOrder
+  layoutTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  layoutDisplay?: Prisma.SortOrderInput | Prisma.SortOrder
   buildingArea?: Prisma.SortOrderInput | Prisma.SortOrder
   landArea?: Prisma.SortOrderInput | Prisma.SortOrder
   balconyArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  layoutDetail?: Prisma.SortOrderInput | Prisma.SortOrder
   buildingStructure?: Prisma.SortOrderInput | Prisma.SortOrder
-  floor?: Prisma.SortOrderInput | Prisma.SortOrder
-  totalUnits?: Prisma.SortOrderInput | Prisma.SortOrder
-  direction?: Prisma.SortOrderInput | Prisma.SortOrder
-  directionDetail?: Prisma.SortOrderInput | Prisma.SortOrder
-  mainLighting?: Prisma.SortOrderInput | Prisma.SortOrder
   constructionDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  buildingConfirmationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  constructionCompany?: Prisma.SortOrderInput | Prisma.SortOrder
-  utilities?: Prisma.SortOrderInput | Prisma.SortOrder
-  reform?: Prisma.SortOrderInput | Prisma.SortOrder
-  salePrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  unitPrice?: Prisma.SortOrderInput | Prisma.SortOrder
-  expectedRent?: Prisma.SortOrderInput | Prisma.SortOrder
+  constructionYearMonth?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalFloors?: Prisma.SortOrderInput | Prisma.SortOrder
+  floor?: Prisma.SortOrderInput | Prisma.SortOrder
+  currentPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrderInput | Prisma.SortOrder
   managementFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  repairReserve?: Prisma.SortOrderInput | Prisma.SortOrder
-  usageFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  stampTax?: Prisma.SortOrderInput | Prisma.SortOrder
-  expenses?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherExpenses?: Prisma.SortOrderInput | Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrderInput | Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrderInput | Prisma.SortOrder
-  landType?: Prisma.SortOrderInput | Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  setback?: Prisma.SortOrderInput | Prisma.SortOrder
-  cityPlanning?: Prisma.SortOrderInput | Prisma.SortOrder
-  roadContact?: Prisma.SortOrderInput | Prisma.SortOrder
-  landCategory?: Prisma.SortOrderInput | Prisma.SortOrder
-  useDistrict?: Prisma.SortOrderInput | Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrderInput | Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrderInput | Prisma.SortOrder
-  totalProperties?: Prisma.SortOrderInput | Prisma.SortOrder
-  developmentPermitNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  developmentArea?: Prisma.SortOrderInput | Prisma.SortOrder
-  residentialPermitNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  easement?: Prisma.SortOrderInput | Prisma.SortOrder
-  nationalLandAct?: Prisma.SortOrderInput | Prisma.SortOrder
-  siteRights?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingAvailable?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingFee?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrderInput | Prisma.SortOrder
-  parkingDetail?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicScope?: Prisma.SortOrder
-  featured?: Prisma.SortOrder
-  featurePeriodStart?: Prisma.SortOrderInput | Prisma.SortOrder
-  featurePeriodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
-  reservedReleaseDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicScopeReservation?: Prisma.SortOrderInput | Prisma.SortOrder
-  validUntilDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  nextUpdateDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  publicationMedium?: Prisma.SortOrderInput | Prisma.SortOrder
-  salesUnits?: Prisma.SortOrderInput | Prisma.SortOrder
-  currentStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  propertyStatus?: Prisma.SortOrderInput | Prisma.SortOrder
-  deliveryDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  sellerName?: Prisma.SortOrderInput | Prisma.SortOrder
-  realEstateAgent?: Prisma.SortOrderInput | Prisma.SortOrder
-  managementType?: Prisma.SortOrderInput | Prisma.SortOrder
-  environment?: Prisma.SortOrderInput | Prisma.SortOrder
-  legalRestrictions?: Prisma.SortOrderInput | Prisma.SortOrder
-  otherConstructionInfo?: Prisma.SortOrderInput | Prisma.SortOrder
-  remarks?: Prisma.SortOrderInput | Prisma.SortOrder
-  adminMemo?: Prisma.SortOrderInput | Prisma.SortOrder
-  propertyCategory?: Prisma.SortOrderInput | Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  depositMonths?: Prisma.SortOrderInput | Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrderInput | Prisma.SortOrder
+  mainImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryStationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrderInput | Prisma.SortOrder
+  featureTags?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
+  agentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  remarks?: Prisma.SortOrderInput | Prisma.SortOrder
+  internalMemo?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  userId?: Prisma.SortOrder
   _count?: Prisma.PropertyCountOrderByAggregateInput
   _avg?: Prisma.PropertyAvgOrderByAggregateInput
   _max?: Prisma.PropertyMaxOrderByAggregateInput
@@ -1341,11 +868,13 @@ export type PropertyScalarWhereWithAggregatesInput = {
   AND?: Prisma.PropertyScalarWhereWithAggregatesInput | Prisma.PropertyScalarWhereWithAggregatesInput[]
   OR?: Prisma.PropertyScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PropertyScalarWhereWithAggregatesInput | Prisma.PropertyScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"Property"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"Property"> | string
+  propertyCode?: Prisma.StringWithAggregatesFilter<"Property"> | string
   propertyName?: Prisma.StringWithAggregatesFilter<"Property"> | string
-  propertyType?: Prisma.EnumPropertyTypeWithAggregatesFilter<"Property"> | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusWithAggregatesFilter<"Property"> | $Enums.PublicationStatus
-  saleOrRent?: Prisma.EnumSaleOrRentNullableWithAggregatesFilter<"Property"> | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  propertyTypeId?: Prisma.UuidNullableWithAggregatesFilter<"Property"> | string | null
+  propertyCategoryId?: Prisma.UuidNullableWithAggregatesFilter<"Property"> | string | null
+  areaId?: Prisma.UuidNullableWithAggregatesFilter<"Property"> | string | null
   transactionType?: Prisma.EnumTransactionTypeNullableWithAggregatesFilter<"Property"> | $Enums.TransactionType | null
   propertyCondition?: Prisma.EnumPropertyConditionNullableWithAggregatesFilter<"Property"> | $Enums.PropertyCondition | null
   postalCode?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
@@ -1354,95 +883,49 @@ export type PropertyScalarWhereWithAggregatesInput = {
   town?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   block?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   building?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  lotNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  nearestStation?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  walkMinutes?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
-  otherTransportation?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  roomNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  fullAddress?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  layoutType?: Prisma.EnumLayoutTypeNullableWithAggregatesFilter<"Property"> | $Enums.LayoutType | null
+  layoutNumber?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  layoutTypeId?: Prisma.UuidNullableWithAggregatesFilter<"Property"> | string | null
+  layoutDisplay?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   buildingArea?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   buildingStructure?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  floor?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  totalUnits?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
-  direction?: Prisma.EnumDirectionNullableWithAggregatesFilter<"Property"> | $Enums.Direction | null
-  directionDetail?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  mainLighting?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
   constructionDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  buildingConfirmationNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  constructionCompany?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  utilities?: Prisma.EnumUtilitiesNullableWithAggregatesFilter<"Property"> | $Enums.Utilities | null
-  reform?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  salePrice?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  otherExpenses?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  expectedAnnualIncome?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  privateRoadArea?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  cityPlanning?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  roadContact?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  landCategory?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  useDistrict?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  buildingCoverageRatio?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
-  developmentPermitNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  developmentArea?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  easement?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  nationalLandAct?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  siteRights?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  parkingAvailable?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  parkingFee?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
-  parkingDetail?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  publicScope?: Prisma.EnumPublicScopeWithAggregatesFilter<"Property"> | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedWithAggregatesFilter<"Property"> | $Enums.Featured
-  featurePeriodStart?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  featurePeriodEnd?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  reservedReleaseDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  publicScopeReservation?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  validUntilDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  nextUpdateDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  publicationMedium?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  salesUnits?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
-  currentStatus?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  propertyStatus?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  deliveryDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
-  sellerName?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  realEstateAgent?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  managementType?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  environment?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  legalRestrictions?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  otherConstructionInfo?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  remarks?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  adminMemo?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
-  propertyCategory?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  constructionYearMonth?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  totalFloors?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  floor?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  currentPrice?: Prisma.BigIntNullableWithAggregatesFilter<"Property"> | bigint | number | null
+  pricePerTsubo?: Prisma.BigIntNullableWithAggregatesFilter<"Property"> | bigint | number | null
+  managementFee?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  commonServiceFee?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  depositMonths?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.DecimalNullableWithAggregatesFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  primaryStationName?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  primaryStationWalkMinutes?: Prisma.IntNullableWithAggregatesFilter<"Property"> | number | null
+  featureTags?: Prisma.StringNullableListFilter<"Property">
+  viewCount?: Prisma.IntWithAggregatesFilter<"Property"> | number
   inquiryCount?: Prisma.IntWithAggregatesFilter<"Property"> | number
-  userId?: Prisma.StringWithAggregatesFilter<"Property"> | string
+  favoriteCount?: Prisma.IntWithAggregatesFilter<"Property"> | number
+  agentId?: Prisma.UuidNullableWithAggregatesFilter<"Property"> | string | null
+  remarks?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  internalMemo?: Prisma.StringNullableWithAggregatesFilter<"Property"> | string | null
+  metadata?: Prisma.JsonNullableWithAggregatesFilter<"Property">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Property"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Property"> | Date | string
-  publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Property"> | Date | string | null
+  userId?: Prisma.UuidWithAggregatesFilter<"Property"> | string
 }
 
 export type PropertyCreateInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -1451,98 +934,65 @@ export type PropertyCreateInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
   user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUncheckedCreateInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -1551,98 +1001,59 @@ export type PropertyUncheckedCreateInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
-  userId: string
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1651,98 +1062,65 @@ export type PropertyUpdateInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1751,98 +1129,62 @@ export type PropertyUncheckedUpdateInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyCreateManyInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -1851,95 +1193,49 @@ export type PropertyCreateManyInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
-  userId: string
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  userId: string
 }
 
 export type PropertyUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1948,94 +1244,49 @@ export type PropertyUpdateManyMutationInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PropertyUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2044,87 +1295,42 @@ export type PropertyUncheckedUpdateManyInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PropertyListRelationFilter = {
@@ -2137,12 +1343,22 @@ export type PropertyOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type PropertyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyCode?: Prisma.SortOrder
   propertyName?: Prisma.SortOrder
-  propertyType?: Prisma.SortOrder
-  publicationStatus?: Prisma.SortOrder
-  saleOrRent?: Prisma.SortOrder
+  propertyNameKana?: Prisma.SortOrder
+  propertyTypeId?: Prisma.SortOrder
+  propertyCategoryId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
   transactionType?: Prisma.SortOrder
   propertyCondition?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
@@ -2151,123 +1367,73 @@ export type PropertyCountOrderByAggregateInput = {
   town?: Prisma.SortOrder
   block?: Prisma.SortOrder
   building?: Prisma.SortOrder
-  lotNumber?: Prisma.SortOrder
-  nearestStation?: Prisma.SortOrder
-  walkMinutes?: Prisma.SortOrder
-  otherTransportation?: Prisma.SortOrder
+  roomNumber?: Prisma.SortOrder
+  fullAddress?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   layoutNumber?: Prisma.SortOrder
-  layoutType?: Prisma.SortOrder
+  layoutTypeId?: Prisma.SortOrder
+  layoutDisplay?: Prisma.SortOrder
   buildingArea?: Prisma.SortOrder
   landArea?: Prisma.SortOrder
   balconyArea?: Prisma.SortOrder
-  layoutDetail?: Prisma.SortOrder
   buildingStructure?: Prisma.SortOrder
-  floor?: Prisma.SortOrder
-  totalUnits?: Prisma.SortOrder
-  direction?: Prisma.SortOrder
-  directionDetail?: Prisma.SortOrder
-  mainLighting?: Prisma.SortOrder
   constructionDate?: Prisma.SortOrder
-  buildingConfirmationNumber?: Prisma.SortOrder
-  constructionCompany?: Prisma.SortOrder
-  utilities?: Prisma.SortOrder
-  reform?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
-  unitPrice?: Prisma.SortOrder
-  expectedRent?: Prisma.SortOrder
+  constructionYearMonth?: Prisma.SortOrder
+  totalFloors?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
+  currentPrice?: Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrder
   managementFee?: Prisma.SortOrder
-  repairReserve?: Prisma.SortOrder
-  usageFee?: Prisma.SortOrder
-  stampTax?: Prisma.SortOrder
-  expenses?: Prisma.SortOrder
-  otherExpenses?: Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrder
-  landType?: Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrder
-  setback?: Prisma.SortOrder
-  cityPlanning?: Prisma.SortOrder
-  roadContact?: Prisma.SortOrder
-  landCategory?: Prisma.SortOrder
-  useDistrict?: Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrder
-  totalProperties?: Prisma.SortOrder
-  developmentPermitNumber?: Prisma.SortOrder
-  developmentArea?: Prisma.SortOrder
-  residentialPermitNumber?: Prisma.SortOrder
-  easement?: Prisma.SortOrder
-  nationalLandAct?: Prisma.SortOrder
-  siteRights?: Prisma.SortOrder
-  parkingAvailable?: Prisma.SortOrder
-  parkingFee?: Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrder
-  parkingDetail?: Prisma.SortOrder
-  publicScope?: Prisma.SortOrder
-  featured?: Prisma.SortOrder
-  featurePeriodStart?: Prisma.SortOrder
-  featurePeriodEnd?: Prisma.SortOrder
-  reservedReleaseDate?: Prisma.SortOrder
-  publicScopeReservation?: Prisma.SortOrder
-  validUntilDate?: Prisma.SortOrder
-  nextUpdateDate?: Prisma.SortOrder
-  publicationMedium?: Prisma.SortOrder
-  salesUnits?: Prisma.SortOrder
-  currentStatus?: Prisma.SortOrder
-  propertyStatus?: Prisma.SortOrder
-  deliveryDate?: Prisma.SortOrder
-  sellerName?: Prisma.SortOrder
-  realEstateAgent?: Prisma.SortOrder
-  managementType?: Prisma.SortOrder
-  environment?: Prisma.SortOrder
-  legalRestrictions?: Prisma.SortOrder
-  otherConstructionInfo?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  adminMemo?: Prisma.SortOrder
-  propertyCategory?: Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrder
+  depositMonths?: Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrder
+  mainImageUrl?: Prisma.SortOrder
+  primaryStationName?: Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrder
+  featureTags?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  internalMemo?: Prisma.SortOrder
+  metadata?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  publishedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type PropertyAvgOrderByAggregateInput = {
-  walkMinutes?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  layoutNumber?: Prisma.SortOrder
   buildingArea?: Prisma.SortOrder
   landArea?: Prisma.SortOrder
   balconyArea?: Prisma.SortOrder
-  totalUnits?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
-  unitPrice?: Prisma.SortOrder
-  expectedRent?: Prisma.SortOrder
+  totalFloors?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
+  currentPrice?: Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrder
   managementFee?: Prisma.SortOrder
-  repairReserve?: Prisma.SortOrder
-  usageFee?: Prisma.SortOrder
-  stampTax?: Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrder
-  totalProperties?: Prisma.SortOrder
-  developmentArea?: Prisma.SortOrder
-  parkingFee?: Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrder
-  salesUnits?: Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrder
+  depositMonths?: Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
 }
 
 export type PropertyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyCode?: Prisma.SortOrder
   propertyName?: Prisma.SortOrder
-  propertyType?: Prisma.SortOrder
-  publicationStatus?: Prisma.SortOrder
-  saleOrRent?: Prisma.SortOrder
+  propertyNameKana?: Prisma.SortOrder
+  propertyTypeId?: Prisma.SortOrder
+  propertyCategoryId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
   transactionType?: Prisma.SortOrder
   propertyCondition?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
@@ -2276,95 +1442,50 @@ export type PropertyMaxOrderByAggregateInput = {
   town?: Prisma.SortOrder
   block?: Prisma.SortOrder
   building?: Prisma.SortOrder
-  lotNumber?: Prisma.SortOrder
-  nearestStation?: Prisma.SortOrder
-  walkMinutes?: Prisma.SortOrder
-  otherTransportation?: Prisma.SortOrder
+  roomNumber?: Prisma.SortOrder
+  fullAddress?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   layoutNumber?: Prisma.SortOrder
-  layoutType?: Prisma.SortOrder
+  layoutTypeId?: Prisma.SortOrder
+  layoutDisplay?: Prisma.SortOrder
   buildingArea?: Prisma.SortOrder
   landArea?: Prisma.SortOrder
   balconyArea?: Prisma.SortOrder
-  layoutDetail?: Prisma.SortOrder
   buildingStructure?: Prisma.SortOrder
-  floor?: Prisma.SortOrder
-  totalUnits?: Prisma.SortOrder
-  direction?: Prisma.SortOrder
-  directionDetail?: Prisma.SortOrder
-  mainLighting?: Prisma.SortOrder
   constructionDate?: Prisma.SortOrder
-  buildingConfirmationNumber?: Prisma.SortOrder
-  constructionCompany?: Prisma.SortOrder
-  utilities?: Prisma.SortOrder
-  reform?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
-  unitPrice?: Prisma.SortOrder
-  expectedRent?: Prisma.SortOrder
+  constructionYearMonth?: Prisma.SortOrder
+  totalFloors?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
+  currentPrice?: Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrder
   managementFee?: Prisma.SortOrder
-  repairReserve?: Prisma.SortOrder
-  usageFee?: Prisma.SortOrder
-  stampTax?: Prisma.SortOrder
-  expenses?: Prisma.SortOrder
-  otherExpenses?: Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrder
-  landType?: Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrder
-  setback?: Prisma.SortOrder
-  cityPlanning?: Prisma.SortOrder
-  roadContact?: Prisma.SortOrder
-  landCategory?: Prisma.SortOrder
-  useDistrict?: Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrder
-  totalProperties?: Prisma.SortOrder
-  developmentPermitNumber?: Prisma.SortOrder
-  developmentArea?: Prisma.SortOrder
-  residentialPermitNumber?: Prisma.SortOrder
-  easement?: Prisma.SortOrder
-  nationalLandAct?: Prisma.SortOrder
-  siteRights?: Prisma.SortOrder
-  parkingAvailable?: Prisma.SortOrder
-  parkingFee?: Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrder
-  parkingDetail?: Prisma.SortOrder
-  publicScope?: Prisma.SortOrder
-  featured?: Prisma.SortOrder
-  featurePeriodStart?: Prisma.SortOrder
-  featurePeriodEnd?: Prisma.SortOrder
-  reservedReleaseDate?: Prisma.SortOrder
-  publicScopeReservation?: Prisma.SortOrder
-  validUntilDate?: Prisma.SortOrder
-  nextUpdateDate?: Prisma.SortOrder
-  publicationMedium?: Prisma.SortOrder
-  salesUnits?: Prisma.SortOrder
-  currentStatus?: Prisma.SortOrder
-  propertyStatus?: Prisma.SortOrder
-  deliveryDate?: Prisma.SortOrder
-  sellerName?: Prisma.SortOrder
-  realEstateAgent?: Prisma.SortOrder
-  managementType?: Prisma.SortOrder
-  environment?: Prisma.SortOrder
-  legalRestrictions?: Prisma.SortOrder
-  otherConstructionInfo?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  adminMemo?: Prisma.SortOrder
-  propertyCategory?: Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrder
+  depositMonths?: Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrder
+  mainImageUrl?: Prisma.SortOrder
+  primaryStationName?: Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  internalMemo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  publishedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type PropertyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  propertyCode?: Prisma.SortOrder
   propertyName?: Prisma.SortOrder
-  propertyType?: Prisma.SortOrder
-  publicationStatus?: Prisma.SortOrder
-  saleOrRent?: Prisma.SortOrder
+  propertyNameKana?: Prisma.SortOrder
+  propertyTypeId?: Prisma.SortOrder
+  propertyCategoryId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
   transactionType?: Prisma.SortOrder
   propertyCondition?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
@@ -2373,115 +1494,61 @@ export type PropertyMinOrderByAggregateInput = {
   town?: Prisma.SortOrder
   block?: Prisma.SortOrder
   building?: Prisma.SortOrder
-  lotNumber?: Prisma.SortOrder
-  nearestStation?: Prisma.SortOrder
-  walkMinutes?: Prisma.SortOrder
-  otherTransportation?: Prisma.SortOrder
+  roomNumber?: Prisma.SortOrder
+  fullAddress?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   layoutNumber?: Prisma.SortOrder
-  layoutType?: Prisma.SortOrder
+  layoutTypeId?: Prisma.SortOrder
+  layoutDisplay?: Prisma.SortOrder
   buildingArea?: Prisma.SortOrder
   landArea?: Prisma.SortOrder
   balconyArea?: Prisma.SortOrder
-  layoutDetail?: Prisma.SortOrder
   buildingStructure?: Prisma.SortOrder
-  floor?: Prisma.SortOrder
-  totalUnits?: Prisma.SortOrder
-  direction?: Prisma.SortOrder
-  directionDetail?: Prisma.SortOrder
-  mainLighting?: Prisma.SortOrder
   constructionDate?: Prisma.SortOrder
-  buildingConfirmationNumber?: Prisma.SortOrder
-  constructionCompany?: Prisma.SortOrder
-  utilities?: Prisma.SortOrder
-  reform?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
-  unitPrice?: Prisma.SortOrder
-  expectedRent?: Prisma.SortOrder
+  constructionYearMonth?: Prisma.SortOrder
+  totalFloors?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
+  currentPrice?: Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrder
   managementFee?: Prisma.SortOrder
-  repairReserve?: Prisma.SortOrder
-  usageFee?: Prisma.SortOrder
-  stampTax?: Prisma.SortOrder
-  expenses?: Prisma.SortOrder
-  otherExpenses?: Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrder
-  landType?: Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrder
-  setback?: Prisma.SortOrder
-  cityPlanning?: Prisma.SortOrder
-  roadContact?: Prisma.SortOrder
-  landCategory?: Prisma.SortOrder
-  useDistrict?: Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrder
-  totalProperties?: Prisma.SortOrder
-  developmentPermitNumber?: Prisma.SortOrder
-  developmentArea?: Prisma.SortOrder
-  residentialPermitNumber?: Prisma.SortOrder
-  easement?: Prisma.SortOrder
-  nationalLandAct?: Prisma.SortOrder
-  siteRights?: Prisma.SortOrder
-  parkingAvailable?: Prisma.SortOrder
-  parkingFee?: Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrder
-  parkingDetail?: Prisma.SortOrder
-  publicScope?: Prisma.SortOrder
-  featured?: Prisma.SortOrder
-  featurePeriodStart?: Prisma.SortOrder
-  featurePeriodEnd?: Prisma.SortOrder
-  reservedReleaseDate?: Prisma.SortOrder
-  publicScopeReservation?: Prisma.SortOrder
-  validUntilDate?: Prisma.SortOrder
-  nextUpdateDate?: Prisma.SortOrder
-  publicationMedium?: Prisma.SortOrder
-  salesUnits?: Prisma.SortOrder
-  currentStatus?: Prisma.SortOrder
-  propertyStatus?: Prisma.SortOrder
-  deliveryDate?: Prisma.SortOrder
-  sellerName?: Prisma.SortOrder
-  realEstateAgent?: Prisma.SortOrder
-  managementType?: Prisma.SortOrder
-  environment?: Prisma.SortOrder
-  legalRestrictions?: Prisma.SortOrder
-  otherConstructionInfo?: Prisma.SortOrder
-  remarks?: Prisma.SortOrder
-  adminMemo?: Prisma.SortOrder
-  propertyCategory?: Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrder
+  depositMonths?: Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrder
+  mainImageUrl?: Prisma.SortOrder
+  primaryStationName?: Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
+  remarks?: Prisma.SortOrder
+  internalMemo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  publishedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type PropertySumOrderByAggregateInput = {
-  walkMinutes?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  layoutNumber?: Prisma.SortOrder
   buildingArea?: Prisma.SortOrder
   landArea?: Prisma.SortOrder
   balconyArea?: Prisma.SortOrder
-  totalUnits?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
-  unitPrice?: Prisma.SortOrder
-  expectedRent?: Prisma.SortOrder
+  totalFloors?: Prisma.SortOrder
+  floor?: Prisma.SortOrder
+  currentPrice?: Prisma.SortOrder
+  pricePerTsubo?: Prisma.SortOrder
   managementFee?: Prisma.SortOrder
-  repairReserve?: Prisma.SortOrder
-  usageFee?: Prisma.SortOrder
-  stampTax?: Prisma.SortOrder
-  expectedAnnualIncome?: Prisma.SortOrder
-  surfaceYield?: Prisma.SortOrder
-  privateRoadArea?: Prisma.SortOrder
-  buildingCoverageRatio?: Prisma.SortOrder
-  floorAreaRatio?: Prisma.SortOrder
-  totalProperties?: Prisma.SortOrder
-  developmentArea?: Prisma.SortOrder
-  parkingFee?: Prisma.SortOrder
-  parkingSpaces?: Prisma.SortOrder
-  salesUnits?: Prisma.SortOrder
+  commonServiceFee?: Prisma.SortOrder
+  depositMonths?: Prisma.SortOrder
+  keyMoneyMonths?: Prisma.SortOrder
+  primaryStationWalkMinutes?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   inquiryCount?: Prisma.SortOrder
+  favoriteCount?: Prisma.SortOrder
 }
 
 export type PropertyScalarRelationFilter = {
@@ -2536,16 +1603,50 @@ export type PropertyUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
 }
 
-export type EnumPropertyTypeFieldUpdateOperationsInput = {
-  set?: $Enums.PropertyType
+export type PropertyCreateNestedManyWithoutAgentInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput> | Prisma.PropertyCreateWithoutAgentInput[] | Prisma.PropertyUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAgentInput | Prisma.PropertyCreateOrConnectWithoutAgentInput[]
+  createMany?: Prisma.PropertyCreateManyAgentInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
 }
 
-export type EnumPublicationStatusFieldUpdateOperationsInput = {
-  set?: $Enums.PublicationStatus
+export type PropertyUncheckedCreateNestedManyWithoutAgentInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput> | Prisma.PropertyCreateWithoutAgentInput[] | Prisma.PropertyUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAgentInput | Prisma.PropertyCreateOrConnectWithoutAgentInput[]
+  createMany?: Prisma.PropertyCreateManyAgentInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
 }
 
-export type NullableEnumSaleOrRentFieldUpdateOperationsInput = {
-  set?: $Enums.SaleOrRent | null
+export type PropertyUpdateManyWithoutAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput> | Prisma.PropertyCreateWithoutAgentInput[] | Prisma.PropertyUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAgentInput | Prisma.PropertyCreateOrConnectWithoutAgentInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutAgentInput | Prisma.PropertyUpsertWithWhereUniqueWithoutAgentInput[]
+  createMany?: Prisma.PropertyCreateManyAgentInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutAgentInput | Prisma.PropertyUpdateWithWhereUniqueWithoutAgentInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutAgentInput | Prisma.PropertyUpdateManyWithWhereWithoutAgentInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyUncheckedUpdateManyWithoutAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput> | Prisma.PropertyCreateWithoutAgentInput[] | Prisma.PropertyUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAgentInput | Prisma.PropertyCreateOrConnectWithoutAgentInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutAgentInput | Prisma.PropertyUpsertWithWhereUniqueWithoutAgentInput[]
+  createMany?: Prisma.PropertyCreateManyAgentInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutAgentInput | Prisma.PropertyUpdateWithWhereUniqueWithoutAgentInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutAgentInput | Prisma.PropertyUpdateManyWithWhereWithoutAgentInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyCreatefeatureTagsInput = {
+  set: string[]
 }
 
 export type NullableEnumTransactionTypeFieldUpdateOperationsInput = {
@@ -2556,48 +1657,59 @@ export type NullableEnumPropertyConditionFieldUpdateOperationsInput = {
   set?: $Enums.PropertyCondition | null
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type NullableBigIntFieldUpdateOperationsInput = {
+  set?: bigint | number | null
+  increment?: bigint | number
+  decrement?: bigint | number
+  multiply?: bigint | number
+  divide?: bigint | number
 }
 
-export type NullableDecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+export type PropertyUpdatefeatureTagsInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
-export type NullableEnumLayoutTypeFieldUpdateOperationsInput = {
-  set?: $Enums.LayoutType | null
+export type PropertyCreateNestedOneWithoutPublicationInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPublicationInput, Prisma.PropertyUncheckedCreateWithoutPublicationInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPublicationInput
+  connect?: Prisma.PropertyWhereUniqueInput
 }
 
-export type NullableEnumDirectionFieldUpdateOperationsInput = {
-  set?: $Enums.Direction | null
+export type PropertyUpdateOneRequiredWithoutPublicationNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPublicationInput, Prisma.PropertyUncheckedCreateWithoutPublicationInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPublicationInput
+  upsert?: Prisma.PropertyUpsertWithoutPublicationInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutPublicationInput, Prisma.PropertyUpdateWithoutPublicationInput>, Prisma.PropertyUncheckedUpdateWithoutPublicationInput>
 }
 
-export type NullableEnumUtilitiesFieldUpdateOperationsInput = {
-  set?: $Enums.Utilities | null
+export type PropertyCreateNestedOneWithoutPriceHistoriesInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedCreateWithoutPriceHistoriesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPriceHistoriesInput
+  connect?: Prisma.PropertyWhereUniqueInput
 }
 
-export type EnumPublicScopeFieldUpdateOperationsInput = {
-  set?: $Enums.PublicScope
+export type PropertyUpdateOneRequiredWithoutPriceHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedCreateWithoutPriceHistoriesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPriceHistoriesInput
+  upsert?: Prisma.PropertyUpsertWithoutPriceHistoriesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutPriceHistoriesInput, Prisma.PropertyUpdateWithoutPriceHistoriesInput>, Prisma.PropertyUncheckedUpdateWithoutPriceHistoriesInput>
 }
 
-export type EnumFeaturedFieldUpdateOperationsInput = {
-  set?: $Enums.Featured
+export type PropertyCreateNestedOneWithoutStatusHistoriesInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedCreateWithoutStatusHistoriesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutStatusHistoriesInput
+  connect?: Prisma.PropertyWhereUniqueInput
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type PropertyUpdateOneRequiredWithoutStatusHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedCreateWithoutStatusHistoriesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutStatusHistoriesInput
+  upsert?: Prisma.PropertyUpsertWithoutStatusHistoriesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutStatusHistoriesInput, Prisma.PropertyUpdateWithoutStatusHistoriesInput>, Prisma.PropertyUncheckedUpdateWithoutStatusHistoriesInput>
 }
 
 export type PropertyCreateNestedOneWithoutImagesInput = {
@@ -2628,6 +1740,62 @@ export type PropertyUpdateOneRequiredWithoutFeaturesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutFeaturesInput, Prisma.PropertyUpdateWithoutFeaturesInput>, Prisma.PropertyUncheckedUpdateWithoutFeaturesInput>
 }
 
+export type PropertyCreateNestedOneWithoutStationsInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutStationsInput, Prisma.PropertyUncheckedCreateWithoutStationsInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutStationsInput
+  connect?: Prisma.PropertyWhereUniqueInput
+}
+
+export type PropertyUpdateOneRequiredWithoutStationsNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutStationsInput, Prisma.PropertyUncheckedCreateWithoutStationsInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutStationsInput
+  upsert?: Prisma.PropertyUpsertWithoutStationsInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutStationsInput, Prisma.PropertyUpdateWithoutStationsInput>, Prisma.PropertyUncheckedUpdateWithoutStationsInput>
+}
+
+export type PropertyCreateNestedOneWithoutFavoritesInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutFavoritesInput, Prisma.PropertyUncheckedCreateWithoutFavoritesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutFavoritesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+}
+
+export type PropertyUpdateOneRequiredWithoutFavoritesNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutFavoritesInput, Prisma.PropertyUncheckedCreateWithoutFavoritesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutFavoritesInput
+  upsert?: Prisma.PropertyUpsertWithoutFavoritesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutFavoritesInput, Prisma.PropertyUpdateWithoutFavoritesInput>, Prisma.PropertyUncheckedUpdateWithoutFavoritesInput>
+}
+
+export type PropertyCreateNestedOneWithoutPropertyViewsInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewsInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewsInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyViewsInput
+  connect?: Prisma.PropertyWhereUniqueInput
+}
+
+export type PropertyUpdateOneRequiredWithoutPropertyViewsNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewsInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewsInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyViewsInput
+  upsert?: Prisma.PropertyUpsertWithoutPropertyViewsInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutPropertyViewsInput, Prisma.PropertyUpdateWithoutPropertyViewsInput>, Prisma.PropertyUncheckedUpdateWithoutPropertyViewsInput>
+}
+
+export type PropertyCreateNestedOneWithoutPropertyViewDailiesInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewDailiesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyViewDailiesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+}
+
+export type PropertyUpdateOneRequiredWithoutPropertyViewDailiesNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewDailiesInput>
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyViewDailiesInput
+  upsert?: Prisma.PropertyUpsertWithoutPropertyViewDailiesInput
+  connect?: Prisma.PropertyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutPropertyViewDailiesInput, Prisma.PropertyUpdateWithoutPropertyViewDailiesInput>, Prisma.PropertyUncheckedUpdateWithoutPropertyViewDailiesInput>
+}
+
 export type PropertyCreateNestedOneWithoutInquiriesInput = {
   create?: Prisma.XOR<Prisma.PropertyCreateWithoutInquiriesInput, Prisma.PropertyUncheckedCreateWithoutInquiriesInput>
   connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutInquiriesInput
@@ -2644,12 +1812,179 @@ export type PropertyUpdateOneWithoutInquiriesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PropertyUpdateToOneWithWhereWithoutInquiriesInput, Prisma.PropertyUpdateWithoutInquiriesInput>, Prisma.PropertyUncheckedUpdateWithoutInquiriesInput>
 }
 
+export type PropertyCreateNestedManyWithoutAreaInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput> | Prisma.PropertyCreateWithoutAreaInput[] | Prisma.PropertyUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAreaInput | Prisma.PropertyCreateOrConnectWithoutAreaInput[]
+  createMany?: Prisma.PropertyCreateManyAreaInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUncheckedCreateNestedManyWithoutAreaInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput> | Prisma.PropertyCreateWithoutAreaInput[] | Prisma.PropertyUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAreaInput | Prisma.PropertyCreateOrConnectWithoutAreaInput[]
+  createMany?: Prisma.PropertyCreateManyAreaInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUpdateManyWithoutAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput> | Prisma.PropertyCreateWithoutAreaInput[] | Prisma.PropertyUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAreaInput | Prisma.PropertyCreateOrConnectWithoutAreaInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutAreaInput | Prisma.PropertyUpsertWithWhereUniqueWithoutAreaInput[]
+  createMany?: Prisma.PropertyCreateManyAreaInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutAreaInput | Prisma.PropertyUpdateWithWhereUniqueWithoutAreaInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutAreaInput | Prisma.PropertyUpdateManyWithWhereWithoutAreaInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyUncheckedUpdateManyWithoutAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput> | Prisma.PropertyCreateWithoutAreaInput[] | Prisma.PropertyUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutAreaInput | Prisma.PropertyCreateOrConnectWithoutAreaInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutAreaInput | Prisma.PropertyUpsertWithWhereUniqueWithoutAreaInput[]
+  createMany?: Prisma.PropertyCreateManyAreaInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutAreaInput | Prisma.PropertyUpdateWithWhereUniqueWithoutAreaInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutAreaInput | Prisma.PropertyUpdateManyWithWhereWithoutAreaInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyCreateNestedManyWithoutPropertyTypeInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput> | Prisma.PropertyCreateWithoutPropertyTypeInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput | Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyTypeInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUncheckedCreateNestedManyWithoutPropertyTypeInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput> | Prisma.PropertyCreateWithoutPropertyTypeInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput | Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyTypeInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUpdateManyWithoutPropertyTypeNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput> | Prisma.PropertyCreateWithoutPropertyTypeInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput | Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput | Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyTypeInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput | Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutPropertyTypeInput | Prisma.PropertyUpdateManyWithWhereWithoutPropertyTypeInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyUncheckedUpdateManyWithoutPropertyTypeNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput> | Prisma.PropertyCreateWithoutPropertyTypeInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput | Prisma.PropertyCreateOrConnectWithoutPropertyTypeInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput | Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyTypeInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput | Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutPropertyTypeInput | Prisma.PropertyUpdateManyWithWhereWithoutPropertyTypeInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyCreateNestedManyWithoutPropertyCategoryInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput> | Prisma.PropertyCreateWithoutPropertyCategoryInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput | Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyCategoryInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUncheckedCreateNestedManyWithoutPropertyCategoryInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput> | Prisma.PropertyCreateWithoutPropertyCategoryInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput | Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyCategoryInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUpdateManyWithoutPropertyCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput> | Prisma.PropertyCreateWithoutPropertyCategoryInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput | Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyCategoryInput | Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyCategoryInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyCategoryInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyCategoryInput | Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyCategoryInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutPropertyCategoryInput | Prisma.PropertyUpdateManyWithWhereWithoutPropertyCategoryInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyUncheckedUpdateManyWithoutPropertyCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput> | Prisma.PropertyCreateWithoutPropertyCategoryInput[] | Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput | Prisma.PropertyCreateOrConnectWithoutPropertyCategoryInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyCategoryInput | Prisma.PropertyUpsertWithWhereUniqueWithoutPropertyCategoryInput[]
+  createMany?: Prisma.PropertyCreateManyPropertyCategoryInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyCategoryInput | Prisma.PropertyUpdateWithWhereUniqueWithoutPropertyCategoryInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutPropertyCategoryInput | Prisma.PropertyUpdateManyWithWhereWithoutPropertyCategoryInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyCreateNestedManyWithoutLayoutTypeInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput> | Prisma.PropertyCreateWithoutLayoutTypeInput[] | Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput | Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput[]
+  createMany?: Prisma.PropertyCreateManyLayoutTypeInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUncheckedCreateNestedManyWithoutLayoutTypeInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput> | Prisma.PropertyCreateWithoutLayoutTypeInput[] | Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput | Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput[]
+  createMany?: Prisma.PropertyCreateManyLayoutTypeInputEnvelope
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+}
+
+export type PropertyUpdateManyWithoutLayoutTypeNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput> | Prisma.PropertyCreateWithoutLayoutTypeInput[] | Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput | Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutLayoutTypeInput | Prisma.PropertyUpsertWithWhereUniqueWithoutLayoutTypeInput[]
+  createMany?: Prisma.PropertyCreateManyLayoutTypeInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutLayoutTypeInput | Prisma.PropertyUpdateWithWhereUniqueWithoutLayoutTypeInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutLayoutTypeInput | Prisma.PropertyUpdateManyWithWhereWithoutLayoutTypeInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
+export type PropertyUncheckedUpdateManyWithoutLayoutTypeNestedInput = {
+  create?: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput> | Prisma.PropertyCreateWithoutLayoutTypeInput[] | Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput[]
+  connectOrCreate?: Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput | Prisma.PropertyCreateOrConnectWithoutLayoutTypeInput[]
+  upsert?: Prisma.PropertyUpsertWithWhereUniqueWithoutLayoutTypeInput | Prisma.PropertyUpsertWithWhereUniqueWithoutLayoutTypeInput[]
+  createMany?: Prisma.PropertyCreateManyLayoutTypeInputEnvelope
+  set?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  disconnect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  delete?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  connect?: Prisma.PropertyWhereUniqueInput | Prisma.PropertyWhereUniqueInput[]
+  update?: Prisma.PropertyUpdateWithWhereUniqueWithoutLayoutTypeInput | Prisma.PropertyUpdateWithWhereUniqueWithoutLayoutTypeInput[]
+  updateMany?: Prisma.PropertyUpdateManyWithWhereWithoutLayoutTypeInput | Prisma.PropertyUpdateManyWithWhereWithoutLayoutTypeInput[]
+  deleteMany?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
+}
+
 export type PropertyCreateWithoutUserInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -2658,97 +1993,64 @@ export type PropertyCreateWithoutUserInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUncheckedCreateWithoutUserInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -2757,89 +2059,51 @@ export type PropertyUncheckedCreateWithoutUserInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyCreateOrConnectWithoutUserInput = {
@@ -2872,11 +2136,13 @@ export type PropertyScalarWhereInput = {
   AND?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
   OR?: Prisma.PropertyScalarWhereInput[]
   NOT?: Prisma.PropertyScalarWhereInput | Prisma.PropertyScalarWhereInput[]
-  id?: Prisma.StringFilter<"Property"> | string
+  id?: Prisma.UuidFilter<"Property"> | string
+  propertyCode?: Prisma.StringFilter<"Property"> | string
   propertyName?: Prisma.StringFilter<"Property"> | string
-  propertyType?: Prisma.EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFilter<"Property"> | $Enums.PublicationStatus
-  saleOrRent?: Prisma.EnumSaleOrRentNullableFilter<"Property"> | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.StringNullableFilter<"Property"> | string | null
+  propertyTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  propertyCategoryId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  areaId?: Prisma.UuidNullableFilter<"Property"> | string | null
   transactionType?: Prisma.EnumTransactionTypeNullableFilter<"Property"> | $Enums.TransactionType | null
   propertyCondition?: Prisma.EnumPropertyConditionNullableFilter<"Property"> | $Enums.PropertyCondition | null
   postalCode?: Prisma.StringNullableFilter<"Property"> | string | null
@@ -2885,95 +2151,1005 @@ export type PropertyScalarWhereInput = {
   town?: Prisma.StringNullableFilter<"Property"> | string | null
   block?: Prisma.StringNullableFilter<"Property"> | string | null
   building?: Prisma.StringNullableFilter<"Property"> | string | null
-  lotNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  nearestStation?: Prisma.StringNullableFilter<"Property"> | string | null
-  walkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
-  otherTransportation?: Prisma.StringNullableFilter<"Property"> | string | null
+  roomNumber?: Prisma.StringNullableFilter<"Property"> | string | null
+  fullAddress?: Prisma.StringNullableFilter<"Property"> | string | null
   latitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  layoutType?: Prisma.EnumLayoutTypeNullableFilter<"Property"> | $Enums.LayoutType | null
+  layoutNumber?: Prisma.IntNullableFilter<"Property"> | number | null
+  layoutTypeId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  layoutDisplay?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.StringNullableFilter<"Property"> | string | null
   buildingStructure?: Prisma.StringNullableFilter<"Property"> | string | null
-  floor?: Prisma.StringNullableFilter<"Property"> | string | null
-  totalUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  direction?: Prisma.EnumDirectionNullableFilter<"Property"> | $Enums.Direction | null
-  directionDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  mainLighting?: Prisma.StringNullableFilter<"Property"> | string | null
   constructionDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  buildingConfirmationNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  constructionCompany?: Prisma.StringNullableFilter<"Property"> | string | null
-  utilities?: Prisma.EnumUtilitiesNullableFilter<"Property"> | $Enums.Utilities | null
-  reform?: Prisma.StringNullableFilter<"Property"> | string | null
-  salePrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherExpenses?: Prisma.StringNullableFilter<"Property"> | string | null
-  expectedAnnualIncome?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.StringNullableFilter<"Property"> | string | null
-  privateRoadArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.StringNullableFilter<"Property"> | string | null
-  cityPlanning?: Prisma.StringNullableFilter<"Property"> | string | null
-  roadContact?: Prisma.StringNullableFilter<"Property"> | string | null
-  landCategory?: Prisma.StringNullableFilter<"Property"> | string | null
-  useDistrict?: Prisma.StringNullableFilter<"Property"> | string | null
-  buildingCoverageRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.IntNullableFilter<"Property"> | number | null
-  developmentPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  developmentArea?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.StringNullableFilter<"Property"> | string | null
-  easement?: Prisma.StringNullableFilter<"Property"> | string | null
-  nationalLandAct?: Prisma.StringNullableFilter<"Property"> | string | null
-  siteRights?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingAvailable?: Prisma.StringNullableFilter<"Property"> | string | null
-  parkingFee?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.IntNullableFilter<"Property"> | number | null
-  parkingDetail?: Prisma.StringNullableFilter<"Property"> | string | null
-  publicScope?: Prisma.EnumPublicScopeFilter<"Property"> | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFilter<"Property"> | $Enums.Featured
-  featurePeriodStart?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  featurePeriodEnd?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  reservedReleaseDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicScopeReservation?: Prisma.StringNullableFilter<"Property"> | string | null
-  validUntilDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  nextUpdateDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  publicationMedium?: Prisma.StringNullableFilter<"Property"> | string | null
-  salesUnits?: Prisma.IntNullableFilter<"Property"> | number | null
-  currentStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyStatus?: Prisma.StringNullableFilter<"Property"> | string | null
-  deliveryDate?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
-  sellerName?: Prisma.StringNullableFilter<"Property"> | string | null
-  realEstateAgent?: Prisma.StringNullableFilter<"Property"> | string | null
-  managementType?: Prisma.StringNullableFilter<"Property"> | string | null
-  environment?: Prisma.StringNullableFilter<"Property"> | string | null
-  legalRestrictions?: Prisma.StringNullableFilter<"Property"> | string | null
-  otherConstructionInfo?: Prisma.StringNullableFilter<"Property"> | string | null
-  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
-  adminMemo?: Prisma.StringNullableFilter<"Property"> | string | null
-  propertyCategory?: Prisma.StringNullableFilter<"Property"> | string | null
+  constructionYearMonth?: Prisma.StringNullableFilter<"Property"> | string | null
+  totalFloors?: Prisma.IntNullableFilter<"Property"> | number | null
+  floor?: Prisma.IntNullableFilter<"Property"> | number | null
+  currentPrice?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  pricePerTsubo?: Prisma.BigIntNullableFilter<"Property"> | bigint | number | null
+  managementFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  commonServiceFee?: Prisma.IntNullableFilter<"Property"> | number | null
+  depositMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.DecimalNullableFilter<"Property"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationName?: Prisma.StringNullableFilter<"Property"> | string | null
+  primaryStationWalkMinutes?: Prisma.IntNullableFilter<"Property"> | number | null
+  featureTags?: Prisma.StringNullableListFilter<"Property">
+  viewCount?: Prisma.IntFilter<"Property"> | number
   inquiryCount?: Prisma.IntFilter<"Property"> | number
-  userId?: Prisma.StringFilter<"Property"> | string
+  favoriteCount?: Prisma.IntFilter<"Property"> | number
+  agentId?: Prisma.UuidNullableFilter<"Property"> | string | null
+  remarks?: Prisma.StringNullableFilter<"Property"> | string | null
+  internalMemo?: Prisma.StringNullableFilter<"Property"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Property">
   createdAt?: Prisma.DateTimeFilter<"Property"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Property"> | Date | string
-  publishedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  deletedAt?: Prisma.DateTimeNullableFilter<"Property"> | Date | string | null
+  userId?: Prisma.UuidFilter<"Property"> | string
+}
+
+export type PropertyCreateWithoutAgentInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutAgentInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutAgentInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput>
+}
+
+export type PropertyCreateManyAgentInputEnvelope = {
+  data: Prisma.PropertyCreateManyAgentInput | Prisma.PropertyCreateManyAgentInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyUpsertWithWhereUniqueWithoutAgentInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutAgentInput, Prisma.PropertyUncheckedUpdateWithoutAgentInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutAgentInput, Prisma.PropertyUncheckedCreateWithoutAgentInput>
+}
+
+export type PropertyUpdateWithWhereUniqueWithoutAgentInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutAgentInput, Prisma.PropertyUncheckedUpdateWithoutAgentInput>
+}
+
+export type PropertyUpdateManyWithWhereWithoutAgentInput = {
+  where: Prisma.PropertyScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateManyMutationInput, Prisma.PropertyUncheckedUpdateManyWithoutAgentInput>
+}
+
+export type PropertyCreateWithoutPublicationInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPublicationInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPublicationInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPublicationInput, Prisma.PropertyUncheckedCreateWithoutPublicationInput>
+}
+
+export type PropertyUpsertWithoutPublicationInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPublicationInput, Prisma.PropertyUncheckedUpdateWithoutPublicationInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPublicationInput, Prisma.PropertyUncheckedCreateWithoutPublicationInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutPublicationInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPublicationInput, Prisma.PropertyUncheckedUpdateWithoutPublicationInput>
+}
+
+export type PropertyUpdateWithoutPublicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPublicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutPriceHistoriesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPriceHistoriesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPriceHistoriesInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedCreateWithoutPriceHistoriesInput>
+}
+
+export type PropertyUpsertWithoutPriceHistoriesInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedUpdateWithoutPriceHistoriesInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedCreateWithoutPriceHistoriesInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutPriceHistoriesInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPriceHistoriesInput, Prisma.PropertyUncheckedUpdateWithoutPriceHistoriesInput>
+}
+
+export type PropertyUpdateWithoutPriceHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPriceHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutStatusHistoriesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutStatusHistoriesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutStatusHistoriesInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedCreateWithoutStatusHistoriesInput>
+}
+
+export type PropertyUpsertWithoutStatusHistoriesInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedUpdateWithoutStatusHistoriesInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedCreateWithoutStatusHistoriesInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutStatusHistoriesInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutStatusHistoriesInput, Prisma.PropertyUncheckedUpdateWithoutStatusHistoriesInput>
+}
+
+export type PropertyUpdateWithoutStatusHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutStatusHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyCreateWithoutImagesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -2982,97 +3158,64 @@ export type PropertyCreateWithoutImagesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
   user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUncheckedCreateWithoutImagesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -3081,89 +3224,51 @@ export type PropertyUncheckedCreateWithoutImagesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
-  userId: string
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyCreateOrConnectWithoutImagesInput = {
@@ -3184,10 +3289,9 @@ export type PropertyUpdateToOneWithWhereWithoutImagesInput = {
 
 export type PropertyUpdateWithoutImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3196,97 +3300,64 @@ export type PropertyUpdateWithoutImagesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateWithoutImagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3295,97 +3366,58 @@ export type PropertyUncheckedUpdateWithoutImagesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyCreateWithoutFeaturesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -3394,97 +3426,64 @@ export type PropertyCreateWithoutFeaturesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
   user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUncheckedCreateWithoutFeaturesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -3493,89 +3492,51 @@ export type PropertyUncheckedCreateWithoutFeaturesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
-  userId: string
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
   inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyCreateOrConnectWithoutFeaturesInput = {
@@ -3596,10 +3557,9 @@ export type PropertyUpdateToOneWithWhereWithoutFeaturesInput = {
 
 export type PropertyUpdateWithoutFeaturesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3608,97 +3568,64 @@ export type PropertyUpdateWithoutFeaturesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateWithoutFeaturesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3707,97 +3634,1130 @@ export type PropertyUncheckedUpdateWithoutFeaturesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutStationsInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutStationsInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutStationsInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutStationsInput, Prisma.PropertyUncheckedCreateWithoutStationsInput>
+}
+
+export type PropertyUpsertWithoutStationsInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutStationsInput, Prisma.PropertyUncheckedUpdateWithoutStationsInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutStationsInput, Prisma.PropertyUncheckedCreateWithoutStationsInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutStationsInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutStationsInput, Prisma.PropertyUncheckedUpdateWithoutStationsInput>
+}
+
+export type PropertyUpdateWithoutStationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutStationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutFavoritesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutFavoritesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutFavoritesInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutFavoritesInput, Prisma.PropertyUncheckedCreateWithoutFavoritesInput>
+}
+
+export type PropertyUpsertWithoutFavoritesInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutFavoritesInput, Prisma.PropertyUncheckedUpdateWithoutFavoritesInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutFavoritesInput, Prisma.PropertyUncheckedCreateWithoutFavoritesInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutFavoritesInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutFavoritesInput, Prisma.PropertyUncheckedUpdateWithoutFavoritesInput>
+}
+
+export type PropertyUpdateWithoutFavoritesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutFavoritesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutPropertyViewsInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPropertyViewsInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPropertyViewsInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewsInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewsInput>
+}
+
+export type PropertyUpsertWithoutPropertyViewsInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyViewsInput, Prisma.PropertyUncheckedUpdateWithoutPropertyViewsInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewsInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewsInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutPropertyViewsInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyViewsInput, Prisma.PropertyUncheckedUpdateWithoutPropertyViewsInput>
+}
+
+export type PropertyUpdateWithoutPropertyViewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPropertyViewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyCreateWithoutPropertyViewDailiesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPropertyViewDailiesInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPropertyViewDailiesInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewDailiesInput>
+}
+
+export type PropertyUpsertWithoutPropertyViewDailiesInput = {
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedUpdateWithoutPropertyViewDailiesInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedCreateWithoutPropertyViewDailiesInput>
+  where?: Prisma.PropertyWhereInput
+}
+
+export type PropertyUpdateToOneWithWhereWithoutPropertyViewDailiesInput = {
+  where?: Prisma.PropertyWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyViewDailiesInput, Prisma.PropertyUncheckedUpdateWithoutPropertyViewDailiesInput>
+}
+
+export type PropertyUpdateWithoutPropertyViewDailiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPropertyViewDailiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyCreateWithoutInquiriesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -3806,97 +4766,64 @@ export type PropertyCreateWithoutInquiriesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
   user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyUncheckedCreateWithoutInquiriesInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -3905,89 +4832,51 @@ export type PropertyUncheckedCreateWithoutInquiriesInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
-  userId: string
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
   images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
   features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
 }
 
 export type PropertyCreateOrConnectWithoutInquiriesInput = {
@@ -4008,10 +4897,9 @@ export type PropertyUpdateToOneWithWhereWithoutInquiriesInput = {
 
 export type PropertyUpdateWithoutInquiriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4020,97 +4908,64 @@ export type PropertyUpdateWithoutInquiriesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateWithoutInquiriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4119,97 +4974,58 @@ export type PropertyUncheckedUpdateWithoutInquiriesInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
-export type PropertyCreateManyUserInput = {
+export type PropertyCreateWithoutAreaInput = {
   id?: string
+  propertyCode: string
   propertyName: string
-  propertyType: $Enums.PropertyType
-  publicationStatus?: $Enums.PublicationStatus
-  saleOrRent?: $Enums.SaleOrRent | null
+  propertyNameKana?: string | null
   transactionType?: $Enums.TransactionType | null
   propertyCondition?: $Enums.PropertyCondition | null
   postalCode?: string | null
@@ -4218,94 +5034,659 @@ export type PropertyCreateManyUserInput = {
   town?: string | null
   block?: string | null
   building?: string | null
-  lotNumber?: string | null
-  nearestStation?: string | null
-  walkMinutes?: number | null
-  otherTransportation?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
   latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: string | null
-  layoutType?: $Enums.LayoutType | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
   buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: string | null
   buildingStructure?: string | null
-  floor?: string | null
-  totalUnits?: number | null
-  direction?: $Enums.Direction | null
-  directionDetail?: string | null
-  mainLighting?: string | null
   constructionDate?: Date | string | null
-  buildingConfirmationNumber?: string | null
-  constructionCompany?: string | null
-  utilities?: $Enums.Utilities | null
-  reform?: string | null
-  salePrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: string | null
-  otherExpenses?: string | null
-  expectedAnnualIncome?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: string | null
-  privateRoadArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: string | null
-  cityPlanning?: string | null
-  roadContact?: string | null
-  landCategory?: string | null
-  useDistrict?: string | null
-  buildingCoverageRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: number | null
-  developmentPermitNumber?: string | null
-  developmentArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: string | null
-  easement?: string | null
-  nationalLandAct?: string | null
-  siteRights?: string | null
-  parkingAvailable?: string | null
-  parkingFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: number | null
-  parkingDetail?: string | null
-  publicScope?: $Enums.PublicScope
-  featured?: $Enums.Featured
-  featurePeriodStart?: Date | string | null
-  featurePeriodEnd?: Date | string | null
-  reservedReleaseDate?: Date | string | null
-  publicScopeReservation?: string | null
-  validUntilDate?: Date | string | null
-  nextUpdateDate?: Date | string | null
-  publicationMedium?: string | null
-  salesUnits?: number | null
-  currentStatus?: string | null
-  propertyStatus?: string | null
-  deliveryDate?: Date | string | null
-  sellerName?: string | null
-  realEstateAgent?: string | null
-  managementType?: string | null
-  environment?: string | null
-  legalRestrictions?: string | null
-  otherConstructionInfo?: string | null
-  remarks?: string | null
-  adminMemo?: string | null
-  propertyCategory?: string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
   inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  publishedAt?: Date | string | null
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutAreaInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutAreaInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput>
+}
+
+export type PropertyCreateManyAreaInputEnvelope = {
+  data: Prisma.PropertyCreateManyAreaInput | Prisma.PropertyCreateManyAreaInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyUpsertWithWhereUniqueWithoutAreaInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutAreaInput, Prisma.PropertyUncheckedUpdateWithoutAreaInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutAreaInput, Prisma.PropertyUncheckedCreateWithoutAreaInput>
+}
+
+export type PropertyUpdateWithWhereUniqueWithoutAreaInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutAreaInput, Prisma.PropertyUncheckedUpdateWithoutAreaInput>
+}
+
+export type PropertyUpdateManyWithWhereWithoutAreaInput = {
+  where: Prisma.PropertyScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateManyMutationInput, Prisma.PropertyUncheckedUpdateManyWithoutAreaInput>
+}
+
+export type PropertyCreateWithoutPropertyTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPropertyTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPropertyTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput>
+}
+
+export type PropertyCreateManyPropertyTypeInputEnvelope = {
+  data: Prisma.PropertyCreateManyPropertyTypeInput | Prisma.PropertyCreateManyPropertyTypeInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyUpsertWithWhereUniqueWithoutPropertyTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyTypeInput, Prisma.PropertyUncheckedUpdateWithoutPropertyTypeInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyTypeInput, Prisma.PropertyUncheckedCreateWithoutPropertyTypeInput>
+}
+
+export type PropertyUpdateWithWhereUniqueWithoutPropertyTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyTypeInput, Prisma.PropertyUncheckedUpdateWithoutPropertyTypeInput>
+}
+
+export type PropertyUpdateManyWithWhereWithoutPropertyTypeInput = {
+  where: Prisma.PropertyScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateManyMutationInput, Prisma.PropertyUncheckedUpdateManyWithoutPropertyTypeInput>
+}
+
+export type PropertyCreateWithoutPropertyCategoryInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  layoutType?: Prisma.FloorPlanMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutPropertyCategoryInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutPropertyCategoryInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput>
+}
+
+export type PropertyCreateManyPropertyCategoryInputEnvelope = {
+  data: Prisma.PropertyCreateManyPropertyCategoryInput | Prisma.PropertyCreateManyPropertyCategoryInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyUpsertWithWhereUniqueWithoutPropertyCategoryInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedUpdateWithoutPropertyCategoryInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedCreateWithoutPropertyCategoryInput>
+}
+
+export type PropertyUpdateWithWhereUniqueWithoutPropertyCategoryInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutPropertyCategoryInput, Prisma.PropertyUncheckedUpdateWithoutPropertyCategoryInput>
+}
+
+export type PropertyUpdateManyWithWhereWithoutPropertyCategoryInput = {
+  where: Prisma.PropertyScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateManyMutationInput, Prisma.PropertyUncheckedUpdateManyWithoutPropertyCategoryInput>
+}
+
+export type PropertyCreateWithoutLayoutTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterCreateNestedOneWithoutPropertiesInput
+  propertyCategory?: Prisma.PropertyCategoryMasterCreateNestedOneWithoutPropertiesInput
+  area?: Prisma.AreaMasterCreateNestedOneWithoutPropertiesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutPropertiesInput
+  user: Prisma.UserCreateNestedOneWithoutPropertiesInput
+  publication?: Prisma.PropertyPublicationCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyUncheckedCreateWithoutLayoutTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+  publication?: Prisma.PropertyPublicationUncheckedCreateNestedOneWithoutPropertyInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedCreateNestedManyWithoutPropertyInput
+  images?: Prisma.PropertyImageUncheckedCreateNestedManyWithoutPropertyInput
+  features?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutPropertyInput
+  stations?: Prisma.PropertyStationUncheckedCreateNestedManyWithoutPropertyInput
+  inquiries?: Prisma.InquiryUncheckedCreateNestedManyWithoutPropertyInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViews?: Prisma.PropertyViewUncheckedCreateNestedManyWithoutPropertyInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedCreateNestedManyWithoutPropertyInput
+}
+
+export type PropertyCreateOrConnectWithoutLayoutTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput>
+}
+
+export type PropertyCreateManyLayoutTypeInputEnvelope = {
+  data: Prisma.PropertyCreateManyLayoutTypeInput | Prisma.PropertyCreateManyLayoutTypeInput[]
+  skipDuplicates?: boolean
+}
+
+export type PropertyUpsertWithWhereUniqueWithoutLayoutTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  update: Prisma.XOR<Prisma.PropertyUpdateWithoutLayoutTypeInput, Prisma.PropertyUncheckedUpdateWithoutLayoutTypeInput>
+  create: Prisma.XOR<Prisma.PropertyCreateWithoutLayoutTypeInput, Prisma.PropertyUncheckedCreateWithoutLayoutTypeInput>
+}
+
+export type PropertyUpdateWithWhereUniqueWithoutLayoutTypeInput = {
+  where: Prisma.PropertyWhereUniqueInput
+  data: Prisma.XOR<Prisma.PropertyUpdateWithoutLayoutTypeInput, Prisma.PropertyUncheckedUpdateWithoutLayoutTypeInput>
+}
+
+export type PropertyUpdateManyWithWhereWithoutLayoutTypeInput = {
+  where: Prisma.PropertyScalarWhereInput
+  data: Prisma.XOR<Prisma.PropertyUpdateManyMutationInput, Prisma.PropertyUncheckedUpdateManyWithoutLayoutTypeInput>
+}
+
+export type PropertyCreateManyUserInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type PropertyUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4314,97 +5695,64 @@ export type PropertyUpdateWithoutUserInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4413,97 +5761,61 @@ export type PropertyUncheckedUpdateWithoutUserInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
   images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
   features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
   inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
 }
 
 export type PropertyUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
   propertyName?: Prisma.StringFieldUpdateOperationsInput | string
-  propertyType?: Prisma.EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-  publicationStatus?: Prisma.EnumPublicationStatusFieldUpdateOperationsInput | $Enums.PublicationStatus
-  saleOrRent?: Prisma.NullableEnumSaleOrRentFieldUpdateOperationsInput | $Enums.SaleOrRent | null
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
   propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
   postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4512,86 +5824,1201 @@ export type PropertyUncheckedUpdateManyWithoutUserInput = {
   town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lotNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nearestStation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  walkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  otherTransportation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  layoutType?: Prisma.NullableEnumLayoutTypeFieldUpdateOperationsInput | $Enums.LayoutType | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  layoutDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  floor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  direction?: Prisma.NullableEnumDirectionFieldUpdateOperationsInput | $Enums.Direction | null
-  directionDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mainLighting?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  buildingConfirmationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  constructionCompany?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utilities?: Prisma.NullableEnumUtilitiesFieldUpdateOperationsInput | $Enums.Utilities | null
-  reform?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salePrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  unitPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expectedRent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  managementFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  repairReserve?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  usageFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  stampTax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  expenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherExpenses?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expectedAnnualIncome?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  surfaceYield?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  landType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  privateRoadArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  setback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cityPlanning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roadContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  landCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  useDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  buildingCoverageRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  floorAreaRatio?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  totalProperties?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  developmentPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  developmentArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  residentialPermitNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  easement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  nationalLandAct?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  siteRights?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingAvailable?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parkingFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  parkingSpaces?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  parkingDetail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicScope?: Prisma.EnumPublicScopeFieldUpdateOperationsInput | $Enums.PublicScope
-  featured?: Prisma.EnumFeaturedFieldUpdateOperationsInput | $Enums.Featured
-  featurePeriodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  featurePeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  reservedReleaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicScopeReservation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  validUntilDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  nextUpdateDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  publicationMedium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  salesUnits?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  currentStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  deliveryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sellerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  realEstateAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  managementType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  environment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  legalRestrictions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  otherConstructionInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  adminMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  propertyCategory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type PropertyCreateManyAgentInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+}
+
+export type PropertyUpdateWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateManyWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PropertyCreateManyAreaInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+}
+
+export type PropertyUpdateWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateManyWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PropertyCreateManyPropertyTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+}
+
+export type PropertyUpdateWithoutPropertyTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPropertyTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateManyWithoutPropertyTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PropertyCreateManyPropertyCategoryInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutTypeId?: string | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+}
+
+export type PropertyUpdateWithoutPropertyCategoryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  layoutType?: Prisma.FloorPlanMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutPropertyCategoryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateManyWithoutPropertyCategoryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type PropertyCreateManyLayoutTypeInput = {
+  id?: string
+  propertyCode: string
+  propertyName: string
+  propertyNameKana?: string | null
+  propertyTypeId?: string | null
+  propertyCategoryId?: string | null
+  areaId?: string | null
+  transactionType?: $Enums.TransactionType | null
+  propertyCondition?: $Enums.PropertyCondition | null
+  postalCode?: string | null
+  prefecture?: string | null
+  city?: string | null
+  town?: string | null
+  block?: string | null
+  building?: string | null
+  roomNumber?: string | null
+  fullAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: number | null
+  layoutDisplay?: string | null
+  buildingArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: string | null
+  constructionDate?: Date | string | null
+  constructionYearMonth?: string | null
+  totalFloors?: number | null
+  floor?: number | null
+  currentPrice?: bigint | number | null
+  pricePerTsubo?: bigint | number | null
+  managementFee?: number | null
+  commonServiceFee?: number | null
+  depositMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: string | null
+  primaryStationName?: string | null
+  primaryStationWalkMinutes?: number | null
+  featureTags?: Prisma.PropertyCreatefeatureTagsInput | string[]
+  viewCount?: number
+  inquiryCount?: number
+  favoriteCount?: number
+  agentId?: string | null
+  remarks?: string | null
+  internalMemo?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  userId: string
+}
+
+export type PropertyUpdateWithoutLayoutTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  propertyType?: Prisma.PropertyTypeMasterUpdateOneWithoutPropertiesNestedInput
+  propertyCategory?: Prisma.PropertyCategoryMasterUpdateOneWithoutPropertiesNestedInput
+  area?: Prisma.AreaMasterUpdateOneWithoutPropertiesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutPropertiesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutPropertiesNestedInput
+  publication?: Prisma.PropertyPublicationUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateWithoutLayoutTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  publication?: Prisma.PropertyPublicationUncheckedUpdateOneWithoutPropertyNestedInput
+  priceHistories?: Prisma.PropertyPriceHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  statusHistories?: Prisma.PropertyStatusHistoryUncheckedUpdateManyWithoutPropertyNestedInput
+  images?: Prisma.PropertyImageUncheckedUpdateManyWithoutPropertyNestedInput
+  features?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutPropertyNestedInput
+  stations?: Prisma.PropertyStationUncheckedUpdateManyWithoutPropertyNestedInput
+  inquiries?: Prisma.InquiryUncheckedUpdateManyWithoutPropertyNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViews?: Prisma.PropertyViewUncheckedUpdateManyWithoutPropertyNestedInput
+  propertyViewDailies?: Prisma.PropertyViewDailyUncheckedUpdateManyWithoutPropertyNestedInput
+}
+
+export type PropertyUncheckedUpdateManyWithoutLayoutTypeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyCode?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyName?: Prisma.StringFieldUpdateOperationsInput | string
+  propertyNameKana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  propertyCategoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactionType?: Prisma.NullableEnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType | null
+  propertyCondition?: Prisma.NullableEnumPropertyConditionFieldUpdateOperationsInput | $Enums.PropertyCondition | null
+  postalCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prefecture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  town?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  block?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  building?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roomNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fullAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  layoutNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  layoutDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  buildingArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  landArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balconyArea?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  buildingStructure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  constructionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  constructionYearMonth?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFloors?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  floor?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentPrice?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  pricePerTsubo?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  managementFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  commonServiceFee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  depositMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  keyMoneyMonths?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  mainImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryStationWalkMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  featureTags?: Prisma.PropertyUpdatefeatureTagsInput | string[]
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  inquiryCount?: Prisma.IntFieldUpdateOperationsInput | number
+  favoriteCount?: Prisma.IntFieldUpdateOperationsInput | number
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  internalMemo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -4600,15 +7027,27 @@ export type PropertyUncheckedUpdateManyWithoutUserInput = {
  */
 
 export type PropertyCountOutputType = {
+  priceHistories: number
+  statusHistories: number
   images: number
   features: number
+  stations: number
   inquiries: number
+  favorites: number
+  propertyViews: number
+  propertyViewDailies: number
 }
 
 export type PropertyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  priceHistories?: boolean | PropertyCountOutputTypeCountPriceHistoriesArgs
+  statusHistories?: boolean | PropertyCountOutputTypeCountStatusHistoriesArgs
   images?: boolean | PropertyCountOutputTypeCountImagesArgs
   features?: boolean | PropertyCountOutputTypeCountFeaturesArgs
+  stations?: boolean | PropertyCountOutputTypeCountStationsArgs
   inquiries?: boolean | PropertyCountOutputTypeCountInquiriesArgs
+  favorites?: boolean | PropertyCountOutputTypeCountFavoritesArgs
+  propertyViews?: boolean | PropertyCountOutputTypeCountPropertyViewsArgs
+  propertyViewDailies?: boolean | PropertyCountOutputTypeCountPropertyViewDailiesArgs
 }
 
 /**
@@ -4619,6 +7058,20 @@ export type PropertyCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
    * Select specific fields to fetch from the PropertyCountOutputType
    */
   select?: Prisma.PropertyCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
+export type PropertyCountOutputTypeCountPriceHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PropertyPriceHistoryWhereInput
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
+export type PropertyCountOutputTypeCountStatusHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PropertyStatusHistoryWhereInput
 }
 
 /**
@@ -4638,17 +7091,47 @@ export type PropertyCountOutputTypeCountFeaturesArgs<ExtArgs extends runtime.Typ
 /**
  * PropertyCountOutputType without action
  */
+export type PropertyCountOutputTypeCountStationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PropertyStationWhereInput
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
 export type PropertyCountOutputTypeCountInquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.InquiryWhereInput
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
+export type PropertyCountOutputTypeCountFavoritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FavoriteWhereInput
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
+export type PropertyCountOutputTypeCountPropertyViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PropertyViewWhereInput
+}
+
+/**
+ * PropertyCountOutputType without action
+ */
+export type PropertyCountOutputTypeCountPropertyViewDailiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PropertyViewDailyWhereInput
 }
 
 
 export type PropertySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyCode?: boolean
   propertyName?: boolean
-  propertyType?: boolean
-  publicationStatus?: boolean
-  saleOrRent?: boolean
+  propertyNameKana?: boolean
+  propertyTypeId?: boolean
+  propertyCategoryId?: boolean
+  areaId?: boolean
   transactionType?: boolean
   propertyCondition?: boolean
   postalCode?: boolean
@@ -4657,100 +7140,69 @@ export type PropertySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   town?: boolean
   block?: boolean
   building?: boolean
-  lotNumber?: boolean
-  nearestStation?: boolean
-  walkMinutes?: boolean
-  otherTransportation?: boolean
+  roomNumber?: boolean
+  fullAddress?: boolean
   latitude?: boolean
   longitude?: boolean
   layoutNumber?: boolean
-  layoutType?: boolean
+  layoutTypeId?: boolean
+  layoutDisplay?: boolean
   buildingArea?: boolean
   landArea?: boolean
   balconyArea?: boolean
-  layoutDetail?: boolean
   buildingStructure?: boolean
-  floor?: boolean
-  totalUnits?: boolean
-  direction?: boolean
-  directionDetail?: boolean
-  mainLighting?: boolean
   constructionDate?: boolean
-  buildingConfirmationNumber?: boolean
-  constructionCompany?: boolean
-  utilities?: boolean
-  reform?: boolean
-  salePrice?: boolean
-  unitPrice?: boolean
-  expectedRent?: boolean
+  constructionYearMonth?: boolean
+  totalFloors?: boolean
+  floor?: boolean
+  currentPrice?: boolean
+  pricePerTsubo?: boolean
   managementFee?: boolean
-  repairReserve?: boolean
-  usageFee?: boolean
-  stampTax?: boolean
-  expenses?: boolean
-  otherExpenses?: boolean
-  expectedAnnualIncome?: boolean
-  surfaceYield?: boolean
-  landType?: boolean
-  privateRoadArea?: boolean
-  setback?: boolean
-  cityPlanning?: boolean
-  roadContact?: boolean
-  landCategory?: boolean
-  useDistrict?: boolean
-  buildingCoverageRatio?: boolean
-  floorAreaRatio?: boolean
-  totalProperties?: boolean
-  developmentPermitNumber?: boolean
-  developmentArea?: boolean
-  residentialPermitNumber?: boolean
-  easement?: boolean
-  nationalLandAct?: boolean
-  siteRights?: boolean
-  parkingAvailable?: boolean
-  parkingFee?: boolean
-  parkingSpaces?: boolean
-  parkingDetail?: boolean
-  publicScope?: boolean
-  featured?: boolean
-  featurePeriodStart?: boolean
-  featurePeriodEnd?: boolean
-  reservedReleaseDate?: boolean
-  publicScopeReservation?: boolean
-  validUntilDate?: boolean
-  nextUpdateDate?: boolean
-  publicationMedium?: boolean
-  salesUnits?: boolean
-  currentStatus?: boolean
-  propertyStatus?: boolean
-  deliveryDate?: boolean
-  sellerName?: boolean
-  realEstateAgent?: boolean
-  managementType?: boolean
-  environment?: boolean
-  legalRestrictions?: boolean
-  otherConstructionInfo?: boolean
-  remarks?: boolean
-  adminMemo?: boolean
-  propertyCategory?: boolean
+  commonServiceFee?: boolean
+  depositMonths?: boolean
+  keyMoneyMonths?: boolean
+  mainImageUrl?: boolean
+  primaryStationName?: boolean
+  primaryStationWalkMinutes?: boolean
+  featureTags?: boolean
+  viewCount?: boolean
   inquiryCount?: boolean
-  userId?: boolean
+  favoriteCount?: boolean
+  agentId?: boolean
+  remarks?: boolean
+  internalMemo?: boolean
+  metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  publishedAt?: boolean
+  deletedAt?: boolean
+  userId?: boolean
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  publication?: boolean | Prisma.Property$publicationArgs<ExtArgs>
+  priceHistories?: boolean | Prisma.Property$priceHistoriesArgs<ExtArgs>
+  statusHistories?: boolean | Prisma.Property$statusHistoriesArgs<ExtArgs>
   images?: boolean | Prisma.Property$imagesArgs<ExtArgs>
   features?: boolean | Prisma.Property$featuresArgs<ExtArgs>
+  stations?: boolean | Prisma.Property$stationsArgs<ExtArgs>
   inquiries?: boolean | Prisma.Property$inquiriesArgs<ExtArgs>
+  favorites?: boolean | Prisma.Property$favoritesArgs<ExtArgs>
+  propertyViews?: boolean | Prisma.Property$propertyViewsArgs<ExtArgs>
+  propertyViewDailies?: boolean | Prisma.Property$propertyViewDailiesArgs<ExtArgs>
   _count?: boolean | Prisma.PropertyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["property"]>
 
 export type PropertySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyCode?: boolean
   propertyName?: boolean
-  propertyType?: boolean
-  publicationStatus?: boolean
-  saleOrRent?: boolean
+  propertyNameKana?: boolean
+  propertyTypeId?: boolean
+  propertyCategoryId?: boolean
+  areaId?: boolean
   transactionType?: boolean
   propertyCondition?: boolean
   postalCode?: boolean
@@ -4759,96 +7211,58 @@ export type PropertySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   town?: boolean
   block?: boolean
   building?: boolean
-  lotNumber?: boolean
-  nearestStation?: boolean
-  walkMinutes?: boolean
-  otherTransportation?: boolean
+  roomNumber?: boolean
+  fullAddress?: boolean
   latitude?: boolean
   longitude?: boolean
   layoutNumber?: boolean
-  layoutType?: boolean
+  layoutTypeId?: boolean
+  layoutDisplay?: boolean
   buildingArea?: boolean
   landArea?: boolean
   balconyArea?: boolean
-  layoutDetail?: boolean
   buildingStructure?: boolean
-  floor?: boolean
-  totalUnits?: boolean
-  direction?: boolean
-  directionDetail?: boolean
-  mainLighting?: boolean
   constructionDate?: boolean
-  buildingConfirmationNumber?: boolean
-  constructionCompany?: boolean
-  utilities?: boolean
-  reform?: boolean
-  salePrice?: boolean
-  unitPrice?: boolean
-  expectedRent?: boolean
+  constructionYearMonth?: boolean
+  totalFloors?: boolean
+  floor?: boolean
+  currentPrice?: boolean
+  pricePerTsubo?: boolean
   managementFee?: boolean
-  repairReserve?: boolean
-  usageFee?: boolean
-  stampTax?: boolean
-  expenses?: boolean
-  otherExpenses?: boolean
-  expectedAnnualIncome?: boolean
-  surfaceYield?: boolean
-  landType?: boolean
-  privateRoadArea?: boolean
-  setback?: boolean
-  cityPlanning?: boolean
-  roadContact?: boolean
-  landCategory?: boolean
-  useDistrict?: boolean
-  buildingCoverageRatio?: boolean
-  floorAreaRatio?: boolean
-  totalProperties?: boolean
-  developmentPermitNumber?: boolean
-  developmentArea?: boolean
-  residentialPermitNumber?: boolean
-  easement?: boolean
-  nationalLandAct?: boolean
-  siteRights?: boolean
-  parkingAvailable?: boolean
-  parkingFee?: boolean
-  parkingSpaces?: boolean
-  parkingDetail?: boolean
-  publicScope?: boolean
-  featured?: boolean
-  featurePeriodStart?: boolean
-  featurePeriodEnd?: boolean
-  reservedReleaseDate?: boolean
-  publicScopeReservation?: boolean
-  validUntilDate?: boolean
-  nextUpdateDate?: boolean
-  publicationMedium?: boolean
-  salesUnits?: boolean
-  currentStatus?: boolean
-  propertyStatus?: boolean
-  deliveryDate?: boolean
-  sellerName?: boolean
-  realEstateAgent?: boolean
-  managementType?: boolean
-  environment?: boolean
-  legalRestrictions?: boolean
-  otherConstructionInfo?: boolean
-  remarks?: boolean
-  adminMemo?: boolean
-  propertyCategory?: boolean
+  commonServiceFee?: boolean
+  depositMonths?: boolean
+  keyMoneyMonths?: boolean
+  mainImageUrl?: boolean
+  primaryStationName?: boolean
+  primaryStationWalkMinutes?: boolean
+  featureTags?: boolean
+  viewCount?: boolean
   inquiryCount?: boolean
-  userId?: boolean
+  favoriteCount?: boolean
+  agentId?: boolean
+  remarks?: boolean
+  internalMemo?: boolean
+  metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  publishedAt?: boolean
+  deletedAt?: boolean
+  userId?: boolean
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["property"]>
 
 export type PropertySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  propertyCode?: boolean
   propertyName?: boolean
-  propertyType?: boolean
-  publicationStatus?: boolean
-  saleOrRent?: boolean
+  propertyNameKana?: boolean
+  propertyTypeId?: boolean
+  propertyCategoryId?: boolean
+  areaId?: boolean
   transactionType?: boolean
   propertyCondition?: boolean
   postalCode?: boolean
@@ -4857,96 +7271,58 @@ export type PropertySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   town?: boolean
   block?: boolean
   building?: boolean
-  lotNumber?: boolean
-  nearestStation?: boolean
-  walkMinutes?: boolean
-  otherTransportation?: boolean
+  roomNumber?: boolean
+  fullAddress?: boolean
   latitude?: boolean
   longitude?: boolean
   layoutNumber?: boolean
-  layoutType?: boolean
+  layoutTypeId?: boolean
+  layoutDisplay?: boolean
   buildingArea?: boolean
   landArea?: boolean
   balconyArea?: boolean
-  layoutDetail?: boolean
   buildingStructure?: boolean
-  floor?: boolean
-  totalUnits?: boolean
-  direction?: boolean
-  directionDetail?: boolean
-  mainLighting?: boolean
   constructionDate?: boolean
-  buildingConfirmationNumber?: boolean
-  constructionCompany?: boolean
-  utilities?: boolean
-  reform?: boolean
-  salePrice?: boolean
-  unitPrice?: boolean
-  expectedRent?: boolean
+  constructionYearMonth?: boolean
+  totalFloors?: boolean
+  floor?: boolean
+  currentPrice?: boolean
+  pricePerTsubo?: boolean
   managementFee?: boolean
-  repairReserve?: boolean
-  usageFee?: boolean
-  stampTax?: boolean
-  expenses?: boolean
-  otherExpenses?: boolean
-  expectedAnnualIncome?: boolean
-  surfaceYield?: boolean
-  landType?: boolean
-  privateRoadArea?: boolean
-  setback?: boolean
-  cityPlanning?: boolean
-  roadContact?: boolean
-  landCategory?: boolean
-  useDistrict?: boolean
-  buildingCoverageRatio?: boolean
-  floorAreaRatio?: boolean
-  totalProperties?: boolean
-  developmentPermitNumber?: boolean
-  developmentArea?: boolean
-  residentialPermitNumber?: boolean
-  easement?: boolean
-  nationalLandAct?: boolean
-  siteRights?: boolean
-  parkingAvailable?: boolean
-  parkingFee?: boolean
-  parkingSpaces?: boolean
-  parkingDetail?: boolean
-  publicScope?: boolean
-  featured?: boolean
-  featurePeriodStart?: boolean
-  featurePeriodEnd?: boolean
-  reservedReleaseDate?: boolean
-  publicScopeReservation?: boolean
-  validUntilDate?: boolean
-  nextUpdateDate?: boolean
-  publicationMedium?: boolean
-  salesUnits?: boolean
-  currentStatus?: boolean
-  propertyStatus?: boolean
-  deliveryDate?: boolean
-  sellerName?: boolean
-  realEstateAgent?: boolean
-  managementType?: boolean
-  environment?: boolean
-  legalRestrictions?: boolean
-  otherConstructionInfo?: boolean
-  remarks?: boolean
-  adminMemo?: boolean
-  propertyCategory?: boolean
+  commonServiceFee?: boolean
+  depositMonths?: boolean
+  keyMoneyMonths?: boolean
+  mainImageUrl?: boolean
+  primaryStationName?: boolean
+  primaryStationWalkMinutes?: boolean
+  featureTags?: boolean
+  viewCount?: boolean
   inquiryCount?: boolean
-  userId?: boolean
+  favoriteCount?: boolean
+  agentId?: boolean
+  remarks?: boolean
+  internalMemo?: boolean
+  metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  publishedAt?: boolean
+  deletedAt?: boolean
+  userId?: boolean
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["property"]>
 
 export type PropertySelectScalar = {
   id?: boolean
+  propertyCode?: boolean
   propertyName?: boolean
-  propertyType?: boolean
-  publicationStatus?: boolean
-  saleOrRent?: boolean
+  propertyNameKana?: boolean
+  propertyTypeId?: boolean
+  propertyCategoryId?: boolean
+  areaId?: boolean
   transactionType?: boolean
   propertyCondition?: boolean
   postalCode?: boolean
@@ -4955,118 +7331,109 @@ export type PropertySelectScalar = {
   town?: boolean
   block?: boolean
   building?: boolean
-  lotNumber?: boolean
-  nearestStation?: boolean
-  walkMinutes?: boolean
-  otherTransportation?: boolean
+  roomNumber?: boolean
+  fullAddress?: boolean
   latitude?: boolean
   longitude?: boolean
   layoutNumber?: boolean
-  layoutType?: boolean
+  layoutTypeId?: boolean
+  layoutDisplay?: boolean
   buildingArea?: boolean
   landArea?: boolean
   balconyArea?: boolean
-  layoutDetail?: boolean
   buildingStructure?: boolean
-  floor?: boolean
-  totalUnits?: boolean
-  direction?: boolean
-  directionDetail?: boolean
-  mainLighting?: boolean
   constructionDate?: boolean
-  buildingConfirmationNumber?: boolean
-  constructionCompany?: boolean
-  utilities?: boolean
-  reform?: boolean
-  salePrice?: boolean
-  unitPrice?: boolean
-  expectedRent?: boolean
+  constructionYearMonth?: boolean
+  totalFloors?: boolean
+  floor?: boolean
+  currentPrice?: boolean
+  pricePerTsubo?: boolean
   managementFee?: boolean
-  repairReserve?: boolean
-  usageFee?: boolean
-  stampTax?: boolean
-  expenses?: boolean
-  otherExpenses?: boolean
-  expectedAnnualIncome?: boolean
-  surfaceYield?: boolean
-  landType?: boolean
-  privateRoadArea?: boolean
-  setback?: boolean
-  cityPlanning?: boolean
-  roadContact?: boolean
-  landCategory?: boolean
-  useDistrict?: boolean
-  buildingCoverageRatio?: boolean
-  floorAreaRatio?: boolean
-  totalProperties?: boolean
-  developmentPermitNumber?: boolean
-  developmentArea?: boolean
-  residentialPermitNumber?: boolean
-  easement?: boolean
-  nationalLandAct?: boolean
-  siteRights?: boolean
-  parkingAvailable?: boolean
-  parkingFee?: boolean
-  parkingSpaces?: boolean
-  parkingDetail?: boolean
-  publicScope?: boolean
-  featured?: boolean
-  featurePeriodStart?: boolean
-  featurePeriodEnd?: boolean
-  reservedReleaseDate?: boolean
-  publicScopeReservation?: boolean
-  validUntilDate?: boolean
-  nextUpdateDate?: boolean
-  publicationMedium?: boolean
-  salesUnits?: boolean
-  currentStatus?: boolean
-  propertyStatus?: boolean
-  deliveryDate?: boolean
-  sellerName?: boolean
-  realEstateAgent?: boolean
-  managementType?: boolean
-  environment?: boolean
-  legalRestrictions?: boolean
-  otherConstructionInfo?: boolean
-  remarks?: boolean
-  adminMemo?: boolean
-  propertyCategory?: boolean
+  commonServiceFee?: boolean
+  depositMonths?: boolean
+  keyMoneyMonths?: boolean
+  mainImageUrl?: boolean
+  primaryStationName?: boolean
+  primaryStationWalkMinutes?: boolean
+  featureTags?: boolean
+  viewCount?: boolean
   inquiryCount?: boolean
-  userId?: boolean
+  favoriteCount?: boolean
+  agentId?: boolean
+  remarks?: boolean
+  internalMemo?: boolean
+  metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  publishedAt?: boolean
+  deletedAt?: boolean
+  userId?: boolean
 }
 
-export type PropertyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "propertyName" | "propertyType" | "publicationStatus" | "saleOrRent" | "transactionType" | "propertyCondition" | "postalCode" | "prefecture" | "city" | "town" | "block" | "building" | "lotNumber" | "nearestStation" | "walkMinutes" | "otherTransportation" | "latitude" | "longitude" | "layoutNumber" | "layoutType" | "buildingArea" | "landArea" | "balconyArea" | "layoutDetail" | "buildingStructure" | "floor" | "totalUnits" | "direction" | "directionDetail" | "mainLighting" | "constructionDate" | "buildingConfirmationNumber" | "constructionCompany" | "utilities" | "reform" | "salePrice" | "unitPrice" | "expectedRent" | "managementFee" | "repairReserve" | "usageFee" | "stampTax" | "expenses" | "otherExpenses" | "expectedAnnualIncome" | "surfaceYield" | "landType" | "privateRoadArea" | "setback" | "cityPlanning" | "roadContact" | "landCategory" | "useDistrict" | "buildingCoverageRatio" | "floorAreaRatio" | "totalProperties" | "developmentPermitNumber" | "developmentArea" | "residentialPermitNumber" | "easement" | "nationalLandAct" | "siteRights" | "parkingAvailable" | "parkingFee" | "parkingSpaces" | "parkingDetail" | "publicScope" | "featured" | "featurePeriodStart" | "featurePeriodEnd" | "reservedReleaseDate" | "publicScopeReservation" | "validUntilDate" | "nextUpdateDate" | "publicationMedium" | "salesUnits" | "currentStatus" | "propertyStatus" | "deliveryDate" | "sellerName" | "realEstateAgent" | "managementType" | "environment" | "legalRestrictions" | "otherConstructionInfo" | "remarks" | "adminMemo" | "propertyCategory" | "inquiryCount" | "userId" | "createdAt" | "updatedAt" | "publishedAt", ExtArgs["result"]["property"]>
+export type PropertyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "propertyCode" | "propertyName" | "propertyNameKana" | "propertyTypeId" | "propertyCategoryId" | "areaId" | "transactionType" | "propertyCondition" | "postalCode" | "prefecture" | "city" | "town" | "block" | "building" | "roomNumber" | "fullAddress" | "latitude" | "longitude" | "layoutNumber" | "layoutTypeId" | "layoutDisplay" | "buildingArea" | "landArea" | "balconyArea" | "buildingStructure" | "constructionDate" | "constructionYearMonth" | "totalFloors" | "floor" | "currentPrice" | "pricePerTsubo" | "managementFee" | "commonServiceFee" | "depositMonths" | "keyMoneyMonths" | "mainImageUrl" | "primaryStationName" | "primaryStationWalkMinutes" | "featureTags" | "viewCount" | "inquiryCount" | "favoriteCount" | "agentId" | "remarks" | "internalMemo" | "metadata" | "createdAt" | "updatedAt" | "deletedAt" | "userId", ExtArgs["result"]["property"]>
 export type PropertyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  publication?: boolean | Prisma.Property$publicationArgs<ExtArgs>
+  priceHistories?: boolean | Prisma.Property$priceHistoriesArgs<ExtArgs>
+  statusHistories?: boolean | Prisma.Property$statusHistoriesArgs<ExtArgs>
   images?: boolean | Prisma.Property$imagesArgs<ExtArgs>
   features?: boolean | Prisma.Property$featuresArgs<ExtArgs>
+  stations?: boolean | Prisma.Property$stationsArgs<ExtArgs>
   inquiries?: boolean | Prisma.Property$inquiriesArgs<ExtArgs>
+  favorites?: boolean | Prisma.Property$favoritesArgs<ExtArgs>
+  propertyViews?: boolean | Prisma.Property$propertyViewsArgs<ExtArgs>
+  propertyViewDailies?: boolean | Prisma.Property$propertyViewDailiesArgs<ExtArgs>
   _count?: boolean | Prisma.PropertyCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PropertyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type PropertyIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  propertyType?: boolean | Prisma.Property$propertyTypeArgs<ExtArgs>
+  propertyCategory?: boolean | Prisma.Property$propertyCategoryArgs<ExtArgs>
+  area?: boolean | Prisma.Property$areaArgs<ExtArgs>
+  layoutType?: boolean | Prisma.Property$layoutTypeArgs<ExtArgs>
+  agent?: boolean | Prisma.Property$agentArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $PropertyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Property"
   objects: {
+    propertyType: Prisma.$PropertyTypeMasterPayload<ExtArgs> | null
+    propertyCategory: Prisma.$PropertyCategoryMasterPayload<ExtArgs> | null
+    area: Prisma.$AreaMasterPayload<ExtArgs> | null
+    layoutType: Prisma.$FloorPlanMasterPayload<ExtArgs> | null
+    agent: Prisma.$AgentPayload<ExtArgs> | null
     user: Prisma.$UserPayload<ExtArgs>
+    publication: Prisma.$PropertyPublicationPayload<ExtArgs> | null
+    priceHistories: Prisma.$PropertyPriceHistoryPayload<ExtArgs>[]
+    statusHistories: Prisma.$PropertyStatusHistoryPayload<ExtArgs>[]
     images: Prisma.$PropertyImagePayload<ExtArgs>[]
     features: Prisma.$PropertyFeaturePayload<ExtArgs>[]
+    stations: Prisma.$PropertyStationPayload<ExtArgs>[]
     inquiries: Prisma.$InquiryPayload<ExtArgs>[]
+    favorites: Prisma.$FavoritePayload<ExtArgs>[]
+    propertyViews: Prisma.$PropertyViewPayload<ExtArgs>[]
+    propertyViewDailies: Prisma.$PropertyViewDailyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    propertyCode: string
     propertyName: string
-    propertyType: $Enums.PropertyType
-    publicationStatus: $Enums.PublicationStatus
-    saleOrRent: $Enums.SaleOrRent | null
+    propertyNameKana: string | null
+    propertyTypeId: string | null
+    propertyCategoryId: string | null
+    areaId: string | null
     transactionType: $Enums.TransactionType | null
     propertyCondition: $Enums.PropertyCondition | null
     postalCode: string | null
@@ -5075,87 +7442,42 @@ export type $PropertyPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     town: string | null
     block: string | null
     building: string | null
-    lotNumber: string | null
-    nearestStation: string | null
-    walkMinutes: number | null
-    otherTransportation: string | null
+    roomNumber: string | null
+    fullAddress: string | null
     latitude: runtime.Decimal | null
     longitude: runtime.Decimal | null
-    layoutNumber: string | null
-    layoutType: $Enums.LayoutType | null
+    layoutNumber: number | null
+    layoutTypeId: string | null
+    layoutDisplay: string | null
     buildingArea: runtime.Decimal | null
     landArea: runtime.Decimal | null
     balconyArea: runtime.Decimal | null
-    layoutDetail: string | null
     buildingStructure: string | null
-    floor: string | null
-    totalUnits: number | null
-    direction: $Enums.Direction | null
-    directionDetail: string | null
-    mainLighting: string | null
     constructionDate: Date | null
-    buildingConfirmationNumber: string | null
-    constructionCompany: string | null
-    utilities: $Enums.Utilities | null
-    reform: string | null
-    salePrice: runtime.Decimal | null
-    unitPrice: runtime.Decimal | null
-    expectedRent: runtime.Decimal | null
-    managementFee: runtime.Decimal | null
-    repairReserve: runtime.Decimal | null
-    usageFee: runtime.Decimal | null
-    stampTax: runtime.Decimal | null
-    expenses: string | null
-    otherExpenses: string | null
-    expectedAnnualIncome: runtime.Decimal | null
-    surfaceYield: runtime.Decimal | null
-    landType: string | null
-    privateRoadArea: runtime.Decimal | null
-    setback: string | null
-    cityPlanning: string | null
-    roadContact: string | null
-    landCategory: string | null
-    useDistrict: string | null
-    buildingCoverageRatio: runtime.Decimal | null
-    floorAreaRatio: runtime.Decimal | null
-    totalProperties: number | null
-    developmentPermitNumber: string | null
-    developmentArea: runtime.Decimal | null
-    residentialPermitNumber: string | null
-    easement: string | null
-    nationalLandAct: string | null
-    siteRights: string | null
-    parkingAvailable: string | null
-    parkingFee: runtime.Decimal | null
-    parkingSpaces: number | null
-    parkingDetail: string | null
-    publicScope: $Enums.PublicScope
-    featured: $Enums.Featured
-    featurePeriodStart: Date | null
-    featurePeriodEnd: Date | null
-    reservedReleaseDate: Date | null
-    publicScopeReservation: string | null
-    validUntilDate: Date | null
-    nextUpdateDate: Date | null
-    publicationMedium: string | null
-    salesUnits: number | null
-    currentStatus: string | null
-    propertyStatus: string | null
-    deliveryDate: Date | null
-    sellerName: string | null
-    realEstateAgent: string | null
-    managementType: string | null
-    environment: string | null
-    legalRestrictions: string | null
-    otherConstructionInfo: string | null
-    remarks: string | null
-    adminMemo: string | null
-    propertyCategory: string | null
+    constructionYearMonth: string | null
+    totalFloors: number | null
+    floor: number | null
+    currentPrice: bigint | null
+    pricePerTsubo: bigint | null
+    managementFee: number | null
+    commonServiceFee: number | null
+    depositMonths: runtime.Decimal | null
+    keyMoneyMonths: runtime.Decimal | null
+    mainImageUrl: string | null
+    primaryStationName: string | null
+    primaryStationWalkMinutes: number | null
+    featureTags: string[]
+    viewCount: number
     inquiryCount: number
-    userId: string
+    favoriteCount: number
+    agentId: string | null
+    remarks: string | null
+    internalMemo: string | null
+    metadata: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
-    publishedAt: Date | null
+    deletedAt: Date | null
+    userId: string
   }, ExtArgs["result"]["property"]>
   composites: {}
 }
@@ -5550,10 +7872,22 @@ readonly fields: PropertyFieldRefs;
  */
 export interface Prisma__PropertyClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  propertyType<T extends Prisma.Property$propertyTypeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$propertyTypeArgs<ExtArgs>>): Prisma.Prisma__PropertyTypeMasterClient<runtime.Types.Result.GetResult<Prisma.$PropertyTypeMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  propertyCategory<T extends Prisma.Property$propertyCategoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$propertyCategoryArgs<ExtArgs>>): Prisma.Prisma__PropertyCategoryMasterClient<runtime.Types.Result.GetResult<Prisma.$PropertyCategoryMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  area<T extends Prisma.Property$areaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$areaArgs<ExtArgs>>): Prisma.Prisma__AreaMasterClient<runtime.Types.Result.GetResult<Prisma.$AreaMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  layoutType<T extends Prisma.Property$layoutTypeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$layoutTypeArgs<ExtArgs>>): Prisma.Prisma__FloorPlanMasterClient<runtime.Types.Result.GetResult<Prisma.$FloorPlanMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  agent<T extends Prisma.Property$agentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$agentArgs<ExtArgs>>): Prisma.Prisma__AgentClient<runtime.Types.Result.GetResult<Prisma.$AgentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  publication<T extends Prisma.Property$publicationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$publicationArgs<ExtArgs>>): Prisma.Prisma__PropertyPublicationClient<runtime.Types.Result.GetResult<Prisma.$PropertyPublicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  priceHistories<T extends Prisma.Property$priceHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$priceHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyPriceHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  statusHistories<T extends Prisma.Property$statusHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$statusHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyStatusHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   images<T extends Prisma.Property$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   features<T extends Prisma.Property$featuresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$featuresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyFeaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stations<T extends Prisma.Property$stationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$stationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyStationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   inquiries<T extends Prisma.Property$inquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$inquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  favorites<T extends Prisma.Property$favoritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  propertyViews<T extends Prisma.Property$propertyViewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$propertyViewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  propertyViewDailies<T extends Prisma.Property$propertyViewDailiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Property$propertyViewDailiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PropertyViewDailyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5584,10 +7918,12 @@ export interface Prisma__PropertyClient<T, Null = never, ExtArgs extends runtime
  */
 export interface PropertyFieldRefs {
   readonly id: Prisma.FieldRef<"Property", 'String'>
+  readonly propertyCode: Prisma.FieldRef<"Property", 'String'>
   readonly propertyName: Prisma.FieldRef<"Property", 'String'>
-  readonly propertyType: Prisma.FieldRef<"Property", 'PropertyType'>
-  readonly publicationStatus: Prisma.FieldRef<"Property", 'PublicationStatus'>
-  readonly saleOrRent: Prisma.FieldRef<"Property", 'SaleOrRent'>
+  readonly propertyNameKana: Prisma.FieldRef<"Property", 'String'>
+  readonly propertyTypeId: Prisma.FieldRef<"Property", 'String'>
+  readonly propertyCategoryId: Prisma.FieldRef<"Property", 'String'>
+  readonly areaId: Prisma.FieldRef<"Property", 'String'>
   readonly transactionType: Prisma.FieldRef<"Property", 'TransactionType'>
   readonly propertyCondition: Prisma.FieldRef<"Property", 'PropertyCondition'>
   readonly postalCode: Prisma.FieldRef<"Property", 'String'>
@@ -5596,87 +7932,42 @@ export interface PropertyFieldRefs {
   readonly town: Prisma.FieldRef<"Property", 'String'>
   readonly block: Prisma.FieldRef<"Property", 'String'>
   readonly building: Prisma.FieldRef<"Property", 'String'>
-  readonly lotNumber: Prisma.FieldRef<"Property", 'String'>
-  readonly nearestStation: Prisma.FieldRef<"Property", 'String'>
-  readonly walkMinutes: Prisma.FieldRef<"Property", 'Int'>
-  readonly otherTransportation: Prisma.FieldRef<"Property", 'String'>
+  readonly roomNumber: Prisma.FieldRef<"Property", 'String'>
+  readonly fullAddress: Prisma.FieldRef<"Property", 'String'>
   readonly latitude: Prisma.FieldRef<"Property", 'Decimal'>
   readonly longitude: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly layoutNumber: Prisma.FieldRef<"Property", 'String'>
-  readonly layoutType: Prisma.FieldRef<"Property", 'LayoutType'>
+  readonly layoutNumber: Prisma.FieldRef<"Property", 'Int'>
+  readonly layoutTypeId: Prisma.FieldRef<"Property", 'String'>
+  readonly layoutDisplay: Prisma.FieldRef<"Property", 'String'>
   readonly buildingArea: Prisma.FieldRef<"Property", 'Decimal'>
   readonly landArea: Prisma.FieldRef<"Property", 'Decimal'>
   readonly balconyArea: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly layoutDetail: Prisma.FieldRef<"Property", 'String'>
   readonly buildingStructure: Prisma.FieldRef<"Property", 'String'>
-  readonly floor: Prisma.FieldRef<"Property", 'String'>
-  readonly totalUnits: Prisma.FieldRef<"Property", 'Int'>
-  readonly direction: Prisma.FieldRef<"Property", 'Direction'>
-  readonly directionDetail: Prisma.FieldRef<"Property", 'String'>
-  readonly mainLighting: Prisma.FieldRef<"Property", 'String'>
   readonly constructionDate: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly buildingConfirmationNumber: Prisma.FieldRef<"Property", 'String'>
-  readonly constructionCompany: Prisma.FieldRef<"Property", 'String'>
-  readonly utilities: Prisma.FieldRef<"Property", 'Utilities'>
-  readonly reform: Prisma.FieldRef<"Property", 'String'>
-  readonly salePrice: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly unitPrice: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly expectedRent: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly managementFee: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly repairReserve: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly usageFee: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly stampTax: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly expenses: Prisma.FieldRef<"Property", 'String'>
-  readonly otherExpenses: Prisma.FieldRef<"Property", 'String'>
-  readonly expectedAnnualIncome: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly surfaceYield: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly landType: Prisma.FieldRef<"Property", 'String'>
-  readonly privateRoadArea: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly setback: Prisma.FieldRef<"Property", 'String'>
-  readonly cityPlanning: Prisma.FieldRef<"Property", 'String'>
-  readonly roadContact: Prisma.FieldRef<"Property", 'String'>
-  readonly landCategory: Prisma.FieldRef<"Property", 'String'>
-  readonly useDistrict: Prisma.FieldRef<"Property", 'String'>
-  readonly buildingCoverageRatio: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly floorAreaRatio: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly totalProperties: Prisma.FieldRef<"Property", 'Int'>
-  readonly developmentPermitNumber: Prisma.FieldRef<"Property", 'String'>
-  readonly developmentArea: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly residentialPermitNumber: Prisma.FieldRef<"Property", 'String'>
-  readonly easement: Prisma.FieldRef<"Property", 'String'>
-  readonly nationalLandAct: Prisma.FieldRef<"Property", 'String'>
-  readonly siteRights: Prisma.FieldRef<"Property", 'String'>
-  readonly parkingAvailable: Prisma.FieldRef<"Property", 'String'>
-  readonly parkingFee: Prisma.FieldRef<"Property", 'Decimal'>
-  readonly parkingSpaces: Prisma.FieldRef<"Property", 'Int'>
-  readonly parkingDetail: Prisma.FieldRef<"Property", 'String'>
-  readonly publicScope: Prisma.FieldRef<"Property", 'PublicScope'>
-  readonly featured: Prisma.FieldRef<"Property", 'Featured'>
-  readonly featurePeriodStart: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly featurePeriodEnd: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly reservedReleaseDate: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly publicScopeReservation: Prisma.FieldRef<"Property", 'String'>
-  readonly validUntilDate: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly nextUpdateDate: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly publicationMedium: Prisma.FieldRef<"Property", 'String'>
-  readonly salesUnits: Prisma.FieldRef<"Property", 'Int'>
-  readonly currentStatus: Prisma.FieldRef<"Property", 'String'>
-  readonly propertyStatus: Prisma.FieldRef<"Property", 'String'>
-  readonly deliveryDate: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly sellerName: Prisma.FieldRef<"Property", 'String'>
-  readonly realEstateAgent: Prisma.FieldRef<"Property", 'String'>
-  readonly managementType: Prisma.FieldRef<"Property", 'String'>
-  readonly environment: Prisma.FieldRef<"Property", 'String'>
-  readonly legalRestrictions: Prisma.FieldRef<"Property", 'String'>
-  readonly otherConstructionInfo: Prisma.FieldRef<"Property", 'String'>
-  readonly remarks: Prisma.FieldRef<"Property", 'String'>
-  readonly adminMemo: Prisma.FieldRef<"Property", 'String'>
-  readonly propertyCategory: Prisma.FieldRef<"Property", 'String'>
+  readonly constructionYearMonth: Prisma.FieldRef<"Property", 'String'>
+  readonly totalFloors: Prisma.FieldRef<"Property", 'Int'>
+  readonly floor: Prisma.FieldRef<"Property", 'Int'>
+  readonly currentPrice: Prisma.FieldRef<"Property", 'BigInt'>
+  readonly pricePerTsubo: Prisma.FieldRef<"Property", 'BigInt'>
+  readonly managementFee: Prisma.FieldRef<"Property", 'Int'>
+  readonly commonServiceFee: Prisma.FieldRef<"Property", 'Int'>
+  readonly depositMonths: Prisma.FieldRef<"Property", 'Decimal'>
+  readonly keyMoneyMonths: Prisma.FieldRef<"Property", 'Decimal'>
+  readonly mainImageUrl: Prisma.FieldRef<"Property", 'String'>
+  readonly primaryStationName: Prisma.FieldRef<"Property", 'String'>
+  readonly primaryStationWalkMinutes: Prisma.FieldRef<"Property", 'Int'>
+  readonly featureTags: Prisma.FieldRef<"Property", 'String[]'>
+  readonly viewCount: Prisma.FieldRef<"Property", 'Int'>
   readonly inquiryCount: Prisma.FieldRef<"Property", 'Int'>
-  readonly userId: Prisma.FieldRef<"Property", 'String'>
+  readonly favoriteCount: Prisma.FieldRef<"Property", 'Int'>
+  readonly agentId: Prisma.FieldRef<"Property", 'String'>
+  readonly remarks: Prisma.FieldRef<"Property", 'String'>
+  readonly internalMemo: Prisma.FieldRef<"Property", 'String'>
+  readonly metadata: Prisma.FieldRef<"Property", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Property", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Property", 'DateTime'>
-  readonly publishedAt: Prisma.FieldRef<"Property", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"Property", 'DateTime'>
+  readonly userId: Prisma.FieldRef<"Property", 'String'>
 }
     
 
@@ -6073,6 +8364,168 @@ export type PropertyDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * Property.propertyType
+ */
+export type Property$propertyTypeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyTypeMaster
+   */
+  select?: Prisma.PropertyTypeMasterSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyTypeMaster
+   */
+  omit?: Prisma.PropertyTypeMasterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyTypeMasterInclude<ExtArgs> | null
+  where?: Prisma.PropertyTypeMasterWhereInput
+}
+
+/**
+ * Property.propertyCategory
+ */
+export type Property$propertyCategoryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyCategoryMaster
+   */
+  select?: Prisma.PropertyCategoryMasterSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyCategoryMaster
+   */
+  omit?: Prisma.PropertyCategoryMasterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyCategoryMasterInclude<ExtArgs> | null
+  where?: Prisma.PropertyCategoryMasterWhereInput
+}
+
+/**
+ * Property.area
+ */
+export type Property$areaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AreaMaster
+   */
+  select?: Prisma.AreaMasterSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AreaMaster
+   */
+  omit?: Prisma.AreaMasterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AreaMasterInclude<ExtArgs> | null
+  where?: Prisma.AreaMasterWhereInput
+}
+
+/**
+ * Property.layoutType
+ */
+export type Property$layoutTypeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FloorPlanMaster
+   */
+  select?: Prisma.FloorPlanMasterSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FloorPlanMaster
+   */
+  omit?: Prisma.FloorPlanMasterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FloorPlanMasterInclude<ExtArgs> | null
+  where?: Prisma.FloorPlanMasterWhereInput
+}
+
+/**
+ * Property.agent
+ */
+export type Property$agentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Agent
+   */
+  select?: Prisma.AgentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Agent
+   */
+  omit?: Prisma.AgentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AgentInclude<ExtArgs> | null
+  where?: Prisma.AgentWhereInput
+}
+
+/**
+ * Property.publication
+ */
+export type Property$publicationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyPublication
+   */
+  select?: Prisma.PropertyPublicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyPublication
+   */
+  omit?: Prisma.PropertyPublicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyPublicationInclude<ExtArgs> | null
+  where?: Prisma.PropertyPublicationWhereInput
+}
+
+/**
+ * Property.priceHistories
+ */
+export type Property$priceHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyPriceHistory
+   */
+  select?: Prisma.PropertyPriceHistorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyPriceHistory
+   */
+  omit?: Prisma.PropertyPriceHistoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyPriceHistoryInclude<ExtArgs> | null
+  where?: Prisma.PropertyPriceHistoryWhereInput
+  orderBy?: Prisma.PropertyPriceHistoryOrderByWithRelationInput | Prisma.PropertyPriceHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.PropertyPriceHistoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PropertyPriceHistoryScalarFieldEnum | Prisma.PropertyPriceHistoryScalarFieldEnum[]
+}
+
+/**
+ * Property.statusHistories
+ */
+export type Property$statusHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyStatusHistory
+   */
+  select?: Prisma.PropertyStatusHistorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyStatusHistory
+   */
+  omit?: Prisma.PropertyStatusHistoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyStatusHistoryInclude<ExtArgs> | null
+  where?: Prisma.PropertyStatusHistoryWhereInput
+  orderBy?: Prisma.PropertyStatusHistoryOrderByWithRelationInput | Prisma.PropertyStatusHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.PropertyStatusHistoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PropertyStatusHistoryScalarFieldEnum | Prisma.PropertyStatusHistoryScalarFieldEnum[]
+}
+
+/**
  * Property.images
  */
 export type Property$imagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -6121,6 +8574,30 @@ export type Property$featuresArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Property.stations
+ */
+export type Property$stationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyStation
+   */
+  select?: Prisma.PropertyStationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyStation
+   */
+  omit?: Prisma.PropertyStationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyStationInclude<ExtArgs> | null
+  where?: Prisma.PropertyStationWhereInput
+  orderBy?: Prisma.PropertyStationOrderByWithRelationInput | Prisma.PropertyStationOrderByWithRelationInput[]
+  cursor?: Prisma.PropertyStationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PropertyStationScalarFieldEnum | Prisma.PropertyStationScalarFieldEnum[]
+}
+
+/**
  * Property.inquiries
  */
 export type Property$inquiriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -6142,6 +8619,78 @@ export type Property$inquiriesArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.InquiryScalarFieldEnum | Prisma.InquiryScalarFieldEnum[]
+}
+
+/**
+ * Property.favorites
+ */
+export type Property$favoritesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Favorite
+   */
+  select?: Prisma.FavoriteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Favorite
+   */
+  omit?: Prisma.FavoriteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FavoriteInclude<ExtArgs> | null
+  where?: Prisma.FavoriteWhereInput
+  orderBy?: Prisma.FavoriteOrderByWithRelationInput | Prisma.FavoriteOrderByWithRelationInput[]
+  cursor?: Prisma.FavoriteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FavoriteScalarFieldEnum | Prisma.FavoriteScalarFieldEnum[]
+}
+
+/**
+ * Property.propertyViews
+ */
+export type Property$propertyViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyView
+   */
+  select?: Prisma.PropertyViewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyView
+   */
+  omit?: Prisma.PropertyViewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyViewInclude<ExtArgs> | null
+  where?: Prisma.PropertyViewWhereInput
+  orderBy?: Prisma.PropertyViewOrderByWithRelationInput | Prisma.PropertyViewOrderByWithRelationInput[]
+  cursor?: Prisma.PropertyViewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PropertyViewScalarFieldEnum | Prisma.PropertyViewScalarFieldEnum[]
+}
+
+/**
+ * Property.propertyViewDailies
+ */
+export type Property$propertyViewDailiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PropertyViewDaily
+   */
+  select?: Prisma.PropertyViewDailySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PropertyViewDaily
+   */
+  omit?: Prisma.PropertyViewDailyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PropertyViewDailyInclude<ExtArgs> | null
+  where?: Prisma.PropertyViewDailyWhereInput
+  orderBy?: Prisma.PropertyViewDailyOrderByWithRelationInput | Prisma.PropertyViewDailyOrderByWithRelationInput[]
+  cursor?: Prisma.PropertyViewDailyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PropertyViewDailyScalarFieldEnum | Prisma.PropertyViewDailyScalarFieldEnum[]
 }
 
 /**

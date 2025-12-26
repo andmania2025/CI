@@ -20,94 +20,192 @@ export type InquiryModel = runtime.Types.Result.DefaultSelection<Prisma.$Inquiry
 
 export type AggregateInquiry = {
   _count: InquiryCountAggregateOutputType | null
+  _avg: InquiryAvgAggregateOutputType | null
+  _sum: InquirySumAggregateOutputType | null
   _min: InquiryMinAggregateOutputType | null
   _max: InquiryMaxAggregateOutputType | null
 }
 
+export type InquiryAvgAggregateOutputType = {
+  responseCount: number | null
+}
+
+export type InquirySumAggregateOutputType = {
+  responseCount: number | null
+}
+
 export type InquiryMinAggregateOutputType = {
   id: string | null
+  inquiryNumber: string | null
+  targetType: $Enums.TargetType | null
+  targetId: string | null
   name: string | null
+  furigana: string | null
   email: string | null
   phone: string | null
+  companyName: string | null
   inquiryType: $Enums.InquiryType | null
+  subject: string | null
   message: string | null
   status: $Enums.InquiryStatus | null
-  propertyId: string | null
+  priority: $Enums.InquiryPriority | null
   userId: string | null
+  assignedAgentId: string | null
+  assignedAt: Date | null
+  responseCount: number | null
+  lastRespondedAt: Date | null
+  closedAt: Date | null
+  closedReason: string | null
+  source: string | null
   createdAt: Date | null
-  respondedAt: Date | null
+  updatedAt: Date | null
 }
 
 export type InquiryMaxAggregateOutputType = {
   id: string | null
+  inquiryNumber: string | null
+  targetType: $Enums.TargetType | null
+  targetId: string | null
   name: string | null
+  furigana: string | null
   email: string | null
   phone: string | null
+  companyName: string | null
   inquiryType: $Enums.InquiryType | null
+  subject: string | null
   message: string | null
   status: $Enums.InquiryStatus | null
-  propertyId: string | null
+  priority: $Enums.InquiryPriority | null
   userId: string | null
+  assignedAgentId: string | null
+  assignedAt: Date | null
+  responseCount: number | null
+  lastRespondedAt: Date | null
+  closedAt: Date | null
+  closedReason: string | null
+  source: string | null
   createdAt: Date | null
-  respondedAt: Date | null
+  updatedAt: Date | null
 }
 
 export type InquiryCountAggregateOutputType = {
   id: number
+  inquiryNumber: number
+  targetType: number
+  targetId: number
   name: number
+  furigana: number
   email: number
   phone: number
+  companyName: number
   inquiryType: number
+  subject: number
   message: number
   status: number
-  propertyId: number
+  priority: number
   userId: number
+  assignedAgentId: number
+  assignedAt: number
+  responseCount: number
+  lastRespondedAt: number
+  closedAt: number
+  closedReason: number
+  source: number
+  metadata: number
   createdAt: number
-  respondedAt: number
+  updatedAt: number
   _all: number
 }
 
 
+export type InquiryAvgAggregateInputType = {
+  responseCount?: true
+}
+
+export type InquirySumAggregateInputType = {
+  responseCount?: true
+}
+
 export type InquiryMinAggregateInputType = {
   id?: true
+  inquiryNumber?: true
+  targetType?: true
+  targetId?: true
   name?: true
+  furigana?: true
   email?: true
   phone?: true
+  companyName?: true
   inquiryType?: true
+  subject?: true
   message?: true
   status?: true
-  propertyId?: true
+  priority?: true
   userId?: true
+  assignedAgentId?: true
+  assignedAt?: true
+  responseCount?: true
+  lastRespondedAt?: true
+  closedAt?: true
+  closedReason?: true
+  source?: true
   createdAt?: true
-  respondedAt?: true
+  updatedAt?: true
 }
 
 export type InquiryMaxAggregateInputType = {
   id?: true
+  inquiryNumber?: true
+  targetType?: true
+  targetId?: true
   name?: true
+  furigana?: true
   email?: true
   phone?: true
+  companyName?: true
   inquiryType?: true
+  subject?: true
   message?: true
   status?: true
-  propertyId?: true
+  priority?: true
   userId?: true
+  assignedAgentId?: true
+  assignedAt?: true
+  responseCount?: true
+  lastRespondedAt?: true
+  closedAt?: true
+  closedReason?: true
+  source?: true
   createdAt?: true
-  respondedAt?: true
+  updatedAt?: true
 }
 
 export type InquiryCountAggregateInputType = {
   id?: true
+  inquiryNumber?: true
+  targetType?: true
+  targetId?: true
   name?: true
+  furigana?: true
   email?: true
   phone?: true
+  companyName?: true
   inquiryType?: true
+  subject?: true
   message?: true
   status?: true
-  propertyId?: true
+  priority?: true
   userId?: true
+  assignedAgentId?: true
+  assignedAt?: true
+  responseCount?: true
+  lastRespondedAt?: true
+  closedAt?: true
+  closedReason?: true
+  source?: true
+  metadata?: true
   createdAt?: true
-  respondedAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -149,6 +247,18 @@ export type InquiryAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: InquiryAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: InquirySumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: InquiryMinAggregateInputType
@@ -179,23 +289,41 @@ export type InquiryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: InquiryCountAggregateInputType | true
+  _avg?: InquiryAvgAggregateInputType
+  _sum?: InquirySumAggregateInputType
   _min?: InquiryMinAggregateInputType
   _max?: InquiryMaxAggregateInputType
 }
 
 export type InquiryGroupByOutputType = {
   id: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId: string | null
   name: string
+  furigana: string | null
   email: string
   phone: string | null
+  companyName: string | null
   inquiryType: $Enums.InquiryType
+  subject: string | null
   message: string
   status: $Enums.InquiryStatus
-  propertyId: string | null
+  priority: $Enums.InquiryPriority
   userId: string | null
+  assignedAgentId: string | null
+  assignedAt: Date | null
+  responseCount: number
+  lastRespondedAt: Date | null
+  closedAt: Date | null
+  closedReason: string | null
+  source: string | null
+  metadata: runtime.JsonValue | null
   createdAt: Date
-  respondedAt: Date | null
+  updatedAt: Date
   _count: InquiryCountAggregateOutputType | null
+  _avg: InquiryAvgAggregateOutputType | null
+  _sum: InquirySumAggregateOutputType | null
   _min: InquiryMinAggregateOutputType | null
   _max: InquiryMaxAggregateOutputType | null
 }
@@ -219,184 +347,363 @@ export type InquiryWhereInput = {
   AND?: Prisma.InquiryWhereInput | Prisma.InquiryWhereInput[]
   OR?: Prisma.InquiryWhereInput[]
   NOT?: Prisma.InquiryWhereInput | Prisma.InquiryWhereInput[]
-  id?: Prisma.StringFilter<"Inquiry"> | string
+  id?: Prisma.UuidFilter<"Inquiry"> | string
+  inquiryNumber?: Prisma.StringFilter<"Inquiry"> | string
+  targetType?: Prisma.EnumTargetTypeFilter<"Inquiry"> | $Enums.TargetType
+  targetId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
   name?: Prisma.StringFilter<"Inquiry"> | string
+  furigana?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   email?: Prisma.StringFilter<"Inquiry"> | string
   phone?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  companyName?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   inquiryType?: Prisma.EnumInquiryTypeFilter<"Inquiry"> | $Enums.InquiryType
+  subject?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   message?: Prisma.StringFilter<"Inquiry"> | string
   status?: Prisma.EnumInquiryStatusFilter<"Inquiry"> | $Enums.InquiryStatus
-  propertyId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
-  userId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  priority?: Prisma.EnumInquiryPriorityFilter<"Inquiry"> | $Enums.InquiryPriority
+  userId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAgentId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  responseCount?: Prisma.IntFilter<"Inquiry"> | number
+  lastRespondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedReason?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  source?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Inquiry">
   createdAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
-  respondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
-  property?: Prisma.XOR<Prisma.PropertyNullableScalarRelationFilter, Prisma.PropertyWhereInput> | null
+  updatedAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  assignedAgent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
+  property?: Prisma.XOR<Prisma.PropertyNullableScalarRelationFilter, Prisma.PropertyWhereInput> | null
+  messages?: Prisma.InquiryMessageListRelationFilter
 }
 
 export type InquiryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  inquiryNumber?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  targetId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
+  furigana?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  companyName?: Prisma.SortOrderInput | Prisma.SortOrder
   inquiryType?: Prisma.SortOrder
+  subject?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrderInput | Prisma.SortOrder
+  priority?: Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedAgentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  responseCount?: Prisma.SortOrder
+  lastRespondedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  closedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  closedReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  respondedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  property?: Prisma.PropertyOrderByWithRelationInput
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  assignedAgent?: Prisma.AgentOrderByWithRelationInput
+  property?: Prisma.PropertyOrderByWithRelationInput
+  messages?: Prisma.InquiryMessageOrderByRelationAggregateInput
 }
 
 export type InquiryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  inquiryNumber?: string
   AND?: Prisma.InquiryWhereInput | Prisma.InquiryWhereInput[]
   OR?: Prisma.InquiryWhereInput[]
   NOT?: Prisma.InquiryWhereInput | Prisma.InquiryWhereInput[]
+  targetType?: Prisma.EnumTargetTypeFilter<"Inquiry"> | $Enums.TargetType
+  targetId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
   name?: Prisma.StringFilter<"Inquiry"> | string
+  furigana?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   email?: Prisma.StringFilter<"Inquiry"> | string
   phone?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  companyName?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   inquiryType?: Prisma.EnumInquiryTypeFilter<"Inquiry"> | $Enums.InquiryType
+  subject?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   message?: Prisma.StringFilter<"Inquiry"> | string
   status?: Prisma.EnumInquiryStatusFilter<"Inquiry"> | $Enums.InquiryStatus
-  propertyId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
-  userId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  priority?: Prisma.EnumInquiryPriorityFilter<"Inquiry"> | $Enums.InquiryPriority
+  userId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAgentId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  responseCount?: Prisma.IntFilter<"Inquiry"> | number
+  lastRespondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedReason?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  source?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Inquiry">
   createdAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
-  respondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
-  property?: Prisma.XOR<Prisma.PropertyNullableScalarRelationFilter, Prisma.PropertyWhereInput> | null
+  updatedAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
-}, "id">
+  assignedAgent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
+  property?: Prisma.XOR<Prisma.PropertyNullableScalarRelationFilter, Prisma.PropertyWhereInput> | null
+  messages?: Prisma.InquiryMessageListRelationFilter
+}, "id" | "inquiryNumber">
 
 export type InquiryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  inquiryNumber?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  targetId?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
+  furigana?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  companyName?: Prisma.SortOrderInput | Prisma.SortOrder
   inquiryType?: Prisma.SortOrder
+  subject?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrderInput | Prisma.SortOrder
+  priority?: Prisma.SortOrder
   userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedAgentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  responseCount?: Prisma.SortOrder
+  lastRespondedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  closedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  closedReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  respondedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.InquiryCountOrderByAggregateInput
+  _avg?: Prisma.InquiryAvgOrderByAggregateInput
   _max?: Prisma.InquiryMaxOrderByAggregateInput
   _min?: Prisma.InquiryMinOrderByAggregateInput
+  _sum?: Prisma.InquirySumOrderByAggregateInput
 }
 
 export type InquiryScalarWhereWithAggregatesInput = {
   AND?: Prisma.InquiryScalarWhereWithAggregatesInput | Prisma.InquiryScalarWhereWithAggregatesInput[]
   OR?: Prisma.InquiryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.InquiryScalarWhereWithAggregatesInput | Prisma.InquiryScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"Inquiry"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"Inquiry"> | string
+  inquiryNumber?: Prisma.StringWithAggregatesFilter<"Inquiry"> | string
+  targetType?: Prisma.EnumTargetTypeWithAggregatesFilter<"Inquiry"> | $Enums.TargetType
+  targetId?: Prisma.UuidNullableWithAggregatesFilter<"Inquiry"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"Inquiry"> | string
+  furigana?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
   email?: Prisma.StringWithAggregatesFilter<"Inquiry"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+  companyName?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
   inquiryType?: Prisma.EnumInquiryTypeWithAggregatesFilter<"Inquiry"> | $Enums.InquiryType
+  subject?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
   message?: Prisma.StringWithAggregatesFilter<"Inquiry"> | string
   status?: Prisma.EnumInquiryStatusWithAggregatesFilter<"Inquiry"> | $Enums.InquiryStatus
-  propertyId?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
-  userId?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+  priority?: Prisma.EnumInquiryPriorityWithAggregatesFilter<"Inquiry"> | $Enums.InquiryPriority
+  userId?: Prisma.UuidNullableWithAggregatesFilter<"Inquiry"> | string | null
+  assignedAgentId?: Prisma.UuidNullableWithAggregatesFilter<"Inquiry"> | string | null
+  assignedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Inquiry"> | Date | string | null
+  responseCount?: Prisma.IntWithAggregatesFilter<"Inquiry"> | number
+  lastRespondedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Inquiry"> | Date | string | null
+  closedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Inquiry"> | Date | string | null
+  closedReason?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+  source?: Prisma.StringNullableWithAggregatesFilter<"Inquiry"> | string | null
+  metadata?: Prisma.JsonNullableWithAggregatesFilter<"Inquiry">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Inquiry"> | Date | string
-  respondedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Inquiry"> | Date | string | null
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Inquiry"> | Date | string
 }
 
 export type InquiryCreateInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
-  property?: Prisma.PropertyCreateNestedOneWithoutInquiriesInput
+  updatedAt?: Date | string
   user?: Prisma.UserCreateNestedOneWithoutInquiriesInput
+  assignedAgent?: Prisma.AgentCreateNestedOneWithoutAssignedInquiriesInput
+  property?: Prisma.PropertyCreateNestedOneWithoutInquiriesInput
+  messages?: Prisma.InquiryMessageCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryUncheckedCreateInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
-  propertyId?: string | null
+  priority?: $Enums.InquiryPriority
   userId?: string | null
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
+  messages?: Prisma.InquiryMessageUncheckedCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  property?: Prisma.PropertyUpdateOneWithoutInquiriesNestedInput
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneWithoutInquiriesNestedInput
+  assignedAgent?: Prisma.AgentUpdateOneWithoutAssignedInquiriesNestedInput
+  property?: Prisma.PropertyUpdateOneWithoutInquiriesNestedInput
+  messages?: Prisma.InquiryMessageUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
-  propertyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.InquiryMessageUncheckedUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryCreateManyInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
-  propertyId?: string | null
+  priority?: $Enums.InquiryPriority
   userId?: string | null
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
 }
 
 export type InquiryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InquiryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
-  propertyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InquiryListRelationFilter = {
@@ -411,44 +718,97 @@ export type InquiryOrderByRelationAggregateInput = {
 
 export type InquiryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  inquiryNumber?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  targetId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  furigana?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
   inquiryType?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  assignedAgentId?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  responseCount?: Prisma.SortOrder
+  lastRespondedAt?: Prisma.SortOrder
+  closedAt?: Prisma.SortOrder
+  closedReason?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  metadata?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  respondedAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+}
+
+export type InquiryAvgOrderByAggregateInput = {
+  responseCount?: Prisma.SortOrder
 }
 
 export type InquiryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  inquiryNumber?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  targetId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  furigana?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
   inquiryType?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  assignedAgentId?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  responseCount?: Prisma.SortOrder
+  lastRespondedAt?: Prisma.SortOrder
+  closedAt?: Prisma.SortOrder
+  closedReason?: Prisma.SortOrder
+  source?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  respondedAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type InquiryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  inquiryNumber?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  targetId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  furigana?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
   inquiryType?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   message?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  propertyId?: Prisma.SortOrder
+  priority?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  assignedAgentId?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  responseCount?: Prisma.SortOrder
+  lastRespondedAt?: Prisma.SortOrder
+  closedAt?: Prisma.SortOrder
+  closedReason?: Prisma.SortOrder
+  source?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  respondedAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+}
+
+export type InquirySumOrderByAggregateInput = {
+  responseCount?: Prisma.SortOrder
+}
+
+export type InquiryScalarRelationFilter = {
+  is?: Prisma.InquiryWhereInput
+  isNot?: Prisma.InquiryWhereInput
 }
 
 export type InquiryCreateNestedManyWithoutUserInput = {
@@ -490,6 +850,48 @@ export type InquiryUncheckedUpdateManyWithoutUserNestedInput = {
   connect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
   update?: Prisma.InquiryUpdateWithWhereUniqueWithoutUserInput | Prisma.InquiryUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.InquiryUpdateManyWithWhereWithoutUserInput | Prisma.InquiryUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
+}
+
+export type InquiryCreateNestedManyWithoutAssignedAgentInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput> | Prisma.InquiryCreateWithoutAssignedAgentInput[] | Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput[]
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput | Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput[]
+  createMany?: Prisma.InquiryCreateManyAssignedAgentInputEnvelope
+  connect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+}
+
+export type InquiryUncheckedCreateNestedManyWithoutAssignedAgentInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput> | Prisma.InquiryCreateWithoutAssignedAgentInput[] | Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput[]
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput | Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput[]
+  createMany?: Prisma.InquiryCreateManyAssignedAgentInputEnvelope
+  connect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+}
+
+export type InquiryUpdateManyWithoutAssignedAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput> | Prisma.InquiryCreateWithoutAssignedAgentInput[] | Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput[]
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput | Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput[]
+  upsert?: Prisma.InquiryUpsertWithWhereUniqueWithoutAssignedAgentInput | Prisma.InquiryUpsertWithWhereUniqueWithoutAssignedAgentInput[]
+  createMany?: Prisma.InquiryCreateManyAssignedAgentInputEnvelope
+  set?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  disconnect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  delete?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  connect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  update?: Prisma.InquiryUpdateWithWhereUniqueWithoutAssignedAgentInput | Prisma.InquiryUpdateWithWhereUniqueWithoutAssignedAgentInput[]
+  updateMany?: Prisma.InquiryUpdateManyWithWhereWithoutAssignedAgentInput | Prisma.InquiryUpdateManyWithWhereWithoutAssignedAgentInput[]
+  deleteMany?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
+}
+
+export type InquiryUncheckedUpdateManyWithoutAssignedAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput> | Prisma.InquiryCreateWithoutAssignedAgentInput[] | Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput[]
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput | Prisma.InquiryCreateOrConnectWithoutAssignedAgentInput[]
+  upsert?: Prisma.InquiryUpsertWithWhereUniqueWithoutAssignedAgentInput | Prisma.InquiryUpsertWithWhereUniqueWithoutAssignedAgentInput[]
+  createMany?: Prisma.InquiryCreateManyAssignedAgentInputEnvelope
+  set?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  disconnect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  delete?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  connect?: Prisma.InquiryWhereUniqueInput | Prisma.InquiryWhereUniqueInput[]
+  update?: Prisma.InquiryUpdateWithWhereUniqueWithoutAssignedAgentInput | Prisma.InquiryUpdateWithWhereUniqueWithoutAssignedAgentInput[]
+  updateMany?: Prisma.InquiryUpdateManyWithWhereWithoutAssignedAgentInput | Prisma.InquiryUpdateManyWithWhereWithoutAssignedAgentInput[]
   deleteMany?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
 }
 
@@ -535,6 +937,10 @@ export type InquiryUncheckedUpdateManyWithoutPropertyNestedInput = {
   deleteMany?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
 }
 
+export type EnumTargetTypeFieldUpdateOperationsInput = {
+  set?: $Enums.TargetType
+}
+
 export type EnumInquiryTypeFieldUpdateOperationsInput = {
   set?: $Enums.InquiryType
 }
@@ -543,30 +949,78 @@ export type EnumInquiryStatusFieldUpdateOperationsInput = {
   set?: $Enums.InquiryStatus
 }
 
+export type EnumInquiryPriorityFieldUpdateOperationsInput = {
+  set?: $Enums.InquiryPriority
+}
+
+export type InquiryCreateNestedOneWithoutMessagesInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutMessagesInput, Prisma.InquiryUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutMessagesInput
+  connect?: Prisma.InquiryWhereUniqueInput
+}
+
+export type InquiryUpdateOneRequiredWithoutMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.InquiryCreateWithoutMessagesInput, Prisma.InquiryUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.InquiryCreateOrConnectWithoutMessagesInput
+  upsert?: Prisma.InquiryUpsertWithoutMessagesInput
+  connect?: Prisma.InquiryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InquiryUpdateToOneWithWhereWithoutMessagesInput, Prisma.InquiryUpdateWithoutMessagesInput>, Prisma.InquiryUncheckedUpdateWithoutMessagesInput>
+}
+
 export type InquiryCreateWithoutUserInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
+  assignedAgent?: Prisma.AgentCreateNestedOneWithoutAssignedInquiriesInput
   property?: Prisma.PropertyCreateNestedOneWithoutInquiriesInput
+  messages?: Prisma.InquiryMessageCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryUncheckedCreateWithoutUserInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
-  propertyId?: string | null
+  priority?: $Enums.InquiryPriority
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
+  messages?: Prisma.InquiryMessageUncheckedCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryCreateOrConnectWithoutUserInput = {
@@ -599,43 +1053,169 @@ export type InquiryScalarWhereInput = {
   AND?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
   OR?: Prisma.InquiryScalarWhereInput[]
   NOT?: Prisma.InquiryScalarWhereInput | Prisma.InquiryScalarWhereInput[]
-  id?: Prisma.StringFilter<"Inquiry"> | string
+  id?: Prisma.UuidFilter<"Inquiry"> | string
+  inquiryNumber?: Prisma.StringFilter<"Inquiry"> | string
+  targetType?: Prisma.EnumTargetTypeFilter<"Inquiry"> | $Enums.TargetType
+  targetId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
   name?: Prisma.StringFilter<"Inquiry"> | string
+  furigana?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   email?: Prisma.StringFilter<"Inquiry"> | string
   phone?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  companyName?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   inquiryType?: Prisma.EnumInquiryTypeFilter<"Inquiry"> | $Enums.InquiryType
+  subject?: Prisma.StringNullableFilter<"Inquiry"> | string | null
   message?: Prisma.StringFilter<"Inquiry"> | string
   status?: Prisma.EnumInquiryStatusFilter<"Inquiry"> | $Enums.InquiryStatus
-  propertyId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
-  userId?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  priority?: Prisma.EnumInquiryPriorityFilter<"Inquiry"> | $Enums.InquiryPriority
+  userId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAgentId?: Prisma.UuidNullableFilter<"Inquiry"> | string | null
+  assignedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  responseCount?: Prisma.IntFilter<"Inquiry"> | number
+  lastRespondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  closedReason?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  source?: Prisma.StringNullableFilter<"Inquiry"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Inquiry">
   createdAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
-  respondedAt?: Prisma.DateTimeNullableFilter<"Inquiry"> | Date | string | null
+  updatedAt?: Prisma.DateTimeFilter<"Inquiry"> | Date | string
+}
+
+export type InquiryCreateWithoutAssignedAgentInput = {
+  id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  name: string
+  furigana?: string | null
+  email: string
+  phone?: string | null
+  companyName?: string | null
+  inquiryType?: $Enums.InquiryType
+  subject?: string | null
+  message: string
+  status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutInquiriesInput
+  property?: Prisma.PropertyCreateNestedOneWithoutInquiriesInput
+  messages?: Prisma.InquiryMessageCreateNestedManyWithoutInquiryInput
+}
+
+export type InquiryUncheckedCreateWithoutAssignedAgentInput = {
+  id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
+  name: string
+  furigana?: string | null
+  email: string
+  phone?: string | null
+  companyName?: string | null
+  inquiryType?: $Enums.InquiryType
+  subject?: string | null
+  message: string
+  status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  userId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  messages?: Prisma.InquiryMessageUncheckedCreateNestedManyWithoutInquiryInput
+}
+
+export type InquiryCreateOrConnectWithoutAssignedAgentInput = {
+  where: Prisma.InquiryWhereUniqueInput
+  create: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput>
+}
+
+export type InquiryCreateManyAssignedAgentInputEnvelope = {
+  data: Prisma.InquiryCreateManyAssignedAgentInput | Prisma.InquiryCreateManyAssignedAgentInput[]
+  skipDuplicates?: boolean
+}
+
+export type InquiryUpsertWithWhereUniqueWithoutAssignedAgentInput = {
+  where: Prisma.InquiryWhereUniqueInput
+  update: Prisma.XOR<Prisma.InquiryUpdateWithoutAssignedAgentInput, Prisma.InquiryUncheckedUpdateWithoutAssignedAgentInput>
+  create: Prisma.XOR<Prisma.InquiryCreateWithoutAssignedAgentInput, Prisma.InquiryUncheckedCreateWithoutAssignedAgentInput>
+}
+
+export type InquiryUpdateWithWhereUniqueWithoutAssignedAgentInput = {
+  where: Prisma.InquiryWhereUniqueInput
+  data: Prisma.XOR<Prisma.InquiryUpdateWithoutAssignedAgentInput, Prisma.InquiryUncheckedUpdateWithoutAssignedAgentInput>
+}
+
+export type InquiryUpdateManyWithWhereWithoutAssignedAgentInput = {
+  where: Prisma.InquiryScalarWhereInput
+  data: Prisma.XOR<Prisma.InquiryUpdateManyMutationInput, Prisma.InquiryUncheckedUpdateManyWithoutAssignedAgentInput>
 }
 
 export type InquiryCreateWithoutPropertyInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
   user?: Prisma.UserCreateNestedOneWithoutInquiriesInput
+  assignedAgent?: Prisma.AgentCreateNestedOneWithoutAssignedInquiriesInput
+  messages?: Prisma.InquiryMessageCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryUncheckedCreateWithoutPropertyInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
   userId?: string | null
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
+  messages?: Prisma.InquiryMessageUncheckedCreateNestedManyWithoutInquiryInput
 }
 
 export type InquiryCreateOrConnectWithoutPropertyInput = {
@@ -664,206 +1244,671 @@ export type InquiryUpdateManyWithWhereWithoutPropertyInput = {
   data: Prisma.XOR<Prisma.InquiryUpdateManyMutationInput, Prisma.InquiryUncheckedUpdateManyWithoutPropertyInput>
 }
 
-export type InquiryCreateManyUserInput = {
+export type InquiryCreateWithoutMessagesInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
-  propertyId?: string | null
+  priority?: $Enums.InquiryPriority
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutInquiriesInput
+  assignedAgent?: Prisma.AgentCreateNestedOneWithoutAssignedInquiriesInput
+  property?: Prisma.PropertyCreateNestedOneWithoutInquiriesInput
+}
+
+export type InquiryUncheckedCreateWithoutMessagesInput = {
+  id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
+  name: string
+  furigana?: string | null
+  email: string
+  phone?: string | null
+  companyName?: string | null
+  inquiryType?: $Enums.InquiryType
+  subject?: string | null
+  message: string
+  status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  userId?: string | null
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type InquiryCreateOrConnectWithoutMessagesInput = {
+  where: Prisma.InquiryWhereUniqueInput
+  create: Prisma.XOR<Prisma.InquiryCreateWithoutMessagesInput, Prisma.InquiryUncheckedCreateWithoutMessagesInput>
+}
+
+export type InquiryUpsertWithoutMessagesInput = {
+  update: Prisma.XOR<Prisma.InquiryUpdateWithoutMessagesInput, Prisma.InquiryUncheckedUpdateWithoutMessagesInput>
+  create: Prisma.XOR<Prisma.InquiryCreateWithoutMessagesInput, Prisma.InquiryUncheckedCreateWithoutMessagesInput>
+  where?: Prisma.InquiryWhereInput
+}
+
+export type InquiryUpdateToOneWithWhereWithoutMessagesInput = {
+  where?: Prisma.InquiryWhereInput
+  data: Prisma.XOR<Prisma.InquiryUpdateWithoutMessagesInput, Prisma.InquiryUncheckedUpdateWithoutMessagesInput>
+}
+
+export type InquiryUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  message?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutInquiriesNestedInput
+  assignedAgent?: Prisma.AgentUpdateOneWithoutAssignedInquiriesNestedInput
+  property?: Prisma.PropertyUpdateOneWithoutInquiriesNestedInput
+}
+
+export type InquiryUncheckedUpdateWithoutMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  message?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type InquiryCreateManyUserInput = {
+  id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
+  name: string
+  furigana?: string | null
+  email: string
+  phone?: string | null
+  companyName?: string | null
+  inquiryType?: $Enums.InquiryType
+  subject?: string | null
+  message: string
+  status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type InquiryUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAgent?: Prisma.AgentUpdateOneWithoutAssignedInquiriesNestedInput
   property?: Prisma.PropertyUpdateOneWithoutInquiriesNestedInput
+  messages?: Prisma.InquiryMessageUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
-  propertyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.InquiryMessageUncheckedUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
-  propertyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type InquiryCreateManyAssignedAgentInput = {
+  id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
+  targetId?: string | null
+  name: string
+  furigana?: string | null
+  email: string
+  phone?: string | null
+  companyName?: string | null
+  inquiryType?: $Enums.InquiryType
+  subject?: string | null
+  message: string
+  status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
+  userId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type InquiryUpdateWithoutAssignedAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  message?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutInquiriesNestedInput
+  property?: Prisma.PropertyUpdateOneWithoutInquiriesNestedInput
+  messages?: Prisma.InquiryMessageUpdateManyWithoutInquiryNestedInput
+}
+
+export type InquiryUncheckedUpdateWithoutAssignedAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  message?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.InquiryMessageUncheckedUpdateManyWithoutInquiryNestedInput
+}
+
+export type InquiryUncheckedUpdateManyWithoutAssignedAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
+  targetId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  message?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InquiryCreateManyPropertyInput = {
   id?: string
+  inquiryNumber: string
+  targetType: $Enums.TargetType
   name: string
+  furigana?: string | null
   email: string
   phone?: string | null
+  companyName?: string | null
   inquiryType?: $Enums.InquiryType
+  subject?: string | null
   message: string
   status?: $Enums.InquiryStatus
+  priority?: $Enums.InquiryPriority
   userId?: string | null
+  assignedAgentId?: string | null
+  assignedAt?: Date | string | null
+  responseCount?: number
+  lastRespondedAt?: Date | string | null
+  closedAt?: Date | string | null
+  closedReason?: string | null
+  source?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
-  respondedAt?: Date | string | null
+  updatedAt?: Date | string
 }
 
 export type InquiryUpdateWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneWithoutInquiriesNestedInput
+  assignedAgent?: Prisma.AgentUpdateOneWithoutAssignedInquiriesNestedInput
+  messages?: Prisma.InquiryMessageUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryUncheckedUpdateWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.InquiryMessageUncheckedUpdateManyWithoutInquiryNestedInput
 }
 
 export type InquiryUncheckedUpdateManyWithoutPropertyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  inquiryNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  furigana?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   inquiryType?: Prisma.EnumInquiryTypeFieldUpdateOperationsInput | $Enums.InquiryType
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumInquiryStatusFieldUpdateOperationsInput | $Enums.InquiryStatus
+  priority?: Prisma.EnumInquiryPriorityFieldUpdateOperationsInput | $Enums.InquiryPriority
   userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAgentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  responseCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastRespondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type InquiryCountOutputType
+ */
+
+export type InquiryCountOutputType = {
+  messages: number
+}
+
+export type InquiryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  messages?: boolean | InquiryCountOutputTypeCountMessagesArgs
+}
+
+/**
+ * InquiryCountOutputType without action
+ */
+export type InquiryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InquiryCountOutputType
+   */
+  select?: Prisma.InquiryCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * InquiryCountOutputType without action
+ */
+export type InquiryCountOutputTypeCountMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InquiryMessageWhereInput
+}
 
 
 export type InquirySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  inquiryNumber?: boolean
+  targetType?: boolean
+  targetId?: boolean
   name?: boolean
+  furigana?: boolean
   email?: boolean
   phone?: boolean
+  companyName?: boolean
   inquiryType?: boolean
+  subject?: boolean
   message?: boolean
   status?: boolean
-  propertyId?: boolean
+  priority?: boolean
   userId?: boolean
+  assignedAgentId?: boolean
+  assignedAt?: boolean
+  responseCount?: boolean
+  lastRespondedAt?: boolean
+  closedAt?: boolean
+  closedReason?: boolean
+  source?: boolean
+  metadata?: boolean
   createdAt?: boolean
-  respondedAt?: boolean
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
+  updatedAt?: boolean
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
+  messages?: boolean | Prisma.Inquiry$messagesArgs<ExtArgs>
+  _count?: boolean | Prisma.InquiryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["inquiry"]>
 
 export type InquirySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  inquiryNumber?: boolean
+  targetType?: boolean
+  targetId?: boolean
   name?: boolean
+  furigana?: boolean
   email?: boolean
   phone?: boolean
+  companyName?: boolean
   inquiryType?: boolean
+  subject?: boolean
   message?: boolean
   status?: boolean
-  propertyId?: boolean
+  priority?: boolean
   userId?: boolean
+  assignedAgentId?: boolean
+  assignedAt?: boolean
+  responseCount?: boolean
+  lastRespondedAt?: boolean
+  closedAt?: boolean
+  closedReason?: boolean
+  source?: boolean
+  metadata?: boolean
   createdAt?: boolean
-  respondedAt?: boolean
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
+  updatedAt?: boolean
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
 }, ExtArgs["result"]["inquiry"]>
 
 export type InquirySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  inquiryNumber?: boolean
+  targetType?: boolean
+  targetId?: boolean
   name?: boolean
+  furigana?: boolean
   email?: boolean
   phone?: boolean
+  companyName?: boolean
   inquiryType?: boolean
+  subject?: boolean
   message?: boolean
   status?: boolean
-  propertyId?: boolean
+  priority?: boolean
   userId?: boolean
+  assignedAgentId?: boolean
+  assignedAt?: boolean
+  responseCount?: boolean
+  lastRespondedAt?: boolean
+  closedAt?: boolean
+  closedReason?: boolean
+  source?: boolean
+  metadata?: boolean
   createdAt?: boolean
-  respondedAt?: boolean
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
+  updatedAt?: boolean
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
 }, ExtArgs["result"]["inquiry"]>
 
 export type InquirySelectScalar = {
   id?: boolean
+  inquiryNumber?: boolean
+  targetType?: boolean
+  targetId?: boolean
   name?: boolean
+  furigana?: boolean
   email?: boolean
   phone?: boolean
+  companyName?: boolean
   inquiryType?: boolean
+  subject?: boolean
   message?: boolean
   status?: boolean
-  propertyId?: boolean
+  priority?: boolean
   userId?: boolean
+  assignedAgentId?: boolean
+  assignedAt?: boolean
+  responseCount?: boolean
+  lastRespondedAt?: boolean
+  closedAt?: boolean
+  closedReason?: boolean
+  source?: boolean
+  metadata?: boolean
   createdAt?: boolean
-  respondedAt?: boolean
+  updatedAt?: boolean
 }
 
-export type InquiryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "phone" | "inquiryType" | "message" | "status" | "propertyId" | "userId" | "createdAt" | "respondedAt", ExtArgs["result"]["inquiry"]>
+export type InquiryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "inquiryNumber" | "targetType" | "targetId" | "name" | "furigana" | "email" | "phone" | "companyName" | "inquiryType" | "subject" | "message" | "status" | "priority" | "userId" | "assignedAgentId" | "assignedAt" | "responseCount" | "lastRespondedAt" | "closedAt" | "closedReason" | "source" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["inquiry"]>
 export type InquiryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
+  messages?: boolean | Prisma.Inquiry$messagesArgs<ExtArgs>
+  _count?: boolean | Prisma.InquiryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type InquiryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
 }
 export type InquiryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
   user?: boolean | Prisma.Inquiry$userArgs<ExtArgs>
+  assignedAgent?: boolean | Prisma.Inquiry$assignedAgentArgs<ExtArgs>
+  property?: boolean | Prisma.Inquiry$propertyArgs<ExtArgs>
 }
 
 export type $InquiryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Inquiry"
   objects: {
-    property: Prisma.$PropertyPayload<ExtArgs> | null
     user: Prisma.$UserPayload<ExtArgs> | null
+    assignedAgent: Prisma.$AgentPayload<ExtArgs> | null
+    property: Prisma.$PropertyPayload<ExtArgs> | null
+    messages: Prisma.$InquiryMessagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    inquiryNumber: string
+    targetType: $Enums.TargetType
+    targetId: string | null
     name: string
+    furigana: string | null
     email: string
     phone: string | null
+    companyName: string | null
     inquiryType: $Enums.InquiryType
+    subject: string | null
     message: string
     status: $Enums.InquiryStatus
-    propertyId: string | null
+    priority: $Enums.InquiryPriority
     userId: string | null
+    assignedAgentId: string | null
+    assignedAt: Date | null
+    responseCount: number
+    lastRespondedAt: Date | null
+    closedAt: Date | null
+    closedReason: string | null
+    source: string | null
+    metadata: runtime.JsonValue | null
     createdAt: Date
-    respondedAt: Date | null
+    updatedAt: Date
   }, ExtArgs["result"]["inquiry"]>
   composites: {}
 }
@@ -1258,8 +2303,10 @@ readonly fields: InquiryFieldRefs;
  */
 export interface Prisma__InquiryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  property<T extends Prisma.Inquiry$propertyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Inquiry$propertyArgs<ExtArgs>>): Prisma.Prisma__PropertyClient<runtime.Types.Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.Inquiry$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Inquiry$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  assignedAgent<T extends Prisma.Inquiry$assignedAgentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Inquiry$assignedAgentArgs<ExtArgs>>): Prisma.Prisma__AgentClient<runtime.Types.Result.GetResult<Prisma.$AgentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  property<T extends Prisma.Inquiry$propertyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Inquiry$propertyArgs<ExtArgs>>): Prisma.Prisma__PropertyClient<runtime.Types.Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  messages<T extends Prisma.Inquiry$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Inquiry$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InquiryMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1290,16 +2337,30 @@ export interface Prisma__InquiryClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface InquiryFieldRefs {
   readonly id: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly inquiryNumber: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly targetType: Prisma.FieldRef<"Inquiry", 'TargetType'>
+  readonly targetId: Prisma.FieldRef<"Inquiry", 'String'>
   readonly name: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly furigana: Prisma.FieldRef<"Inquiry", 'String'>
   readonly email: Prisma.FieldRef<"Inquiry", 'String'>
   readonly phone: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly companyName: Prisma.FieldRef<"Inquiry", 'String'>
   readonly inquiryType: Prisma.FieldRef<"Inquiry", 'InquiryType'>
+  readonly subject: Prisma.FieldRef<"Inquiry", 'String'>
   readonly message: Prisma.FieldRef<"Inquiry", 'String'>
   readonly status: Prisma.FieldRef<"Inquiry", 'InquiryStatus'>
-  readonly propertyId: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly priority: Prisma.FieldRef<"Inquiry", 'InquiryPriority'>
   readonly userId: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly assignedAgentId: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly assignedAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
+  readonly responseCount: Prisma.FieldRef<"Inquiry", 'Int'>
+  readonly lastRespondedAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
+  readonly closedAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
+  readonly closedReason: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly source: Prisma.FieldRef<"Inquiry", 'String'>
+  readonly metadata: Prisma.FieldRef<"Inquiry", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
-  readonly respondedAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Inquiry", 'DateTime'>
 }
     
 
@@ -1696,6 +2757,44 @@ export type InquiryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Inquiry.user
+ */
+export type Inquiry$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Inquiry.assignedAgent
+ */
+export type Inquiry$assignedAgentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Agent
+   */
+  select?: Prisma.AgentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Agent
+   */
+  omit?: Prisma.AgentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AgentInclude<ExtArgs> | null
+  where?: Prisma.AgentWhereInput
+}
+
+/**
  * Inquiry.property
  */
 export type Inquiry$propertyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1715,22 +2814,27 @@ export type Inquiry$propertyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Inquiry.user
+ * Inquiry.messages
  */
-export type Inquiry$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Inquiry$messagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the InquiryMessage
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.InquiryMessageSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the InquiryMessage
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.InquiryMessageOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
+  include?: Prisma.InquiryMessageInclude<ExtArgs> | null
+  where?: Prisma.InquiryMessageWhereInput
+  orderBy?: Prisma.InquiryMessageOrderByWithRelationInput | Prisma.InquiryMessageOrderByWithRelationInput[]
+  cursor?: Prisma.InquiryMessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InquiryMessageScalarFieldEnum | Prisma.InquiryMessageScalarFieldEnum[]
 }
 
 /**

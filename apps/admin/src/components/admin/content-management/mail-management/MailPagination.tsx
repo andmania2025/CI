@@ -67,7 +67,7 @@ export const MailPagination = memo(function MailPagination({
                         {page}
                       </PaginationLink>
                     </PaginationItem>
-                  )
+                  ),
                 )}
             </div>
 

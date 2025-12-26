@@ -1,14 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 import type { QuestionFormData } from "@/hooks/useQuestionForm";
+import { cn } from "@/lib/utils";
 import type React from "react";
 
 interface QuestionContentSectionProps {
   formData: QuestionFormData;
   errors: Record<string, string>;
-  onInputChange: (field: keyof QuestionFormData, value: string | boolean) => void;
+  onInputChange: (
+    field: keyof QuestionFormData,
+    value: string | boolean,
+  ) => void;
 }
 
 export const QuestionContentSection: React.FC<QuestionContentSectionProps> = ({
@@ -41,7 +44,9 @@ export const QuestionContentSection: React.FC<QuestionContentSectionProps> = ({
               className={cn("w-full", errors.content && "border-red-500")}
               rows={6}
             />
-            {errors.content && <p className="text-red-500 text-sm mt-1">{errors.content}</p>}
+            {errors.content && (
+              <p className="text-red-500 text-sm mt-1">{errors.content}</p>
+            )}
           </div>
         </div>
       </div>

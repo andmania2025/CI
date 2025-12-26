@@ -45,10 +45,50 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model UserRole
+ * 
+ */
+export type UserRole = Prisma.UserRoleModel
+/**
+ * Model Company
+ * 
+ */
+export type Company = Prisma.CompanyModel
+/**
+ * Model Branch
+ * 
+ */
+export type Branch = Prisma.BranchModel
+/**
+ * Model Agent
+ * 
+ */
+export type Agent = Prisma.AgentModel
+/**
  * Model Property
  * 
  */
 export type Property = Prisma.PropertyModel
+/**
+ * Model PropertyPublication
+ * 
+ */
+export type PropertyPublication = Prisma.PropertyPublicationModel
+/**
+ * Model PropertyPriceHistory
+ * 
+ */
+export type PropertyPriceHistory = Prisma.PropertyPriceHistoryModel
+/**
+ * Model PropertyStatusHistory
+ * 
+ */
+export type PropertyStatusHistory = Prisma.PropertyStatusHistoryModel
 /**
  * Model PropertyImage
  * 
@@ -60,12 +100,122 @@ export type PropertyImage = Prisma.PropertyImageModel
  */
 export type PropertyFeature = Prisma.PropertyFeatureModel
 /**
- * Model FeatureMaster
+ * Model PropertyStation
  * 
  */
-export type FeatureMaster = Prisma.FeatureMasterModel
+export type PropertyStation = Prisma.PropertyStationModel
+/**
+ * Model Favorite
+ * 
+ */
+export type Favorite = Prisma.FavoriteModel
+/**
+ * Model PropertyView
+ * 
+ */
+export type PropertyView = Prisma.PropertyViewModel
+/**
+ * Model PropertyViewDaily
+ * 
+ */
+export type PropertyViewDaily = Prisma.PropertyViewDailyModel
 /**
  * Model Inquiry
  * 
  */
 export type Inquiry = Prisma.InquiryModel
+/**
+ * Model InquiryMessage
+ * 
+ */
+export type InquiryMessage = Prisma.InquiryMessageModel
+/**
+ * Model BulkAssessment
+ * 
+ */
+export type BulkAssessment = Prisma.BulkAssessmentModel
+/**
+ * Model BulkAssessmentResponse
+ * 
+ */
+export type BulkAssessmentResponse = Prisma.BulkAssessmentResponseModel
+/**
+ * Model Question
+ * 
+ */
+export type Question = Prisma.QuestionModel
+/**
+ * Model Answer
+ * 
+ */
+export type Answer = Prisma.AnswerModel
+/**
+ * Model FeatureMaster
+ * 
+ */
+export type FeatureMaster = Prisma.FeatureMasterModel
+/**
+ * Model RegionMaster
+ * 
+ */
+export type RegionMaster = Prisma.RegionMasterModel
+/**
+ * Model AreaMaster
+ * 
+ */
+export type AreaMaster = Prisma.AreaMasterModel
+/**
+ * Model PropertyTypeMaster
+ * 
+ */
+export type PropertyTypeMaster = Prisma.PropertyTypeMasterModel
+/**
+ * Model PropertyCategoryMaster
+ * 
+ */
+export type PropertyCategoryMaster = Prisma.PropertyCategoryMasterModel
+/**
+ * Model FloorPlanMaster
+ * 
+ */
+export type FloorPlanMaster = Prisma.FloorPlanMasterModel
+/**
+ * Model RouteMaster
+ * 
+ */
+export type RouteMaster = Prisma.RouteMasterModel
+/**
+ * Model Station
+ * 
+ */
+export type Station = Prisma.StationModel
+/**
+ * Model QuestionCategory
+ * 
+ */
+export type QuestionCategory = Prisma.QuestionCategoryModel
+/**
+ * Model Mail
+ * 
+ */
+export type Mail = Prisma.MailModel
+/**
+ * Model FileBox
+ * 
+ */
+export type FileBox = Prisma.FileBoxModel
+/**
+ * Model SystemSetting
+ * 
+ */
+export type SystemSetting = Prisma.SystemSettingModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

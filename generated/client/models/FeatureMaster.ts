@@ -36,24 +36,30 @@ export type FeatureMasterSumAggregateOutputType = {
 
 export type FeatureMasterMinAggregateOutputType = {
   id: string | null
+  code: string | null
   name: string | null
   category: $Enums.FeatureCategory | null
+  icon: string | null
   displayOrder: number | null
   isActive: boolean | null
 }
 
 export type FeatureMasterMaxAggregateOutputType = {
   id: string | null
+  code: string | null
   name: string | null
   category: $Enums.FeatureCategory | null
+  icon: string | null
   displayOrder: number | null
   isActive: boolean | null
 }
 
 export type FeatureMasterCountAggregateOutputType = {
   id: number
+  code: number
   name: number
   category: number
+  icon: number
   displayOrder: number
   isActive: number
   _all: number
@@ -70,24 +76,30 @@ export type FeatureMasterSumAggregateInputType = {
 
 export type FeatureMasterMinAggregateInputType = {
   id?: true
+  code?: true
   name?: true
   category?: true
+  icon?: true
   displayOrder?: true
   isActive?: true
 }
 
 export type FeatureMasterMaxAggregateInputType = {
   id?: true
+  code?: true
   name?: true
   category?: true
+  icon?: true
   displayOrder?: true
   isActive?: true
 }
 
 export type FeatureMasterCountAggregateInputType = {
   id?: true
+  code?: true
   name?: true
   category?: true
+  icon?: true
   displayOrder?: true
   isActive?: true
   _all?: true
@@ -181,8 +193,10 @@ export type FeatureMasterGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 
 export type FeatureMasterGroupByOutputType = {
   id: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon: string | null
   displayOrder: number
   isActive: boolean
   _count: FeatureMasterCountAggregateOutputType | null
@@ -211,9 +225,11 @@ export type FeatureMasterWhereInput = {
   AND?: Prisma.FeatureMasterWhereInput | Prisma.FeatureMasterWhereInput[]
   OR?: Prisma.FeatureMasterWhereInput[]
   NOT?: Prisma.FeatureMasterWhereInput | Prisma.FeatureMasterWhereInput[]
-  id?: Prisma.StringFilter<"FeatureMaster"> | string
+  id?: Prisma.UuidFilter<"FeatureMaster"> | string
+  code?: Prisma.StringFilter<"FeatureMaster"> | string
   name?: Prisma.StringFilter<"FeatureMaster"> | string
   category?: Prisma.EnumFeatureCategoryFilter<"FeatureMaster"> | $Enums.FeatureCategory
+  icon?: Prisma.StringNullableFilter<"FeatureMaster"> | string | null
   displayOrder?: Prisma.IntFilter<"FeatureMaster"> | number
   isActive?: Prisma.BoolFilter<"FeatureMaster"> | boolean
   properties?: Prisma.PropertyFeatureListRelationFilter
@@ -221,8 +237,10 @@ export type FeatureMasterWhereInput = {
 
 export type FeatureMasterOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  icon?: Prisma.SortOrderInput | Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   properties?: Prisma.PropertyFeatureOrderByRelationAggregateInput
@@ -230,20 +248,24 @@ export type FeatureMasterOrderByWithRelationInput = {
 
 export type FeatureMasterWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  name?: string
+  code?: string
   AND?: Prisma.FeatureMasterWhereInput | Prisma.FeatureMasterWhereInput[]
   OR?: Prisma.FeatureMasterWhereInput[]
   NOT?: Prisma.FeatureMasterWhereInput | Prisma.FeatureMasterWhereInput[]
+  name?: Prisma.StringFilter<"FeatureMaster"> | string
   category?: Prisma.EnumFeatureCategoryFilter<"FeatureMaster"> | $Enums.FeatureCategory
+  icon?: Prisma.StringNullableFilter<"FeatureMaster"> | string | null
   displayOrder?: Prisma.IntFilter<"FeatureMaster"> | number
   isActive?: Prisma.BoolFilter<"FeatureMaster"> | boolean
   properties?: Prisma.PropertyFeatureListRelationFilter
-}, "id" | "name">
+}, "id" | "code">
 
 export type FeatureMasterOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  icon?: Prisma.SortOrderInput | Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   _count?: Prisma.FeatureMasterCountOrderByAggregateInput
@@ -257,17 +279,21 @@ export type FeatureMasterScalarWhereWithAggregatesInput = {
   AND?: Prisma.FeatureMasterScalarWhereWithAggregatesInput | Prisma.FeatureMasterScalarWhereWithAggregatesInput[]
   OR?: Prisma.FeatureMasterScalarWhereWithAggregatesInput[]
   NOT?: Prisma.FeatureMasterScalarWhereWithAggregatesInput | Prisma.FeatureMasterScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"FeatureMaster"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"FeatureMaster"> | string
+  code?: Prisma.StringWithAggregatesFilter<"FeatureMaster"> | string
   name?: Prisma.StringWithAggregatesFilter<"FeatureMaster"> | string
   category?: Prisma.EnumFeatureCategoryWithAggregatesFilter<"FeatureMaster"> | $Enums.FeatureCategory
+  icon?: Prisma.StringNullableWithAggregatesFilter<"FeatureMaster"> | string | null
   displayOrder?: Prisma.IntWithAggregatesFilter<"FeatureMaster"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"FeatureMaster"> | boolean
 }
 
 export type FeatureMasterCreateInput = {
   id?: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon?: string | null
   displayOrder?: number
   isActive?: boolean
   properties?: Prisma.PropertyFeatureCreateNestedManyWithoutFeatureInput
@@ -275,8 +301,10 @@ export type FeatureMasterCreateInput = {
 
 export type FeatureMasterUncheckedCreateInput = {
   id?: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon?: string | null
   displayOrder?: number
   isActive?: boolean
   properties?: Prisma.PropertyFeatureUncheckedCreateNestedManyWithoutFeatureInput
@@ -284,8 +312,10 @@ export type FeatureMasterUncheckedCreateInput = {
 
 export type FeatureMasterUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   properties?: Prisma.PropertyFeatureUpdateManyWithoutFeatureNestedInput
@@ -293,8 +323,10 @@ export type FeatureMasterUpdateInput = {
 
 export type FeatureMasterUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   properties?: Prisma.PropertyFeatureUncheckedUpdateManyWithoutFeatureNestedInput
@@ -302,24 +334,30 @@ export type FeatureMasterUncheckedUpdateInput = {
 
 export type FeatureMasterCreateManyInput = {
   id?: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon?: string | null
   displayOrder?: number
   isActive?: boolean
 }
 
 export type FeatureMasterUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type FeatureMasterUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -331,8 +369,10 @@ export type FeatureMasterScalarRelationFilter = {
 
 export type FeatureMasterCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  icon?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
 }
@@ -343,16 +383,20 @@ export type FeatureMasterAvgOrderByAggregateInput = {
 
 export type FeatureMasterMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  icon?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
 }
 
 export type FeatureMasterMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  code?: Prisma.SortOrder
   name?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  icon?: Prisma.SortOrder
   displayOrder?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
 }
@@ -379,22 +423,22 @@ export type EnumFeatureCategoryFieldUpdateOperationsInput = {
   set?: $Enums.FeatureCategory
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type FeatureMasterCreateWithoutPropertiesInput = {
   id?: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon?: string | null
   displayOrder?: number
   isActive?: boolean
 }
 
 export type FeatureMasterUncheckedCreateWithoutPropertiesInput = {
   id?: string
+  code: string
   name: string
   category: $Enums.FeatureCategory
+  icon?: string | null
   displayOrder?: number
   isActive?: boolean
 }
@@ -417,16 +461,20 @@ export type FeatureMasterUpdateToOneWithWhereWithoutPropertiesInput = {
 
 export type FeatureMasterUpdateWithoutPropertiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type FeatureMasterUncheckedUpdateWithoutPropertiesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumFeatureCategoryFieldUpdateOperationsInput | $Enums.FeatureCategory
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayOrder?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -464,8 +512,10 @@ export type FeatureMasterCountOutputTypeCountPropertiesArgs<ExtArgs extends runt
 
 export type FeatureMasterSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  code?: boolean
   name?: boolean
   category?: boolean
+  icon?: boolean
   displayOrder?: boolean
   isActive?: boolean
   properties?: boolean | Prisma.FeatureMaster$propertiesArgs<ExtArgs>
@@ -474,29 +524,35 @@ export type FeatureMasterSelect<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type FeatureMasterSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  code?: boolean
   name?: boolean
   category?: boolean
+  icon?: boolean
   displayOrder?: boolean
   isActive?: boolean
 }, ExtArgs["result"]["featureMaster"]>
 
 export type FeatureMasterSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  code?: boolean
   name?: boolean
   category?: boolean
+  icon?: boolean
   displayOrder?: boolean
   isActive?: boolean
 }, ExtArgs["result"]["featureMaster"]>
 
 export type FeatureMasterSelectScalar = {
   id?: boolean
+  code?: boolean
   name?: boolean
   category?: boolean
+  icon?: boolean
   displayOrder?: boolean
   isActive?: boolean
 }
 
-export type FeatureMasterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "category" | "displayOrder" | "isActive", ExtArgs["result"]["featureMaster"]>
+export type FeatureMasterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "name" | "category" | "icon" | "displayOrder" | "isActive", ExtArgs["result"]["featureMaster"]>
 export type FeatureMasterInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   properties?: boolean | Prisma.FeatureMaster$propertiesArgs<ExtArgs>
   _count?: boolean | Prisma.FeatureMasterCountOutputTypeDefaultArgs<ExtArgs>
@@ -511,8 +567,10 @@ export type $FeatureMasterPayload<ExtArgs extends runtime.Types.Extensions.Inter
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    code: string
     name: string
     category: $Enums.FeatureCategory
+    icon: string | null
     displayOrder: number
     isActive: boolean
   }, ExtArgs["result"]["featureMaster"]>
@@ -940,8 +998,10 @@ export interface Prisma__FeatureMasterClient<T, Null = never, ExtArgs extends ru
  */
 export interface FeatureMasterFieldRefs {
   readonly id: Prisma.FieldRef<"FeatureMaster", 'String'>
+  readonly code: Prisma.FieldRef<"FeatureMaster", 'String'>
   readonly name: Prisma.FieldRef<"FeatureMaster", 'String'>
   readonly category: Prisma.FieldRef<"FeatureMaster", 'FeatureCategory'>
+  readonly icon: Prisma.FieldRef<"FeatureMaster", 'String'>
   readonly displayOrder: Prisma.FieldRef<"FeatureMaster", 'Int'>
   readonly isActive: Prisma.FieldRef<"FeatureMaster", 'Boolean'>
 }

@@ -7,26 +7,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import type { QuestionFormData } from "@/hooks/useQuestionForm";
 import {
   PROPERTY_FEATURES,
   QUESTION_CATEGORIES,
   REAL_ESTATE_TYPES,
 } from "@/lib/constants/realEstate";
+import { cn } from "@/lib/utils";
 import type React from "react";
 
 interface QuestionCategorySectionProps {
   formData: QuestionFormData;
   errors: Record<string, string>;
-  onInputChange: (field: keyof QuestionFormData, value: string | boolean) => void;
+  onInputChange: (
+    field: keyof QuestionFormData,
+    value: string | boolean,
+  ) => void;
 }
 
-export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = ({
-  formData,
-  errors,
-  onInputChange,
-}) => {
+export const QuestionCategorySection: React.FC<
+  QuestionCategorySectionProps
+> = ({ formData, errors, onInputChange }) => {
   return (
     <section>
       <div className="space-y-4">
@@ -41,9 +42,16 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
           <div className="w-full max-w-[720px]">
             <Select
               value={formData.questionCategory}
-              onValueChange={(value) => onInputChange("questionCategory", value)}
+              onValueChange={(value) =>
+                onInputChange("questionCategory", value)
+              }
             >
-              <SelectTrigger className={cn("h-10", errors.questionCategory && "border-red-500")}>
+              <SelectTrigger
+                className={cn(
+                  "h-10",
+                  errors.questionCategory && "border-red-500",
+                )}
+              >
                 <SelectValue placeholder="選択してください" />
               </SelectTrigger>
               <SelectContent>
@@ -55,7 +63,9 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
               </SelectContent>
             </Select>
             {errors.questionCategory && (
-              <p className="text-red-500 text-sm mt-1">{errors.questionCategory}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.questionCategory}
+              </p>
             )}
           </div>
         </div>
@@ -73,7 +83,12 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
               value={formData.realEstateType}
               onValueChange={(value) => onInputChange("realEstateType", value)}
             >
-              <SelectTrigger className={cn("h-10", errors.realEstateType && "border-red-500")}>
+              <SelectTrigger
+                className={cn(
+                  "h-10",
+                  errors.realEstateType && "border-red-500",
+                )}
+              >
                 <SelectValue placeholder="選択してください" />
               </SelectTrigger>
               <SelectContent>
@@ -85,7 +100,9 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
               </SelectContent>
             </Select>
             {errors.realEstateType && (
-              <p className="text-red-500 text-sm mt-1">{errors.realEstateType}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.realEstateType}
+              </p>
             )}
           </div>
         </div>
@@ -103,7 +120,12 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
               value={formData.propertyFeature}
               onValueChange={(value) => onInputChange("propertyFeature", value)}
             >
-              <SelectTrigger className={cn("h-10", errors.propertyFeature && "border-red-500")}>
+              <SelectTrigger
+                className={cn(
+                  "h-10",
+                  errors.propertyFeature && "border-red-500",
+                )}
+              >
                 <SelectValue placeholder="選択してください" />
               </SelectTrigger>
               <SelectContent>
@@ -115,7 +137,9 @@ export const QuestionCategorySection: React.FC<QuestionCategorySectionProps> = (
               </SelectContent>
             </Select>
             {errors.propertyFeature && (
-              <p className="text-red-500 text-sm mt-1">{errors.propertyFeature}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.propertyFeature}
+              </p>
             )}
           </div>
         </div>

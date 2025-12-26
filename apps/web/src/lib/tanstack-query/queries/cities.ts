@@ -19,10 +19,10 @@ interface CitiesApiResponse {
 
 /**
  * 都道府県名から市区町村データを取得する関数
- * 
+ *
  * 注意: 将来的に郵便局の公式APIに接続予定
  * 現時点では既存の/api/cities routeを使用
- * 
+ *
  * @param prefectureName 都道府県名（例: "東京都"）
  * @returns 市区町村データの配列
  */
@@ -31,8 +31,10 @@ const fetchCities = async (prefectureName: string): Promise<CityOption[]> => {
     return [];
   }
 
-  const response = await fetch(`/api/cities?prefecture=${encodeURIComponent(prefectureName)}`);
-  
+  const response = await fetch(
+    `/api/cities?prefecture=${encodeURIComponent(prefectureName)}`,
+  );
+
   if (!response.ok) {
     throw new Error(`市区町村データの取得に失敗しました: ${response.status}`);
   }
@@ -48,12 +50,15 @@ const fetchCities = async (prefectureName: string): Promise<CityOption[]> => {
 
 /**
  * 都道府県名から市区町村データを取得するTanStack Query hook
- * 
+ *
  * @param prefectureName 都道府県名（例: "東京都"）
  * @param enabled クエリを有効にするかどうか（都道府県が選択されている場合のみ）
  * @returns TanStack Queryの結果
  */
-export const useCitiesQuery = (prefectureName: string | undefined, enabled = true) => {
+export const useCitiesQuery = (
+  prefectureName: string | undefined,
+  enabled = true,
+) => {
   return useQuery({
     queryKey: ["cities", prefectureName],
     queryFn: () => {
@@ -67,4 +72,3 @@ export const useCitiesQuery = (prefectureName: string | undefined, enabled = tru
     gcTime: 1000 * 60 * 30, // 30分間キャッシュを保持
   });
 };
-

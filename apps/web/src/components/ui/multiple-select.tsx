@@ -70,19 +70,29 @@ export const MultipleSelect = ({
           <motion.div layout className="flex items-start gap-2 flex-wrap">
             {selected?.length > 0 ? (
               selected?.map((item) => (
-                <Tag name={item?.key} key={item?.key} className={"bg-white shadow"}>
+                <Tag
+                  name={item?.key}
+                  key={item?.key}
+                  className={"bg-white shadow"}
+                >
                   <div className="flex items-center gap-2">
                     <motion.span layout className={"text-nowrap"}>
                       {item?.name}
                     </motion.span>
-                    <button className={""} onClick={() => onDeselect(item)}>
+                    <button
+                      type="button"
+                      className={""}
+                      onClick={() => onDeselect(item)}
+                    >
                       <X size={14} />
                     </button>
                   </div>
                 </Tag>
               ))
             ) : (
-              <span className="text-gray-500 text-sm">下記から選択してください</span>
+              <span className="text-gray-500 text-sm">
+                下記から選択してください
+              </span>
             )}
           </motion.div>
         </motion.div>
@@ -91,7 +101,11 @@ export const MultipleSelect = ({
             {tags
               ?.filter((item) => !selected?.some((i) => i.key === item.key))
               .map((item) => (
-                <Tag name={item?.key} onClick={() => onSelect(item)} key={item?.key}>
+                <Tag
+                  name={item?.key}
+                  onClick={() => onSelect(item)}
+                  key={item?.key}
+                >
                   {customTag ? (
                     customTag(item)
                   ) : (
@@ -150,7 +164,7 @@ export const Tag = ({ children, className, name, onClick }: TagProps) => {
       className={cn(
         "cursor-pointer rounded-md px-2 py-1 text-sm border",
         getCategoryColor(getCategoryFromKey(name || "")),
-        className
+        className,
       )}
     >
       {children}

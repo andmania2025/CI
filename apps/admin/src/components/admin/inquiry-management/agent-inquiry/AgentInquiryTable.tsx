@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -81,11 +81,17 @@ export const AgentInquiryTable: React.FC<AgentInquiryTableProps> = ({
   onSelectAll,
   onSelectInquiry,
 }) => {
-  const [selectedInquiry, setSelectedInquiry] = useState<AgentInquiry | null>(null);
+  const [selectedInquiry, setSelectedInquiry] = useState<AgentInquiry | null>(
+    null,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [columns, setColumns] = useState<ColumnDef[]>(defaultColumns);
-  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(null);
-  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(null);
+  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(
+    null,
+  );
+  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(
+    null,
+  );
 
   const handleDetailClick = (inquiry: AgentInquiry) => {
     setSelectedInquiry(inquiry);
@@ -213,7 +219,9 @@ export const AgentInquiryTable: React.FC<AgentInquiryTableProps> = ({
               <TableCell className="w-16 text-center">
                 <Checkbox
                   checked={selectedInquiries.includes(inquiry.id)}
-                  onCheckedChange={(checked: boolean) => onSelectInquiry(inquiry.id, checked)}
+                  onCheckedChange={(checked: boolean) =>
+                    onSelectInquiry(inquiry.id, checked)
+                  }
                 />
               </TableCell>
               {columns.map((column) => {
@@ -224,7 +232,10 @@ export const AgentInquiryTable: React.FC<AgentInquiryTableProps> = ({
                       ? "text-right"
                       : "text-left";
                 return (
-                  <TableCell key={column.key} className={`${column.width} ${alignClass}`}>
+                  <TableCell
+                    key={column.key}
+                    className={`${column.width} ${alignClass}`}
+                  >
                     {renderCellContent(column, inquiry)}
                   </TableCell>
                 );
@@ -238,7 +249,9 @@ export const AgentInquiryTable: React.FC<AgentInquiryTableProps> = ({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem onClick={() => handleDetailClick(inquiry)}>
+                      <DropdownMenuItem
+                        onClick={() => handleDetailClick(inquiry)}
+                      >
                         詳細
                       </DropdownMenuItem>
                     </DropdownMenuContent>

@@ -19,7 +19,7 @@ ucikatu-monorepo/
 │   └── schema.prisma     # 中央データベーススキーマ
 ├── prisma.config.ts      # Prisma 7 設定
 ├── docker-compose.yml    # コンテナオーケストレーション
-├── pnpm-workspace.yaml   # ワークスペース定義
+├── bun.lock              # Bun ロックファイル
 └── package.json          # ルートスクリプト
 ```
 
@@ -47,18 +47,19 @@ ucikatu-monorepo/
 ### 依存関係の追加
 
 ```bash
-# ルート/共有パッケージ
-pnpm add -w <package>
+# ルートに追加
+bun add <package>
 
-# 特定のアプリ
-pnpm --filter web add <package>
-pnpm --filter admin add <package>
+# 特定のアプリに追加
+bun add --cwd apps/web <package>
+bun add --cwd apps/admin <package>
 
 # 開発依存関係
-pnpm --filter <app_name> add -D <package>
+bun add --cwd apps/web -D <package>
+bun add --cwd apps/admin -D <package>
 ```
 
-** Docker環境での重要事項**: パッケージの追加・削除後は、以下のコマンドでコンテナを再構築する必要があります：
+**⚠️ Docker環境での重要事項**: パッケージの追加・削除後は、以下のコマンドでコンテナを再構築する必要があります：
 
 ```bash
 # ボリュームを含めて停止
@@ -69,41 +70,41 @@ docker compose build
 docker compose up -d
 ```
 
-** 禁止**: `npm install` は絶対に使用しない
+**🚫 禁止**: `npm install` や `pnpm install` は絶対に使用しない
 
 ### スクリプトの実行
 
 ```bash
 # 開発サーバー
-pnpm --filter web dev      # ポート 3001
-pnpm --filter admin dev    # ポート 3000
+bun run --cwd apps/web dev      # ポート 3001
+bun run --cwd apps/admin dev    # ポート 3000
 
 # ビルド
-pnpm --filter web build
-pnpm --filter admin build
+bun run --cwd apps/web build
+bun run --cwd apps/admin build
 
 # テスト
-pnpm --filter web test
-pnpm --filter admin test
+bun run --cwd apps/web test
+bun run --cwd apps/admin test
 
 # 型チェック
-pnpm --filter web type-check
-pnpm --filter admin type-check
+bun run --cwd apps/web type-check
+bun run --cwd apps/admin type-check
 
 # Lint
-pnpm --filter web lint
-pnpm --filter admin lint
+bun run --cwd apps/web lint
+bun run --cwd apps/admin lint
 ```
 
 ### ルートスクリプト
 
 ```bash
-pnpm dev:web      # Web 開発サーバー
-pnpm dev:admin    # Admin 開発サーバー
-pnpm build:web    # Web ビルド
-pnpm build:admin  # Admin ビルド
-pnpm lint         # 全アプリ lint
-pnpm test         # 全アプリ テスト
+bun run dev:web      # Web 開発サーバー
+bun run dev:admin    # Admin 開発サーバー
+bun run build:web    # Web ビルド
+bun run build:admin  # Admin ビルド
+bun run lint         # Lint
+bun run test         # テスト
 ```
 
 ## データベース管理
@@ -116,16 +117,16 @@ pnpm test         # 全アプリ テスト
 
 ```bash
 # マイグレーション作成（ルートで実行）
-pnpm exec prisma migrate dev --name <descriptive_name>
+bun x prisma migrate dev --name <descriptive_name>
 
 # 本番適用
-pnpm exec prisma migrate deploy
+bun x prisma migrate deploy
 
 # Prisma Client 再生成
-pnpm --filter admin db:generate
+bun run --cwd apps/admin db:generate
 
 # Prisma Studio
-pnpm --filter admin db:studio
+bun run --cwd apps/admin db:studio
 ```
 
 ## Docker オペレーション
@@ -152,7 +153,7 @@ docker compose down -v && docker compose build && docker compose up -d
 ### 機能開発フロー
 
 1. **DB変更が必要な場合**: `prisma/schema.prisma` を更新
-2. `pnpm exec prisma migrate dev --name feature_name` を実行
+2. `bun x prisma migrate dev --name feature_name` を実行
 3. 対象アプリで Server Actions を実装
 4. 対象アプリで UI を実装
 5. テストで検証
@@ -171,12 +172,23 @@ docker compose down -v && docker compose build && docker compose up -d
 3. 両アプリでテストを実行
 4. 両アプリでビルドを確認
 
+## Vercel デプロイ
+
+Vercel でのビルドは、ダッシュボードで以下の設定を行う必要があります：
+
+| 設定項目 | 値 |
+|----------|-----|
+| Framework Preset | Next.js |
+| Build Command | `bun run build` または `cd apps/web && bun run build` |
+| Install Command | `bun install` |
+| Output Directory | `.next` |
+
 ## メモリバンク
 
 | 項目 | 値 |
 |------|-----|
 | Node バージョン | >=20.0.0 |
-| パッケージマネージャ | pnpm 9.x |
+| パッケージマネージャー | **bun** |
 | Prisma バージョン | 7.x |
 | Next.js バージョン | 16.0.3 |
 | React バージョン | 19.2.0 |

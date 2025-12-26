@@ -9,21 +9,40 @@
 * 🟢 You can import this file directly.
 */
 
-export const UserRole = {
-  ADMIN: 'ADMIN',
-  REALTOR: 'REALTOR',
-  USER: 'USER'
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  OTHER: 'OTHER'
 } as const
 
-export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+export type Gender = (typeof Gender)[keyof typeof Gender]
 
 
 export const UserStatus = {
   ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE'
+  SUSPENDED: 'SUSPENDED',
+  WITHDRAWN: 'WITHDRAWN'
 } as const
 
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const AccountType = {
+  FREE: 'FREE',
+  BASIC: 'BASIC',
+  PREMIUM: 'PREMIUM'
+} as const
+
+export type AccountType = (typeof AccountType)[keyof typeof AccountType]
+
+
+export const CompanyStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type CompanyStatus = (typeof CompanyStatus)[keyof typeof CompanyStatus]
 
 
 export const ImageType = {
@@ -37,130 +56,164 @@ export const ImageType = {
 export type ImageType = (typeof ImageType)[keyof typeof ImageType]
 
 
+export const TransactionType = {
+  SALE: 'SALE',
+  RENT: 'RENT',
+  BOTH: 'BOTH'
+} as const
+
+export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
+
+
+export const PropertyCondition = {
+  NEW: 'NEW',
+  USED: 'USED',
+  RENOVATED: 'RENOVATED'
+} as const
+
+export type PropertyCondition = (typeof PropertyCondition)[keyof typeof PropertyCondition]
+
+
+export const PublicationStatus = {
+  DRAFT: 'DRAFT',
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  PUBLISHED: 'PUBLISHED',
+  SOLD: 'SOLD',
+  HIDDEN: 'HIDDEN'
+} as const
+
+export type PublicationStatus = (typeof PublicationStatus)[keyof typeof PublicationStatus]
+
+
+export const PublicScope = {
+  PUBLIC: 'PUBLIC',
+  PRIVATE: 'PRIVATE',
+  MEMBERS: 'MEMBERS',
+  AGENTS: 'AGENTS'
+} as const
+
+export type PublicScope = (typeof PublicScope)[keyof typeof PublicScope]
+
+
+export const TargetType = {
+  PROPERTY: 'PROPERTY',
+  SITE: 'SITE',
+  COMPANY: 'COMPANY',
+  AGENT: 'AGENT'
+} as const
+
+export type TargetType = (typeof TargetType)[keyof typeof TargetType]
+
+
+export const InquiryType = {
+  DOCUMENT_REQUEST: 'DOCUMENT_REQUEST',
+  VIEWING: 'VIEWING',
+  PRICE_NEGOTIATION: 'PRICE_NEGOTIATION',
+  ENVIRONMENT: 'ENVIRONMENT',
+  MOVE_IN: 'MOVE_IN',
+  OTHER: 'OTHER'
+} as const
+
+export type InquiryType = (typeof InquiryType)[keyof typeof InquiryType]
+
+
+export const InquiryStatus = {
+  NEW: 'NEW',
+  ASSIGNED: 'ASSIGNED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  RESPONDED: 'RESPONDED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type InquiryStatus = (typeof InquiryStatus)[keyof typeof InquiryStatus]
+
+
+export const InquiryPriority = {
+  LOW: 'LOW',
+  NORMAL: 'NORMAL',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+} as const
+
+export type InquiryPriority = (typeof InquiryPriority)[keyof typeof InquiryPriority]
+
+
+export const SenderType = {
+  USER: 'USER',
+  AGENT: 'AGENT',
+  SYSTEM: 'SYSTEM'
+} as const
+
+export type SenderType = (typeof SenderType)[keyof typeof SenderType]
+
+
+export const AssessmentStatus = {
+  PENDING: 'PENDING',
+  SENT_TO_AGENTS: 'SENT_TO_AGENTS',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type AssessmentStatus = (typeof AssessmentStatus)[keyof typeof AssessmentStatus]
+
+
+export const ResponseStatus = {
+  PENDING: 'PENDING',
+  SUBMITTED: 'SUBMITTED',
+  VIEWED: 'VIEWED'
+} as const
+
+export type ResponseStatus = (typeof ResponseStatus)[keyof typeof ResponseStatus]
+
+
+export const QuestionStatus = {
+  OPEN: 'OPEN',
+  ANSWERED: 'ANSWERED',
+  RESOLVED: 'RESOLVED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type QuestionStatus = (typeof QuestionStatus)[keyof typeof QuestionStatus]
+
+
 export const FeatureCategory = {
+  EQUIPMENT: 'EQUIPMENT',
+  CONDITION: 'CONDITION',
+  ENVIRONMENT: 'ENVIRONMENT',
   SECURITY: 'SECURITY',
-  FACILITY: 'FACILITY',
-  LOCATION: 'LOCATION',
-  STRUCTURE: 'STRUCTURE',
   OTHER: 'OTHER'
 } as const
 
 export type FeatureCategory = (typeof FeatureCategory)[keyof typeof FeatureCategory]
 
 
-export const InquiryType = {
+export const MailStatus = {
+  DRAFT: 'DRAFT',
+  QUEUED: 'QUEUED',
+  SENDING: 'SENDING',
+  SENT: 'SENT',
+  FAILED: 'FAILED'
+} as const
+
+export type MailStatus = (typeof MailStatus)[keyof typeof MailStatus]
+
+
+export const MailType = {
   GENERAL: 'GENERAL',
-  VIEWING: 'VIEWING',
-  DOCUMENT: 'DOCUMENT',
-  NEGOTIATION: 'NEGOTIATION'
+  INQUIRY_REPLY: 'INQUIRY_REPLY',
+  NOTIFICATION: 'NOTIFICATION',
+  CAMPAIGN: 'CAMPAIGN',
+  SYSTEM: 'SYSTEM'
 } as const
 
-export type InquiryType = (typeof InquiryType)[keyof typeof InquiryType]
+export type MailType = (typeof MailType)[keyof typeof MailType]
 
 
-export const SaleOrRent = {
-  SALE: 'SALE',
-  RENT: 'RENT'
+export const AuditAction = {
+  INSERT: 'INSERT',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
 } as const
 
-export type SaleOrRent = (typeof SaleOrRent)[keyof typeof SaleOrRent]
-
-
-export const TransactionType = {
-  OWNER: 'OWNER',
-  AGENT: 'AGENT',
-  BROKER: 'BROKER'
-} as const
-
-export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType]
-
-
-export const PropertyType = {
-  MANSION: 'MANSION',
-  HOUSE: 'HOUSE',
-  LAND: 'LAND',
-  BUILDING: 'BUILDING'
-} as const
-
-export type PropertyType = (typeof PropertyType)[keyof typeof PropertyType]
-
-
-export const PropertyCondition = {
-  NEW: 'NEW',
-  USED: 'USED',
-  LAND: 'LAND'
-} as const
-
-export type PropertyCondition = (typeof PropertyCondition)[keyof typeof PropertyCondition]
-
-
-export const LayoutType = {
-  R: 'R',
-  K: 'K',
-  DK: 'DK',
-  LDK: 'LDK',
-  SK: 'SK',
-  SDK: 'SDK',
-  SLDK: 'SLDK'
-} as const
-
-export type LayoutType = (typeof LayoutType)[keyof typeof LayoutType]
-
-
-export const Utilities = {
-  COMPLETE: 'COMPLETE',
-  PARTIAL: 'PARTIAL',
-  INCOMPLETE: 'INCOMPLETE'
-} as const
-
-export type Utilities = (typeof Utilities)[keyof typeof Utilities]
-
-
-export const Direction = {
-  EAST: 'EAST',
-  WEST: 'WEST',
-  SOUTH: 'SOUTH',
-  NORTH: 'NORTH',
-  SOUTHEAST: 'SOUTHEAST',
-  SOUTHWEST: 'SOUTHWEST',
-  NORTHEAST: 'NORTHEAST',
-  NORTHWEST: 'NORTHWEST'
-} as const
-
-export type Direction = (typeof Direction)[keyof typeof Direction]
-
-
-export const Featured = {
-  FEATURED: 'FEATURED',
-  NORMAL: 'NORMAL'
-} as const
-
-export type Featured = (typeof Featured)[keyof typeof Featured]
-
-
-export const PublicScope = {
-  PUBLIC: 'PUBLIC',
-  PRIVATE: 'PRIVATE',
-  MEMBERS: 'MEMBERS'
-} as const
-
-export type PublicScope = (typeof PublicScope)[keyof typeof PublicScope]
-
-
-export const PublicationStatus = {
-  PUBLISHED: 'PUBLISHED',
-  UNPUBLISHED: 'UNPUBLISHED',
-  DRAFT: 'DRAFT'
-} as const
-
-export type PublicationStatus = (typeof PublicationStatus)[keyof typeof PublicationStatus]
-
-
-export const InquiryStatus = {
-  NEW: 'NEW',
-  IN_PROGRESS: 'IN_PROGRESS',
-  RESOLVED: 'RESOLVED',
-  CLOSED: 'CLOSED'
-} as const
-
-export type InquiryStatus = (typeof InquiryStatus)[keyof typeof InquiryStatus]
+export type AuditAction = (typeof AuditAction)[keyof typeof AuditAction]

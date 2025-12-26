@@ -23,7 +23,7 @@ export function useMailManagement() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editingTemplate, setEditingTemplate] = useState<MailTemplate | null>(
-    null
+    null,
   );
 
   // メールテンプレートデータ（将来的にはAPIから取得）
@@ -55,6 +55,8 @@ export function useMailManagement() {
 
   // 表示件数が変更されたときに現在のページをリセット
   useEffect(() => {
+    // itemsPerPageの変更をトリガーとしてページをリセット
+    void itemsPerPage;
     setCurrentPage(1);
   }, [itemsPerPage]);
 
@@ -77,13 +79,13 @@ export function useMailManagement() {
   // 選択されているメールの配信設定状態を計算（メモ化）
   const selectionStats = useMemo(() => {
     const selectedTemplates = mailTemplates.filter((template) =>
-      selectedMails.includes(template.id)
+      selectedMails.includes(template.id),
     );
     const stoppedCount = selectedTemplates.filter(
-      (template) => template.templateType === "停止"
+      (template) => template.templateType === "停止",
     ).length;
     const deliveryCount = selectedTemplates.filter(
-      (template) => template.templateType === "配信"
+      (template) => template.templateType === "配信",
     ).length;
 
     return { stoppedCount, deliveryCount };
@@ -113,7 +115,7 @@ export function useMailManagement() {
         return prev;
       });
     },
-    []
+    [],
   );
 
   const handleSearch = useCallback(() => {
@@ -134,7 +136,7 @@ export function useMailManagement() {
         setSelectedMails([]);
       }
     },
-    [pagination.currentTemplates]
+    [pagination.currentTemplates],
   );
 
   const handleSelectMail = useCallback((mailId: string, checked: boolean) => {
@@ -163,15 +165,12 @@ export function useMailManagement() {
     }
   }, []);
 
-  const handleSaveTemplate = useCallback(
-    (data: Record<string, unknown>) => {
-      console.log("メールテンプレートを保存:", data);
-      // TODO: サーバーに保存する処理を実装
-      setIsEditDialogOpen(false);
-      setEditingTemplate(null);
-    },
-    []
-  );
+  const handleSaveTemplate = useCallback((data: Record<string, unknown>) => {
+    console.log("メールテンプレートを保存:", data);
+    // TODO: サーバーに保存する処理を実装
+    setIsEditDialogOpen(false);
+    setEditingTemplate(null);
+  }, []);
 
   const handleChangeToDelivery = useCallback(() => {
     console.log("選択リストの配信設定を「配信」に変更");

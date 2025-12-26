@@ -46,7 +46,7 @@ export function AppraisalSearchForm({
   const [cityOptions, setCityOptions] = useState<CityOption[]>([]);
   const [isLoadingCities, setIsLoadingCities] = useState(false);
 
-  // 検索タイプと物件種別に応じて初期値を設定
+  // 物件種別に応じて初期値を設定
   useEffect(() => {
     if (initialPropertyType) {
       // 物件種別に応じて不動産種別を設定
@@ -80,7 +80,7 @@ export function AppraisalSearchForm({
         propertyCategory,
       }));
     }
-  }, [searchType, initialPropertyType]);
+  }, [initialPropertyType]);
 
   // 都道府県から市区町村を取得する関数
   const fetchCitiesFromPrefecture = async (prefectureKey: string) => {
@@ -89,7 +89,9 @@ export function AppraisalSearchForm({
 
     setIsLoadingCities(true);
     try {
-      const response = await fetch(`/api/cities?prefecture=${encodeURIComponent(prefectureName)}`);
+      const response = await fetch(
+        `/api/cities?prefecture=${encodeURIComponent(prefectureName)}`,
+      );
       const result = await response.json();
 
       if (result.success && result.data) {
@@ -106,7 +108,10 @@ export function AppraisalSearchForm({
     }
   };
 
-  const handleInputChange = (field: keyof AppraisalSearchFormData, value: string | string[]) => {
+  const handleInputChange = (
+    field: keyof AppraisalSearchFormData,
+    value: string | string[],
+  ) => {
     // 都道府県が変更された場合
     if (field === "prefecture") {
       const prefectureValue = typeof value === "string" ? value : "";
@@ -138,7 +143,7 @@ export function AppraisalSearchForm({
           ({
             ...prev,
             [field]: value,
-          }) as AppraisalSearchFormData
+          }) as AppraisalSearchFormData,
       );
     }
   };
@@ -160,7 +165,9 @@ export function AppraisalSearchForm({
                 <div className="relative">
                   <Select
                     value={formData.prefecture}
-                    onValueChange={(value) => handleInputChange("prefecture", value)}
+                    onValueChange={(value) =>
+                      handleInputChange("prefecture", value)
+                    }
                   >
                     <SelectTrigger className="w-full bg-white">
                       <SelectValue placeholder="都道府県を選択" />
@@ -197,7 +204,10 @@ export function AppraisalSearchForm({
                     </SelectTrigger>
                     <SelectContent>
                       {cityOptions.map((option, index) => (
-                        <SelectItem key={`${index}-${option.city}`} value={option.city}>
+                        <SelectItem
+                          key={`${index}-${option.city}`}
+                          value={option.city}
+                        >
                           {option.city}
                         </SelectItem>
                       ))}
@@ -215,7 +225,9 @@ export function AppraisalSearchForm({
               <div className="relative">
                 <Select
                   value={formData.propertyCategory}
-                  onValueChange={(value) => handleInputChange("propertyCategory", value)}
+                  onValueChange={(value) =>
+                    handleInputChange("propertyCategory", value)
+                  }
                 >
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="選択してください" />
@@ -225,12 +237,16 @@ export function AppraisalSearchForm({
                     <SelectItem value="mansion">マンション</SelectItem>
                     <SelectItem value="land">土地</SelectItem>
                     <SelectItem value="apartment">アパート</SelectItem>
-                    <SelectItem value="commercial">店舗・事務所・倉庫・工場</SelectItem>
+                    <SelectItem value="commercial">
+                      店舗・事務所・倉庫・工場
+                    </SelectItem>
                     <SelectItem value="accommodation">宿泊施設</SelectItem>
                     <SelectItem value="leased_land">底地・借地</SelectItem>
                     <SelectItem value="parking">駐車場</SelectItem>
                     <SelectItem value="entire_building">一棟ビル</SelectItem>
-                    <SelectItem value="entire_mansion">一棟マンション</SelectItem>
+                    <SelectItem value="entire_mansion">
+                      一棟マンション
+                    </SelectItem>
                     <SelectItem value="other">その他</SelectItem>
                     <SelectItem value="none">該当なし</SelectItem>
                   </SelectContent>
@@ -246,7 +262,9 @@ export function AppraisalSearchForm({
               <div className="relative">
                 <Select
                   value={formData.propertyFeatures[0] || ""}
-                  onValueChange={(value) => handleInputChange("propertyFeatures", [value])}
+                  onValueChange={(value) =>
+                    handleInputChange("propertyFeatures", [value])
+                  }
                 >
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="選択してください" />
@@ -254,7 +272,9 @@ export function AppraisalSearchForm({
                   <SelectContent>
                     <SelectItem value="general">一般物件</SelectItem>
                     <SelectItem value="leased_land">底地・借地</SelectItem>
-                    <SelectItem value="urban_control">市街地調整区域・農地</SelectItem>
+                    <SelectItem value="urban_control">
+                      市街地調整区域・農地
+                    </SelectItem>
                     <SelectItem value="sloping_land">傾斜地・擁壁</SelectItem>
                     <SelectItem value="row_house">連棟式建物</SelectItem>
                     <SelectItem value="disclosure">告知事項</SelectItem>
@@ -281,14 +301,20 @@ export function AppraisalSearchForm({
               <div className="relative">
                 <Select
                   value={formData.appraisalMethod}
-                  onValueChange={(value) => handleInputChange("appraisalMethod", value)}
+                  onValueChange={(value) =>
+                    handleInputChange("appraisalMethod", value)
+                  }
                 >
                   <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="選択してください" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="selling_price">売出し価格査定</SelectItem>
-                    <SelectItem value="purchase_price">買取り価格査定</SelectItem>
+                    <SelectItem value="selling_price">
+                      売出し価格査定
+                    </SelectItem>
+                    <SelectItem value="purchase_price">
+                      買取り価格査定
+                    </SelectItem>
                     <SelectItem value="contract_price">成約価格査定</SelectItem>
                   </SelectContent>
                 </Select>

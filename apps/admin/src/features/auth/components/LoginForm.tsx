@@ -30,7 +30,6 @@ const SNSLoginButton: React.FC<{
 
   const { label, bgColor, textColor, borderColor, icon } = config[provider];
 
-
   return (
     <Button
       type="button"
@@ -39,7 +38,9 @@ const SNSLoginButton: React.FC<{
       className={`w-full h-11 ${bgColor} ${textColor} ${borderColor} border font-bold transition-colors flex items-center justify-center gap-3 shadow-sm`}
     >
       {icon}
-      <span className="font-bold text-base tracking-wide drop-shadow-sm">{label}</span>
+      <span className="font-bold text-base tracking-wide drop-shadow-sm">
+        {label}
+      </span>
     </Button>
   );
 };
@@ -67,7 +68,9 @@ export const LoginForm: React.FC = () => {
   const handleGoogleLogin = async () => {
     try {
       // デモ版：Googleログインは無効化
-      alert("Googleログインはデモ版では無効化されています。デモアカウントをご利用ください。");
+      alert(
+        "Googleログインはデモ版では無効化されています。デモアカウントをご利用ください。",
+      );
     } catch (_error) {
       // エラー処理
     }
@@ -112,7 +115,10 @@ export const LoginForm: React.FC = () => {
             {/* Step 1: Email Input */}
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-medium text-gray-700"
+                >
                   メールアドレス
                 </Label>
                 <div className="relative">
@@ -133,7 +139,9 @@ export const LoginForm: React.FC = () => {
                   <FieldErrorDisplay
                     error={{
                       type: "validation",
-                      message: errors.email.message || "メールアドレスを入力してください",
+                      message:
+                        errors.email.message ||
+                        "メールアドレスを入力してください",
                       field: "email",
                     }}
                   />
@@ -161,7 +169,9 @@ export const LoginForm: React.FC = () => {
                 <div className="relative">
                   <Separator className="my-6" />
                   <div className="absolute inset-0 flex justify-center">
-                    <span className="bg-white px-3 text-sm text-gray-500 -mt-2.5">または</span>
+                    <span className="bg-white px-3 text-sm text-gray-500 -mt-2.5">
+                      または
+                    </span>
                   </div>
                 </div>
 
@@ -181,7 +191,10 @@ export const LoginForm: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 {/* Password Field */}
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+                  <Label
+                    htmlFor="password"
+                    className="text-sm font-medium text-gray-700"
+                  >
                     パスワード
                   </Label>
                   <div className="relative">
@@ -195,7 +208,9 @@ export const LoginForm: React.FC = () => {
                       placeholder="パスワードを入力"
                       disabled={isSubmitting}
                       aria-invalid={errors.password ? "true" : "false"}
-                      aria-describedby={errors.password ? "password-error" : undefined}
+                      aria-describedby={
+                        errors.password ? "password-error" : undefined
+                      }
                     />
                     <Button
                       type="button"
@@ -204,16 +219,24 @@ export const LoginForm: React.FC = () => {
                       onClick={togglePasswordVisibility}
                       className="absolute right-0 top-0 h-11 px-3 hover:bg-transparent"
                       disabled={isSubmitting}
-                      aria-label={showPassword ? "パスワードを隠す" : "パスワードを表示"}
+                      aria-label={
+                        showPassword ? "パスワードを隠す" : "パスワードを表示"
+                      }
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
                     </Button>
                   </div>
                   {errors.password && (
                     <FieldErrorDisplay
                       error={{
                         type: "validation",
-                        message: errors.password.message || "パスワードを入力してください",
+                        message:
+                          errors.password.message ||
+                          "パスワードを入力してください",
                         field: "password",
                       }}
                     />
@@ -234,7 +257,9 @@ export const LoginForm: React.FC = () => {
                           className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"
                           aria-hidden="true"
                         />
-                        {isRedirecting ? "ダッシュボードに移動中..." : "ログイン中..."}
+                        {isRedirecting
+                          ? "ダッシュボードに移動中..."
+                          : "ログイン中..."}
                       </div>
                     ) : (
                       <>
@@ -275,10 +300,17 @@ export const LoginForm: React.FC = () => {
                         aria-label={`${account.displayName}でログイン`}
                       >
                         <div>
-                          <div className="font-medium text-sm">{account.displayName}</div>
-                          <div className="text-xs mt-1 font-mono opacity-75">{account.email}</div>
+                          <div className="font-medium text-sm">
+                            {account.displayName}
+                          </div>
+                          <div className="text-xs mt-1 font-mono opacity-75">
+                            {account.email}
+                          </div>
                         </div>
-                        <LogIn className="w-4 h-4 opacity-60" aria-hidden="true" />
+                        <LogIn
+                          className="w-4 h-4 opacity-60"
+                          aria-hidden="true"
+                        />
                       </Button>
                     </Card>
                   ))}

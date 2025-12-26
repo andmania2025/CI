@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
   Table,
@@ -75,11 +75,16 @@ export const BulkAssessmentTable: React.FC<BulkAssessmentTableProps> = ({
   onSelectAll,
   onSelectAssessment,
 }) => {
-  const [selectedAssessment, setSelectedAssessment] = useState<BulkAssessment | null>(null);
+  const [selectedAssessment, setSelectedAssessment] =
+    useState<BulkAssessment | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [columns, setColumns] = useState<ColumnDef[]>(defaultColumns);
-  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(null);
-  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(null);
+  const [draggedColumnIndex, setDraggedColumnIndex] = useState<number | null>(
+    null,
+  );
+  const [dragOverColumnIndex, setDragOverColumnIndex] = useState<number | null>(
+    null,
+  );
 
   const handleDetailClick = (assessment: BulkAssessment) => {
     setSelectedAssessment(assessment);
@@ -231,7 +236,10 @@ export const BulkAssessmentTable: React.FC<BulkAssessmentTableProps> = ({
                           ? "text-right"
                           : "text-left";
                     return (
-                      <TableCell key={column.key} className={`${column.width} ${alignClass}`}>
+                      <TableCell
+                        key={column.key}
+                        className={`${column.width} ${alignClass}`}
+                      >
                         {renderCellContent(column, assessment)}
                       </TableCell>
                     );
@@ -245,7 +253,9 @@ export const BulkAssessmentTable: React.FC<BulkAssessmentTableProps> = ({
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => handleDetailClick(assessment)}>
+                          <DropdownMenuItem
+                            onClick={() => handleDetailClick(assessment)}
+                          >
                             詳細
                           </DropdownMenuItem>
                         </DropdownMenuContent>

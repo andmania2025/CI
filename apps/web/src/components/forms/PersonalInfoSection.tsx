@@ -1,14 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
 import type { QuestionFormData } from "@/hooks/useQuestionForm";
+import { cn } from "@/lib/utils";
 import type React from "react";
 
 interface PersonalInfoSectionProps {
   formData: QuestionFormData;
   errors: Record<string, string>;
-  onInputChange: (field: keyof QuestionFormData, value: string | boolean) => void;
+  onInputChange: (
+    field: keyof QuestionFormData,
+    value: string | boolean,
+  ) => void;
 }
 
 export const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
@@ -40,7 +43,9 @@ export const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
               aria-invalid={!!errors.nickname}
               className={cn("w-full", errors.nickname && "border-red-500")}
             />
-            {errors.nickname && <p className="text-red-500 text-sm mt-1">{errors.nickname}</p>}
+            {errors.nickname && (
+              <p className="text-red-500 text-sm mt-1">{errors.nickname}</p>
+            )}
           </div>
         </div>
 
@@ -66,7 +71,9 @@ export const PersonalInfoSection: React.FC<PersonalInfoSectionProps> = ({
               aria-invalid={!!errors.email}
               className={cn("w-full", errors.email && "border-red-500")}
             />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
         </div>
       </div>

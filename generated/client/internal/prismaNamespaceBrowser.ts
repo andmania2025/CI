@@ -52,11 +52,41 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Role: 'Role',
+  UserRole: 'UserRole',
+  Company: 'Company',
+  Branch: 'Branch',
+  Agent: 'Agent',
   Property: 'Property',
+  PropertyPublication: 'PropertyPublication',
+  PropertyPriceHistory: 'PropertyPriceHistory',
+  PropertyStatusHistory: 'PropertyStatusHistory',
   PropertyImage: 'PropertyImage',
   PropertyFeature: 'PropertyFeature',
+  PropertyStation: 'PropertyStation',
+  Favorite: 'Favorite',
+  PropertyView: 'PropertyView',
+  PropertyViewDaily: 'PropertyViewDaily',
+  Inquiry: 'Inquiry',
+  InquiryMessage: 'InquiryMessage',
+  BulkAssessment: 'BulkAssessment',
+  BulkAssessmentResponse: 'BulkAssessmentResponse',
+  Question: 'Question',
+  Answer: 'Answer',
   FeatureMaster: 'FeatureMaster',
-  Inquiry: 'Inquiry'
+  RegionMaster: 'RegionMaster',
+  AreaMaster: 'AreaMaster',
+  PropertyTypeMaster: 'PropertyTypeMaster',
+  PropertyCategoryMaster: 'PropertyCategoryMaster',
+  FloorPlanMaster: 'FloorPlanMaster',
+  RouteMaster: 'RouteMaster',
+  Station: 'Station',
+  QuestionCategory: 'QuestionCategory',
+  Mail: 'Mail',
+  FileBox: 'FileBox',
+  SystemSetting: 'SystemSetting',
+  AuditLog: 'AuditLog',
+  Notification: 'Notification'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,24 +109,120 @@ export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
-  role: 'role',
+  furigana: 'furigana',
+  gender: 'gender',
+  birthDate: 'birthDate',
+  phone: 'phone',
+  avatarUrl: 'avatarUrl',
   status: 'status',
-  companyName: 'companyName',
-  licenseNumber: 'licenseNumber',
+  emailVerifiedAt: 'emailVerifiedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
   lastLoginAt: 'lastLoginAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  permissions: 'permissions',
+  description: 'description',
+  createdAt: 'createdAt'
+} as const
+
+export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+export const UserRoleScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  roleId: 'roleId',
+  createdAt: 'createdAt'
+} as const
+
+export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
+
+
+export const CompanyScalarFieldEnum = {
+  id: 'id',
+  companyName: 'companyName',
+  companyNameKana: 'companyNameKana',
+  representativeName: 'representativeName',
+  postalCode: 'postalCode',
+  prefecture: 'prefecture',
+  city: 'city',
+  address: 'address',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  phone: 'phone',
+  fax: 'fax',
+  website: 'website',
+  licenseNumber: 'licenseNumber',
+  associationMembership: 'associationMembership',
+  accountType: 'accountType',
+  status: 'status',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
+
+
+export const BranchScalarFieldEnum = {
+  id: 'id',
+  branchName: 'branchName',
+  postalCode: 'postalCode',
+  prefecture: 'prefecture',
+  city: 'city',
+  address: 'address',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  phone: 'phone',
+  fax: 'fax',
+  businessHours: 'businessHours',
+  isHeadquarters: 'isHeadquarters',
+  companyId: 'companyId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type BranchScalarFieldEnum = (typeof BranchScalarFieldEnum)[keyof typeof BranchScalarFieldEnum]
+
+
+export const AgentScalarFieldEnum = {
+  id: 'id',
+  position: 'position',
+  department: 'department',
+  licenseNumber: 'licenseNumber',
+  licenseExpireDate: 'licenseExpireDate',
+  goodCount: 'goodCount',
+  responseRate: 'responseRate',
+  avgResponseMinutes: 'avgResponseMinutes',
+  userId: 'userId',
+  branchId: 'branchId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type AgentScalarFieldEnum = (typeof AgentScalarFieldEnum)[keyof typeof AgentScalarFieldEnum]
+
+
 export const PropertyScalarFieldEnum = {
   id: 'id',
+  propertyCode: 'propertyCode',
   propertyName: 'propertyName',
-  propertyType: 'propertyType',
-  publicationStatus: 'publicationStatus',
-  saleOrRent: 'saleOrRent',
+  propertyNameKana: 'propertyNameKana',
+  propertyTypeId: 'propertyTypeId',
+  propertyCategoryId: 'propertyCategoryId',
+  areaId: 'areaId',
   transactionType: 'transactionType',
   propertyCondition: 'propertyCondition',
   postalCode: 'postalCode',
@@ -105,99 +231,104 @@ export const PropertyScalarFieldEnum = {
   town: 'town',
   block: 'block',
   building: 'building',
-  lotNumber: 'lotNumber',
-  nearestStation: 'nearestStation',
-  walkMinutes: 'walkMinutes',
-  otherTransportation: 'otherTransportation',
+  roomNumber: 'roomNumber',
+  fullAddress: 'fullAddress',
   latitude: 'latitude',
   longitude: 'longitude',
   layoutNumber: 'layoutNumber',
-  layoutType: 'layoutType',
+  layoutTypeId: 'layoutTypeId',
+  layoutDisplay: 'layoutDisplay',
   buildingArea: 'buildingArea',
   landArea: 'landArea',
   balconyArea: 'balconyArea',
-  layoutDetail: 'layoutDetail',
   buildingStructure: 'buildingStructure',
-  floor: 'floor',
-  totalUnits: 'totalUnits',
-  direction: 'direction',
-  directionDetail: 'directionDetail',
-  mainLighting: 'mainLighting',
   constructionDate: 'constructionDate',
-  buildingConfirmationNumber: 'buildingConfirmationNumber',
-  constructionCompany: 'constructionCompany',
-  utilities: 'utilities',
-  reform: 'reform',
-  salePrice: 'salePrice',
-  unitPrice: 'unitPrice',
-  expectedRent: 'expectedRent',
+  constructionYearMonth: 'constructionYearMonth',
+  totalFloors: 'totalFloors',
+  floor: 'floor',
+  currentPrice: 'currentPrice',
+  pricePerTsubo: 'pricePerTsubo',
   managementFee: 'managementFee',
-  repairReserve: 'repairReserve',
-  usageFee: 'usageFee',
-  stampTax: 'stampTax',
-  expenses: 'expenses',
-  otherExpenses: 'otherExpenses',
-  expectedAnnualIncome: 'expectedAnnualIncome',
-  surfaceYield: 'surfaceYield',
-  landType: 'landType',
-  privateRoadArea: 'privateRoadArea',
-  setback: 'setback',
-  cityPlanning: 'cityPlanning',
-  roadContact: 'roadContact',
-  landCategory: 'landCategory',
-  useDistrict: 'useDistrict',
-  buildingCoverageRatio: 'buildingCoverageRatio',
-  floorAreaRatio: 'floorAreaRatio',
-  totalProperties: 'totalProperties',
-  developmentPermitNumber: 'developmentPermitNumber',
-  developmentArea: 'developmentArea',
-  residentialPermitNumber: 'residentialPermitNumber',
-  easement: 'easement',
-  nationalLandAct: 'nationalLandAct',
-  siteRights: 'siteRights',
-  parkingAvailable: 'parkingAvailable',
-  parkingFee: 'parkingFee',
-  parkingSpaces: 'parkingSpaces',
-  parkingDetail: 'parkingDetail',
-  publicScope: 'publicScope',
-  featured: 'featured',
-  featurePeriodStart: 'featurePeriodStart',
-  featurePeriodEnd: 'featurePeriodEnd',
-  reservedReleaseDate: 'reservedReleaseDate',
-  publicScopeReservation: 'publicScopeReservation',
-  validUntilDate: 'validUntilDate',
-  nextUpdateDate: 'nextUpdateDate',
-  publicationMedium: 'publicationMedium',
-  salesUnits: 'salesUnits',
-  currentStatus: 'currentStatus',
-  propertyStatus: 'propertyStatus',
-  deliveryDate: 'deliveryDate',
-  sellerName: 'sellerName',
-  realEstateAgent: 'realEstateAgent',
-  managementType: 'managementType',
-  environment: 'environment',
-  legalRestrictions: 'legalRestrictions',
-  otherConstructionInfo: 'otherConstructionInfo',
-  remarks: 'remarks',
-  adminMemo: 'adminMemo',
-  propertyCategory: 'propertyCategory',
+  commonServiceFee: 'commonServiceFee',
+  depositMonths: 'depositMonths',
+  keyMoneyMonths: 'keyMoneyMonths',
+  mainImageUrl: 'mainImageUrl',
+  primaryStationName: 'primaryStationName',
+  primaryStationWalkMinutes: 'primaryStationWalkMinutes',
+  featureTags: 'featureTags',
+  viewCount: 'viewCount',
   inquiryCount: 'inquiryCount',
-  userId: 'userId',
+  favoriteCount: 'favoriteCount',
+  agentId: 'agentId',
+  remarks: 'remarks',
+  internalMemo: 'internalMemo',
+  metadata: 'metadata',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  publishedAt: 'publishedAt'
+  deletedAt: 'deletedAt',
+  userId: 'userId'
 } as const
 
 export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
 
 
+export const PropertyPublicationScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  status: 'status',
+  scope: 'scope',
+  featured: 'featured',
+  featuredOrder: 'featuredOrder',
+  publishedAt: 'publishedAt',
+  unpublishedAt: 'unpublishedAt',
+  soldAt: 'soldAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PropertyPublicationScalarFieldEnum = (typeof PropertyPublicationScalarFieldEnum)[keyof typeof PropertyPublicationScalarFieldEnum]
+
+
+export const PropertyPriceHistoryScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  previousPrice: 'previousPrice',
+  newPrice: 'newPrice',
+  changePercent: 'changePercent',
+  changeReason: 'changeReason',
+  changedById: 'changedById',
+  createdAt: 'createdAt'
+} as const
+
+export type PropertyPriceHistoryScalarFieldEnum = (typeof PropertyPriceHistoryScalarFieldEnum)[keyof typeof PropertyPriceHistoryScalarFieldEnum]
+
+
+export const PropertyStatusHistoryScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  previousStatus: 'previousStatus',
+  newStatus: 'newStatus',
+  changeReason: 'changeReason',
+  changedById: 'changedById',
+  createdAt: 'createdAt'
+} as const
+
+export type PropertyStatusHistoryScalarFieldEnum = (typeof PropertyStatusHistoryScalarFieldEnum)[keyof typeof PropertyStatusHistoryScalarFieldEnum]
+
+
 export const PropertyImageScalarFieldEnum = {
   id: 'id',
+  propertyId: 'propertyId',
+  fileBoxId: 'fileBoxId',
   url: 'url',
+  thumbnailUrl: 'thumbnailUrl',
   caption: 'caption',
   imageType: 'imageType',
-  order: 'order',
-  propertyId: 'propertyId',
+  displayOrder: 'displayOrder',
+  isMain: 'isMain',
+  width: 'width',
+  height: 'height',
   createdAt: 'createdAt'
 } as const
 
@@ -206,17 +337,194 @@ export type PropertyImageScalarFieldEnum = (typeof PropertyImageScalarFieldEnum)
 
 export const PropertyFeatureScalarFieldEnum = {
   id: 'id',
-  featureId: 'featureId',
-  propertyId: 'propertyId'
+  propertyId: 'propertyId',
+  featureId: 'featureId'
 } as const
 
 export type PropertyFeatureScalarFieldEnum = (typeof PropertyFeatureScalarFieldEnum)[keyof typeof PropertyFeatureScalarFieldEnum]
 
 
+export const PropertyStationScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  stationId: 'stationId',
+  walkMinutes: 'walkMinutes',
+  busMinutes: 'busMinutes',
+  busStopName: 'busStopName',
+  isPrimary: 'isPrimary'
+} as const
+
+export type PropertyStationScalarFieldEnum = (typeof PropertyStationScalarFieldEnum)[keyof typeof PropertyStationScalarFieldEnum]
+
+
+export const FavoriteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  propertyId: 'propertyId',
+  createdAt: 'createdAt'
+} as const
+
+export type FavoriteScalarFieldEnum = (typeof FavoriteScalarFieldEnum)[keyof typeof FavoriteScalarFieldEnum]
+
+
+export const PropertyViewScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  referer: 'referer',
+  viewedAt: 'viewedAt',
+  viewDurationSeconds: 'viewDurationSeconds'
+} as const
+
+export type PropertyViewScalarFieldEnum = (typeof PropertyViewScalarFieldEnum)[keyof typeof PropertyViewScalarFieldEnum]
+
+
+export const PropertyViewDailyScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  viewDate: 'viewDate',
+  totalViews: 'totalViews',
+  uniqueUsers: 'uniqueUsers',
+  avgDurationSeconds: 'avgDurationSeconds',
+  createdAt: 'createdAt'
+} as const
+
+export type PropertyViewDailyScalarFieldEnum = (typeof PropertyViewDailyScalarFieldEnum)[keyof typeof PropertyViewDailyScalarFieldEnum]
+
+
+export const InquiryScalarFieldEnum = {
+  id: 'id',
+  inquiryNumber: 'inquiryNumber',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  name: 'name',
+  furigana: 'furigana',
+  email: 'email',
+  phone: 'phone',
+  companyName: 'companyName',
+  inquiryType: 'inquiryType',
+  subject: 'subject',
+  message: 'message',
+  status: 'status',
+  priority: 'priority',
+  userId: 'userId',
+  assignedAgentId: 'assignedAgentId',
+  assignedAt: 'assignedAt',
+  responseCount: 'responseCount',
+  lastRespondedAt: 'lastRespondedAt',
+  closedAt: 'closedAt',
+  closedReason: 'closedReason',
+  source: 'source',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InquiryScalarFieldEnum = (typeof InquiryScalarFieldEnum)[keyof typeof InquiryScalarFieldEnum]
+
+
+export const InquiryMessageScalarFieldEnum = {
+  id: 'id',
+  inquiryId: 'inquiryId',
+  senderId: 'senderId',
+  senderType: 'senderType',
+  message: 'message',
+  attachments: 'attachments',
+  isInternal: 'isInternal',
+  createdAt: 'createdAt'
+} as const
+
+export type InquiryMessageScalarFieldEnum = (typeof InquiryMessageScalarFieldEnum)[keyof typeof InquiryMessageScalarFieldEnum]
+
+
+export const BulkAssessmentScalarFieldEnum = {
+  id: 'id',
+  assessmentNumber: 'assessmentNumber',
+  propertyAddress: 'propertyAddress',
+  propertyTypeId: 'propertyTypeId',
+  buildingArea: 'buildingArea',
+  landArea: 'landArea',
+  constructionYear: 'constructionYear',
+  ownerName: 'ownerName',
+  email: 'email',
+  phone: 'phone',
+  preferredContactMethod: 'preferredContactMethod',
+  preferredContactTime: 'preferredContactTime',
+  status: 'status',
+  agentCount: 'agentCount',
+  responseCount: 'responseCount',
+  userId: 'userId',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  completedAt: 'completedAt'
+} as const
+
+export type BulkAssessmentScalarFieldEnum = (typeof BulkAssessmentScalarFieldEnum)[keyof typeof BulkAssessmentScalarFieldEnum]
+
+
+export const BulkAssessmentResponseScalarFieldEnum = {
+  id: 'id',
+  assessmentId: 'assessmentId',
+  agentId: 'agentId',
+  assessedPrice: 'assessedPrice',
+  priceRangeMin: 'priceRangeMin',
+  priceRangeMax: 'priceRangeMax',
+  comments: 'comments',
+  proposalDocument: 'proposalDocument',
+  status: 'status',
+  submittedAt: 'submittedAt',
+  viewedAt: 'viewedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type BulkAssessmentResponseScalarFieldEnum = (typeof BulkAssessmentResponseScalarFieldEnum)[keyof typeof BulkAssessmentResponseScalarFieldEnum]
+
+
+export const QuestionScalarFieldEnum = {
+  id: 'id',
+  questionNumber: 'questionNumber',
+  title: 'title',
+  content: 'content',
+  categoryId: 'categoryId',
+  tags: 'tags',
+  viewCount: 'viewCount',
+  answerCount: 'answerCount',
+  status: 'status',
+  authorId: 'authorId',
+  bestAnswerId: 'bestAnswerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type QuestionScalarFieldEnum = (typeof QuestionScalarFieldEnum)[keyof typeof QuestionScalarFieldEnum]
+
+
+export const AnswerScalarFieldEnum = {
+  id: 'id',
+  questionId: 'questionId',
+  content: 'content',
+  goodCount: 'goodCount',
+  isBestAnswer: 'isBestAnswer',
+  authorId: 'authorId',
+  agentId: 'agentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type AnswerScalarFieldEnum = (typeof AnswerScalarFieldEnum)[keyof typeof AnswerScalarFieldEnum]
+
+
 export const FeatureMasterScalarFieldEnum = {
   id: 'id',
+  code: 'code',
   name: 'name',
   category: 'category',
+  icon: 'icon',
   displayOrder: 'displayOrder',
   isActive: 'isActive'
 } as const
@@ -224,21 +532,204 @@ export const FeatureMasterScalarFieldEnum = {
 export type FeatureMasterScalarFieldEnum = (typeof FeatureMasterScalarFieldEnum)[keyof typeof FeatureMasterScalarFieldEnum]
 
 
-export const InquiryScalarFieldEnum = {
+export const RegionMasterScalarFieldEnum = {
   id: 'id',
+  code: 'code',
   name: 'name',
-  email: 'email',
-  phone: 'phone',
-  inquiryType: 'inquiryType',
-  message: 'message',
-  status: 'status',
-  propertyId: 'propertyId',
-  userId: 'userId',
-  createdAt: 'createdAt',
-  respondedAt: 'respondedAt'
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
 } as const
 
-export type InquiryScalarFieldEnum = (typeof InquiryScalarFieldEnum)[keyof typeof InquiryScalarFieldEnum]
+export type RegionMasterScalarFieldEnum = (typeof RegionMasterScalarFieldEnum)[keyof typeof RegionMasterScalarFieldEnum]
+
+
+export const AreaMasterScalarFieldEnum = {
+  id: 'id',
+  regionId: 'regionId',
+  prefectureCode: 'prefectureCode',
+  prefecture: 'prefecture',
+  cityCode: 'cityCode',
+  city: 'city',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type AreaMasterScalarFieldEnum = (typeof AreaMasterScalarFieldEnum)[keyof typeof AreaMasterScalarFieldEnum]
+
+
+export const PropertyTypeMasterScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type PropertyTypeMasterScalarFieldEnum = (typeof PropertyTypeMasterScalarFieldEnum)[keyof typeof PropertyTypeMasterScalarFieldEnum]
+
+
+export const PropertyCategoryMasterScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type PropertyCategoryMasterScalarFieldEnum = (typeof PropertyCategoryMasterScalarFieldEnum)[keyof typeof PropertyCategoryMasterScalarFieldEnum]
+
+
+export const FloorPlanMasterScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  roomCount: 'roomCount',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type FloorPlanMasterScalarFieldEnum = (typeof FloorPlanMasterScalarFieldEnum)[keyof typeof FloorPlanMasterScalarFieldEnum]
+
+
+export const RouteMasterScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  companyName: 'companyName',
+  lineColor: 'lineColor',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type RouteMasterScalarFieldEnum = (typeof RouteMasterScalarFieldEnum)[keyof typeof RouteMasterScalarFieldEnum]
+
+
+export const StationScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  nameKana: 'nameKana',
+  routeId: 'routeId',
+  prefecture: 'prefecture',
+  city: 'city',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type StationScalarFieldEnum = (typeof StationScalarFieldEnum)[keyof typeof StationScalarFieldEnum]
+
+
+export const QuestionCategoryScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  displayOrder: 'displayOrder',
+  isActive: 'isActive'
+} as const
+
+export type QuestionCategoryScalarFieldEnum = (typeof QuestionCategoryScalarFieldEnum)[keyof typeof QuestionCategoryScalarFieldEnum]
+
+
+export const MailScalarFieldEnum = {
+  id: 'id',
+  fromEmail: 'fromEmail',
+  fromName: 'fromName',
+  toEmail: 'toEmail',
+  toName: 'toName',
+  ccEmail: 'ccEmail',
+  bccEmail: 'bccEmail',
+  subject: 'subject',
+  bodyText: 'bodyText',
+  bodyHtml: 'bodyHtml',
+  status: 'status',
+  mailType: 'mailType',
+  templateCode: 'templateCode',
+  templateVariables: 'templateVariables',
+  errorMessage: 'errorMessage',
+  userId: 'userId',
+  retryCount: 'retryCount',
+  scheduledAt: 'scheduledAt',
+  sentAt: 'sentAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MailScalarFieldEnum = (typeof MailScalarFieldEnum)[keyof typeof MailScalarFieldEnum]
+
+
+export const FileBoxScalarFieldEnum = {
+  id: 'id',
+  bucketName: 'bucketName',
+  storagePath: 'storagePath',
+  fileName: 'fileName',
+  originalName: 'originalName',
+  publicUrl: 'publicUrl',
+  mimeType: 'mimeType',
+  fileSize: 'fileSize',
+  category: 'category',
+  metadata: 'metadata',
+  userId: 'userId',
+  isPublic: 'isPublic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type FileBoxScalarFieldEnum = (typeof FileBoxScalarFieldEnum)[keyof typeof FileBoxScalarFieldEnum]
+
+
+export const SystemSettingScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  valueType: 'valueType',
+  category: 'category',
+  description: 'description',
+  isPublic: 'isPublic',
+  updatedById: 'updatedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  tableName: 'tableName',
+  recordId: 'recordId',
+  action: 'action',
+  oldData: 'oldData',
+  newData: 'newData',
+  changedFields: 'changedFields',
+  userId: 'userId',
+  userEmail: 'userEmail',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  sessionId: 'sessionId',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  message: 'message',
+  linkUrl: 'linkUrl',
+  isRead: 'isRead',
+  readAt: 'readAt',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -247,6 +738,21 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull'
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: 'JsonNull'
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -263,4 +769,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull',
+  AnyNull: 'AnyNull'
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

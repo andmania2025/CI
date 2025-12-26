@@ -46,9 +46,7 @@ export function FavoritesClient() {
     setFilter,
     clearAllFavorites,
     counts,
-    favorites,
     isLoading,
-    addFavorite,
     loadFavorites,
   } = useFavorites();
 
@@ -88,7 +86,10 @@ export function FavoritesClient() {
 
           {/* プロパティカードの部分のみSuspenseでラップ */}
           <Suspense fallback={<LoadingSkeleton variant="favorites-grid" />}>
-            <FavoritesGrid filteredFavorites={filteredFavorites} filter={filter} />
+            <FavoritesGrid
+              filteredFavorites={filteredFavorites}
+              filter={filter}
+            />
           </Suspense>
         </div>
       </main>
