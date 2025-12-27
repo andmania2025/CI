@@ -1,6 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "@prisma/generated";
 import pg from "pg";
+import { PrismaClient } from "../../../../generated/client";
 
 /**
  * Prisma Client のシングルトンインスタンス
@@ -24,7 +24,10 @@ function createPrismaClient() {
 
   return new PrismaClient({
     adapter,
-    log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+    log:
+      process.env.NODE_ENV === "development"
+        ? ["query", "error", "warn"]
+        : ["error"],
   });
 }
 
@@ -34,4 +37,4 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
-export type { PrismaClient } from "@prisma/generated";
+export type { PrismaClient } from "../../../../generated/client";

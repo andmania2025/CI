@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
   // Turbopackはtsconfig.jsonのpaths設定を自動認識
   webpack: (config: Configuration) => {
     if (config.resolve?.alias && !Array.isArray(config.resolve.alias)) {
-      config.resolve.alias["@prisma/generated"] = path.resolve(
-        __dirname,
-        "../../generated/client",
-      );
       config.resolve.alias["@prisma/client-runtime-utils"] = path.resolve(
         __dirname,
         "node_modules/@prisma/client-runtime-utils",
