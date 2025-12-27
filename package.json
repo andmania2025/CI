@@ -22,5 +22,8 @@
     "dotenv": "^16.4.5",
     "lefthook": "^2.0.12",
     "prisma": "^7.2.0"
+  },
+  "dependencies": {
+    "@prisma/client-runtime-utils": "^7.2.0"
   }
 }
