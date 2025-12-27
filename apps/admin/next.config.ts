@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
+  // Prisma generated client のパス解決
+  webpack: (config: Configuration) => {
+    if (config.resolve?.alias && !Array.isArray(config.resolve.alias)) {
+      config.resolve.alias["@prisma/generated"] = path.resolve(
+        __dirname,
+        "../../generated/client",
+      );
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

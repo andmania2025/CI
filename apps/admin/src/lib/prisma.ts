@@ -1,6 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "@prisma/generated";
 import pg from "pg";
-import { PrismaClient } from "../../../../generated/client";
 
 /**
  * Prisma Client のシングルトンインスタンス
@@ -37,4 +37,4 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
-export type { PrismaClient } from "../../../../generated/client";
+export type { PrismaClient } from "@prisma/generated";
