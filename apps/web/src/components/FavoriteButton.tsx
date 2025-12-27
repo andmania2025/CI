@@ -63,7 +63,7 @@ export const FavoriteButton = React.memo<FavoriteButtonProps>(
           setIsLoading(false);
         }
       },
-      [item, isFavorite, isLoading, onToggle]
+      [item, isFavorite, isLoading, onToggle],
     );
 
     // キーボードイベントハンドラー
@@ -74,7 +74,7 @@ export const FavoriteButton = React.memo<FavoriteButtonProps>(
           handleToggleFavorite(e as unknown as React.MouseEvent);
         }
       },
-      [handleToggleFavorite]
+      [handleToggleFavorite],
     );
 
     // スタイルクラスの生成
@@ -133,7 +133,7 @@ export const FavoriteButton = React.memo<FavoriteButtonProps>(
         )}
       </Button>
     );
-  }
+  },
 );
 
 FavoriteButton.displayName = "FavoriteButton";

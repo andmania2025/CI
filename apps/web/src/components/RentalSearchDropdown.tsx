@@ -31,7 +31,12 @@ const ROUTE_MAP: Record<string, string> = {
 } as const;
 
 export const RentalSearchDropdown = React.memo<RentalSearchDropdownProps>(
-  ({ onSelect, defaultValue = "賃貸物件検索", className = "", disabled = false }) => {
+  ({
+    onSelect,
+    defaultValue = "賃貸物件検索",
+    className = "",
+    disabled = false,
+  }) => {
     const router = useRouter();
     const [selectedValue, setSelectedValue] = useState(defaultValue);
 
@@ -47,7 +52,7 @@ export const RentalSearchDropdown = React.memo<RentalSearchDropdownProps>(
           router.push(route);
         }
       },
-      [onSelect, router]
+      [onSelect, router],
     );
 
     // スタイルクラスの計算
@@ -61,9 +66,9 @@ export const RentalSearchDropdown = React.memo<RentalSearchDropdownProps>(
           "focus:outline-none focus:ring-0 focus:ring-offset-0",
           "focus-visible:outline-none focus-visible:ring-0",
           "disabled:opacity-50 disabled:cursor-not-allowed",
-          className
+          className,
         ),
-      [className]
+      [className],
     );
 
     return (
@@ -75,11 +80,13 @@ export const RentalSearchDropdown = React.memo<RentalSearchDropdownProps>(
           disabled={disabled}
           aria-label="賃貸物件タイプを選択"
         >
-          <span className="text-white text-sm font-medium truncate">{selectedValue}</span>
+          <span className="text-white text-sm font-medium truncate">
+            {selectedValue}
+          </span>
           <ChevronDown
             className={cn(
               "w-4 h-4 text-white transition-transform duration-200",
-              disabled && "opacity-50"
+              disabled && "opacity-50",
             )}
             aria-hidden="true"
           />
@@ -102,7 +109,7 @@ export const RentalSearchDropdown = React.memo<RentalSearchDropdownProps>(
         </DropdownMenuContent>
       </DropdownMenu>
     );
-  }
+  },
 );
 
 RentalSearchDropdown.displayName = "RentalSearchDropdown";

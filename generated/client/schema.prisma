@@ -18,38 +18,38 @@ datasource db {
 // ============================================
 
 model User {
-  id              String    @id @default(uuid()) @db.Uuid
-  email           String    @unique @db.VarChar(255)
-  name            String?   @db.VarChar(100)
-  furigana        String?   @db.VarChar(100)
+  id              String     @id @default(uuid()) @db.Uuid
+  email           String     @unique @db.VarChar(255)
+  name            String?    @db.VarChar(100)
+  furigana        String?    @db.VarChar(100)
   gender          Gender?
-  birthDate       DateTime? @db.Date
-  phone           String?   @db.VarChar(20)
-  avatarUrl       String?   @db.VarChar(500)
+  birthDate       DateTime?  @db.Date
+  phone           String?    @db.VarChar(20)
+  avatarUrl       String?    @db.VarChar(500)
   status          UserStatus @default(ACTIVE)
-  emailVerifiedAt DateTime? @db.Timestamptz
-  createdAt       DateTime  @default(now()) @db.Timestamptz
-  updatedAt       DateTime  @updatedAt @db.Timestamptz
-  deletedAt       DateTime? @db.Timestamptz
-  lastLoginAt     DateTime? @db.Timestamptz
+  emailVerifiedAt DateTime?  @db.Timestamptz
+  createdAt       DateTime   @default(now()) @db.Timestamptz
+  updatedAt       DateTime   @updatedAt @db.Timestamptz
+  deletedAt       DateTime?  @db.Timestamptz
+  lastLoginAt     DateTime?  @db.Timestamptz
 
   // Relations
-  userRoles                UserRole[]
-  agent                    Agent?
-  properties               Property[]
-  inquiries                Inquiry[]
-  favorites                Favorite[]
-  propertyViews            PropertyView[]
-  questions                Question[]
-  answers                  Answer[]
-  bulkAssessments          BulkAssessment[]
-  mails                    Mail[]
-  fileBoxes                FileBox[]
-  notifications            Notification[]
-  systemSettingsUpdated    SystemSetting[]
-  auditLogs                AuditLog[]
-  priceHistoryChanges      PropertyPriceHistory[]
-  statusHistoryChanges     PropertyStatusHistory[]
+  userRoles             UserRole[]
+  agent                 Agent?
+  properties            Property[]
+  inquiries             Inquiry[]
+  favorites             Favorite[]
+  propertyViews         PropertyView[]
+  questions             Question[]
+  answers               Answer[]
+  bulkAssessments       BulkAssessment[]
+  mails                 Mail[]
+  fileBoxes             FileBox[]
+  notifications         Notification[]
+  systemSettingsUpdated SystemSetting[]
+  auditLogs             AuditLog[]
+  priceHistoryChanges   PropertyPriceHistory[]
+  statusHistoryChanges  PropertyStatusHistory[]
 
   @@index([status])
   @@index([email])
@@ -167,7 +167,7 @@ model Agent {
   licenseExpireDate  DateTime? @db.Date
   goodCount          Int       @default(0)
   responseRate       Decimal?  @db.Decimal(5, 2) // 返信率
-  avgResponseMinutes Int?      // 平均返信時間
+  avgResponseMinutes Int? // 平均返信時間
   userId             String    @unique @db.Uuid
   branchId           String    @db.Uuid
   isActive           Boolean   @default(true)
@@ -233,7 +233,7 @@ model Property {
   longitude   Decimal? @db.Decimal(10, 7)
 
   // 間取り・面積
-  layoutNumber  Int?     // 部屋数
+  layoutNumber  Int? // 部屋数
   layoutTypeId  String?  @db.Uuid
   layoutDisplay String?  @db.VarChar(20) // "3LDK" 等
   buildingArea  Decimal? @db.Decimal(10, 2)
@@ -241,38 +241,38 @@ model Property {
   balconyArea   Decimal? @db.Decimal(10, 2)
 
   // 建物情報
-  buildingStructure      String?   @db.VarChar(50)
-  constructionDate       DateTime? @db.Date
-  constructionYearMonth  String?   @db.VarChar(20) // "2020年3月" 表示用
-  totalFloors            Int?
-  floor                  Int?
+  buildingStructure     String?   @db.VarChar(50)
+  constructionDate      DateTime? @db.Date
+  constructionYearMonth String?   @db.VarChar(20) // "2020年3月" 表示用
+  totalFloors           Int?
+  floor                 Int?
 
   // 価格
-  currentPrice     BigInt?  // 円単位
-  pricePerTsubo    BigInt?  // 坪単価（計算済みキャッシュ）
+  currentPrice     BigInt? // 円単位
+  pricePerTsubo    BigInt? // 坪単価（計算済みキャッシュ）
   managementFee    Int?
   commonServiceFee Int?
   depositMonths    Decimal? @db.Decimal(3, 1) // 敷金（ヶ月）
   keyMoneyMonths   Decimal? @db.Decimal(3, 1) // 礼金（ヶ月）
 
   // 非正規化フィールド（一覧表示高速化）
-  mainImageUrl             String?  @db.VarChar(500)
-  primaryStationName       String?  @db.VarChar(100)
+  mainImageUrl              String?  @db.VarChar(500)
+  primaryStationName        String?  @db.VarChar(100)
   primaryStationWalkMinutes Int?
-  featureTags              String[] // 設備タグ配列
+  featureTags               String[] // 設備タグ配列
 
   // 統計
-  viewCount    Int @default(0)
-  inquiryCount Int @default(0)
+  viewCount     Int @default(0)
+  inquiryCount  Int @default(0)
   favoriteCount Int @default(0)
 
   // 管理
-  agentId      String?  @db.Uuid
-  remarks      String?  @db.Text
-  internalMemo String?  @db.Text // 社内メモ
-  metadata     Json?    @db.JsonB
-  createdAt    DateTime @default(now()) @db.Timestamptz
-  updatedAt    DateTime @updatedAt @db.Timestamptz
+  agentId      String?   @db.Uuid
+  remarks      String?   @db.Text
+  internalMemo String?   @db.Text // 社内メモ
+  metadata     Json?     @db.JsonB
+  createdAt    DateTime  @default(now()) @db.Timestamptz
+  updatedAt    DateTime  @updatedAt @db.Timestamptz
   deletedAt    DateTime? @db.Timestamptz
 
   // Relations
@@ -287,15 +287,15 @@ model Property {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // サブテーブル
-  publication      PropertyPublication?
-  priceHistories   PropertyPriceHistory[]
-  statusHistories  PropertyStatusHistory[]
-  images           PropertyImage[]
-  features         PropertyFeature[]
-  stations         PropertyStation[]
-  inquiries        Inquiry[]
-  favorites        Favorite[]
-  propertyViews    PropertyView[]
+  publication         PropertyPublication?
+  priceHistories      PropertyPriceHistory[]
+  statusHistories     PropertyStatusHistory[]
+  images              PropertyImage[]
+  features            PropertyFeature[]
+  stations            PropertyStation[]
+  inquiries           Inquiry[]
+  favorites           Favorite[]
+  propertyViews       PropertyView[]
   propertyViewDailies PropertyViewDaily[]
 
   @@index([userId])
@@ -308,18 +308,18 @@ model Property {
 }
 
 model PropertyPublication {
-  id            String    @id @default(uuid()) @db.Uuid
-  propertyId    String    @unique @db.Uuid
+  id            String            @id @default(uuid()) @db.Uuid
+  propertyId    String            @unique @db.Uuid
   status        PublicationStatus @default(DRAFT)
-  scope         PublicScope @default(PRIVATE)
-  featured      Boolean   @default(false)
+  scope         PublicScope       @default(PRIVATE)
+  featured      Boolean           @default(false)
   featuredOrder Int?
-  publishedAt   DateTime? @db.Timestamptz
-  unpublishedAt DateTime? @db.Timestamptz
-  soldAt        DateTime? @db.Timestamptz
-  expiresAt     DateTime? @db.Timestamptz
-  createdAt     DateTime  @default(now()) @db.Timestamptz
-  updatedAt     DateTime  @updatedAt @db.Timestamptz
+  publishedAt   DateTime?         @db.Timestamptz
+  unpublishedAt DateTime?         @db.Timestamptz
+  soldAt        DateTime?         @db.Timestamptz
+  expiresAt     DateTime?         @db.Timestamptz
+  createdAt     DateTime          @default(now()) @db.Timestamptz
+  updatedAt     DateTime          @updatedAt @db.Timestamptz
 
   // Relations
   property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
@@ -527,10 +527,10 @@ model PropertyViewDaily {
 // ============================================
 
 model Inquiry {
-  id            String  @id @default(uuid()) @db.Uuid
-  inquiryNumber String  @unique @db.VarChar(50)
+  id            String     @id @default(uuid()) @db.Uuid
+  inquiryNumber String     @unique @db.VarChar(50)
   targetType    TargetType
-  targetId      String? @db.Uuid
+  targetId      String?    @db.Uuid
 
   // 問い合わせ者情報
   name        String  @db.VarChar(100)
@@ -554,21 +554,21 @@ model Inquiry {
   assignedAt      DateTime? @db.Timestamptz
 
   // 追跡
-  responseCount    Int       @default(0)
-  lastRespondedAt  DateTime? @db.Timestamptz
-  closedAt         DateTime? @db.Timestamptz
-  closedReason     String?   @db.Text
+  responseCount   Int       @default(0)
+  lastRespondedAt DateTime? @db.Timestamptz
+  closedAt        DateTime? @db.Timestamptz
+  closedReason    String?   @db.Text
 
   // メタ
-  source    String? @db.VarChar(50) // web, phone, email, api
-  metadata  Json?   @db.JsonB
+  source    String?  @db.VarChar(50) // web, phone, email, api
+  metadata  Json?    @db.JsonB
   createdAt DateTime @default(now()) @db.Timestamptz
   updatedAt DateTime @updatedAt @db.Timestamptz
 
   // Relations
-  user          User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
-  assignedAgent Agent?  @relation(fields: [assignedAgentId], references: [id], onDelete: SetNull)
-  property      Property? @relation(fields: [targetId], references: [id], onDelete: SetNull)
+  user          User?            @relation(fields: [userId], references: [id], onDelete: SetNull)
+  assignedAgent Agent?           @relation(fields: [assignedAgentId], references: [id], onDelete: SetNull)
+  property      Property?        @relation(fields: [targetId], references: [id], onDelete: SetNull)
   messages      InquiryMessage[]
 
   @@index([status, priority, createdAt(sort: Desc)])
@@ -579,14 +579,14 @@ model Inquiry {
 }
 
 model InquiryMessage {
-  id          String   @id @default(uuid()) @db.Uuid
-  inquiryId   String   @db.Uuid
-  senderId    String?  @db.Uuid
+  id          String     @id @default(uuid()) @db.Uuid
+  inquiryId   String     @db.Uuid
+  senderId    String?    @db.Uuid
   senderType  SenderType
-  message     String   @db.Text
-  attachments Json?    @db.JsonB // [{fileBoxId, fileName}]
-  isInternal  Boolean  @default(false) // 社内メモ
-  createdAt   DateTime @default(now()) @db.Timestamptz
+  message     String     @db.Text
+  attachments Json?      @db.JsonB // [{fileBoxId, fileName}]
+  isInternal  Boolean    @default(false) // 社内メモ
+  createdAt   DateTime   @default(now()) @db.Timestamptz
 
   // Relations
   inquiry Inquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
@@ -637,8 +637,8 @@ enum SenderType {
 // ============================================
 
 model BulkAssessment {
-  id               String  @id @default(uuid()) @db.Uuid
-  assessmentNumber String  @unique @db.VarChar(50)
+  id               String @id @default(uuid()) @db.Uuid
+  assessmentNumber String @unique @db.VarChar(50)
 
   // 物件情報
   propertyAddress  String   @db.Text
@@ -675,18 +675,18 @@ model BulkAssessment {
 }
 
 model BulkAssessmentResponse {
-  id               String  @id @default(uuid()) @db.Uuid
-  assessmentId     String  @db.Uuid
-  agentId          String  @db.Uuid
+  id               String         @id @default(uuid()) @db.Uuid
+  assessmentId     String         @db.Uuid
+  agentId          String         @db.Uuid
   assessedPrice    BigInt?
   priceRangeMin    BigInt?
   priceRangeMax    BigInt?
-  comments         String? @db.Text
-  proposalDocument String? @db.VarChar(500) // FileBox URL
+  comments         String?        @db.Text
+  proposalDocument String?        @db.VarChar(500) // FileBox URL
   status           ResponseStatus @default(PENDING)
-  submittedAt      DateTime? @db.Timestamptz
-  viewedAt         DateTime? @db.Timestamptz
-  createdAt        DateTime @default(now()) @db.Timestamptz
+  submittedAt      DateTime?      @db.Timestamptz
+  viewedAt         DateTime?      @db.Timestamptz
+  createdAt        DateTime       @default(now()) @db.Timestamptz
 
   // Relations
   assessment BulkAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
@@ -721,7 +721,7 @@ model Question {
   title          String         @db.VarChar(200)
   content        String         @db.Text
   categoryId     String?        @db.Uuid
-  tags           String[]       // GINインデックス
+  tags           String[] // GINインデックス
   viewCount      Int            @default(0)
   answerCount    Int            @default(0)
   status         QuestionStatus @default(OPEN)
@@ -732,9 +732,9 @@ model Question {
   deletedAt      DateTime?      @db.Timestamptz
 
   // Relations
-  author     User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  category   QuestionCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  answers    Answer[]
+  author   User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category QuestionCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  answers  Answer[]
 
   @@index([status, createdAt(sort: Desc)])
   @@index([categoryId, status])
@@ -897,8 +897,8 @@ model Station {
   isActive     Boolean  @default(true)
 
   // Relations
-  route              RouteMaster?      @relation(fields: [routeId], references: [id], onDelete: SetNull)
-  propertyStations   PropertyStation[]
+  route            RouteMaster?      @relation(fields: [routeId], references: [id], onDelete: SetNull)
+  propertyStations PropertyStation[]
 
   @@unique([name, routeId])
   @@index([routeId])
@@ -921,11 +921,11 @@ model QuestionCategory {
 }
 
 enum FeatureCategory {
-  EQUIPMENT   // 設備
-  CONDITION   // 条件
+  EQUIPMENT // 設備
+  CONDITION // 条件
   ENVIRONMENT // 周辺環境
-  SECURITY    // セキュリティ
-  OTHER       // その他
+  SECURITY // セキュリティ
+  OTHER // その他
 }
 
 // ============================================
@@ -970,7 +970,7 @@ model FileBox {
   originalName String    @db.VarChar(255)
   publicUrl    String?   @db.VarChar(500)
   mimeType     String    @db.VarChar(100)
-  fileSize     BigInt    // bytes
+  fileSize     BigInt // bytes
   category     String?   @db.VarChar(100) // property_image, document, avatar, other
   metadata     Json?     @db.JsonB // width, height, duration等
   userId       String?   @db.Uuid
@@ -1008,19 +1008,19 @@ model SystemSetting {
 }
 
 model AuditLog {
-  id            String   @id @default(uuid()) @db.Uuid
-  tableName     String   @db.VarChar(100)
-  recordId      String   @db.Uuid
+  id            String      @id @default(uuid()) @db.Uuid
+  tableName     String      @db.VarChar(100)
+  recordId      String      @db.Uuid
   action        AuditAction
-  oldData       Json?    @db.JsonB
-  newData       Json?    @db.JsonB
+  oldData       Json?       @db.JsonB
+  newData       Json?       @db.JsonB
   changedFields String[] // 変更されたフィールド一覧
-  userId        String?  @db.Uuid
-  userEmail     String?  @db.VarChar(255) // 非正規化
-  ipAddress     String?  @db.VarChar(45)
-  userAgent     String?  @db.Text
-  sessionId     String?  @db.VarChar(100)
-  createdAt     DateTime @default(now()) @db.Timestamptz
+  userId        String?     @db.Uuid
+  userEmail     String?     @db.VarChar(255) // 非正規化
+  ipAddress     String?     @db.VarChar(45)
+  userAgent     String?     @db.Text
+  sessionId     String?     @db.VarChar(100)
+  createdAt     DateTime    @default(now()) @db.Timestamptz
 
   // Relations
   user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
@@ -1032,16 +1032,16 @@ model AuditLog {
 }
 
 model Notification {
-  id        String   @id @default(uuid()) @db.Uuid
-  userId    String   @db.Uuid
-  type      String   @db.VarChar(100) // inquiry_received, answer_posted, price_changed, etc
-  title     String   @db.VarChar(200)
-  message   String   @db.Text
-  linkUrl   String?  @db.VarChar(500)
-  isRead    Boolean  @default(false)
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  type      String    @db.VarChar(100) // inquiry_received, answer_posted, price_changed, etc
+  title     String    @db.VarChar(200)
+  message   String    @db.Text
+  linkUrl   String?   @db.VarChar(500)
+  isRead    Boolean   @default(false)
   readAt    DateTime? @db.Timestamptz
-  metadata  Json?    @db.JsonB
-  createdAt DateTime @default(now()) @db.Timestamptz
+  metadata  Json?     @db.JsonB
+  createdAt DateTime  @default(now()) @db.Timestamptz
 
   // Relations
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

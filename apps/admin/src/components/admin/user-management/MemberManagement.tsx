@@ -43,7 +43,7 @@ const MemberManagement: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   // サンプル会員データ
-  const members = [
+  const _members = [
     {
       id: "m001",
       name: "田中太郎",
@@ -111,7 +111,7 @@ const MemberManagement: React.FC = () => {
   const handleCheckboxChange = <K extends "gender" | "accountStatus">(
     category: K,
     field: keyof MemberFormState[K],
-    checked: boolean
+    checked: boolean,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -191,7 +191,9 @@ const MemberManagement: React.FC = () => {
                     id="freeword"
                     type="text"
                     value={formData.freeword}
-                    onChange={(e) => handleInputChange("freeword", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("freeword", e.target.value)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="名前、メールアドレス等で検索"
                   />
@@ -208,7 +210,9 @@ const MemberManagement: React.FC = () => {
                   <select
                     id="residence"
                     value={formData.residence}
-                    onChange={(e) => handleInputChange("residence", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("residence", e.target.value)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">選択してください</option>
@@ -264,13 +268,21 @@ const MemberManagement: React.FC = () => {
 
                 {/* 性別 */}
                 <div>
-                  <div className="block text-sm font-medium text-gray-700 mb-3">性別</div>
+                  <div className="block text-sm font-medium text-gray-700 mb-3">
+                    性別
+                  </div>
                   <div className="flex gap-6">
                     <label className="flex items-center">
                       <input
                         type="checkbox"
                         checked={formData.gender.male}
-                        onChange={(e) => handleCheckboxChange("gender", "male", e.target.checked)}
+                        onChange={(e) =>
+                          handleCheckboxChange(
+                            "gender",
+                            "male",
+                            e.target.checked,
+                          )
+                        }
                         className="mr-2"
                       />
                       <span className="text-sm">男性</span>
@@ -279,7 +291,13 @@ const MemberManagement: React.FC = () => {
                       <input
                         type="checkbox"
                         checked={formData.gender.female}
-                        onChange={(e) => handleCheckboxChange("gender", "female", e.target.checked)}
+                        onChange={(e) =>
+                          handleCheckboxChange(
+                            "gender",
+                            "female",
+                            e.target.checked,
+                          )
+                        }
                         className="mr-2"
                       />
                       <span className="text-sm">女性</span>
@@ -289,13 +307,17 @@ const MemberManagement: React.FC = () => {
 
                 {/* 最終ログイン日 */}
                 <div>
-                  <div className="block text-sm font-medium text-gray-700 mb-2">最終ログイン日</div>
+                  <div className="block text-sm font-medium text-gray-700 mb-2">
+                    最終ログイン日
+                  </div>
                   <div className="flex items-center gap-2">
                     <div className="relative">
                       <input
                         type="date"
                         value={formData.lastLoginDateFrom}
-                        onChange={(e) => handleInputChange("lastLoginDateFrom", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("lastLoginDateFrom", e.target.value)
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
@@ -304,7 +326,9 @@ const MemberManagement: React.FC = () => {
                       <input
                         type="date"
                         value={formData.lastLoginDateTo}
-                        onChange={(e) => handleInputChange("lastLoginDateTo", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("lastLoginDateTo", e.target.value)
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
@@ -313,13 +337,20 @@ const MemberManagement: React.FC = () => {
 
                 {/* 登録日 */}
                 <div>
-                  <div className="block text-sm font-medium text-gray-700 mb-2">登録日</div>
+                  <div className="block text-sm font-medium text-gray-700 mb-2">
+                    登録日
+                  </div>
                   <div className="flex items-center gap-2">
                     <div className="relative">
                       <input
                         type="date"
                         value={formData.registrationDateFrom}
-                        onChange={(e) => handleInputChange("registrationDateFrom", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange(
+                            "registrationDateFrom",
+                            e.target.value,
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
@@ -328,7 +359,12 @@ const MemberManagement: React.FC = () => {
                       <input
                         type="date"
                         value={formData.registrationDateTo}
-                        onChange={(e) => handleInputChange("registrationDateTo", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange(
+                            "registrationDateTo",
+                            e.target.value,
+                          )
+                        }
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
@@ -337,14 +373,20 @@ const MemberManagement: React.FC = () => {
 
                 {/* アカウント状態 */}
                 <div>
-                  <div className="block text-sm font-medium text-gray-700 mb-3">アカウント状態</div>
+                  <div className="block text-sm font-medium text-gray-700 mb-3">
+                    アカウント状態
+                  </div>
                   <div className="flex gap-6">
                     <label className="flex items-center">
                       <input
                         type="checkbox"
                         checked={formData.accountStatus.valid}
                         onChange={(e) =>
-                          handleCheckboxChange("accountStatus", "valid", e.target.checked)
+                          handleCheckboxChange(
+                            "accountStatus",
+                            "valid",
+                            e.target.checked,
+                          )
                         }
                         className="mr-2"
                       />
@@ -355,7 +397,11 @@ const MemberManagement: React.FC = () => {
                         type="checkbox"
                         checked={formData.accountStatus.invalid}
                         onChange={(e) =>
-                          handleCheckboxChange("accountStatus", "invalid", e.target.checked)
+                          handleCheckboxChange(
+                            "accountStatus",
+                            "invalid",
+                            e.target.checked,
+                          )
                         }
                         className="mr-2"
                       />
@@ -375,7 +421,9 @@ const MemberManagement: React.FC = () => {
                   <select
                     id="displayCount"
                     value={formData.displayCount}
-                    onChange={(e) => handleInputChange("displayCount", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("displayCount", e.target.value)
+                    }
                     className="w-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="20">20件</option>

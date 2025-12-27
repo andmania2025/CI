@@ -2,17 +2,14 @@
   "name": "ucikatu-monorepo",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev:web": "bun run --cwd apps/web dev",
     "dev:admin": "bun run --cwd apps/admin dev",
     "build:web": "bun run --cwd apps/web build",
     "build:admin": "bun run --cwd apps/admin build",
-    "lint": "bun run lint",
-    "test": "bun run test",
+    "lint": "bun run --cwd apps/web lint && bun run --cwd apps/admin lint",
+    "test": "bun run --cwd apps/web test && bun run --cwd apps/admin test",
     "prepare": "lefthook install || true"
   },
   "engines": {

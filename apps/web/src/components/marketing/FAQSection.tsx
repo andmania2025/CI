@@ -75,7 +75,9 @@ const FAQItem = memo(
               <h4 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#093893] transition-colors duration-200">
                 {faq.title}
               </h4>
-              <p className="text-sm text-gray-600 mb-1 font-normal">{faq.subtitle}</p>
+              <p className="text-sm text-gray-600 mb-1 font-normal">
+                {faq.subtitle}
+              </p>
             </div>
             <div className="ml-4 shrink-0">
               {isOpen ? (
@@ -89,20 +91,21 @@ const FAQItem = memo(
 
         {/* アコーディオンコンテンツ */}
         {isOpen && (
-          <div
+          <section
             id={`faq-content-${faq.id}`}
             className="border-t border-gray-100"
-            role="region"
             aria-labelledby={`faq-button-${faq.id}`}
           >
             <div className="px-4 pb-4 pt-2">
-              <p className="text-sm text-gray-600 leading-relaxed">{faq.content}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {faq.content}
+              </p>
             </div>
-          </div>
+          </section>
         )}
       </div>
     );
-  }
+  },
 );
 
 FAQItem.displayName = "FAQItem";
@@ -126,7 +129,12 @@ export const FAQSection = () => {
       {/* モバイル：1列表示 */}
       <div className="block md:hidden space-y-6">
         {FAQ_DATA.map((faq) => (
-          <FAQItem key={faq.id} faq={faq} isOpen={openFAQ === faq.id} onToggle={toggleFAQ} />
+          <FAQItem
+            key={faq.id}
+            faq={faq}
+            isOpen={openFAQ === faq.id}
+            onToggle={toggleFAQ}
+          />
         ))}
       </div>
 
@@ -135,14 +143,24 @@ export const FAQSection = () => {
         {/* 左列 */}
         <div className="space-y-6">
           {FAQ_DATA.filter((_, index) => index % 2 === 0).map((faq) => (
-            <FAQItem key={faq.id} faq={faq} isOpen={openFAQ === faq.id} onToggle={toggleFAQ} />
+            <FAQItem
+              key={faq.id}
+              faq={faq}
+              isOpen={openFAQ === faq.id}
+              onToggle={toggleFAQ}
+            />
           ))}
         </div>
 
         {/* 右列 */}
         <div className="space-y-6">
           {FAQ_DATA.filter((_, index) => index % 2 === 1).map((faq) => (
-            <FAQItem key={faq.id} faq={faq} isOpen={openFAQ === faq.id} onToggle={toggleFAQ} />
+            <FAQItem
+              key={faq.id}
+              faq={faq}
+              isOpen={openFAQ === faq.id}
+              onToggle={toggleFAQ}
+            />
           ))}
         </div>
       </div>

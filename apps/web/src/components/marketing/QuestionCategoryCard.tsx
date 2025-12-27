@@ -82,7 +82,7 @@ export const QuestionCategoryCard = ({
               <span className="text-gray-800 text-md md:text-lg">{suffix}</span>
             </h3>
             <div className="flex flex-wrap gap-3">
-              {categories.map((category, index) => (
+              {categories.map((category, _index) => (
                 <CategoryButton
                   key={category}
                   label={category}

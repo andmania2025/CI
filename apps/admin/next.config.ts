@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 
@@ -11,10 +11,12 @@ const nextConfig: NextConfig = {
   // Prisma generated client のパス解決
   // Turbopackはtsconfig.jsonのpaths設定を自動認識
   webpack: (config: Configuration) => {
-    config.resolve.alias["@prisma/generated"] = path.resolve(
-      __dirname,
-      "../../generated/client",
-    );
+    if (config.resolve?.alias && !Array.isArray(config.resolve.alias)) {
+      config.resolve.alias["@prisma/generated"] = path.resolve(
+        __dirname,
+        "../../generated/client",
+      );
+    }
     return config;
   },
 };

@@ -31,7 +31,7 @@ export interface AppraisalSearchFormData {
 
 export function AppraisalSearchForm({
   onSearch,
-  searchType = "sale",
+  searchType: _searchType = "sale",
   initialPropertyType,
 }: AppraisalSearchFormProps) {
   const [formData, setFormData] = useState<AppraisalSearchFormData>({
