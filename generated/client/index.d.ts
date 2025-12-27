@@ -15,182 +15,217 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 /**
  * Model User
- * 
+ * ユーザー情報
+ * Supabase Auth と連携し、システム全体の認証・認可の基盤となるテーブル
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
  * Model Role
- * 
+ * ロール（権限グループ）
+ * admin（管理者）、agent（不動産業者）、general（一般ユーザー）等を管理
  */
 export type Role = $Result.DefaultSelection<Prisma.$RolePayload>
 /**
  * Model UserRole
- * 
+ * ユーザーとロールの中間テーブル（多対多）
  */
 export type UserRole = $Result.DefaultSelection<Prisma.$UserRolePayload>
 /**
  * Model Company
- * 
+ * 不動産会社
+ * 会社情報と免許情報を管理。支店（Branch）を複数持つことができる
  */
 export type Company = $Result.DefaultSelection<Prisma.$CompanyPayload>
 /**
  * Model Branch
- * 
+ * 支店
+ * 会社に紐づく支店情報。本店フラグで本店と支店を区別
  */
 export type Branch = $Result.DefaultSelection<Prisma.$BranchPayload>
 /**
  * Model Agent
- * 
+ * 不動産担当者（エージェント）
+ * Userと1対1で紐づき、宅建士資格情報や評価を管理
  */
 export type Agent = $Result.DefaultSelection<Prisma.$AgentPayload>
 /**
  * Model Property
- * 
+ * 物件情報
+ * 不動産物件の詳細情報を管理するメインテーブル。検索高速化のため一部フィールドを非正規化
  */
 export type Property = $Result.DefaultSelection<Prisma.$PropertyPayload>
 /**
  * Model PropertyPublication
- * 
+ * 物件公開情報
+ * 物件の公開状態、掲載期間、注目物件設定を管理
  */
 export type PropertyPublication = $Result.DefaultSelection<Prisma.$PropertyPublicationPayload>
 /**
  * Model PropertyPriceHistory
- * 
+ * 物件価格変更履歴
+ * 価格変更のトラッキング用。変動率も自動計算して保存
  */
 export type PropertyPriceHistory = $Result.DefaultSelection<Prisma.$PropertyPriceHistoryPayload>
 /**
  * Model PropertyStatusHistory
- * 
+ * 物件ステータス変更履歴
+ * 公開状態等のステータス変更をトラッキング
  */
 export type PropertyStatusHistory = $Result.DefaultSelection<Prisma.$PropertyStatusHistoryPayload>
 /**
  * Model PropertyImage
- * 
+ * 物件画像
+ * 物件に紐づく画像情報。メイン画像フラグで一覧表示用画像を指定
  */
 export type PropertyImage = $Result.DefaultSelection<Prisma.$PropertyImagePayload>
 /**
  * Model PropertyFeature
- * 
+ * 物件設備（中間テーブル）
+ * 物件と設備マスタの多対多関係
  */
 export type PropertyFeature = $Result.DefaultSelection<Prisma.$PropertyFeaturePayload>
 /**
  * Model PropertyStation
- * 
+ * 物件最寄り駅（中間テーブル）
+ * 物件と駅の多対多関係。徒歩分数やバス利用時間も管理
  */
 export type PropertyStation = $Result.DefaultSelection<Prisma.$PropertyStationPayload>
 /**
  * Model Favorite
- * 
+ * お気に入り物件
+ * ユーザーと物件の多対多関係
  */
 export type Favorite = $Result.DefaultSelection<Prisma.$FavoritePayload>
 /**
  * Model PropertyView
- * 
+ * 物件閲覧履歴
+ * 物件詳細ページの閲覧をトラッキング。非ログインユーザーも記録可能
  */
 export type PropertyView = $Result.DefaultSelection<Prisma.$PropertyViewPayload>
 /**
  * Model PropertyViewDaily
- * 
+ * 物件日別閲覧統計
+ * 物件ごとの日別アクセス集計データ
  */
 export type PropertyViewDaily = $Result.DefaultSelection<Prisma.$PropertyViewDailyPayload>
 /**
  * Model Inquiry
- * 
+ * 問い合わせ
+ * 物件・会社・サイトへの問い合わせを管理。担当者アサインとステータス追跡
  */
 export type Inquiry = $Result.DefaultSelection<Prisma.$InquiryPayload>
 /**
  * Model InquiryMessage
- * 
+ * 問い合わせメッセージ
+ * 問い合わせに対するやり取りを記録
  */
 export type InquiryMessage = $Result.DefaultSelection<Prisma.$InquiryMessagePayload>
 /**
  * Model BulkAssessment
- * 
+ * 一括査定依頼
+ * 複数の不動産会社に一括で査定依頼を行う機能
  */
 export type BulkAssessment = $Result.DefaultSelection<Prisma.$BulkAssessmentPayload>
 /**
  * Model BulkAssessmentResponse
- * 
+ * 一括査定回答
+ * 不動産業者からの査定回答
  */
 export type BulkAssessmentResponse = $Result.DefaultSelection<Prisma.$BulkAssessmentResponsePayload>
 /**
  * Model Question
- * 
+ * 質問
+ * ユーザーからの質問を管理。カテゴリ・タグで分類
  */
 export type Question = $Result.DefaultSelection<Prisma.$QuestionPayload>
 /**
  * Model Answer
- * 
+ * 回答
+ * 質問に対する回答。ベストアンサー選択可能
  */
 export type Answer = $Result.DefaultSelection<Prisma.$AnswerPayload>
 /**
  * Model FeatureMaster
- * 
+ * 設備マスタ
+ * 物件の設備・条件を管理するマスタテーブル
  */
 export type FeatureMaster = $Result.DefaultSelection<Prisma.$FeatureMasterPayload>
 /**
  * Model RegionMaster
- * 
+ * 地域マスタ
+ * 都道府県をグループ化した地域（関東、関西等）
  */
 export type RegionMaster = $Result.DefaultSelection<Prisma.$RegionMasterPayload>
 /**
  * Model AreaMaster
- * 
+ * エリアマスタ
+ * 都道府県・市区町村のマスタ
  */
 export type AreaMaster = $Result.DefaultSelection<Prisma.$AreaMasterPayload>
 /**
  * Model PropertyTypeMaster
- * 
+ * 物件種別マスタ
+ * マンション、戸建て、土地等の物件種別
  */
 export type PropertyTypeMaster = $Result.DefaultSelection<Prisma.$PropertyTypeMasterPayload>
 /**
  * Model PropertyCategoryMaster
- * 
+ * 物件カテゴリマスタ
+ * 物件の詳細カテゴリ
  */
 export type PropertyCategoryMaster = $Result.DefaultSelection<Prisma.$PropertyCategoryMasterPayload>
 /**
  * Model FloorPlanMaster
- * 
+ * 間取りマスタ
+ * 1R、1K、2LDK等の間取りタイプ
  */
 export type FloorPlanMaster = $Result.DefaultSelection<Prisma.$FloorPlanMasterPayload>
 /**
  * Model RouteMaster
- * 
+ * 路線マスタ
+ * 電車・バスの路線情報
  */
 export type RouteMaster = $Result.DefaultSelection<Prisma.$RouteMasterPayload>
 /**
  * Model Station
- * 
+ * 駅マスタ
+ * 電車・バスの駅情報
  */
 export type Station = $Result.DefaultSelection<Prisma.$StationPayload>
 /**
  * Model QuestionCategory
- * 
+ * 質問カテゴリマスタ
+ * Q&Aの質問カテゴリ
  */
 export type QuestionCategory = $Result.DefaultSelection<Prisma.$QuestionCategoryPayload>
 /**
  * Model Mail
- * 
+ * メール送信ログ
+ * システムから送信するメールを管理
  */
 export type Mail = $Result.DefaultSelection<Prisma.$MailPayload>
 /**
  * Model FileBox
- * 
+ * ファイルボックス
+ * Supabase Storageにアップロードされたファイルのメタ情報
  */
 export type FileBox = $Result.DefaultSelection<Prisma.$FileBoxPayload>
 /**
  * Model SystemSetting
- * 
+ * システム設定
+ * アプリケーション全体の設定を管理
  */
 export type SystemSetting = $Result.DefaultSelection<Prisma.$SystemSettingPayload>
 /**
  * Model AuditLog
- * 
+ * 監査ログ
+ * データ変更履歴を記録（コンプライアンス対応）
  */
 export type AuditLog = $Result.DefaultSelection<Prisma.$AuditLogPayload>
 /**
  * Model Notification
- * 
+ * 通知
+ * ユーザーへのアプリ内通知
  */
 export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
 
