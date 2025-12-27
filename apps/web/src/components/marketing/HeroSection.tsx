@@ -5,9 +5,9 @@ import { cache } from "react";
 
 const CachedHeroSection = cache(() => {
   return (
-    <section className="relative h-[600px] bg-linear-to-br from-blue-400 via-blue-500 to-blue-600 overflow-hidden">
+    <section className="relative h-[600px] bg-linear-to-br from-blue-400 via-blue-500 to-blue-600">
       {/* 背景画像 */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src="/hero.png"
           alt="ヒーロー背景画像"

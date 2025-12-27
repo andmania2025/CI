@@ -1,6 +1,7 @@
 services:
-  # Web (Front) - ポート 3001
+  # Web (Front) - ポート 3009
   web:
+    container_name: web
     build:
       context: .
       dockerfile: apps/web/Dockerfile
@@ -20,6 +21,7 @@ services:
 
   # Admin (Back) - ポート 3006
   admin:
+    container_name: admin
     build:
       context: .
       dockerfile: apps/admin/Dockerfile
@@ -43,3 +45,4 @@ services:
 # web のみ: docker compose --profile web up
 # admin のみ: docker compose --profile admin up
 # 両方: docker compose --profile web --profile admin up
+

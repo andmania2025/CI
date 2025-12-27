@@ -81,7 +81,7 @@ export function CompanyList({
     const [_isChecked, _setIsChecked] = useState(false);
 
     // 取扱物件種別の分類
-    const propertyTypeCategories = {
+    const propertyTypeCategories: Record<string, string[]> = {
       売買不動産: ["一戸建て", "マンション", "土地", "アパート"],
       その他: ["駐車場", "その他"],
       投資用・事業用不動産: [

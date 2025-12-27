@@ -4,7 +4,7 @@ import { ServiceCardHorizontal } from "./ServiceCardHorizontal";
 
 export const FeaturesSection = () => {
   return (
-    <section className="bg-gray-50 mt-8">
+    <section className="bg-white mt-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center">
           <div className="text-[#093893] text-md md:text-2xl">
