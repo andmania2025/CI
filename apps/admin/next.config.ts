@@ -7,21 +7,12 @@ const nextConfig: NextConfig = {
   // 管理画面はSSRを基本方針とするため、force-dynamicを優先
   experimental: {
     turbopackFileSystemCacheForDev: true,
-  },
-  // Prisma generated client のパス解決
-  // Turbopackはtsconfig.jsonのpaths設定を自動認識
-  webpack: (config: Configuration) => {
-    if (config.resolve?.alias && !Array.isArray(config.resolve.alias)) {
-      config.resolve.alias["@prisma/generated"] = path.resolve(
-        __dirname,
-        "../../generated/client",
-      );
-      config.resolve.alias["@prisma/client-runtime-utils"] = path.resolve(
-        __dirname,
-        "node_modules/@prisma/client-runtime-utils",
-      );
-    }
-    return config;
+    serverComponentsExternalPackages: [
+      "@prisma/client",
+      "prisma",
+      "pg",
+      "@prisma/adapter-pg",
+    ],
   },
 };
 
