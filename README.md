@@ -22,7 +22,7 @@
 #### Frontend
 - **Core**: React 19, Next.js 16
 - **State Management**: Zustand, TanStack Query (React Query)
-- **Styling**: Tailwind CSS 4, Framer Motion, tailwind-merge, clsx
+- **Styling**: Tailwind CSS 4, Framer Motion, clsx
 - **UI Components**: Radix UI (Primitives), Lucide React (Icons), Recharts, shadcn/ui
 - **Forms**: React Hook Form, Zod
 

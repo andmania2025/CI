@@ -17,67 +17,72 @@ datasource db {
 // RLS: auth.uid() でアクセス制御
 // ============================================
 
+/// ユーザー情報
+/// Supabase Auth と連携し、システム全体の認証・認可の基盤となるテーブル
 model User {
-  id              String    @id @default(uuid()) @db.Uuid
-  email           String    @unique @db.VarChar(255)
-  name            String?   @db.VarChar(100)
-  furigana        String?   @db.VarChar(100)
-  gender          Gender?
-  birthDate       DateTime? @db.Date
-  phone           String?   @db.VarChar(20)
-  avatarUrl       String?   @db.VarChar(500)
-  status          UserStatus @default(ACTIVE)
-  emailVerifiedAt DateTime? @db.Timestamptz
-  createdAt       DateTime  @default(now()) @db.Timestamptz
-  updatedAt       DateTime  @updatedAt @db.Timestamptz
-  deletedAt       DateTime? @db.Timestamptz
-  lastLoginAt     DateTime? @db.Timestamptz
+  id              String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4、Supabase Auth の user.id と一致）
+  email           String    @unique @db.VarChar(255) // メールアドレス（ログインID、一意制約）
+  name            String?   @db.VarChar(100) // 氏名
+  furigana        String?   @db.VarChar(100) // 氏名のふりがな（検索用）
+  gender          Gender? // 性別
+  birthDate       DateTime? @db.Date // 生年月日
+  phone           String?   @db.VarChar(20) // 電話番号
+  avatarUrl       String?   @db.VarChar(500) // プロフィール画像URL
+  status          UserStatus @default(ACTIVE) // アカウント状態（ACTIVE/SUSPENDED/WITHDRAWN）
+  emailVerifiedAt DateTime? @db.Timestamptz // メール確認完了日時
+  createdAt       DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt       DateTime  @updatedAt @db.Timestamptz // 更新日時
+  deletedAt       DateTime? @db.Timestamptz // 論理削除日時
+  lastLoginAt     DateTime? @db.Timestamptz // 最終ログイン日時
 
   // Relations
-  userRoles                UserRole[]
-  agent                    Agent?
-  properties               Property[]
-  inquiries                Inquiry[]
-  favorites                Favorite[]
-  propertyViews            PropertyView[]
-  questions                Question[]
-  answers                  Answer[]
-  bulkAssessments          BulkAssessment[]
-  mails                    Mail[]
-  fileBoxes                FileBox[]
-  notifications            Notification[]
-  systemSettingsUpdated    SystemSetting[]
-  auditLogs                AuditLog[]
-  priceHistoryChanges      PropertyPriceHistory[]
-  statusHistoryChanges     PropertyStatusHistory[]
+  userRoles                UserRole[] // ユーザーに紐づくロール（多対多）
+  agent                    Agent? // 不動産業者情報（1対1、業者の場合のみ）
+  properties               Property[] // 所有物件一覧
+  inquiries                Inquiry[] // 問い合わせ一覧
+  favorites                Favorite[] // お気に入り物件一覧
+  propertyViews            PropertyView[] // 物件閲覧履歴
+  questions                Question[] // 投稿した質問一覧
+  answers                  Answer[] // 投稿した回答一覧
+  bulkAssessments          BulkAssessment[] // 一括査定依頼一覧
+  mails                    Mail[] // 送信メール一覧
+  fileBoxes                FileBox[] // アップロードファイル一覧
+  notifications            Notification[] // 通知一覧
+  systemSettingsUpdated    SystemSetting[] // 更新したシステム設定
+  auditLogs                AuditLog[] // 監査ログ
+  priceHistoryChanges      PropertyPriceHistory[] // 価格変更履歴（変更者として）
+  statusHistoryChanges     PropertyStatusHistory[] // ステータス変更履歴（変更者として）
 
   @@index([status])
   @@index([email])
   @@map("users")
 }
 
+/// ロール（権限グループ）
+/// admin（管理者）、agent（不動産業者）、general（一般ユーザー）等を管理
 model Role {
-  id          String   @id @default(uuid()) @db.Uuid
-  name        String   @unique @db.VarChar(50) // admin, agent, general
-  permissions Json?    @db.JsonB // 権限をJSONBで柔軟に管理
-  description String?  @db.Text
-  createdAt   DateTime @default(now()) @db.Timestamptz
+  id          String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  name        String   @unique @db.VarChar(50) // admin, agent, general // ロール名（admin, agent, general 等）
+  permissions Json?    @db.JsonB // 権限をJSONBで柔軟に管理 // 権限設定（JSONB形式で柔軟に管理）
+  description String?  @db.Text // ロールの説明
+  createdAt   DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  userRoles UserRole[]
+  userRoles UserRole[] // このロールを持つユーザー一覧
 
   @@map("roles")
 }
 
+/// ユーザーとロールの中間テーブル（多対多）
 model UserRole {
-  id        String   @id @default(uuid()) @db.Uuid
-  userId    String   @db.Uuid
-  roleId    String   @db.Uuid
-  createdAt DateTime @default(now()) @db.Timestamptz
+  id        String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  userId    String   @db.Uuid // ユーザーID（外部キー）
+  roleId    String   @db.Uuid // ロールID（外部キー）
+  createdAt DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) // 対象ユーザー
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade) // 対象ロール
 
   @@unique([userId, roleId])
   @@index([userId])
@@ -85,16 +90,18 @@ model UserRole {
   @@map("user_roles")
 }
 
+/// 性別
 enum Gender {
-  MALE
-  FEMALE
-  OTHER
+  MALE // 男性
+  FEMALE // 女性
+  OTHER // その他
 }
 
+/// ユーザーアカウント状態
 enum UserStatus {
-  ACTIVE
-  SUSPENDED
-  WITHDRAWN
+  ACTIVE // 有効
+  SUSPENDED // 停止中
+  WITHDRAWN // 退会済み
 }
 
 // ============================================
@@ -102,102 +109,110 @@ enum UserStatus {
 // 3層構造: Company → Branch → Agent
 // ============================================
 
+/// 不動産会社
+/// 会社情報と免許情報を管理。支店（Branch）を複数持つことができる
 model Company {
-  id                    String        @id @default(uuid()) @db.Uuid
-  companyName           String        @db.VarChar(200)
-  companyNameKana       String?       @db.VarChar(200) // 検索用
-  representativeName    String        @db.VarChar(100)
-  postalCode            String        @db.VarChar(8)
-  prefecture            String        @db.VarChar(10)
-  city                  String        @db.VarChar(50)
-  address               String        @db.Text
-  latitude              Decimal?      @db.Decimal(10, 7)
-  longitude             Decimal?      @db.Decimal(10, 7)
-  phone                 String        @db.VarChar(20)
-  fax                   String?       @db.VarChar(20)
-  website               String?       @db.VarChar(500)
-  licenseNumber         String        @unique @db.VarChar(100)
-  associationMembership String?       @db.VarChar(200)
-  accountType           AccountType   @default(FREE)
-  status                CompanyStatus @default(PENDING)
-  metadata              Json?         @db.JsonB
-  createdAt             DateTime      @default(now()) @db.Timestamptz
-  updatedAt             DateTime      @updatedAt @db.Timestamptz
-  deletedAt             DateTime?     @db.Timestamptz
+  id                    String        @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  companyName           String        @db.VarChar(200) // 会社名
+  companyNameKana       String?       @db.VarChar(200) // 会社名カナ（検索用）
+  representativeName    String        @db.VarChar(100) // 代表者名
+  postalCode            String        @db.VarChar(8) // 郵便番号
+  prefecture            String        @db.VarChar(10) // 都道府県
+  city                  String        @db.VarChar(50) // 市区町村
+  address               String        @db.Text // 住所（番地以降）
+  latitude              Decimal?      @db.Decimal(10, 7) // 緯度（地図表示用）
+  longitude             Decimal?      @db.Decimal(10, 7) // 経度（地図表示用）
+  phone                 String        @db.VarChar(20) // 電話番号
+  fax                   String?       @db.VarChar(20) // FAX番号
+  website               String?       @db.VarChar(500) // ウェブサイトURL
+  licenseNumber         String        @unique @db.VarChar(100) // 宅建業免許番号（一意制約）
+  associationMembership String?       @db.VarChar(200) // 所属団体（全宅連等）
+  accountType           AccountType   @default(FREE) // アカウントタイプ（FREE/BASIC/PREMIUM）
+  status                CompanyStatus @default(PENDING) // 会社ステータス（PENDING/ACTIVE/SUSPENDED）
+  metadata              Json?         @db.JsonB // 追加情報（JSONB）
+  createdAt             DateTime      @default(now()) @db.Timestamptz // 作成日時
+  updatedAt             DateTime      @updatedAt @db.Timestamptz // 更新日時
+  deletedAt             DateTime?     @db.Timestamptz // 論理削除日時
 
   // Relations
-  branches Branch[]
+  branches Branch[] // 所属支店一覧
 
   @@index([status])
   @@index([prefecture, city])
   @@map("companies")
 }
 
+/// 支店
+/// 会社に紐づく支店情報。本店フラグで本店と支店を区別
 model Branch {
-  id             String    @id @default(uuid()) @db.Uuid
-  branchName     String    @db.VarChar(200)
-  postalCode     String    @db.VarChar(8)
-  prefecture     String    @db.VarChar(10)
-  city           String    @db.VarChar(50)
-  address        String    @db.Text
-  latitude       Decimal?  @db.Decimal(10, 7)
-  longitude      Decimal?  @db.Decimal(10, 7)
-  phone          String    @db.VarChar(20)
-  fax            String?   @db.VarChar(20)
-  businessHours  String?   @db.VarChar(100)
-  isHeadquarters Boolean   @default(false)
-  companyId      String    @db.Uuid
-  createdAt      DateTime  @default(now()) @db.Timestamptz
-  updatedAt      DateTime  @updatedAt @db.Timestamptz
-  deletedAt      DateTime? @db.Timestamptz
+  id             String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  branchName     String    @db.VarChar(200) // 支店名
+  postalCode     String    @db.VarChar(8) // 郵便番号
+  prefecture     String    @db.VarChar(10) // 都道府県
+  city           String    @db.VarChar(50) // 市区町村
+  address        String    @db.Text // 住所（番地以降）
+  latitude       Decimal?  @db.Decimal(10, 7) // 緯度（地図表示用）
+  longitude      Decimal?  @db.Decimal(10, 7) // 経度（地図表示用）
+  phone          String    @db.VarChar(20) // 電話番号
+  fax            String?   @db.VarChar(20) // FAX番号
+  businessHours  String?   @db.VarChar(100) // 営業時間
+  isHeadquarters Boolean   @default(false) // 本店フラグ
+  companyId      String    @db.Uuid // 所属会社ID（外部キー）
+  createdAt      DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt      DateTime  @updatedAt @db.Timestamptz // 更新日時
+  deletedAt      DateTime? @db.Timestamptz // 論理削除日時
 
   // Relations
-  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  agents  Agent[]
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade) // 所属会社
+  agents  Agent[] // 所属担当者一覧
 
   @@index([companyId])
   @@map("branches")
 }
 
+/// 不動産担当者（エージェント）
+/// Userと1対1で紐づき、宅建士資格情報や評価を管理
 model Agent {
-  id                 String    @id @default(uuid()) @db.Uuid
-  position           String?   @db.VarChar(100)
-  department         String?   @db.VarChar(100)
+  id                 String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  position           String?   @db.VarChar(100) // 役職
+  department         String?   @db.VarChar(100) // 部署
   licenseNumber      String?   @db.VarChar(100) // 宅建士番号
-  licenseExpireDate  DateTime? @db.Date
-  goodCount          Int       @default(0)
-  responseRate       Decimal?  @db.Decimal(5, 2) // 返信率
-  avgResponseMinutes Int?      // 平均返信時間
-  userId             String    @unique @db.Uuid
-  branchId           String    @db.Uuid
-  isActive           Boolean   @default(true)
-  createdAt          DateTime  @default(now()) @db.Timestamptz
-  updatedAt          DateTime  @updatedAt @db.Timestamptz
-  deletedAt          DateTime? @db.Timestamptz
+  licenseExpireDate  DateTime? @db.Date // 宅建士免許有効期限
+  goodCount          Int       @default(0) // 評価（いいね数）
+  responseRate       Decimal?  @db.Decimal(5, 2) // 返信率（%）
+  avgResponseMinutes Int? // 平均返信時間（分）
+  userId             String    @unique @db.Uuid // ユーザーID（外部キー、1対1）
+  branchId           String    @db.Uuid // 所属支店ID（外部キー）
+  isActive           Boolean   @default(true) // アクティブフラグ
+  createdAt          DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt          DateTime  @updatedAt @db.Timestamptz // 更新日時
+  deletedAt          DateTime? @db.Timestamptz // 論理削除日時
 
   // Relations
-  user                    User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  branch                  Branch                   @relation(fields: [branchId], references: [id], onDelete: Cascade)
-  properties              Property[]
-  assignedInquiries       Inquiry[]
-  answers                 Answer[]
-  bulkAssessmentResponses BulkAssessmentResponse[]
+  user                    User                     @relation(fields: [userId], references: [id], onDelete: Cascade) // 紐づくユーザー
+  branch                  Branch                   @relation(fields: [branchId], references: [id], onDelete: Cascade) // 所属支店
+  properties              Property[] // 担当物件一覧
+  assignedInquiries       Inquiry[] // 担当問い合わせ一覧
+  answers                 Answer[] // 投稿した回答一覧
+  bulkAssessmentResponses BulkAssessmentResponse[] // 一括査定への回答一覧
 
   @@index([branchId, isActive])
   @@index([userId])
   @@map("agents")
 }
 
+/// 会社アカウントタイプ
 enum AccountType {
-  FREE
-  BASIC
-  PREMIUM
+  FREE // 無料プラン
+  BASIC // ベーシックプラン
+  PREMIUM // プレミアムプラン
 }
 
+/// 会社ステータス
 enum CompanyStatus {
-  PENDING
-  ACTIVE
-  SUSPENDED
+  PENDING // 審査中
+  ACTIVE // 有効
+  SUSPENDED // 停止中
 }
 
 // ============================================
@@ -205,98 +220,100 @@ enum CompanyStatus {
 // 検索最適化のため一部非正規化
 // ============================================
 
+/// 物件情報
+/// 不動産物件の詳細情報を管理するメインテーブル。検索高速化のため一部フィールドを非正規化
 model Property {
-  id               String  @id @default(uuid()) @db.Uuid
-  propertyCode     String  @unique @db.VarChar(50) // 物件番号
-  propertyName     String  @db.VarChar(200)
-  propertyNameKana String? @db.VarChar(200) // 検索用
+  id               String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyCode     String  @unique @db.VarChar(50) // 物件番号（一意制約、表示用ID）
+  propertyName     String  @db.VarChar(200) // 物件名
+  propertyNameKana String? @db.VarChar(200) // 物件名カナ（検索用）
 
   // マスタ参照
-  propertyTypeId     String? @db.Uuid
-  propertyCategoryId String? @db.Uuid
-  areaId             String? @db.Uuid
+  propertyTypeId     String? @db.Uuid // 物件種別ID（マンション、戸建て等）
+  propertyCategoryId String? @db.Uuid // 物件カテゴリID
+  areaId             String? @db.Uuid // エリアID
 
   // 取引情報
-  transactionType   TransactionType?
-  propertyCondition PropertyCondition?
+  transactionType   TransactionType? // 取引種別（売買/賃貸/両方）
+  propertyCondition PropertyCondition? // 物件状態（新築/中古/リノベーション）
 
   // 住所
-  postalCode  String?  @db.VarChar(8)
-  prefecture  String?  @db.VarChar(10)
-  city        String?  @db.VarChar(50)
-  town        String?  @db.VarChar(100)
-  block       String?  @db.VarChar(50)
-  building    String?  @db.VarChar(100)
-  roomNumber  String?  @db.VarChar(50)
-  fullAddress String?  @db.Text // 検索用結合済み住所
-  latitude    Decimal? @db.Decimal(10, 7)
-  longitude   Decimal? @db.Decimal(10, 7)
+  postalCode  String?  @db.VarChar(8) // 郵便番号
+  prefecture  String?  @db.VarChar(10) // 都道府県
+  city        String?  @db.VarChar(50) // 市区町村
+  town        String?  @db.VarChar(100) // 町名
+  block       String?  @db.VarChar(50) // 番地
+  building    String?  @db.VarChar(100) // 建物名
+  roomNumber  String?  @db.VarChar(50) // 部屋番号
+  fullAddress String?  @db.Text // 結合済み住所（検索用、非正規化）
+  latitude    Decimal? @db.Decimal(10, 7) // 緯度（地図表示用）
+  longitude   Decimal? @db.Decimal(10, 7) // 経度（地図表示用）
 
   // 間取り・面積
-  layoutNumber  Int?     // 部屋数
-  layoutTypeId  String?  @db.Uuid
-  layoutDisplay String?  @db.VarChar(20) // "3LDK" 等
-  buildingArea  Decimal? @db.Decimal(10, 2)
-  landArea      Decimal? @db.Decimal(10, 2)
-  balconyArea   Decimal? @db.Decimal(10, 2)
+  layoutNumber  Int? // 部屋数
+  layoutTypeId  String?  @db.Uuid // 間取りタイプID（1R, 1K, 2LDK等）
+  layoutDisplay String?  @db.VarChar(20) // 間取り表示名（"3LDK" 等、表示用）
+  buildingArea  Decimal? @db.Decimal(10, 2) // 建物面積（㎡）
+  landArea      Decimal? @db.Decimal(10, 2) // 土地面積（㎡）
+  balconyArea   Decimal? @db.Decimal(10, 2) // バルコニー面積（㎡）
 
   // 建物情報
-  buildingStructure      String?   @db.VarChar(50)
-  constructionDate       DateTime? @db.Date
-  constructionYearMonth  String?   @db.VarChar(20) // "2020年3月" 表示用
-  totalFloors            Int?
-  floor                  Int?
+  buildingStructure      String?   @db.VarChar(50) // 建物構造（RC, SRC, 木造等）
+  constructionDate       DateTime? @db.Date // 築年月日
+  constructionYearMonth  String?   @db.VarChar(20) // 築年月表示（"2020年3月" 等）
+  totalFloors            Int? // 総階数
+  floor                  Int? // 所在階
 
   // 価格
-  currentPrice     BigInt?  // 円単位
-  pricePerTsubo    BigInt?  // 坪単価（計算済みキャッシュ）
-  managementFee    Int?
-  commonServiceFee Int?
-  depositMonths    Decimal? @db.Decimal(3, 1) // 敷金（ヶ月）
-  keyMoneyMonths   Decimal? @db.Decimal(3, 1) // 礼金（ヶ月）
+  currentPrice     BigInt? // 現在価格（円）
+  pricePerTsubo    BigInt? // 坪単価（円、計算済みキャッシュ）
+  managementFee    Int? // 管理費（円/月）
+  commonServiceFee Int? // 共益費（円/月）
+  depositMonths    Decimal? @db.Decimal(3, 1) // 敷金（ヶ月数）
+  keyMoneyMonths   Decimal? @db.Decimal(3, 1) // 礼金（ヶ月数）
 
   // 非正規化フィールド（一覧表示高速化）
-  mainImageUrl             String?  @db.VarChar(500)
-  primaryStationName       String?  @db.VarChar(100)
-  primaryStationWalkMinutes Int?
-  featureTags              String[] // 設備タグ配列
+  mainImageUrl             String?  @db.VarChar(500) // メイン画像URL（非正規化）
+  primaryStationName       String?  @db.VarChar(100) // 最寄り駅名（非正規化）
+  primaryStationWalkMinutes Int? // 最寄り駅徒歩分数（非正規化）
+  featureTags              String[] // 設備タグ配列（検索用キャッシュ）
 
   // 統計
-  viewCount    Int @default(0)
-  inquiryCount Int @default(0)
-  favoriteCount Int @default(0)
+  viewCount    Int @default(0) // 閲覧数
+  inquiryCount Int @default(0) // 問い合わせ数
+  favoriteCount Int @default(0) // お気に入り数
 
   // 管理
-  agentId      String?  @db.Uuid
-  remarks      String?  @db.Text
-  internalMemo String?  @db.Text // 社内メモ
-  metadata     Json?    @db.JsonB
-  createdAt    DateTime @default(now()) @db.Timestamptz
-  updatedAt    DateTime @updatedAt @db.Timestamptz
-  deletedAt    DateTime? @db.Timestamptz
+  agentId      String?  @db.Uuid // 担当エージェントID
+  remarks      String?  @db.Text // 備考（公開用）
+  internalMemo String?  @db.Text // 社内メモ（非公開）
+  metadata     Json?    @db.JsonB // 追加情報（JSONB）
+  createdAt    DateTime @default(now()) @db.Timestamptz // 作成日時
+  updatedAt    DateTime @updatedAt @db.Timestamptz // 更新日時
+  deletedAt    DateTime? @db.Timestamptz // 論理削除日時
 
   // Relations
-  propertyType     PropertyTypeMaster?     @relation(fields: [propertyTypeId], references: [id], onDelete: SetNull)
-  propertyCategory PropertyCategoryMaster? @relation(fields: [propertyCategoryId], references: [id], onDelete: SetNull)
-  area             AreaMaster?             @relation(fields: [areaId], references: [id], onDelete: SetNull)
-  layoutType       FloorPlanMaster?        @relation(fields: [layoutTypeId], references: [id], onDelete: SetNull)
-  agent            Agent?                  @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  propertyType     PropertyTypeMaster?     @relation(fields: [propertyTypeId], references: [id], onDelete: SetNull) // 物件種別マスタ
+  propertyCategory PropertyCategoryMaster? @relation(fields: [propertyCategoryId], references: [id], onDelete: SetNull) // 物件カテゴリマスタ
+  area             AreaMaster?             @relation(fields: [areaId], references: [id], onDelete: SetNull) // エリアマスタ
+  layoutType       FloorPlanMaster?        @relation(fields: [layoutTypeId], references: [id], onDelete: SetNull) // 間取りマスタ
+  agent            Agent?                  @relation(fields: [agentId], references: [id], onDelete: SetNull) // 担当エージェント
 
   // 所有者（管理者）
-  userId String @db.Uuid
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.Uuid // 所有者ユーザーID
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade) // 所有者ユーザー
 
   // サブテーブル
-  publication      PropertyPublication?
-  priceHistories   PropertyPriceHistory[]
-  statusHistories  PropertyStatusHistory[]
-  images           PropertyImage[]
-  features         PropertyFeature[]
-  stations         PropertyStation[]
-  inquiries        Inquiry[]
-  favorites        Favorite[]
-  propertyViews    PropertyView[]
-  propertyViewDailies PropertyViewDaily[]
+  publication      PropertyPublication? // 公開情報
+  priceHistories   PropertyPriceHistory[] // 価格変更履歴
+  statusHistories  PropertyStatusHistory[] // ステータス変更履歴
+  images           PropertyImage[] // 画像一覧
+  features         PropertyFeature[] // 設備一覧
+  stations         PropertyStation[] // 最寄り駅一覧
+  inquiries        Inquiry[] // 問い合わせ一覧
+  favorites        Favorite[] // お気に入り一覧
+  propertyViews    PropertyView[] // 閲覧履歴
+  propertyViewDailies PropertyViewDaily[] // 日別閲覧統計
 
   @@index([userId])
   @@index([agentId])
@@ -307,22 +324,24 @@ model Property {
   @@map("properties")
 }
 
+/// 物件公開情報
+/// 物件の公開状態、掲載期間、注目物件設定を管理
 model PropertyPublication {
-  id            String    @id @default(uuid()) @db.Uuid
-  propertyId    String    @unique @db.Uuid
-  status        PublicationStatus @default(DRAFT)
-  scope         PublicScope @default(PRIVATE)
-  featured      Boolean   @default(false)
-  featuredOrder Int?
-  publishedAt   DateTime? @db.Timestamptz
-  unpublishedAt DateTime? @db.Timestamptz
-  soldAt        DateTime? @db.Timestamptz
-  expiresAt     DateTime? @db.Timestamptz
-  createdAt     DateTime  @default(now()) @db.Timestamptz
-  updatedAt     DateTime  @updatedAt @db.Timestamptz
+  id            String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId    String    @unique @db.Uuid // 物件ID（外部キー、1対1）
+  status        PublicationStatus @default(DRAFT) // 公開ステータス（下書き/審査中/公開中/成約/非表示）
+  scope         PublicScope @default(PRIVATE) // 公開範囲（全体公開/非公開/会員限定/業者限定）
+  featured      Boolean   @default(false) // 注目物件フラグ
+  featuredOrder Int? // 注目物件表示順
+  publishedAt   DateTime? @db.Timestamptz // 公開日時
+  unpublishedAt DateTime? @db.Timestamptz // 非公開日時
+  soldAt        DateTime? @db.Timestamptz // 成約日時
+  expiresAt     DateTime? @db.Timestamptz // 掲載期限
+  createdAt     DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt     DateTime  @updatedAt @db.Timestamptz // 更新日時
 
   // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
 
   @@index([status, scope])
   @@index([featured, featuredOrder])
@@ -333,36 +352,40 @@ model PropertyPublication {
 // 物件履歴 [green]
 // ============================================
 
+/// 物件価格変更履歴
+/// 価格変更のトラッキング用。変動率も自動計算して保存
 model PropertyPriceHistory {
-  id            String   @id @default(uuid()) @db.Uuid
-  propertyId    String   @db.Uuid
-  previousPrice BigInt?
-  newPrice      BigInt
-  changePercent Decimal? @db.Decimal(5, 2) // 変動率
-  changeReason  String?  @db.Text
-  changedById   String?  @db.Uuid
-  createdAt     DateTime @default(now()) @db.Timestamptz
+  id            String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId    String   @db.Uuid // 物件ID（外部キー）
+  previousPrice BigInt? // 変更前価格（円）
+  newPrice      BigInt // 変更後価格（円）
+  changePercent Decimal? @db.Decimal(5, 2) // 変動率（%）
+  changeReason  String?  @db.Text // 変更理由
+  changedById   String?  @db.Uuid // 変更者ID
+  createdAt     DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  property  Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  changedBy User?    @relation(fields: [changedById], references: [id], onDelete: SetNull)
+  property  Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  changedBy User?    @relation(fields: [changedById], references: [id], onDelete: SetNull) // 変更者
 
   @@index([propertyId, createdAt(sort: Desc)])
   @@map("property_price_histories")
 }
 
+/// 物件ステータス変更履歴
+/// 公開状態等のステータス変更をトラッキング
 model PropertyStatusHistory {
-  id             String   @id @default(uuid()) @db.Uuid
-  propertyId     String   @db.Uuid
-  previousStatus String?  @db.VarChar(50)
-  newStatus      String   @db.VarChar(50)
-  changeReason   String?  @db.Text
-  changedById    String?  @db.Uuid
-  createdAt      DateTime @default(now()) @db.Timestamptz
+  id             String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId     String   @db.Uuid // 物件ID（外部キー）
+  previousStatus String?  @db.VarChar(50) // 変更前ステータス
+  newStatus      String   @db.VarChar(50) // 変更後ステータス
+  changeReason   String?  @db.Text // 変更理由
+  changedById    String?  @db.Uuid // 変更者ID
+  createdAt      DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  property  Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  changedBy User?    @relation(fields: [changedById], references: [id], onDelete: SetNull)
+  property  Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  changedBy User?    @relation(fields: [changedById], references: [id], onDelete: SetNull) // 変更者
 
   @@index([propertyId, createdAt(sort: Desc)])
   @@map("property_status_histories")
@@ -372,37 +395,41 @@ model PropertyStatusHistory {
 // 物件メディア・設備 [orange/purple]
 // ============================================
 
+/// 物件画像
+/// 物件に紐づく画像情報。メイン画像フラグで一覧表示用画像を指定
 model PropertyImage {
-  id           String    @id @default(uuid()) @db.Uuid
-  propertyId   String    @db.Uuid
-  fileBoxId    String?   @db.Uuid
-  url          String    @db.VarChar(500)
-  thumbnailUrl String?   @db.VarChar(500)
-  caption      String?   @db.VarChar(200)
-  imageType    ImageType @default(EXTERIOR)
-  displayOrder Int       @default(0)
-  isMain       Boolean   @default(false)
-  width        Int?
-  height       Int?
-  createdAt    DateTime  @default(now()) @db.Timestamptz
+  id           String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId   String    @db.Uuid // 物件ID（外部キー）
+  fileBoxId    String?   @db.Uuid // ファイルボックスID（Storage参照）
+  url          String    @db.VarChar(500) // 画像URL
+  thumbnailUrl String?   @db.VarChar(500) // サムネイルURL
+  caption      String?   @db.VarChar(200) // キャプション
+  imageType    ImageType @default(EXTERIOR) // 画像タイプ（外観/内観/間取り図/地図/その他）
+  displayOrder Int       @default(0) // 表示順
+  isMain       Boolean   @default(false) // メイン画像フラグ
+  width        Int? // 画像幅（px）
+  height       Int? // 画像高さ（px）
+  createdAt    DateTime  @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  fileBox  FileBox? @relation(fields: [fileBoxId], references: [id], onDelete: SetNull)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  fileBox  FileBox? @relation(fields: [fileBoxId], references: [id], onDelete: SetNull) // ファイルボックス
 
   @@index([propertyId, displayOrder])
   @@index([propertyId, isMain])
   @@map("property_images")
 }
 
+/// 物件設備（中間テーブル）
+/// 物件と設備マスタの多対多関係
 model PropertyFeature {
-  id         String @id @default(uuid()) @db.Uuid
-  propertyId String @db.Uuid
-  featureId  String @db.Uuid
+  id         String @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId String @db.Uuid // 物件ID（外部キー）
+  featureId  String @db.Uuid // 設備ID（外部キー）
 
   // Relations
-  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  feature  FeatureMaster @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  property Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  feature  FeatureMaster @relation(fields: [featureId], references: [id], onDelete: Cascade) // 設備マスタ
 
   @@unique([propertyId, featureId])
   @@index([propertyId])
@@ -410,18 +437,20 @@ model PropertyFeature {
   @@map("property_features")
 }
 
+/// 物件最寄り駅（中間テーブル）
+/// 物件と駅の多対多関係。徒歩分数やバス利用時間も管理
 model PropertyStation {
-  id          String  @id @default(uuid()) @db.Uuid
-  propertyId  String  @db.Uuid
-  stationId   String  @db.Uuid
-  walkMinutes Int?
-  busMinutes  Int?
-  busStopName String? @db.VarChar(100)
-  isPrimary   Boolean @default(false)
+  id          String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId  String  @db.Uuid // 物件ID（外部キー）
+  stationId   String  @db.Uuid // 駅ID（外部キー）
+  walkMinutes Int? // 徒歩分数
+  busMinutes  Int? // バス分数
+  busStopName String? @db.VarChar(100) // バス停名
+  isPrimary   Boolean @default(false) // 最寄り駅フラグ
 
   // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  station  Station  @relation(fields: [stationId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  station  Station  @relation(fields: [stationId], references: [id], onDelete: Cascade) // 駅マスタ
 
   @@unique([propertyId, stationId])
   @@index([propertyId])
@@ -429,54 +458,61 @@ model PropertyStation {
   @@map("property_stations")
 }
 
+/// 画像タイプ
 enum ImageType {
-  EXTERIOR
-  INTERIOR
-  FLOOR_PLAN
-  MAP
-  OTHER
+  EXTERIOR // 外観
+  INTERIOR // 内観
+  FLOOR_PLAN // 間取り図
+  MAP // 地図
+  OTHER // その他
 }
 
+/// 取引種別
 enum TransactionType {
-  SALE
-  RENT
-  BOTH
+  SALE // 売買
+  RENT // 賃貸
+  BOTH // 売買・賃貸両方
 }
 
+/// 物件状態
 enum PropertyCondition {
-  NEW
-  USED
-  RENOVATED
+  NEW // 新築
+  USED // 中古
+  RENOVATED // リノベーション済み
 }
 
+/// 公開ステータス
 enum PublicationStatus {
-  DRAFT
-  PENDING_REVIEW
-  PUBLISHED
-  SOLD
-  HIDDEN
+  DRAFT // 下書き
+  PENDING_REVIEW // 審査中
+  PUBLISHED // 公開中
+  SOLD // 成約済み
+  HIDDEN // 非表示
 }
 
+/// 公開範囲
 enum PublicScope {
-  PUBLIC
-  PRIVATE
-  MEMBERS
-  AGENTS
+  PUBLIC // 全体公開
+  PRIVATE // 非公開
+  MEMBERS // 会員限定
+  AGENTS // 業者限定
 }
 
 // ============================================
 // ユーザーアクション [pink]
 // ============================================
 
+/// お気に入り物件
+/// ユーザーと物件の多対多関係
 model Favorite {
-  id         String   @id @default(uuid()) @db.Uuid
-  userId     String   @db.Uuid
-  propertyId String   @db.Uuid
-  createdAt  DateTime @default(now()) @db.Timestamptz
+  id         String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  userId     String   @db.Uuid // ユーザーID（外部キー）
+  propertyId String   @db.Uuid // 物件ID（外部キー）
+  createdAt  DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade) // 対象ユーザー
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
 
   @@unique([userId, propertyId])
   @@index([userId, createdAt(sort: Desc)])
@@ -484,37 +520,41 @@ model Favorite {
   @@map("favorites")
 }
 
+/// 物件閲覧履歴
+/// 物件詳細ページの閲覧をトラッキング。非ログインユーザーも記録可能
 model PropertyView {
-  id                  String   @id @default(uuid()) @db.Uuid
-  propertyId          String   @db.Uuid
-  userId              String?  @db.Uuid // nullable（非ログイン）
-  sessionId           String?  @db.VarChar(100)
-  ipAddress           String?  @db.VarChar(45) // IPv6対応
-  userAgent           String?  @db.Text
-  referer             String?  @db.Text
-  viewedAt            DateTime @default(now()) @db.Timestamptz
-  viewDurationSeconds Int?
+  id                  String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId          String   @db.Uuid // 物件ID（外部キー）
+  userId              String?  @db.Uuid // ユーザーID（nullable：非ログインユーザー）
+  sessionId           String?  @db.VarChar(100) // セッションID
+  ipAddress           String?  @db.VarChar(45) // IPアドレス（IPv6対応）
+  userAgent           String?  @db.Text // ユーザーエージェント
+  referer             String?  @db.Text // リファラーURL
+  viewedAt            DateTime @default(now()) @db.Timestamptz // 閲覧日時
+  viewDurationSeconds Int? // 閲覧時間（秒）
 
   // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull) // 閲覧ユーザー（nullable）
 
   @@index([propertyId, viewedAt(sort: Desc)])
   @@index([userId, viewedAt(sort: Desc)])
   @@map("property_views")
 }
 
+/// 物件日別閲覧統計
+/// 物件ごとの日別アクセス集計データ
 model PropertyViewDaily {
-  id                 String   @id @default(uuid()) @db.Uuid
-  propertyId         String   @db.Uuid
-  viewDate           DateTime @db.Date
-  totalViews         Int      @default(0)
-  uniqueUsers        Int      @default(0)
-  avgDurationSeconds Decimal? @db.Decimal(10, 2)
-  createdAt          DateTime @default(now()) @db.Timestamptz
+  id                 String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  propertyId         String   @db.Uuid // 物件ID（外部キー）
+  viewDate           DateTime @db.Date // 集計日
+  totalViews         Int      @default(0) // 総閲覧数
+  uniqueUsers        Int      @default(0) // ユニークユーザー数
+  avgDurationSeconds Decimal? @db.Decimal(10, 2) // 平均閲覧時間（秒）
+  createdAt          DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade) // 対象物件
 
   @@unique([propertyId, viewDate])
   @@index([viewDate(sort: Desc)])
@@ -526,50 +566,52 @@ model PropertyViewDaily {
 // 問い合わせ [red]
 // ============================================
 
+/// 問い合わせ
+/// 物件・会社・サイトへの問い合わせを管理。担当者アサインとステータス追跡
 model Inquiry {
-  id            String  @id @default(uuid()) @db.Uuid
-  inquiryNumber String  @unique @db.VarChar(50)
-  targetType    TargetType
-  targetId      String? @db.Uuid
+  id            String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  inquiryNumber String  @unique @db.VarChar(50) // 問い合わせ番号（一意制約、表示用ID）
+  targetType    TargetType // 問い合わせ対象タイプ（物件/サイト/会社/担当者）
+  targetId      String? @db.Uuid // 問い合わせ対象ID
 
   // 問い合わせ者情報
-  name        String  @db.VarChar(100)
-  furigana    String? @db.VarChar(100)
-  email       String  @db.VarChar(255)
-  phone       String? @db.VarChar(20)
-  companyName String? @db.VarChar(200)
+  name        String  @db.VarChar(100) // 問い合わせ者氏名
+  furigana    String? @db.VarChar(100) // 問い合わせ者ふりがな
+  email       String  @db.VarChar(255) // 問い合わせ者メールアドレス
+  phone       String? @db.VarChar(20) // 問い合わせ者電話番号
+  companyName String? @db.VarChar(200) // 問い合わせ者会社名（法人の場合）
 
   // 内容
-  inquiryType InquiryType @default(OTHER)
-  subject     String?     @db.VarChar(500)
-  message     String      @db.Text
+  inquiryType InquiryType @default(OTHER) // 問い合わせ種別
+  subject     String?     @db.VarChar(500) // 件名
+  message     String      @db.Text // 問い合わせ内容
 
   // ステータス管理
-  status   InquiryStatus   @default(NEW)
-  priority InquiryPriority @default(NORMAL)
+  status   InquiryStatus   @default(NEW) // 問い合わせステータス
+  priority InquiryPriority @default(NORMAL) // 優先度
 
   // 担当
-  userId          String?   @db.Uuid
-  assignedAgentId String?   @db.Uuid
-  assignedAt      DateTime? @db.Timestamptz
+  userId          String?   @db.Uuid // 登録ユーザーID（ログインユーザーの場合）
+  assignedAgentId String?   @db.Uuid // 担当エージェントID
+  assignedAt      DateTime? @db.Timestamptz // 担当者アサイン日時
 
   // 追跡
-  responseCount    Int       @default(0)
-  lastRespondedAt  DateTime? @db.Timestamptz
-  closedAt         DateTime? @db.Timestamptz
-  closedReason     String?   @db.Text
+  responseCount    Int       @default(0) // 返信数
+  lastRespondedAt  DateTime? @db.Timestamptz // 最終返信日時
+  closedAt         DateTime? @db.Timestamptz // クローズ日時
+  closedReason     String?   @db.Text // クローズ理由
 
   // メタ
-  source    String? @db.VarChar(50) // web, phone, email, api
-  metadata  Json?   @db.JsonB
-  createdAt DateTime @default(now()) @db.Timestamptz
-  updatedAt DateTime @updatedAt @db.Timestamptz
+  source    String? @db.VarChar(50) // 問い合わせ元（web, phone, email, api）
+  metadata  Json?   @db.JsonB // 追加情報（JSONB）
+  createdAt DateTime @default(now()) @db.Timestamptz // 作成日時
+  updatedAt DateTime @updatedAt @db.Timestamptz // 更新日時
 
   // Relations
-  user          User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
-  assignedAgent Agent?  @relation(fields: [assignedAgentId], references: [id], onDelete: SetNull)
-  property      Property? @relation(fields: [targetId], references: [id], onDelete: SetNull)
-  messages      InquiryMessage[]
+  user          User?   @relation(fields: [userId], references: [id], onDelete: SetNull) // 登録ユーザー
+  assignedAgent Agent?  @relation(fields: [assignedAgentId], references: [id], onDelete: SetNull) // 担当エージェント
+  property      Property? @relation(fields: [targetId], references: [id], onDelete: SetNull) // 対象物件（物件への問い合わせの場合）
+  messages      InquiryMessage[] // メッセージ履歴
 
   @@index([status, priority, createdAt(sort: Desc)])
   @@index([assignedAgentId, status])
@@ -578,163 +620,178 @@ model Inquiry {
   @@map("inquiries")
 }
 
+/// 問い合わせメッセージ
+/// 問い合わせに対するやり取りを記録
 model InquiryMessage {
-  id          String   @id @default(uuid()) @db.Uuid
-  inquiryId   String   @db.Uuid
-  senderId    String?  @db.Uuid
-  senderType  SenderType
-  message     String   @db.Text
-  attachments Json?    @db.JsonB // [{fileBoxId, fileName}]
-  isInternal  Boolean  @default(false) // 社内メモ
-  createdAt   DateTime @default(now()) @db.Timestamptz
+  id          String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  inquiryId   String   @db.Uuid // 問い合わせID（外部キー）
+  senderId    String?  @db.Uuid // 送信者ID
+  senderType  SenderType // 送信者タイプ（ユーザー/エージェント/システム）
+  message     String   @db.Text // メッセージ内容
+  attachments Json?    @db.JsonB // 添付ファイル情報（JSONB）
+  isInternal  Boolean  @default(false) // 社内メモフラグ（trueの場合は非公開）
+  createdAt   DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  inquiry Inquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  inquiry Inquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade) // 対象問い合わせ
 
   @@index([inquiryId, createdAt])
   @@map("inquiry_messages")
 }
 
+/// 問い合わせ対象タイプ
 enum TargetType {
-  PROPERTY
-  SITE
-  COMPANY
-  AGENT
+  PROPERTY // 物件
+  SITE // サイト全体
+  COMPANY // 会社
+  AGENT // 担当者
 }
 
+/// 問い合わせ種別
 enum InquiryType {
-  DOCUMENT_REQUEST
-  VIEWING
-  PRICE_NEGOTIATION
-  ENVIRONMENT
-  MOVE_IN
-  OTHER
+  DOCUMENT_REQUEST // 資料請求
+  VIEWING // 内見希望
+  PRICE_NEGOTIATION // 価格交渉
+  ENVIRONMENT // 周辺環境
+  MOVE_IN // 入居時期
+  OTHER // その他
 }
 
+/// 問い合わせステータス
 enum InquiryStatus {
-  NEW
-  ASSIGNED
-  IN_PROGRESS
-  RESPONDED
-  CLOSED
+  NEW // 新規
+  ASSIGNED // 担当者アサイン済み
+  IN_PROGRESS // 対応中
+  RESPONDED // 返信済み
+  CLOSED // クローズ
 }
 
+/// 問い合わせ優先度
 enum InquiryPriority {
-  LOW
-  NORMAL
-  HIGH
-  URGENT
+  LOW // 低
+  NORMAL // 通常
+  HIGH // 高
+  URGENT // 緊急
 }
 
+/// 送信者タイプ
 enum SenderType {
-  USER
-  AGENT
-  SYSTEM
+  USER // 一般ユーザー
+  AGENT // 不動産エージェント
+  SYSTEM // システム自動送信
 }
 
 // ============================================
 // 一括査定 [teal]
 // ============================================
 
+/// 一括査定依頼
+/// 複数の不動産会社に一括で査定依頼を行う機能
 model BulkAssessment {
-  id               String  @id @default(uuid()) @db.Uuid
-  assessmentNumber String  @unique @db.VarChar(50)
+  id               String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  assessmentNumber String  @unique @db.VarChar(50) // 査定番号（一意制約、表示用ID）
 
   // 物件情報
-  propertyAddress  String   @db.Text
-  propertyTypeId   String?  @db.Uuid
-  buildingArea     Decimal? @db.Decimal(10, 2)
-  landArea         Decimal? @db.Decimal(10, 2)
-  constructionYear Int?
+  propertyAddress  String   @db.Text // 物件住所
+  propertyTypeId   String?  @db.Uuid // 物件種別ID（外部キー）
+  buildingArea     Decimal? @db.Decimal(10, 2) // 建物面積（㎡）
+  landArea         Decimal? @db.Decimal(10, 2) // 土地面積（㎡）
+  constructionYear Int? // 築年
 
   // 依頼者情報
-  ownerName              String  @db.VarChar(100)
-  email                  String  @db.VarChar(255)
-  phone                  String? @db.VarChar(20)
-  preferredContactMethod String? @db.VarChar(50)
-  preferredContactTime   String? @db.VarChar(100)
+  ownerName              String  @db.VarChar(100) // 所有者氏名
+  email                  String  @db.VarChar(255) // メールアドレス
+  phone                  String? @db.VarChar(20) // 電話番号
+  preferredContactMethod String? @db.VarChar(50) // 希望連絡方法
+  preferredContactTime   String? @db.VarChar(100) // 希望連絡時間帯
 
   // ステータス
-  status        AssessmentStatus @default(PENDING)
+  status        AssessmentStatus @default(PENDING) // 査定ステータス
   agentCount    Int              @default(0) // 査定依頼した業者数
   responseCount Int              @default(0) // 返答数
 
-  userId      String?   @db.Uuid
-  metadata    Json?     @db.JsonB
-  createdAt   DateTime  @default(now()) @db.Timestamptz
-  completedAt DateTime? @db.Timestamptz
+  userId      String?   @db.Uuid // 依頼者ユーザーID（ログインユーザーの場合）
+  metadata    Json?     @db.JsonB // 追加情報（JSONB）
+  createdAt   DateTime  @default(now()) @db.Timestamptz // 作成日時
+  completedAt DateTime? @db.Timestamptz // 完了日時
 
   // Relations
-  user         User?                    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  propertyType PropertyTypeMaster?      @relation(fields: [propertyTypeId], references: [id], onDelete: SetNull)
-  responses    BulkAssessmentResponse[]
+  user         User?                    @relation(fields: [userId], references: [id], onDelete: SetNull) // 依頼者ユーザー
+  propertyType PropertyTypeMaster?      @relation(fields: [propertyTypeId], references: [id], onDelete: SetNull) // 物件種別マスタ
+  responses    BulkAssessmentResponse[] // 業者からの回答一覧
 
   @@index([status, createdAt(sort: Desc)])
   @@index([userId])
   @@map("bulk_assessments")
 }
 
+/// 一括査定回答
+/// 不動産業者からの査定回答
 model BulkAssessmentResponse {
-  id               String  @id @default(uuid()) @db.Uuid
-  assessmentId     String  @db.Uuid
-  agentId          String  @db.Uuid
-  assessedPrice    BigInt?
-  priceRangeMin    BigInt?
-  priceRangeMax    BigInt?
-  comments         String? @db.Text
-  proposalDocument String? @db.VarChar(500) // FileBox URL
-  status           ResponseStatus @default(PENDING)
-  submittedAt      DateTime? @db.Timestamptz
-  viewedAt         DateTime? @db.Timestamptz
-  createdAt        DateTime @default(now()) @db.Timestamptz
+  id               String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  assessmentId     String  @db.Uuid // 査定依頼ID（外部キー）
+  agentId          String  @db.Uuid // 回答エージェントID（外部キー）
+  assessedPrice    BigInt? // 査定価格（円）
+  priceRangeMin    BigInt? // 査定価格下限（円）
+  priceRangeMax    BigInt? // 査定価格上限（円）
+  comments         String? @db.Text // コメント
+  proposalDocument String? @db.VarChar(500) // 提案資料URL
+  status           ResponseStatus @default(PENDING) // 回答ステータス
+  submittedAt      DateTime? @db.Timestamptz // 提出日時
+  viewedAt         DateTime? @db.Timestamptz // 閲覧日時（依頼者が確認した日時）
+  createdAt        DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  assessment BulkAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
-  agent      Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  assessment BulkAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade) // 対象査定依頼
+  agent      Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade) // 回答エージェント
 
   @@index([assessmentId])
   @@index([agentId, createdAt(sort: Desc)])
   @@map("bulk_assessment_responses")
 }
 
+/// 査定ステータス
 enum AssessmentStatus {
-  PENDING
-  SENT_TO_AGENTS
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
+  PENDING // 審査中
+  SENT_TO_AGENTS // 業者に送信済み
+  IN_PROGRESS // 回答受付中
+  COMPLETED // 完了
+  CANCELLED // キャンセル
 }
 
+/// 査定回答ステータス
 enum ResponseStatus {
-  PENDING
-  SUBMITTED
-  VIEWED
+  PENDING // 未回答
+  SUBMITTED // 提出済み
+  VIEWED // 閲覧済み
 }
 
 // ============================================
 // Q&A [cyan]
 // ============================================
 
+/// 質問
+/// ユーザーからの質問を管理。カテゴリ・タグで分類
 model Question {
-  id             String         @id @default(uuid()) @db.Uuid
-  questionNumber String         @unique @db.VarChar(50)
-  title          String         @db.VarChar(200)
-  content        String         @db.Text
-  categoryId     String?        @db.Uuid
-  tags           String[]       // GINインデックス
-  viewCount      Int            @default(0)
-  answerCount    Int            @default(0)
-  status         QuestionStatus @default(OPEN)
-  authorId       String         @db.Uuid
-  bestAnswerId   String?        @db.Uuid
-  createdAt      DateTime       @default(now()) @db.Timestamptz
-  updatedAt      DateTime       @updatedAt @db.Timestamptz
-  deletedAt      DateTime?      @db.Timestamptz
+  id             String         @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  questionNumber String         @unique @db.VarChar(50) // 質問番号（一意制約、表示用ID）
+  title          String         @db.VarChar(200) // タイトル
+  content        String         @db.Text // 質問内容
+  categoryId     String?        @db.Uuid // カテゴリID（外部キー）
+  tags           String[] // タグ（配列、GINインデックス推奨）
+  viewCount      Int            @default(0) // 閲覧数
+  answerCount    Int            @default(0) // 回答数
+  status         QuestionStatus @default(OPEN) // 質問ステータス
+  authorId       String         @db.Uuid // 質問者ID（外部キー）
+  bestAnswerId   String?        @db.Uuid // ベストアンサーID
+  createdAt      DateTime       @default(now()) @db.Timestamptz // 作成日時
+  updatedAt      DateTime       @updatedAt @db.Timestamptz // 更新日時
+  deletedAt      DateTime?      @db.Timestamptz // 論理削除日時
 
   // Relations
-  author     User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  category   QuestionCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  answers    Answer[]
+  author     User              @relation(fields: [authorId], references: [id], onDelete: Cascade) // 質問者
+  category   QuestionCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull) // カテゴリマスタ
+  answers    Answer[] // 回答一覧
 
   @@index([status, createdAt(sort: Desc)])
   @@index([categoryId, status])
@@ -742,22 +799,24 @@ model Question {
   @@map("questions")
 }
 
+/// 回答
+/// 質問に対する回答。ベストアンサー選択可能
 model Answer {
-  id           String    @id @default(uuid()) @db.Uuid
-  questionId   String    @db.Uuid
-  content      String    @db.Text
-  goodCount    Int       @default(0)
-  isBestAnswer Boolean   @default(false)
-  authorId     String?   @db.Uuid
-  agentId      String?   @db.Uuid // 業者として回答の場合
-  createdAt    DateTime  @default(now()) @db.Timestamptz
-  updatedAt    DateTime  @updatedAt @db.Timestamptz
-  deletedAt    DateTime? @db.Timestamptz
+  id           String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  questionId   String    @db.Uuid // 質問ID（外部キー）
+  content      String    @db.Text // 回答内容
+  goodCount    Int       @default(0) // いいね数
+  isBestAnswer Boolean   @default(false) // ベストアンサーフラグ
+  authorId     String?   @db.Uuid // 回答者ユーザーID
+  agentId      String?   @db.Uuid // 回答者エージェントID（業者として回答の場合）
+  createdAt    DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt    DateTime  @updatedAt @db.Timestamptz // 更新日時
+  deletedAt    DateTime? @db.Timestamptz // 論理削除日時
 
   // Relations
-  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  author   User?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
-  agent    Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade) // 対象質問
+  author   User?    @relation(fields: [authorId], references: [id], onDelete: SetNull) // 回答者ユーザー
+  agent    Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull) // 回答者エージェント
 
   @@index([questionId, createdAt])
   @@index([authorId])
@@ -765,59 +824,66 @@ model Answer {
   @@map("answers")
 }
 
+/// 質問ステータス
 enum QuestionStatus {
-  OPEN
-  ANSWERED
-  RESOLVED
-  CLOSED
+  OPEN // 回答募集中
+  ANSWERED // 回答あり
+  RESOLVED // 解決済み
+  CLOSED // クローズ
 }
 
 // ============================================
 // マスタデータ [lightblue/purple]
 // ============================================
 
+/// 設備マスタ
+/// 物件の設備・条件を管理するマスタテーブル
 model FeatureMaster {
-  id           String          @id @default(uuid()) @db.Uuid
-  code         String          @unique @db.VarChar(50)
-  name         String          @db.VarChar(100)
-  category     FeatureCategory
-  icon         String?         @db.VarChar(50)
-  displayOrder Int             @default(0)
-  isActive     Boolean         @default(true)
+  id           String          @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String          @unique @db.VarChar(50) // 設備コード（一意制約）
+  name         String          @db.VarChar(100) // 設備名
+  category     FeatureCategory // カテゴリ（設備/条件/周辺環境/セキュリティ/その他）
+  icon         String?         @db.VarChar(50) // アイコン名
+  displayOrder Int             @default(0) // 表示順
+  isActive     Boolean         @default(true) // 有効フラグ
 
   // Relations
-  properties PropertyFeature[]
+  properties PropertyFeature[] // この設備を持つ物件一覧
 
   @@index([category, displayOrder])
   @@map("feature_masters")
 }
 
+/// 地域マスタ
+/// 都道府県をグループ化した地域（関東、関西等）
 model RegionMaster {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(20)
-  name         String  @db.VarChar(50)
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(20) // 地域コード（一意制約）
+  name         String  @db.VarChar(50) // 地域名
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  areas AreaMaster[]
+  areas AreaMaster[] // 所属エリア一覧
 
   @@map("region_masters")
 }
 
+/// エリアマスタ
+/// 都道府県・市区町村のマスタ
 model AreaMaster {
-  id             String  @id @default(uuid()) @db.Uuid
-  regionId       String? @db.Uuid
-  prefectureCode String  @db.VarChar(10)
-  prefecture     String  @db.VarChar(10)
-  cityCode       String? @db.VarChar(10)
-  city           String  @db.VarChar(50)
-  displayOrder   Int     @default(0)
-  isActive       Boolean @default(true)
+  id             String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  regionId       String? @db.Uuid // 地域ID（外部キー）
+  prefectureCode String  @db.VarChar(10) // 都道府県コード
+  prefecture     String  @db.VarChar(10) // 都道府県名
+  cityCode       String? @db.VarChar(10) // 市区町村コード
+  city           String  @db.VarChar(50) // 市区町村名
+  displayOrder   Int     @default(0) // 表示順
+  isActive       Boolean @default(true) // 有効フラグ
 
   // Relations
-  region     RegionMaster? @relation(fields: [regionId], references: [id], onDelete: SetNull)
-  properties Property[]
+  region     RegionMaster? @relation(fields: [regionId], references: [id], onDelete: SetNull) // 所属地域
+  properties Property[] // このエリアの物件一覧
 
   @@unique([prefecture, city])
   @@index([regionId])
@@ -825,80 +891,90 @@ model AreaMaster {
   @@map("area_masters")
 }
 
+/// 物件種別マスタ
+/// マンション、戸建て、土地等の物件種別
 model PropertyTypeMaster {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(50)
-  name         String  @db.VarChar(50)
-  description  String? @db.Text
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(50) // 種別コード（一意制約）
+  name         String  @db.VarChar(50) // 種別名
+  description  String? @db.Text // 説明
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  properties      Property[]
-  bulkAssessments BulkAssessment[]
+  properties      Property[] // この種別の物件一覧
+  bulkAssessments BulkAssessment[] // この種別の一括査定一覧
 
   @@map("property_type_masters")
 }
 
+/// 物件カテゴリマスタ
+/// 物件の詳細カテゴリ
 model PropertyCategoryMaster {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(50)
-  name         String  @db.VarChar(100)
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(50) // カテゴリコード（一意制約）
+  name         String  @db.VarChar(100) // カテゴリ名
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  properties Property[]
+  properties Property[] // このカテゴリの物件一覧
 
   @@map("property_category_masters")
 }
 
+/// 間取りマスタ
+/// 1R、1K、2LDK等の間取りタイプ
 model FloorPlanMaster {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(20) // 1R, 1K, 1DK...
-  name         String  @db.VarChar(50)
-  roomCount    Int?
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(20) // 間取りコード（1R, 1K, 1DK...）
+  name         String  @db.VarChar(50) // 間取り名
+  roomCount    Int? // 部屋数
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  properties Property[]
+  properties Property[] // この間取りの物件一覧
 
   @@map("floor_plan_masters")
 }
 
+/// 路線マスタ
+/// 電車・バスの路線情報
 model RouteMaster {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(50)
-  name         String  @db.VarChar(100)
-  companyName  String? @db.VarChar(100)
-  lineColor    String? @db.VarChar(20) // 路線カラー
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(50) // 路線コード（一意制約）
+  name         String  @db.VarChar(100) // 路線名
+  companyName  String? @db.VarChar(100) // 運営会社名
+  lineColor    String? @db.VarChar(20) // 路線カラー（#FF0000形式等）
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  stations Station[]
+  stations Station[] // この路線の駅一覧
 
   @@index([displayOrder])
   @@map("route_masters")
 }
 
+/// 駅マスタ
+/// 電車・バスの駅情報
 model Station {
-  id           String   @id @default(uuid()) @db.Uuid
-  code         String   @unique @db.VarChar(50)
-  name         String   @db.VarChar(100)
-  nameKana     String?  @db.VarChar(100)
-  routeId      String?  @db.Uuid
-  prefecture   String?  @db.VarChar(10)
-  city         String?  @db.VarChar(50)
-  latitude     Decimal? @db.Decimal(10, 7)
-  longitude    Decimal? @db.Decimal(10, 7)
-  displayOrder Int      @default(0)
-  isActive     Boolean  @default(true)
+  id           String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String   @unique @db.VarChar(50) // 駅コード（一意制約）
+  name         String   @db.VarChar(100) // 駅名
+  nameKana     String?  @db.VarChar(100) // 駅名カナ
+  routeId      String?  @db.Uuid // 路線ID（外部キー）
+  prefecture   String?  @db.VarChar(10) // 都道府県
+  city         String?  @db.VarChar(50) // 市区町村
+  latitude     Decimal? @db.Decimal(10, 7) // 緯度
+  longitude    Decimal? @db.Decimal(10, 7) // 経度
+  displayOrder Int      @default(0) // 表示順
+  isActive     Boolean  @default(true) // 有効フラグ
 
   // Relations
-  route              RouteMaster?      @relation(fields: [routeId], references: [id], onDelete: SetNull)
-  propertyStations   PropertyStation[]
+  route              RouteMaster?      @relation(fields: [routeId], references: [id], onDelete: SetNull) // 所属路線
+  propertyStations   PropertyStation[] // この駅が最寄りの物件一覧
 
   @@unique([name, routeId])
   @@index([routeId])
@@ -906,124 +982,135 @@ model Station {
   @@map("stations")
 }
 
+/// 質問カテゴリマスタ
+/// Q&Aの質問カテゴリ
 model QuestionCategory {
-  id           String  @id @default(uuid()) @db.Uuid
-  code         String  @unique @db.VarChar(50)
-  name         String  @db.VarChar(100)
-  description  String? @db.Text
-  displayOrder Int     @default(0)
-  isActive     Boolean @default(true)
+  id           String  @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  code         String  @unique @db.VarChar(50) // カテゴリコード（一意制約）
+  name         String  @db.VarChar(100) // カテゴリ名
+  description  String? @db.Text // 説明
+  displayOrder Int     @default(0) // 表示順
+  isActive     Boolean @default(true) // 有効フラグ
 
   // Relations
-  questions Question[]
+  questions Question[] // このカテゴリの質問一覧
 
   @@map("question_categories")
 }
 
+/// 設備カテゴリ
 enum FeatureCategory {
-  EQUIPMENT   // 設備
-  CONDITION   // 条件
+  EQUIPMENT // 設備
+  CONDITION // 条件
   ENVIRONMENT // 周辺環境
-  SECURITY    // セキュリティ
-  OTHER       // その他
+  SECURITY // セキュリティ
+  OTHER // その他
 }
 
 // ============================================
 // システム・共通 [gray]
 // ============================================
 
+/// メール送信ログ
+/// システムから送信するメールを管理
 model Mail {
-  id                String     @id @default(uuid()) @db.Uuid
-  fromEmail         String     @db.VarChar(255)
-  fromName          String?    @db.VarChar(100)
-  toEmail           String     @db.VarChar(255)
-  toName            String?    @db.VarChar(100)
-  ccEmail           String[]
-  bccEmail          String[]
-  subject           String     @db.VarChar(500)
-  bodyText          String     @db.Text
-  bodyHtml          String?    @db.Text
-  status            MailStatus @default(DRAFT)
-  mailType          MailType   @default(GENERAL)
-  templateCode      String?    @db.VarChar(100)
-  templateVariables Json?      @db.JsonB
-  errorMessage      String?    @db.Text
-  userId            String?    @db.Uuid
-  retryCount        Int        @default(0)
-  scheduledAt       DateTime?  @db.Timestamptz
-  sentAt            DateTime?  @db.Timestamptz
-  createdAt         DateTime   @default(now()) @db.Timestamptz
+  id                String     @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  fromEmail         String     @db.VarChar(255) // 送信元メールアドレス
+  fromName          String?    @db.VarChar(100) // 送信元表示名
+  toEmail           String     @db.VarChar(255) // 宛先メールアドレス
+  toName            String?    @db.VarChar(100) // 宛先表示名
+  ccEmail           String[] // CCメールアドレス（配列）
+  bccEmail          String[] // BCCメールアドレス（配列）
+  subject           String     @db.VarChar(500) // 件名
+  bodyText          String     @db.Text // 本文（テキスト）
+  bodyHtml          String?    @db.Text // 本文（HTML）
+  status            MailStatus @default(DRAFT) // 送信ステータス
+  mailType          MailType   @default(GENERAL) // メール種別
+  templateCode      String?    @db.VarChar(100) // テンプレートコード
+  templateVariables Json?      @db.JsonB // テンプレート変数（JSONB）
+  errorMessage      String?    @db.Text // エラーメッセージ
+  userId            String?    @db.Uuid // 送信ユーザーID
+  retryCount        Int        @default(0) // リトライ回数
+  scheduledAt       DateTime?  @db.Timestamptz // 送信予定日時
+  sentAt            DateTime?  @db.Timestamptz // 送信完了日時
+  createdAt         DateTime   @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull) // 送信ユーザー
 
   @@index([status, scheduledAt])
   @@index([userId, createdAt(sort: Desc)])
   @@map("mails")
 }
 
+/// ファイルボックス
+/// Supabase Storageにアップロードされたファイルのメタ情報
 model FileBox {
-  id           String    @id @default(uuid()) @db.Uuid
-  bucketName   String    @db.VarChar(100) // Supabase Storage bucket
+  id           String    @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  bucketName   String    @db.VarChar(100) // Supabase Storageバケット名
   storagePath  String    @db.VarChar(500) // Storage内のパス
-  fileName     String    @db.VarChar(255)
-  originalName String    @db.VarChar(255)
-  publicUrl    String?   @db.VarChar(500)
-  mimeType     String    @db.VarChar(100)
-  fileSize     BigInt    // bytes
-  category     String?   @db.VarChar(100) // property_image, document, avatar, other
-  metadata     Json?     @db.JsonB // width, height, duration等
-  userId       String?   @db.Uuid
-  isPublic     Boolean   @default(false)
-  createdAt    DateTime  @default(now()) @db.Timestamptz
-  updatedAt    DateTime  @updatedAt @db.Timestamptz
-  deletedAt    DateTime? @db.Timestamptz
+  fileName     String    @db.VarChar(255) // 保存ファイル名
+  originalName String    @db.VarChar(255) // 元ファイル名
+  publicUrl    String?   @db.VarChar(500) // 公開URL
+  mimeType     String    @db.VarChar(100) // MIMEタイプ
+  fileSize     BigInt // ファイルサイズ（バイト）
+  category     String?   @db.VarChar(100) // カテゴリ（property_image, document, avatar, other）
+  metadata     Json?     @db.JsonB // メタデータ（幅、高さ、再生時間等）
+  userId       String?   @db.Uuid // アップロードユーザーID
+  isPublic     Boolean   @default(false) // 公開フラグ
+  createdAt    DateTime  @default(now()) @db.Timestamptz // 作成日時
+  updatedAt    DateTime  @updatedAt @db.Timestamptz // 更新日時
+  deletedAt    DateTime? @db.Timestamptz // 論理削除日時
 
   // Relations
-  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
-  propertyImages PropertyImage[]
+  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull) // アップロードユーザー
+  propertyImages PropertyImage[] // 紐づく物件画像
 
   @@index([userId, category])
   @@index([category, createdAt(sort: Desc)])
   @@map("file_boxes")
 }
 
+/// システム設定
+/// アプリケーション全体の設定を管理
 model SystemSetting {
-  id          String   @id @default(uuid()) @db.Uuid
-  key         String   @unique @db.VarChar(100)
-  value       Json     @db.JsonB
-  valueType   String   @db.VarChar(50) // string, number, boolean, json
-  category    String?  @db.VarChar(50) // general, mail, payment, feature_flag
-  description String?  @db.Text
-  isPublic    Boolean  @default(false) // フロントエンドで参照可能か
-  updatedById String?  @db.Uuid
-  createdAt   DateTime @default(now()) @db.Timestamptz
-  updatedAt   DateTime @updatedAt @db.Timestamptz
+  id          String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  key         String   @unique @db.VarChar(100) // 設定キー（一意制約）
+  value       Json     @db.JsonB // 設定値（JSONB）
+  valueType   String   @db.VarChar(50) // 値の型（string, number, boolean, json）
+  category    String?  @db.VarChar(50) // カテゴリ（general, mail, payment, feature_flag）
+  description String?  @db.Text // 説明
+  isPublic    Boolean  @default(false) // フロントエンド公開フラグ
+  updatedById String?  @db.Uuid // 最終更新者ID
+  createdAt   DateTime @default(now()) @db.Timestamptz // 作成日時
+  updatedAt   DateTime @updatedAt @db.Timestamptz // 更新日時
 
   // Relations
-  updatedBy User? @relation(fields: [updatedById], references: [id], onDelete: SetNull)
+  updatedBy User? @relation(fields: [updatedById], references: [id], onDelete: SetNull) // 最終更新者
 
   @@index([category, key])
   @@map("system_settings")
 }
 
+/// 監査ログ
+/// データ変更履歴を記録（コンプライアンス対応）
 model AuditLog {
-  id            String   @id @default(uuid()) @db.Uuid
-  tableName     String   @db.VarChar(100)
-  recordId      String   @db.Uuid
-  action        AuditAction
-  oldData       Json?    @db.JsonB
-  newData       Json?    @db.JsonB
+  id            String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  tableName     String   @db.VarChar(100) // 対象テーブル名
+  recordId      String   @db.Uuid // 対象レコードID
+  action        AuditAction // 操作種別（INSERT/UPDATE/DELETE）
+  oldData       Json?    @db.JsonB // 変更前データ（JSONB）
+  newData       Json?    @db.JsonB // 変更後データ（JSONB）
   changedFields String[] // 変更されたフィールド一覧
-  userId        String?  @db.Uuid
-  userEmail     String?  @db.VarChar(255) // 非正規化
-  ipAddress     String?  @db.VarChar(45)
-  userAgent     String?  @db.Text
-  sessionId     String?  @db.VarChar(100)
-  createdAt     DateTime @default(now()) @db.Timestamptz
+  userId        String?  @db.Uuid // 操作ユーザーID
+  userEmail     String?  @db.VarChar(255) // 操作ユーザーメールアドレス（非正規化）
+  ipAddress     String?  @db.VarChar(45) // IPアドレス
+  userAgent     String?  @db.Text // ユーザーエージェント
+  sessionId     String?  @db.VarChar(100) // セッションID
+  createdAt     DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull) // 操作ユーザー
 
   @@index([tableName, recordId])
   @@index([userId, createdAt(sort: Desc)])
@@ -1031,43 +1118,48 @@ model AuditLog {
   @@map("audit_logs")
 }
 
+/// 通知
+/// ユーザーへのアプリ内通知
 model Notification {
-  id        String   @id @default(uuid()) @db.Uuid
-  userId    String   @db.Uuid
-  type      String   @db.VarChar(100) // inquiry_received, answer_posted, price_changed, etc
-  title     String   @db.VarChar(200)
-  message   String   @db.Text
-  linkUrl   String?  @db.VarChar(500)
-  isRead    Boolean  @default(false)
-  readAt    DateTime? @db.Timestamptz
-  metadata  Json?    @db.JsonB
-  createdAt DateTime @default(now()) @db.Timestamptz
+  id        String   @id @default(uuid()) @db.Uuid // 主キー（UUID v4）
+  userId    String   @db.Uuid // 通知先ユーザーID
+  type      String   @db.VarChar(100) // 通知タイプ（inquiry_received, answer_posted, price_changed等）
+  title     String   @db.VarChar(200) // タイトル
+  message   String   @db.Text // メッセージ
+  linkUrl   String?  @db.VarChar(500) // リンクURL
+  isRead    Boolean  @default(false) // 既読フラグ
+  readAt    DateTime? @db.Timestamptz // 既読日時
+  metadata  Json?    @db.JsonB // 追加情報（JSONB）
+  createdAt DateTime @default(now()) @db.Timestamptz // 作成日時
 
   // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) // 通知先ユーザー
 
   @@index([userId, isRead, createdAt(sort: Desc)])
   @@map("notifications")
 }
 
+/// メール送信ステータス
 enum MailStatus {
-  DRAFT
-  QUEUED
-  SENDING
-  SENT
-  FAILED
+  DRAFT // 下書き
+  QUEUED // 送信待ち
+  SENDING // 送信中
+  SENT // 送信完了
+  FAILED // 送信失敗
 }
 
+/// メール種別
 enum MailType {
-  GENERAL
-  INQUIRY_REPLY
-  NOTIFICATION
-  CAMPAIGN
-  SYSTEM
+  GENERAL // 一般
+  INQUIRY_REPLY // 問い合わせ返信
+  NOTIFICATION // 通知
+  CAMPAIGN // キャンペーン
+  SYSTEM // システム
 }
 
+/// 監査アクション
 enum AuditAction {
-  INSERT
-  UPDATE
-  DELETE
+  INSERT // 挿入
+  UPDATE // 更新
+  DELETE // 削除
 }
